@@ -11,9 +11,17 @@ class Kernel
 
         // Blueprint macro.
         'blueprints' => [
+
+            // Boolean macro.
+            'access' => Database\Blueprints\Booleans\AccessBlueprint::class,
+            'all_access' => Database\Blueprints\Booleans\AllAccessBlueprint::class,
+            'all_branch_access' => Database\Blueprints\Booleans\AllBranchAccessBlueprint::class,
+            'all_branch_type_access' => Database\Blueprints\Booleans\AllBranchTypeAccessBlueprint::class,
+            'locked' => Database\Blueprints\Booleans\LockedBlueprint::class,
             
             // Foreign macro.
             'action' => Database\Blueprints\Foreigns\ActionBlueprint::class,
+            'feature' => Database\Blueprints\Foreigns\FeatureBlueprint::class,
             'module' => Database\Blueprints\Foreigns\ModuleBlueprint::class,
             'package' => Database\Blueprints\Foreigns\PackageBlueprint::class,
             'role' => Database\Blueprints\Foreigns\RoleBlueprint::class,
