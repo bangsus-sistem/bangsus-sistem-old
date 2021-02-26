@@ -114,4 +114,10 @@ return [
 
     'password_timeout' => 10800,
 
+
+
+    'role' => [
+        'with_all_access_field' => true,
+    ],
+
 ];
