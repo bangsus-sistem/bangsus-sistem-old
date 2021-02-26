@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Ajax\Auth;
 
 use App\Abstracts\Http\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Res\Auth\Module\{
+    IndexRequest,
+    ShowRequest,
+};
 use App\Database\Models\Auth\Module;
 use App\Transformers\SingleCollections\Auth\ModuleSingleCollection;
 use App\Transformers\PaginatedCollections\Auth\ModulePaginatedCollection;
+use App\Transformers\RelatedResources\Auth\ModuleRelatedResource;
 
 class ModuleController extends Controller
 {

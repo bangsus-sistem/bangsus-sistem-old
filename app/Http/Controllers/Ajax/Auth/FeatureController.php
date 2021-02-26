@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Ajax\Auth;
 
 use App\Abstracts\Http\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Res\Auth\Feature\{
+    IndexRequest,
+    ShowRequest,
+};
 use App\Database\Models\Auth\Feature;
 use App\Transformers\SingleCollections\Auth\FeatureSingleCollection;
 use App\Transformers\PaginatedCollections\Auth\FeaturePaginatedCollection;
+use App\Transformers\RelatedResources\Auth\FeatureRelatedResource;
 
 class FeatureController extends Controller
 {

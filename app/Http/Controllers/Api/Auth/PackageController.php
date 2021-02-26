@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Abstracts\Http\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Res\Auth\Package\{
+    IndexRequest,
+    ShowRequest,
+};
 use App\Database\Models\Auth\Package;
 use App\Transformers\SingleCollections\Auth\PackageSingleCollection;
 use App\Transformers\PaginatedCollections\Auth\PackagePaginatedCollection;
+use App\Transformers\RelatedResources\Auth\PackageRelatedResource;
 
 class PackageController extends Controller
 {

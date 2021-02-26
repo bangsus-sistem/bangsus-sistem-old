@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Abstracts\Http\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Res\Auth\Action\{
+    IndexRequest,
+    ShowRequest,
+};
 use App\Database\Models\Auth\Action;
 use App\Transformers\SingleCollections\Auth\ActionSingleCollection;
 use App\Transformers\PaginatedCollections\Auth\ActionPaginatedCollection;
+use App\Transformers\RelatedResources\Auth\ActionRelatedResource;
 
 class ActionController extends Controller
 {
