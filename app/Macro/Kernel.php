@@ -13,9 +13,9 @@ class Kernel
         'blueprints' => [
             
             // Foreign macro.
-            'action' => Database\Blueprints\Foregins\ActionBlueprint::class,
-            'module' => Database\Blueprints\Foregins\ModuleBlueprint::class,
-            'package' => Database\Blueprints\Foregins\PackageBlueprint::class,
+            'action' => Database\Blueprints\Foreigns\ActionBlueprint::class,
+            'module' => Database\Blueprints\Foreigns\ModuleBlueprint::class,
+            'package' => Database\Blueprints\Foreigns\PackageBlueprint::class,
 
             // String macro.
             'name' => Database\Blueprints\Strings\NameBlueprint::class,
