@@ -14,7 +14,7 @@ class ModuleSingleResource extends SingleResource
     {
         return [
             'id' => $this->id,
-            'package_id' => $this->package_id,
+            'package' => new PackageSingleResource($this->package),
             'ref' => $this->ref,
             'name' => $this->name,
         ];
