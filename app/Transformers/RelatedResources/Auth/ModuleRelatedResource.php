@@ -4,6 +4,7 @@ namespace App\Transformers\RelatedResources\Auth;
 
 use App\Abstracts\Transformers\RelatedResource;
 use App\Transformers\SingleResources\Auth\PackageSingleResource;
+use App\Transformers\RelatedCollections\Auth\FeatureRelatedCollection;
 
 class ModuleRelatedResource extends RelatedResource
 {
