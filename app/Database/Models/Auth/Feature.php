@@ -3,11 +3,13 @@
 namespace App\Database\Models\Auth;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Database\Models\Concerns\Common\NoTimestamp;
 
 class Feature extends Model
 {
-    use NoTimestamp;
+    /**
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
