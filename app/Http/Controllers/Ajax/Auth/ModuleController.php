@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Ajax\Auth;
 
 use App\Abstracts\Http\Controller;
 use Illuminate\Http\Request;
-use App\Database\Models\Auth\Package;
-use App\Transformers\SingleCollections\Auth\PackageSingleCollection;
-use App\Transformers\PaginatedCollections\Auth\PackagePaginatedCollection;
+use App\Database\Models\Auth\Module;
+use App\Transformers\SingleCollections\Auth\ModuleSingleCollection;
+use App\Transformers\PaginatedCollections\Auth\ModulePaginatedCollection;
 
-class PackageController extends Controller
+class ModuleController extends Controller
 {
     /**
      * @param  \Illuminate\Http\Request  $request
@@ -17,21 +17,22 @@ class PackageController extends Controller
     public function manifest()
     {
         return response()->json(
-            new PackageSingleCollection(Package::all()),
+            new ModuleSingleCollection(Module::all()),
             200
         );
     }
 
     /**
-     * @param  \App\Http\Requests\Res\Auth\Package\IndexRequest  $request
+     * @param  \App\Http\Requests\Res\Auth\Module\IndexRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function index(IndexRequest $request)
     {
         return response()->json(
-            new PackagePaginatedCollection(
-                Package::where(
+            new ModulePaginatedCollection(
+                Module::where(
                     $this->buildWhere()
+                        ->index('package_id')->mode('id')
                         ->index('ref')->mode('string')
                         ->index('name')->mode('string')
                         ->done()
@@ -42,14 +43,14 @@ class PackageController extends Controller
     }
 
     /**
-     * @param  \App\Http\Requests\Res\Auth\Package\ShowRequest  $request
+     * @param  \App\Http\Requests\Res\Auth\Module\ShowRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(ShowRequest $request, int $id)
     {
         return response()->json(
-            new PackageRelatedResource(Package::findOrFail($id)),
+            new ModuleRelatedResource(Module::findOrFail($id)),
             200
         );
     }
