@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Database\Models\Concerns\UserTimestamps;
+use App\Database\Models\Concerns\{
+    ActiveFlag,
+    LockedFlag,
+    UserTimestamps,
+};
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
     use SoftDeletes;
     use UserTimestamps;
+    use ActiveFlag, LockedFlag;
 
     /**
      * The attributes that are mass assignable.
