@@ -4,7 +4,7 @@ namespace App\Http\Requests\Res\Auth\Role;
 
 use App\Abstracts\Http\AuthorizedRequest;
 
-class IndexRequest extends AuthorizedRequest
+class ShowRequest extends AuthorizedRequest
 {
     /**
      * @var string
