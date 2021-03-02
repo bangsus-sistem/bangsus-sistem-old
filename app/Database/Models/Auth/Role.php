@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\{
     Model,
     SoftDeletes,
 };
+use App\Database\Models\Concerns\UserTimestamps;
 
 class Role extends Model
 {
     use SoftDeletes;
+    use UserTimestamps;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
