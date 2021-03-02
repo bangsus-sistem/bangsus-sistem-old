@@ -3,10 +3,11 @@
 namespace App\Database\Models\Auth;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Database\Models\Concerns\UserTimestamps;
 
 class RoleFeature extends Model
 {
-    use SoftDeletes;
+    use UserTimestamps;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
