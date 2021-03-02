@@ -38,7 +38,7 @@ class FeatureController extends Controller
                         ->index('module_id')->mode('id')
                         ->index('action_id')->mode('id')
                         ->done()
-                )
+                )->get()
             ),
             200
         );

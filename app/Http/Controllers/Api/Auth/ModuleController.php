@@ -39,7 +39,7 @@ class ModuleController extends Controller
                         ->index('ref')->mode('string')
                         ->index('name')->mode('string')
                         ->done()
-                )
+                )->get()
             ),
             200
         );
