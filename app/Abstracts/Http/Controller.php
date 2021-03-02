@@ -10,4 +10,14 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * @param  \App\Abstracts\Http\Job  $job
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
+     */
+    public function dispatch(Job $job, $request, ...$args)
+    {
+        return $job->handle($request, ...$args);
+    }
 }
