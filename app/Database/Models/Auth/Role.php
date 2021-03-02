@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\{
 };
 use App\Database\Models\Concerns\{
     ActiveFlag,
-    HiddenFlag,
     LockedFlag,
     UserTimestamps,
 };
@@ -17,7 +16,7 @@ class Role extends Model
 {
     use SoftDeletes;
     use UserTimestamps;
-    use ActiveFlag, HiddenFlag, LockedFlag;
+    use ActiveFlag, LockedFlag;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
