@@ -4,10 +4,10 @@ namespace App\Transformers\RelatedCollections\Auth;
 
 use App\Abstracts\Transformers\RelatedCollection;
 
-class PackageRelatedCollection extends RelatedCollection
+class MoculeRelatedCollection extends RelatedCollection
 {
     /**
      * @var string
      */
-    public $collects = \App\Transformers\RelatedResources\Auth\PackageRelatedResource::class;
+    public $collects = \App\Transformers\RelatedResources\Auth\MoculeRelatedResource::class;
 }
