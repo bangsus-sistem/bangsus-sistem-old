@@ -15,7 +15,6 @@ use App\Transformers\RelatedResources\Auth\ModuleRelatedResource;
 class ModuleController extends Controller
 {
     /**
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function manifest()

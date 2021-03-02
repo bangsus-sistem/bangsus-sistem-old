@@ -15,7 +15,6 @@ use App\Transformers\RelatedResources\Auth\FeatureRelatedResource;
 class FeatureController extends Controller
 {
     /**
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function manifest()
