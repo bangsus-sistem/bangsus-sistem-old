@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Validation\Auth\Role;
+namespace App\Rules\Auth\Role;
 
 use Illuminate\Contracts\Validation\Rule;
 use App\Database\Models\Auth\User;
@@ -20,7 +20,7 @@ class RoleIsDeletableRule implements Rule
     public function passes($attribute, $value)
     {
         if (User::where('role_id', $value)->exists()) {
-            $this->message = __('validation.auth.role_is_deletable.role_has_user');
+            $this->message = __('rules.auth.role_is_deletable.role_has_user');
             return false;
         }
 
