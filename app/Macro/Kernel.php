@@ -41,4 +41,11 @@ class Kernel
             'username' => Database\Blueprints\Strings\UsernameBlueprint::class,
         ]
     ];
+
+    /**
+     * @var array
+     */
+    public static $validation = [
+        
+    ];
 }
