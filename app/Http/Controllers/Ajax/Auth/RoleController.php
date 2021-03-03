@@ -7,6 +7,15 @@ use App\Http\Requests\Res\Auth\Role\{
     IndexRequest,
     ShowRequest,
     StoreRequest,
+    AmendRequest,
+    ActivationRequest,
+    DestroyRequest,
+};
+use App\Http\Jobs\Auth\Role\{
+    StoreJob,
+    AmendJob,
+    ActivationJob,
+    DestroyJob,
 };
 use App\Database\Models\Auth\Role;
 use App\Transformers\SingleCollections\Auth\RoleSingleCollection;
@@ -69,26 +78,65 @@ class RoleController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $role = new Role;
-        $role->code = $request->input('code');
-        $role->name = $request->input('name');
-        $role->active = true;
-        $role->locked = false;
-        $role->all_access = false;
-        $role->note = $request->input('note');
-        $role->save();
-
-        foreach ($request->input('feature_ids') as $featureId) {
-            $roleFeature = new RoleFeature;
-            $roleFeature->role_id = $role->id;
-            $roleFeature->feature_id = $featureId;
-            $roleFeature->access = true;
-            $roleFeature->save();
-        }
-
         return response()->json(
-            new RoleRelatedResource($role),
+            new RoleRelatedResource(
+                $this->dispatch(new StoreJob, $request)
+            ),
             201
+        );
+    }
+    
+    /**
+     * @param  \App\Http\Requests\Res\Auth\Role\AmendRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function amend(AmendRequest $request)
+    {
+        return response()->json(
+            new RoleRelatedResource(
+                $this->dispatch(new AmendJob, $request)
+            ),
+            200
+        );
+    }
+
+    /**
+     * @param  \App\Http\Requests\Res\Auth\Role\ActivationRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function reviseActivate(ActivationRequest $request)
+    {
+        return response()->json(
+            new RoleRelatedResource(
+                $this->dispatch(new ActivationJob, $request, true)
+            ),
+            200
+        );
+    }
+
+    /**
+     * @param  \App\Http\Requests\Res\Auth\Role\ActivationRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function reviseDeactivate(ActivationRequest $request)
+    {
+        return response()->json(
+            new RoleRelatedResource(
+                $this->dispatch(new ActivationJob, $request, false)
+            ),
+            200
+        );
+    }
+
+    /**
+     * @param  \App\Http\Requests\Res\Auth\Role\DestroyRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(DestroyRequest $request)
+    {
+        return response()->json(
+            $this->dispatch(new DestroyJob, $request),
+            204
         );
     }
 }
