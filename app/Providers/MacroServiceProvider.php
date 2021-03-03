@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Validator;
 use App\Macro\Kernel;
 use App\Contracts\Macro\Database\BlueprintContract;
+use App\Macro\Contracts\Validation\RuleContract;
 use LogicException;
 
 class MacroServiceProvider extends ServiceProvider
@@ -27,7 +29,7 @@ class MacroServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->bootValidationMacro();
     }
 
     /**
@@ -64,6 +66,35 @@ class MacroServiceProvider extends ServiceProvider
                     ])
                 );
             }
+        }
+    }
+
+    /**
+     * @return void
+     */
+    private function bootValidationMacro()
+    {
+        $this->bootRuleMacro();
+    }
+
+    /**
+     * @return void
+     */
+    private function bootRuleMacro()
+    {
+        $rules = Kernel::$validation['rules'];
+
+        foreach ($rules as $ruleName => $rule) {
+            $ruleName = config('macro.validation.rule.prefix').$ruleName;
+
+            if ( ! (new $rule) instanceof RuleContract)
+                throw new LogicException('Rule: '.$rule.' must implements '.RuleContract::class);
+
+            $ruleClassMethod = $rule.'@'.RuleContract::VALIDATE_METHOD;
+            $replacerClassMethod = $rule.'@'.RuleContract::REPLACEMETHOD;
+
+            Validator::extend($ruleName, $ruleClassMethod);
+            Validator::replacer($ruleName, $replacerClassMethod);
         }
     }
 }
