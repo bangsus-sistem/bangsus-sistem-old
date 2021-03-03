@@ -17,22 +17,23 @@ class StoreJob extends Job
     public function handle($request)
     {
         $role = new Role;
-        $role->code = $request->input('code');
-        $role->name = $request->input('name');
-        $role->active = true;
-        $role->locked = false;
-        $role->all_access = false;
-        $role->note = $request->input('note');
-        $role->save();
+        \DB::transaction(function () use ($request) {
+            $role->code = $request->input('code');
+            $role->name = $request->input('name');
+            $role->active = true;
+            $role->locked = false;
+            $role->all_access = false;
+            $role->note = $request->input('note');
+            $role->save();
 
-        foreach ($request->input('feature_ids') as $featureId) {
-            $roleFeature = new RoleFeature;
-            $roleFeature->role_id = $role->id;
-            $roleFeature->feature_id = $featureId;
-            $roleFeature->access = true;
-            $roleFeature->save();
-        }
-
+            foreach ($request->input('feature_ids') as $featureId) {
+                $roleFeature = new RoleFeature;
+                $roleFeature->role_id = $role->id;
+                $roleFeature->feature_id = $featureId;
+                $roleFeature->access = true;
+                $roleFeature->save();
+            }
+        });
         return $role;
     }
 }
