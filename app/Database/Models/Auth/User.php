@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Database\Models\Concerns\{
     ActiveFlag,
+    BranchPivot,
+    BranchTypePivot,
     LockedFlag,
     UserTimestamps,
 };
@@ -18,6 +20,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
     use SoftDeletes;
     use UserTimestamps;
+    use BranchPivot, BranchTypePivot;
     use ActiveFlag, LockedFlag;
 
     /**
