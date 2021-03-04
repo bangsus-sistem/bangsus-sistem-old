@@ -44,21 +44,16 @@ class StoreRequest extends AuthorizedRequest
                 'required',
                 'bsb_exists:\App\Database\Models\Auth\Role',
             ],
-            'all_branch_type_access' => [
-                'required',
-                'boolean',
-            ],
             'all_branch_access' => [
                 'required',
                 'boolean',
             ],
             'branch_type_ids' => [
-                Rule::requiredIf( ! $this->boolean('all_branch_type_access')),
+                'nullable',
                 'array',
                 'min:1',
             ],
             'branch_type_ids.*' => [
-                Rule::requiredIf( ! $this->boolean('all_branch_type_access')),
                 'bsb_exists:\App\Database\Models\System\BranchType',
             ],
             'branch_ids' => [
@@ -67,7 +62,6 @@ class StoreRequest extends AuthorizedRequest
                 'min:1',
             ],
             'branch_ids.*' => [
-                Rule::requiredIf( ! $this->boolean('all_branch_access')),
                 'bsb_exists:\App\Database\Models\System\Branch',
             ],
             'note' => [

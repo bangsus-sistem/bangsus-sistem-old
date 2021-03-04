@@ -32,14 +32,6 @@ class AmendRequest extends AuthorizedRequest
                 'min:6',
                 'unique:App\Database\Models\Auth\User',
             ],
-            'password' => [
-                'required',
-                'min:6',
-            ],
-            'password_confirmation' => [
-                'required_with:password',
-                'same:password',
-            ],
             'full_name' => [
                 'required',
                 'max:400',
@@ -48,21 +40,16 @@ class AmendRequest extends AuthorizedRequest
                 'required',
                 'bsb_exists:\App\Database\Models\Auth\Role',
             ],
-            'all_branch_type_access' => [
-                'required',
-                'boolean',
-            ],
             'all_branch_access' => [
                 'required',
                 'boolean',
             ],
             'branch_type_ids' => [
-                Rule::requiredIf( ! $this->boolean('all_branch_type_access')),
+                'nullable',
                 'array',
                 'min:1',
             ],
             'branch_type_ids.*' => [
-                Rule::requiredIf( ! $this->boolean('all_branch_type_access')),
                 'bsb_exists:\App\Database\Models\System\BranchType',
             ],
             'branch_ids' => [
@@ -71,7 +58,6 @@ class AmendRequest extends AuthorizedRequest
                 'min:1',
             ],
             'branch_ids.*' => [
-                Rule::requiredIf( ! $this->boolean('all_branch_access')),
                 'bsb_exists:\App\Database\Models\System\Branch',
             ],
             'note' => [
