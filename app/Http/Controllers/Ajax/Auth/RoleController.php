@@ -30,7 +30,7 @@ class RoleController extends Controller
     public function manifest()
     {
         return response()->json(
-            new RoleSingleCollection(Role::isNotHidden()->isNotActive()->all()),
+            new RoleSingleCollection(Role::isNotHidden()->isActive()->all()),
             200
         );
     }
