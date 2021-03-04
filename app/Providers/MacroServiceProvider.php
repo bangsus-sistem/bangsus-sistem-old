@@ -7,7 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Validator;
 use App\Macro\Kernel;
 use App\Contracts\Macro\Database\BlueprintContract;
-use App\Macro\Contracts\Validation\RuleContract;
+use App\Contracts\Macro\Validation\RuleContract;
 use LogicException;
 
 class MacroServiceProvider extends ServiceProvider
@@ -91,7 +91,7 @@ class MacroServiceProvider extends ServiceProvider
                 throw new LogicException('Rule: '.$rule.' must implements '.RuleContract::class);
 
             $ruleClassMethod = $rule.'@'.RuleContract::VALIDATE_METHOD;
-            $replacerClassMethod = $rule.'@'.RuleContract::REPLACEMETHOD;
+            $replacerClassMethod = $rule.'@'.RuleContract::REPLACE_METHOD;
 
             Validator::extend($ruleName, $ruleClassMethod);
             Validator::replacer($ruleName, $replacerClassMethod);
