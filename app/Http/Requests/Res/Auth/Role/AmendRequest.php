@@ -43,7 +43,11 @@ class AmendRequest extends AuthorizedRequest
             'feature_ids.*' => [
                 'required',
                 'bsb_exists:\App\Database\Models\Auth\Feature',
-            ]
+            ],
+            'note' => [
+                'nullable',
+                'max:1000',
+            ],
         ];
     }
 }
