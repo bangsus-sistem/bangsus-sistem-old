@@ -4,7 +4,7 @@ namespace App\Http\Requests\Res\Auth\Role;
 
 use App\Abstracts\Http\AuthorizedRequest;
 
-class ActivationRequest extends AuthorizedRequest
+class ReviseActivationRequest extends AuthorizedRequest
 {
     /**
      * @var string

@@ -8,13 +8,13 @@ use App\Http\Requests\Res\Auth\Role\{
     ShowRequest,
     StoreRequest,
     AmendRequest,
-    ActivationRequest,
+    ReviseActivationRequest,
     DestroyRequest,
 };
 use App\Http\Jobs\Auth\Role\{
     StoreJob,
     AmendJob,
-    ActivationJob,
+    ReviseActivationJob,
     DestroyJob,
 };
 use App\Database\Models\Auth\Role;
@@ -101,28 +101,28 @@ class RoleController extends Controller
     }
 
     /**
-     * @param  \App\Http\Requests\Res\Auth\Role\ActivationRequest  $request
+     * @param  \App\Http\Requests\Res\Auth\Role\ReviseActivationRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function reviseActivate(ActivationRequest $request)
+    public function reviseActivate(ReviseActivationRequest $request)
     {
         return response()->json(
             new RoleRelatedResource(
-                $this->dispatch(new ActivationJob, $request, true)
+                $this->dispatch(new ReviseActivationJob, $request, true)
             ),
             200
         );
     }
 
     /**
-     * @param  \App\Http\Requests\Res\Auth\Role\ActivationRequest  $request
+     * @param  \App\Http\Requests\Res\Auth\Role\ReviseActivationRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function reviseDeactivate(ActivationRequest $request)
+    public function reviseDeactivate(ReviseActivationRequest $request)
     {
         return response()->json(
             new RoleRelatedResource(
-                $this->dispatch(new ActivationJob, $request, false)
+                $this->dispatch(new ReviseActivationJob, $request, false)
             ),
             200
         );
