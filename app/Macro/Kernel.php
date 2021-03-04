@@ -21,6 +21,8 @@ class Kernel
             
             // Foreign macro.
             'action' => Database\Blueprints\Foreigns\ActionBlueprint::class,
+            'branch' => Database\Blueprints\Foreigns\BranchBlueprint::class,
+            'branchType' => Database\Blueprints\Foreigns\BranchTypeBlueprint::class,
             'feature' => Database\Blueprints\Foreigns\FeatureBlueprint::class,
             'module' => Database\Blueprints\Foreigns\ModuleBlueprint::class,
             'package' => Database\Blueprints\Foreigns\PackageBlueprint::class,
