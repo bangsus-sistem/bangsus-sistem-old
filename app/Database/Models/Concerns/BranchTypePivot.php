@@ -2,6 +2,8 @@
 
 namespace App\Database\Models\Concerns;
 
+use App\Database\Models\System\BranchType;
+
 trait BranchTypePivot
 {
     /**
