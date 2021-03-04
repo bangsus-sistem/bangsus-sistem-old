@@ -7,6 +7,7 @@ use App\Tranformers\SingleResources\Auth\{
     RoleSingleResource,
     UserSingleResource,
 };
+use App\Transformrs\SingleCollections\System\BranchSingleCollection;
 
 class UserRelatedResource extends RelatedResource
 {
@@ -23,8 +24,7 @@ class UserRelatedResource extends RelatedResource
             'role' => new RoleSingleResource($this->role),
             'active' => $this->active,
             'locked' => $this->locked,
-            'all_branch_type_access' => $this->all_branch_type_access,
-            'all_branch_access' => $this->all_branch_access,
+            'branches' => new BranchSingleCollection($this->branches),
             'user_create' => new UserSingleResource($this->userCreate),
             'created_at' => $this->created_at,
             'user_update' => new UserSingleResource($this->userUpdate),
