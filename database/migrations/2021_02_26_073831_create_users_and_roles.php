@@ -30,8 +30,6 @@ class CreateUsersAndRoles extends Migration
             $table->role();
             $table->active();
             $table->locked();
-            $table->allBranchTypeAccess();
-            $table->allBranchAccess();
             $table->note();
         });
         Schema::table('roles', function (Blueprint $table) {
