@@ -41,6 +41,11 @@ class Kernel
             'password' => Database\Blueprints\Strings\PasswordBlueprint::class,
             'ref' => Database\Blueprints\Strings\RefBlueprint::class,
             'username' => Database\Blueprints\Strings\UsernameBlueprint::class,
+            'token' => Database\Blueprints\Strings\TokenBlueprint::class,
+
+            // Timestamps macro.
+            'expiredAt' => Database\Blueprints\Timestamps\ExpiredAtBlueprint::class,
+            'usedAt' => Database\Blueprints\Timestamps\UsedAtBlueprint::class,
         ]
     ];
 
