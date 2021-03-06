@@ -11,6 +11,7 @@ use App\Database\Models\Concerns\{
     ActiveFlag,
     BranchPivot,
     LockedFlag,
+    UserDelete,
     UserTimestamps,
 };
 
@@ -18,7 +19,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
     use SoftDeletes;
-    use UserTimestamps, BranchPivot;
+    use BranchPivot, UserTimestamps, UserDelete;
     use ActiveFlag, LockedFlag;
 
     /**

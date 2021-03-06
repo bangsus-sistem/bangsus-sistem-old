@@ -9,13 +9,14 @@ use Illuminate\Database\Eloquent\{
 use App\Database\Models\Concerns\{
     ActiveFlag,
     LockedFlag,
+    UserDelete,
     UserTimestamps,
 };
 
 class Role extends Model
 {
     use SoftDeletes;
-    use UserTimestamps;
+    use UserTimestamps, UserDelete;
     use ActiveFlag, LockedFlag;
 
     /**
