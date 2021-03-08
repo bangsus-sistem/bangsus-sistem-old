@@ -8,5 +8,5 @@ return [
                 'role_has_user' => 'Role already assigned to User.'
             ]
         ]
-    ]
+    ],
 ];
