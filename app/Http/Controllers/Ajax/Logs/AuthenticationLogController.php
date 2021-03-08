@@ -9,16 +9,12 @@ use App\Http\Requests\Res\Logs\AuthenticationLog\{
     StoreLoginRequest,
     StoreTokenRequest,
     StoreLogoutRequest,
-    AmendRequest,
-    ReviseActivationRequest,
     DestroyRequest,
 };
 use App\Http\Jobs\Logs\AuthenticationLog\{
     StoreLoginJob,
     StoreTokenJob,
     StoreLogoutJob,
-    AmendJob,
-    ReviseActivationJob,
     DestroyJob,
 };
 use App\Http\Services\Ajax\{
