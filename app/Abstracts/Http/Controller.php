@@ -20,4 +20,14 @@ class Controller extends BaseController
     {
         return $job->handle($request, ...$args);
     }
+
+    /**
+     * @param  \App\Abstracts\Http\Service  $service
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
+     */
+    public function manage(Service $service, $request, ...$args)
+    {
+        return $service->serve($request, ...$args);
+    }
 }
