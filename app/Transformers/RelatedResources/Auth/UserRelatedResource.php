@@ -3,11 +3,11 @@
 namespace App\Transformers\RelatedResources\Auth;
 
 use App\Abstracts\Transformers\RelatedResource;
-use App\Tranformers\SingleResources\Auth\{
+use App\Transformers\SingleResources\Auth\{
     RoleSingleResource,
     UserSingleResource,
 };
-use App\Transformrs\SingleCollections\System\BranchSingleCollection;
+use App\Transformers\SingleCollections\System\BranchSingleCollection;
 
 class UserRelatedResource extends RelatedResource
 {

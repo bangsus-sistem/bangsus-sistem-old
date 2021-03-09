@@ -3,7 +3,7 @@
 namespace App\Transformers\RelatedResources\Auth;
 
 use App\Abstracts\Transformers\RelatedResource;
-use App\Tranformers\SingleResources\Auth\UserSingleResource;
+use App\Transformers\SingleResources\Auth\UserSingleResource;
 use App\Transformers\RelatedCollections\Auth\RoleFeatureRelatedCollection;
 
 class RoleRelatedResource extends RelatedResource
