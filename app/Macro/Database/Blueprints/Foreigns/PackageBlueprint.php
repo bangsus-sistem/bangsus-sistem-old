@@ -16,7 +16,7 @@ class PackageBlueprint implements BlueprintContract
             function ($fieldName = 'package_id', $nullable = false) {
                 $table = $this->foreignId($fieldName);
                 if ($nullable) $table->nullable();
-                return $table->constrained('packages');
+                return $table->constrained('packages')->onUpdate('cascade');
             }
         );
     }

@@ -16,7 +16,7 @@ class ModuleBlueprint implements BlueprintContract
             function ($fieldName = 'module_id', $nullable = false) {
                 $table = $this->foreignId($fieldName);
                 if ($nullable) $table->nullable();
-                return $table->constrained('modules');
+                return $table->constrained('modules')->onUpdate('cascade');
             }
         );
     }

@@ -16,7 +16,7 @@ class UserBlueprint implements BlueprintContract
             function ($fieldName = 'user_id', $nullable = false) {
                 $table = $this->foreignId($fieldName);
                 if ($nullable) $table->nullable();
-                return $table->constrained('users');
+                return $table->constrained('users')->onUpdate('cascade');
             }
         );
     }

@@ -16,7 +16,7 @@ class ActionBlueprint implements BlueprintContract
             function ($fieldName = 'action_id', $nullable = false) {
                 $table = $this->foreignId($fieldName);
                 if ($nullable) $table->nullable();
-                return $table->constrained('actions');
+                return $table->constrained('actions')->onUpdate('cascade');
             }
         );
     }

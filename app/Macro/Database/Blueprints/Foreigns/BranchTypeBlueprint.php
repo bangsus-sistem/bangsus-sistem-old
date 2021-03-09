@@ -16,7 +16,7 @@ class BranchTypeBlueprint implements BlueprintContract
             function ($fieldName = 'branch_type_id', $nullable = false) {
                 $table = $this->foreignId($fieldName);
                 if ($nullable) $table->nullable();
-                return $table->constrained('branch_types');
+                return $table->constrained('branch_types')->onUpdate('cascade');
             }
         );
     }
