@@ -1854,14 +1854,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     appVersion: {
@@ -41964,18 +41956,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "app-version-wrapper" }, [
         _vm._v("\n        " + _vm._s(_vm.appVersionComputed) + "\n    ")
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "screen-mode-wrapper" },
-        [
-          _vm.$isMobile()
-            ? [_vm._v("\n            Mode Mobile\n        ")]
-            : [_vm._v("\n            Mode Desktop\n        ")]
-        ],
-        2
-      )
+      ])
     ],
     1
   )
@@ -42461,7 +42442,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm.$isMobile() ? _vm._t("mobile") : _vm._t("desktop")], 2)
+  return _c(
+    "div",
+    [
+      _vm.$isMobile()
+        ? [
+            _vm._t("mobile"),
+            _vm._v(" "),
+            _c("div", { staticClass: "screen-mode-wrapper" }, [
+              _vm._v("\n            Mode Mobile\n        ")
+            ])
+          ]
+        : [
+            _vm._t("desktop"),
+            _vm._v(" "),
+            _c("div", { staticClass: "screen-mode-wrapper" }, [
+              _vm._v("\n            Mode Desktop\n        ")
+            ])
+          ]
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

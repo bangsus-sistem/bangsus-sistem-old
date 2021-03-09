@@ -4,14 +4,6 @@
         <div class="app-version-wrapper">
             {{ appVersionComputed }}
         </div>
-        <div class="screen-mode-wrapper">
-            <template v-if="$isMobile()">
-                Mode Mobile
-            </template>
-            <template v-else>
-                Mode Desktop
-            </template>
-        </div>
     </div>
 </template>
 
