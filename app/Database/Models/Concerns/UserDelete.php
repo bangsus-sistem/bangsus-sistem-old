@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database\Models\Concerns\Relations;
+namespace App\Database\Models\Concerns;
 
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
