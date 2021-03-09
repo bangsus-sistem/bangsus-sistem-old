@@ -14,10 +14,12 @@ class Kernel
 
             // Boolean macro.
             'access' => Database\Blueprints\Booleans\AccessBlueprint::class,
-            'all_access' => Database\Blueprints\Booleans\AllAccessBlueprint::class,
-            'all_branch_access' => Database\Blueprints\Booleans\AllBranchAccessBlueprint::class,
-            'all_branch_type_access' => Database\Blueprints\Booleans\AllBranchTypeAccessBlueprint::class,
+            'active' => Database\Blueprints\Booleans\ActiveBlueprint::class,
+            'allAccess' => Database\Blueprints\Booleans\AllAccessBlueprint::class,
+            'allBranchAccess' => Database\Blueprints\Booleans\AllBranchAccessBlueprint::class,
+            'allBranchTypeAccess' => Database\Blueprints\Booleans\AllBranchTypeAccessBlueprint::class,
             'locked' => Database\Blueprints\Booleans\LockedBlueprint::class,
+            'state' => Database\Blueprints\Booleans\StateBlueprint::class,
             
             // Foreign macro.
             'action' => Database\Blueprints\Foreigns\ActionBlueprint::class,
