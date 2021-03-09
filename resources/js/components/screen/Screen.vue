@@ -2,15 +2,11 @@
     <div>
         <template v-if="$isMobile()">
             <slot name="mobile" />
-            <div class="screen-mode-wrapper">
-                Mode Mobile
-            </div>
+            <bsb-screen-mode-wrapper label="Mode Mobile" />
         </template>
         <template v-else>
             <slot name="desktop" />
-            <div class="screen-mode-wrapper">
-                Mode Desktop
-            </div>
+            <bsb-screen-mode-wrapper label="Mode Desktop" />
         </template>
     </div>
 </template>

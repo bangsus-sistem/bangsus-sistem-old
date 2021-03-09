@@ -34,6 +34,11 @@ export default {
         'input-errors': require('./input/InputErrors').default,
 
         /**
+         * Mode
+         */
+        'screen-mode-wrapper': require('./mode/ScreenModeWrapper').default,
+
+        /**
          * Sample
          */
         'sample': require('./sample/Sample').default,
