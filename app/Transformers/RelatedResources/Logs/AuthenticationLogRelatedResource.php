@@ -3,7 +3,7 @@
 namespace App\Transformers\RelatedResources\Logs;
 
 use App\Abstracts\Transformers\RelatedResource;
-use App\Tranformers\SingleResources\Logs\UserSingleResource;
+use App\Tranformers\SingleResources\Auth\UserSingleResource;
 
 class AuthenticationLogRelatedResource extends RelatedResource
 {
