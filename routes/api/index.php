@@ -2,4 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('auth')->namespace('Auth')->group(base_path('routes/ajax/auth.php'));
+Route::middleware('auth.api')->group(function () {
+    
+    Route::prefix('auth')->namespace('Auth')->group(base_path('routes/api/auth.php'));
+});
