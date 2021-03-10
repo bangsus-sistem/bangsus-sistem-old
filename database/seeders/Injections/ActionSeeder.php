@@ -13,7 +13,7 @@ class PackageSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('packages')->insert([
+        \DB::table('actions')->insert([
             ['id' => 1, 'ref' => 'index', 'name' => 'Index'],
             ['id' => 2, 'ref' => 'create', 'name' => 'Tambah'],
             ['id' => 3, 'ref' => 'read', 'name' => 'Lihat'],

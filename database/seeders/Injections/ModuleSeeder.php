@@ -33,7 +33,7 @@ class ModuleSeeder extends Seeder
                 ['id' => '0002', 'ref' => 'branch', 'name' => 'Cabang'],
             ]
         ]);
-        \DB::table('module')->insert($data);
+        \DB::table('modules')->insert($data);
     }
 
     /**
