@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 // Route with none auth guard.
 Route::prefix('')->group(base_path('routes/ajax/misc.php'));
 
+/**
+ * @package \App\Http\Controllers\Ajax\Utils
+ */
+Route::prefix('utils')->namespace('Utils')->group(base_path('routes/ajax/utils.php'));
+
 // Route with sanctum auth middleware.
 Route::middleware('auth:sanctum')->group(function () {
 
