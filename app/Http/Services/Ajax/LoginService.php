@@ -16,10 +16,10 @@ class LoginService extends Service
     public function serve($request)
     {
         $user = User::where('username', $request->input('username'))->first();
-        if (is_null($user)) throw new FailedLoginException(__('auth.failed'));
+        if (is_null($user)) throw new FailedLoginException;
 
         if ( ! Auth::attempt($request->only('username', 'password')))
-            throw new FailedLoginException(__('auth.field'));
+            throw new FailedLoginException;
         
         return $user;
     }
