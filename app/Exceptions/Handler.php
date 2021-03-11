@@ -37,5 +37,9 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (FailedLoginException $e) {
+            return response()->json(['message' => __('auth.failed')], 401);
+        });
     }
 }
