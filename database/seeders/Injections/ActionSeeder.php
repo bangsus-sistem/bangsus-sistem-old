@@ -4,7 +4,7 @@ namespace Database\Seeders\Injections;
 
 use Illuminate\Database\Seeder;
 
-class PackageSeeder extends Seeder
+class ActionSeeder extends Seeder
 {
     /**
      * Seed the application's database.

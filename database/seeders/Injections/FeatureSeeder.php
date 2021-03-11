@@ -4,7 +4,7 @@ namespace Database\Seeders\Injections;
 
 use Illuminate\Database\Seeder;
 
-class ModuleSeeder extends Seeder
+class FeatureSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -38,9 +38,9 @@ class ModuleSeeder extends Seeder
     {
         $return = [];
         foreach ($data as $moduleRef => $actionRefs) {
-            $module = \DB::table('module')->where('ref', $moduleRef)->first();
+            $module = \DB::table('modules')->where('ref', $moduleRef)->first();
             foreach ($actionRefs as $actionRef) {
-                $action = \DB::table('action')->where('ref', $actionRef)->first();
+                $action = \DB::table('actions')->where('ref', $actionRef)->first();
                 $return[] = [
                     'id' => null,
                     'module_id' => $module->id,

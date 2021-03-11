@@ -5,7 +5,7 @@ namespace Database\Seeders\Injections;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class PackageSeeder extends Seeder
+class UserRoleSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -32,6 +32,7 @@ class PackageSeeder extends Seeder
                 'username' => 'superadmin@bangsus',
                 'password' => Hash::make('bangsus112233'),
                 'full_name' => 'Super Admin Bangsus',
+                'role_id' => 1,
                 'active' => true,
                 'locked' => true,
                 'all_access' => true,
