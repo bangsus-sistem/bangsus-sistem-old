@@ -21,7 +21,6 @@ class FeatureSeeder extends Seeder
             'role' => ['index', 'create', 'read', 'update', 'delete'],
             'user' => ['index', 'create', 'read', 'update', 'delete'],
             'authentication_token' => ['index', 'create', 'read', 'update', 'delete'],
-            'role' => ['index', 'create', 'read', 'update', 'delete'],
             'authentication_log' => ['index', 'read', 'delete'],
             'feature_log' => ['index', 'read', 'delete'],
             'branch_type' => ['index', 'create', 'read', 'update', 'delete'],
