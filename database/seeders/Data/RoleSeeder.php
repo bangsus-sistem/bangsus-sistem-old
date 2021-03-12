@@ -54,7 +54,7 @@ class RoleSeeder extends Seeder
             ],
         ];
         \DB::table('roles')->insert($this->parseRole($roleFeatures));
-        \DB::table('features')->insert($this->parseFeature($roleFeatures));
+        \DB::table('role_features')->insert($this->parseFeature($roleFeatures));
     }
 
     /**
@@ -66,7 +66,7 @@ class RoleSeeder extends Seeder
         $return = [];
         foreach ($data as $role) {
             $return[] = [
-                'id' => 2,
+                'id' => $role['id'],
                 'code' => $role['code'],
                 'name' => $role['name'],
                 'active' => true,
@@ -91,22 +91,24 @@ class RoleSeeder extends Seeder
         $actions = \DB::table('actions')->get();
         $features = \DB::table('features')->get();
         foreach ($data as $role) {
-            foreach ($role['features'] as $moduleRef => $actionRef) {
-                $module = $modules->firstWhere('ref', $moduleRef);
-                $action = $actions->firstWhere('ref', $actionRef);
-                $feature = $features->firstWhere([
-                    'module_id' => $module->id,
-                    'action_id' => $action->id,
-                ]);
-                $return[] = [
-                    'id' => null,
-                    'role_id' => $role['id'],
-                    'feature_id' => $feature->id,
-                    'access' => true,
-                    'user_create_id' => 1,
-                    'created_at' => now(),
-                ];
+            foreach ($role['features'] as $moduleRef => $actionRefs) {
+                foreach ($actionRefs as $actionRef) {
+                    $module = $modules->firstWhere('ref', $moduleRef);
+                    $action = $actions->firstWhere('ref', $actionRef);
+                    $feature = $features->where('module_id', $module->id)
+                        ->where('action_id', $action->id)
+                        ->first();
+                    $return[] = [
+                        'id' => null,
+                        'role_id' => $role['id'],
+                        'feature_id' => $feature->id,
+                        'access' => true,
+                        'user_create_id' => 1,
+                        'created_at' => now(),
+                    ];
+                }
             }
         }
+        return $return;
     }
 }
