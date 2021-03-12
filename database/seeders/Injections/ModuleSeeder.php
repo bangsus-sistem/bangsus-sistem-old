@@ -43,8 +43,9 @@ class ModuleSeeder extends Seeder
     private function parseData($data)
     {
         $return = [];
+        $packages = \DB::table('packages')->all();
         foreach ($data as $packageRef => $modules) {
-            $package = \DB::table('packages')->where('ref', $packageRef)->first();
+            $package = $packages->firstWhere('ref', $packageRef);
             foreach ($modules as $module) {
                 $return[] = [
                     'id' => (int) ((string) $package->id . $module['id']),

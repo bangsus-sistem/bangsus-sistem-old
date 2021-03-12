@@ -37,10 +37,12 @@ class FeatureSeeder extends Seeder
     private function parseData($data)
     {
         $return = [];
+        $modules = \DB::table('modules')->all();
+        $actions = \DB::table('actions')->all();
         foreach ($data as $moduleRef => $actionRefs) {
-            $module = \DB::table('modules')->where('ref', $moduleRef)->first();
+            $module = $modules->firstWhere('ref', $moduleRef);
             foreach ($actionRefs as $actionRef) {
-                $action = \DB::table('actions')->where('ref', $actionRef)->first();
+                $action = $actions->firstWhere('ref', $actionRef);
                 $return[] = [
                     'id' => null,
                     'module_id' => $module->id,
