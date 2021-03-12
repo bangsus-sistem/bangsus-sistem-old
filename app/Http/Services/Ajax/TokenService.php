@@ -13,6 +13,7 @@ use App\Exceptions\{
     AuthenticationTokenIsAlreadyUsedException,
     ExpiredAuthenticationTokenException,
 };
+use Carbon\Carbon;
 
 class TokenService extends Service
 {
@@ -32,9 +33,10 @@ class TokenService extends Service
         if ( ! is_null($authenticationToken->used_at))
             throw new AuthenticationTokenIsAlreadyUsedException;
 
-        if ($authenticationToken->expired_at->lessThan(now()))
+        if (with(new Carbon($authenticationToken->expired_at))->lessThan(now()))
             throw new ExpiredAuthenticationTokenException;
 
+        $user = $authenticationToken->user;
         Auth::login($user);
         
         return (object) [
