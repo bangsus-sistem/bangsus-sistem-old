@@ -87,9 +87,9 @@ class RoleSeeder extends Seeder
     private function parseFeature($data)
     {
         $return = [];
-        $modules = \DB::table('modules')->all();
-        $actions = \DB::table('actions')->all();
-        $features = \DB::table('features')->all();
+        $modules = \DB::table('modules')->get();
+        $actions = \DB::table('actions')->get();
+        $features = \DB::table('features')->get();
         foreach ($data as $role) {
             foreach ($role['features'] as $moduleRef => $actionRef) {
                 $module = $modules->firstWhere('ref', $moduleRef);

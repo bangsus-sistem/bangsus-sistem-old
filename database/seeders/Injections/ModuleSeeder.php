@@ -43,7 +43,7 @@ class ModuleSeeder extends Seeder
     private function parseData($data)
     {
         $return = [];
-        $packages = \DB::table('packages')->all();
+        $packages = \DB::table('packages')->get();
         foreach ($data as $packageRef => $modules) {
             $package = $packages->firstWhere('ref', $packageRef);
             foreach ($modules as $module) {

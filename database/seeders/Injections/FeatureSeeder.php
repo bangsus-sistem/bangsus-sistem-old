@@ -36,8 +36,8 @@ class FeatureSeeder extends Seeder
     private function parseData($data)
     {
         $return = [];
-        $modules = \DB::table('modules')->all();
-        $actions = \DB::table('actions')->all();
+        $modules = \DB::table('modules')->get();
+        $actions = \DB::table('actions')->get();
         foreach ($data as $moduleRef => $actionRefs) {
             $module = $modules->firstWhere('ref', $moduleRef);
             foreach ($actionRefs as $actionRef) {

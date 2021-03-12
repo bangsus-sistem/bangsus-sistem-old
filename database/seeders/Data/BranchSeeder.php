@@ -269,7 +269,7 @@ class BranchSeeder extends Seeder
     public function parseData($branches)
     {
         $return = [];
-        $branchTypes = \DB::table('branch_types')->all();
+        $branchTypes = \DB::table('branch_types')->get();
         foreach ($branches as $branch)
         {
             $branchType = $branchTypes->firstWhere('id', $branch['branch_type_id']);
