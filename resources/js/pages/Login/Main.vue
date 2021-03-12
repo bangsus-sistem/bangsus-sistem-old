@@ -1,37 +1,68 @@
 <template>
-    <bsb-screen>
+    <Layout>
+        <!-- Mobile -->
         <template v-slot:mobile>
-            <Mobile />
-            <bsb-flashers :flashers="flashers" @closed="closeFlasher($event)" />
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10">
+                    <h1 class="mt-5 text-center">Bangsus Sistem</h1>
+                    <h5 class="mt-5">Selamat Datang di Bangsus Sistem</h5>
+                    <p class="text-muted">Login untuk melanjutkan</p>
+                    <StandardForm v-show="pageMeta.standardLogin" />
+                    <TokenForm v-show="!pageMeta.standardLogin" />
+                    <SwitchLoginModeLink
+                        :standard-mode-val="pageMeta.standardLogin"
+                        @toggleMode="toggleLoginMode"
+                    />
+                </div>
+            </div>
         </template>
+        <!-- Desktop -->
         <template v-slot:desktop>
-            <Desktop />
-            <bsb-flashers :flashers="flashers" @closed="closeFlasher($event)" />
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-4">
+                    <h1 class="mt-5 text-center">Bangsus Sistem</h1>
+                    <div class="card mt-5">
+                        <div class="card-body p-5">
+                            <h5>Selamat Datang di Bangsus Sistem</h5>
+                            <p class="text-muted">Login untuk melanjutkan</p>
+                            <StandardForm v-show="pageMeta.standardLogin" />
+                            <TokenForm v-show="!pageMeta.standardLogin" />
+                            <SwitchLoginModeLink
+                                :standard-mode-val="pageMeta.standardLogin"
+                                @toggleMode="toggleLoginMode"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </template>
-    </bsb-screen>
+    </Layout>
 </template>
 
 <script>
-import Mobile from './Mobile'
-import Desktop from './Desktop'
+import Layout from '../../layouts/Blank'
+import StandardForm from './sections/StandardForm'
+import TokenForm from './sections/TokenForm'
+import SwitchLoginModeLink from './sections/SwitchLoginModeLink'
 
 export default {
     components: {
-        Mobile,
-        Desktop,
+        Layout,
+        StandardForm,
+        TokenForm,
+        SwitchLoginModeLink,
     },
-    computed: {
-        flashers() {
-            return this.$store.getters['utils/flashers/flashers']
-        },
-    },
-    methods: {
-        closeFlasher(id) {
-            this.$store.dispatch('utils/flashers/closeFlasher', id)
+    data() {
+        return {
+            pageMeta: {
+                standardLogin: true,
+            }
         }
     },
-    created() {
-        this.$store.dispatch('utils/flashers/buildStoredFlashersTimeout')
-    },
+    methods: {
+        toggleLoginMode(val) {
+            this.pageMeta.standardLogin = val
+        }
+    }
 }
 </script>

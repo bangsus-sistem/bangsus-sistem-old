@@ -1,25 +1,20 @@
 <template>
     <bsb-screen>
         <template v-slot:mobile>
-            <Mobile />
+            <slot name="mobile" />
             <bsb-flashers :flashers="flashers" @closed="closeFlasher($event)" />
+            <bsb-screen-mode-wrapper label="Mode Mobile" />
         </template>
         <template v-slot:desktop>
-            <Desktop />
+            <slot name="desktop" />
             <bsb-flashers :flashers="flashers" @closed="closeFlasher($event)" />
+            <bsb-screen-mode-wrapper label="Mode Desktop" />
         </template>
     </bsb-screen>
 </template>
 
 <script>
-import Mobile from './Mobile'
-import Desktop from './Desktop'
-
 export default {
-    components: {
-        Mobile,
-        Desktop,
-    },
     computed: {
         flashers() {
             return this.$store.getters['utils/flashers/flashers']
