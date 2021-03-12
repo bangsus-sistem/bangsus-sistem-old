@@ -44,7 +44,7 @@ class FeatureSeeder extends Seeder
             foreach ($actionRefs as $actionRef) {
                 $action = $actions->firstWhere('ref', $actionRef);
                 $return[] = [
-                    'id' => null,
+                    'id' => (int) ((string) $module->id . (string) $action->id),
                     'module_id' => $module->id,
                     'action_id' => $action->id,
                 ];
