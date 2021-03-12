@@ -13,7 +13,7 @@ class BranchSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('branch_types')->insert([
+        \DB::table('branches')->insert([
             [
                 'code' => '100',
                 'name' => 'Kantor Pusat',
