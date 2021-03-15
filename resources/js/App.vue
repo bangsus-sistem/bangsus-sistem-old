@@ -34,5 +34,8 @@ export default {
             return 'v' + this.phpVersion
         },
     },
+    created() {
+        this.$store.dispatch('utils/versionControl/setAppVersion', this.appVersion)
+    },
 }
 </script>
