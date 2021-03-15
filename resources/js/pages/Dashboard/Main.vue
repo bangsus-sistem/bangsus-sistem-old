@@ -1,37 +1,22 @@
 <template>
-    <bsb-screen>
+    <Layout>
+        <!-- Mobile -->
         <template v-slot:mobile>
-            <Mobile />
-            <bsb-flashers :flashers="flashers" @closed="closeFlasher($event)" />
+            Mobile
         </template>
+        <!-- Desktop -->
         <template v-slot:desktop>
-            <Desktop />
-            <bsb-flashers :flashers="flashers" @closed="closeFlasher($event)" />
+            Desktop
         </template>
-    </bsb-screen>
+    </Layout>
 </template>
 
 <script>
-import Mobile from './Mobile'
-import Desktop from './Desktop'
+import Layout from '../../layouts/Application'
 
 export default {
     components: {
-        Mobile,
-        Desktop,
-    },
-    computed: {
-        flashers() {
-            return this.$store.getters['utils/flashers/flashers']
-        },
-    },
-    methods: {
-        closeFlasher(id) {
-            this.$store.dispatch('utils/flashers/closeFlasher', id)
-        }
-    },
-    created() {
-        this.$store.dispatch('utils/flashers/buildStoredFlashersTimeout')
+        Layout,
     },
 }
 </script>
