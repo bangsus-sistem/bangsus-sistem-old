@@ -9,6 +9,12 @@ export default {
         'alert-dismissible': require('./alerts/AlertDismissible').default,
 
         /**
+         * Breadcrumb.
+         */
+        'breadcrumb': require('./breadcrumb/Breadcrumb').default,
+        'breadcrumb-item': require('./breadcrumb/BreadcrumbItem').default,
+
+        /**
          * Buttons
          */
         'button': require('./buttons/Button').default,
@@ -39,6 +45,11 @@ export default {
         'screen-mode-wrapper': require('./mode/ScreenModeWrapper').default,
 
         /**
+         * Navbar
+         */
+        'navbar': require('./navbar/Navbar').default,
+
+        /**
          * Sample
          */
         'sample': require('./sample/Sample').default,
@@ -52,5 +63,11 @@ export default {
          * Spinner
          */
         'spinner': require('./spinner/Spinner').default,
+
+        /**
+         * Utils
+         */
+        'container-fluid': require('./utils/ContainerFluid').default,
+        'page-wrapper': require('./utils/PageWrapper').default,
     }
 }
