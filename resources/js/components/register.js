@@ -60,6 +60,12 @@ export default {
         'screen': require('./screen/Screen').default,
 
         /**
+         * Sidebar
+         */
+        'sidebar': require('./sidebar/Sidebar').default,
+        'sidebar-title': require('./sidebar/SidebarTitle').default,
+
+        /**
          * Spinner
          */
         'spinner': require('./spinner/Spinner').default,
