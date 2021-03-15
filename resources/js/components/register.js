@@ -31,6 +31,7 @@ export default {
          * Icon
          */
         'icon': require('./icons/Icon').default,
+        'feather-icon': require('./icons/FeatherIcon').default,
 
         /**
          * Input
