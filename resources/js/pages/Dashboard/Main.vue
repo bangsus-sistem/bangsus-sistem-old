@@ -2,11 +2,11 @@
     <Layout>
         <!-- Mobile -->
         <template v-slot:mobile>
-            Mobile
+            
         </template>
         <!-- Desktop -->
         <template v-slot:desktop>
-            Desktop
+            
         </template>
     </Layout>
 </template>
