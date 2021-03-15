@@ -1,6 +1,8 @@
 import page from './page'
 import middleware from './middleware'
 
+const appMiddleware = ['authenticated', 'versionCheck']
+
 export default [
     {
         path: '/login',
@@ -18,6 +20,6 @@ export default [
         path: '/dashboard',
         name: 'dashboard',
         component: page('Dashboard'),
-        beforeEnter: middleware(['authenticated', 'versionCheck']),
+        beforeEnter: middleware(appMiddleware),
     },
 ]

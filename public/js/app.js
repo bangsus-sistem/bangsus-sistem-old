@@ -1879,6 +1879,9 @@ __webpack_require__.r(__webpack_exports__);
     phpVersionComputed: function phpVersionComputed() {
       return 'v' + this.phpVersion;
     }
+  },
+  created: function created() {
+    this.$store.dispatch('utils/versionControl/setAppVersion', this.appVersion);
   }
 });
 
@@ -4756,6 +4759,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _compiler_plugins_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../compiler/plugins/store */ "./resources/js/compiler/plugins/store.js");
+
+
 var guards = {
   /**
    * Check if the user is authenticated.
@@ -4763,7 +4771,7 @@ var guards = {
    * redirect to login route.
    */
   authenticated: function authenticated(to, from, next) {
-    axios.get('/ajax/utils/authenticated').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/ajax/utils/authenticated').then(function (res) {
       if (res.data['logged_in']) next();else next({
         name: 'login'
       });
@@ -4775,11 +4783,27 @@ var guards = {
    * If the user is authenticated then return to previous route.
    */
   unauthenticated: function unauthenticated(to, from, next) {
-    axios.get('/ajax/utils/authenticated').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/ajax/utils/authenticated').then(function (res) {
       if (res.data['logged_in']) next({
         name: from.name || 'dashboard'
       });else next();
     })["catch"](function (err) {});
+  },
+
+  /**
+   * Check if there's new version up and coming
+   */
+  versionCheck: function versionCheck(to, from, next) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/ajax/utils/version_check').then(function (res) {
+      var serverAppVersion = res.data['app_version'];
+      var currentAppVersion = _compiler_plugins_store__WEBPACK_IMPORTED_MODULE_1__.default.getters["utils/versionControl/appVersion"];
+
+      if (serverAppVersion !== currentAppVersion) {
+        window.location.href = to.path;
+      } else {
+        next();
+      }
+    });
   },
 
   /**
@@ -4808,6 +4832,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _middleware__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./middleware */ "./resources/js/routes/middleware/index.js");
 
 
+var appMiddleware = ['authenticated', 'versionCheck'];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
   path: '/login',
   name: 'login',
@@ -4822,7 +4847,7 @@ __webpack_require__.r(__webpack_exports__);
   path: '/dashboard',
   name: 'dashboard',
   component: (0,_page__WEBPACK_IMPORTED_MODULE_0__.default)('Dashboard'),
-  beforeEnter: (0,_middleware__WEBPACK_IMPORTED_MODULE_1__.default)(['authenticated'])
+  beforeEnter: (0,_middleware__WEBPACK_IMPORTED_MODULE_1__.default)(appMiddleware)
 }]);
 
 /***/ }),
@@ -4904,11 +4929,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _utils_flashers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/flashers */ "./resources/js/store/utils/flashers.js");
+/* harmony import */ var _utils_version_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/version-control */ "./resources/js/store/utils/version-control.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4920,7 +4947,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // Utils.Flashers package
         flashers: _objectSpread({
           namespaced: true
-        }, _utils_flashers__WEBPACK_IMPORTED_MODULE_0__.default)
+        }, _utils_flashers__WEBPACK_IMPORTED_MODULE_0__.default),
+        // Utils.VersionControl package
+        versionControl: _objectSpread({
+          namespaced: true
+        }, _utils_version_control__WEBPACK_IMPORTED_MODULE_1__.default)
       }
     }
   }
@@ -4996,6 +5027,41 @@ __webpack_require__.r(__webpack_exports__);
     },
     buildStoredFlashersTimeout: function buildStoredFlashersTimeout(context) {
       context.commit('buildStoredFlashersTimeout');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/utils/version-control.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/store/utils/version-control.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  state: {
+    appVersion: localStorage.getItem('appVersion') || null
+  },
+  getters: {
+    appVersion: function appVersion(state) {
+      return state.appVersion;
+    }
+  },
+  mutations: {
+    setAppVersion: function setAppVersion(state, ver) {
+      state.appVersion = ver;
+      localStorage.setItem('appVersion', state.appVersion);
+    }
+  },
+  actions: {
+    setAppVersion: function setAppVersion(context, ver) {
+      context.commit('setAppVersion', ver);
     }
   }
 });
