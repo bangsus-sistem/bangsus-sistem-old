@@ -1,3 +1,6 @@
+import axios from "axios"
+import store from '../../compiler/plugins/store'
+
 const guards = {
 
     /**
@@ -28,6 +31,22 @@ const guards = {
             })
             .catch(err => {
                 
+            })
+    },
+
+    /**
+     * Check if there's new version up and coming
+     */
+    versionCheck: (to, from, next) => {
+        axios.get('/ajax/utils/version_check')
+            .then(res => {
+                let serverAppVersion = res.data['app_version']
+                let currentAppVersion = store.getters['utils/versionControl/appVersion']
+                if (serverAppVersion !== currentAppVersion) {
+                    window.location.href = to.path
+                } else {
+                    next()
+                }
             })
     },
 

@@ -18,6 +18,6 @@ export default [
         path: '/dashboard',
         name: 'dashboard',
         component: page('Dashboard'),
-        beforeEnter: middleware(['authenticated']),
+        beforeEnter: middleware(['authenticated', 'versionCheck']),
     },
 ]
