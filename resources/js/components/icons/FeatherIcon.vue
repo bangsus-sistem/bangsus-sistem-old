@@ -1,5 +1,5 @@
 <template>
-    <div v-html="iconSvg" :class="className"></div>
+    <span v-html="iconSvg" :class="className"></span>
 </template>
 
 <script>
@@ -12,11 +12,18 @@ export default {
         color: {
             type: String,
             default: 'gray-900',
+        },
+        size: {
+            type: Number,
+            default: 24,
         }
     },
     computed: {
         iconSvg() {
-            return feather.icons[this.icon].toSvg()
+            return feather.icons[this.icon].toSvg({
+                width: this.size,
+                height: this.size,
+            })
         },
         className() {
             return 'text-' + this.color
