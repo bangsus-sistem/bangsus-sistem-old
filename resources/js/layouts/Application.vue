@@ -24,7 +24,7 @@
                             </bsb-breadcrumb-item>
                         </bsb-breadcrumb>
                     </bsb-navbar>
-                    <bsb-container-fluid>
+                    <bsb-container-fluid class="px-4 pt-4">
                         <slot name="desktop" />
                     </bsb-container-fluid>
                 </bsb-page-wrapper>
