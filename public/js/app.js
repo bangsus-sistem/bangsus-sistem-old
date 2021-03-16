@@ -2257,11 +2257,18 @@ __webpack_require__.r(__webpack_exports__);
     color: {
       type: String,
       "default": 'gray-900'
+    },
+    size: {
+      type: Number,
+      "default": 24
     }
   },
   computed: {
     iconSvg: function iconSvg() {
-      return feather.icons[this.icon].toSvg();
+      return feather.icons[this.icon].toSvg({
+        width: this.size,
+        height: this.size
+      });
     },
     className: function className() {
       return 'text-' + this.color;
@@ -2744,6 +2751,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _layouts_Application__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../layouts/Application */ "./resources/js/layouts/Application.vue");
+/* harmony import */ var _widgets_logs_FeatureRequestTraffic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../widgets/logs/FeatureRequestTraffic */ "./resources/js/widgets/logs/FeatureRequestTraffic.vue");
+//
+//
+//
 //
 //
 //
@@ -2758,9 +2769,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Layout: _layouts_Application__WEBPACK_IMPORTED_MODULE_0__.default
+    Layout: _layouts_Application__WEBPACK_IMPORTED_MODULE_0__.default,
+    FeatureRequestTraffic: _widgets_logs_FeatureRequestTraffic__WEBPACK_IMPORTED_MODULE_1__.default
   }
 });
 
@@ -44232,6 +44245,43 @@ component.options.__file = "resources/js/pages/Logout/Main.vue"
 
 /***/ }),
 
+/***/ "./resources/js/widgets/logs/FeatureRequestTraffic.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/widgets/logs/FeatureRequestTraffic.vue ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _FeatureRequestTraffic_vue_vue_type_template_id_4ccdb8e2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FeatureRequestTraffic.vue?vue&type=template&id=4ccdb8e2& */ "./resources/js/widgets/logs/FeatureRequestTraffic.vue?vue&type=template&id=4ccdb8e2&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__.default)(
+  script,
+  _FeatureRequestTraffic_vue_vue_type_template_id_4ccdb8e2___WEBPACK_IMPORTED_MODULE_0__.render,
+  _FeatureRequestTraffic_vue_vue_type_template_id_4ccdb8e2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/widgets/logs/FeatureRequestTraffic.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/App.vue?vue&type=script&lang=js&":
 /*!*******************************************************!*\
   !*** ./resources/js/App.vue?vue&type=script&lang=js& ***!
@@ -45160,6 +45210,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/widgets/logs/FeatureRequestTraffic.vue?vue&type=template&id=4ccdb8e2&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/widgets/logs/FeatureRequestTraffic.vue?vue&type=template&id=4ccdb8e2& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FeatureRequestTraffic_vue_vue_type_template_id_4ccdb8e2___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FeatureRequestTraffic_vue_vue_type_template_id_4ccdb8e2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FeatureRequestTraffic_vue_vue_type_template_id_4ccdb8e2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FeatureRequestTraffic.vue?vue&type=template&id=4ccdb8e2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/widgets/logs/FeatureRequestTraffic.vue?vue&type=template&id=4ccdb8e2&");
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/App.vue?vue&type=template&id=f348271a&":
 /*!****************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/App.vue?vue&type=template&id=f348271a& ***!
@@ -45564,7 +45631,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {
+  return _c("span", {
     class: _vm.className,
     domProps: { innerHTML: _vm._s(_vm.iconSvg) }
   })
@@ -46050,7 +46117,12 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("bsb-container-fluid", [_vm._t("desktop")], 2)
+                      _c(
+                        "bsb-container-fluid",
+                        { staticClass: "px-4 pt-4" },
+                        [_vm._t("desktop")],
+                        2
+                      )
                     ],
                     1
                   ),
@@ -46189,7 +46261,16 @@ var render = function() {
       {
         key: "desktop",
         fn: function() {
-          return undefined
+          return [
+            _c("h3", [_vm._v("Dashboard")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row mt-4" },
+              [_c("FeatureRequestTraffic")],
+              1
+            )
+          ]
         },
         proxy: true
       }
@@ -46570,6 +46651,94 @@ var render = function() {
   return _c("div")
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/widgets/logs/FeatureRequestTraffic.vue?vue&type=template&id=4ccdb8e2&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/widgets/logs/FeatureRequestTraffic.vue?vue&type=template&id=4ccdb8e2& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-4" }, [
+      _c("div", { staticClass: "card shadow-sm" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h6", { staticClass: "card-title" }, [
+            _vm._v("Traffic Request Fitur")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("select", { staticClass: "form-control form-control-sm" }, [
+              _c("option", [_vm._v("5 menit terakhir")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("15 menit terakhir")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("1 jam terakhir")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("2 jam terakhir")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("6 jam terakhir")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("12 jam terakhir")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("24 jam terakhir")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("3 hari terakhir")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("1 minggu terakhir")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col text-center" }, [
+              _c("h5", { staticClass: "text-green-500" }, [_vm._v("20")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-green-500" }, [
+                _vm._v("Permintaan")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col text-center" }, [
+              _c("h5", { staticClass: "text-red-400" }, [_vm._v("5")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-red-400" }, [
+                _vm._v("Fitur Diakses")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col text-center" }, [
+              _c("h5", { staticClass: "text-yellow-600" }, [_vm._v("2")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-yellow-600" }, [
+                _vm._v("Pengguna")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
