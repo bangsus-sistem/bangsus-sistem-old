@@ -7,9 +7,9 @@
         <!-- Desktop -->
         <template v-slot:desktop>
             <h3>Dashboard</h3>
-            <div class="row mt-4">
+            <bsb-row class="mt-3">
                 <FeatureRequestTraffic />
-            </div>
+            </bsb-row>
         </template>
     </Layout>
 </template>
