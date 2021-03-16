@@ -8,23 +8,9 @@
                 <bsb-screen-mode-wrapper label="Mode Mobile" />
             </template>
             <template v-slot:desktop>
-                <bsb-sidebar>
-                    <bsb-sidebar-title>Bangsus Sistem</bsb-sidebar-title>
-                </bsb-sidebar>
+                <Sidebar />
                 <bsb-page-wrapper>
-                    <bsb-navbar>
-                        <bsb-breadcrumb>
-                            <bsb-breadcrumb-item>
-                                <a href="#">Home</a>
-                            </bsb-breadcrumb-item>
-                            <bsb-breadcrumb-item>
-                                <a href="#">Library</a>
-                            </bsb-breadcrumb-item>
-                            <bsb-breadcrumb-item :active="true">
-                                Data
-                            </bsb-breadcrumb-item>
-                        </bsb-breadcrumb>
-                    </bsb-navbar>
+                    <Navbar />
                     <bsb-container-fluid class="px-4 pt-4">
                         <slot name="desktop" />
                     </bsb-container-fluid>
@@ -38,10 +24,14 @@
 
 <script>
 import Flashers from './sections/Flashers'
+import Sidebar from './sections/Sidebar'
+import Navbar from './sections/Navbar'
 
 export default {
     components: {
         Flashers,
+        Sidebar,
+        Navbar,
     }
 }
 </script>
