@@ -22,6 +22,12 @@ export default {
         'close-button': require('./buttons/CloseButton').default,
 
         /**
+         * Card
+         */
+        'card': require('./card/Card').default,
+        'card-body': require('./card/CardBody').default,
+
+        /**
          * Flashers
          */
         'flashers': require('./flashers/Flashers').default,
