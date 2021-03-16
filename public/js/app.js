@@ -47008,8 +47008,8 @@ var render = function() {
             _c("h3", [_vm._v("Dashboard")]),
             _vm._v(" "),
             _c(
-              "div",
-              { staticClass: "row mt-4" },
+              "bsb-row",
+              { staticClass: "mt-3" },
               [_c("FeatureRequestTraffic")],
               1
             )
@@ -47495,72 +47495,78 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "col-4" },
+    [
+      _c(
+        "bsb-card",
+        [
+          _c(
+            "bsb-card-body",
+            [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v("Traffic Request Fitur")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group mt-4" }, [
+                _c("select", { staticClass: "form-control form-control-sm" }, [
+                  _c("option", [_vm._v("5 menit terakhir")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("15 menit terakhir")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("1 jam terakhir")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("2 jam terakhir")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("6 jam terakhir")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("12 jam terakhir")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("24 jam terakhir")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("3 hari terakhir")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("1 minggu terakhir")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("bsb-row", [
+                _c("div", { staticClass: "col text-center" }, [
+                  _c("h5", { staticClass: "text-green-500" }, [_vm._v("20")]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-green-500" }, [
+                    _vm._v("Permintaan")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col text-center" }, [
+                  _c("h5", { staticClass: "text-red-400" }, [_vm._v("5")]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-red-400" }, [
+                    _vm._v("Fitur Diakses")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col text-center" }, [
+                  _c("h5", { staticClass: "text-yellow-600" }, [_vm._v("2")]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-yellow-600" }, [
+                    _vm._v("Pengguna")
+                  ])
+                ])
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4" }, [
-      _c("div", { staticClass: "card shadow-sm" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("h6", { staticClass: "card-title" }, [
-            _vm._v("Traffic Request Fitur")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("select", { staticClass: "form-control form-control-sm" }, [
-              _c("option", [_vm._v("5 menit terakhir")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("15 menit terakhir")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("1 jam terakhir")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("2 jam terakhir")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("6 jam terakhir")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("12 jam terakhir")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("24 jam terakhir")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("3 hari terakhir")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("1 minggu terakhir")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col text-center" }, [
-              _c("h5", { staticClass: "text-green-500" }, [_vm._v("20")]),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-green-500" }, [
-                _vm._v("Permintaan")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col text-center" }, [
-              _c("h5", { staticClass: "text-red-400" }, [_vm._v("5")]),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-red-400" }, [
-                _vm._v("Fitur Diakses")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col text-center" }, [
-              _c("h5", { staticClass: "text-yellow-600" }, [_vm._v("2")]),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-yellow-600" }, [
-                _vm._v("Pengguna")
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
