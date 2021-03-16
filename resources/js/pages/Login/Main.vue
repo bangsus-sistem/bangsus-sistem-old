@@ -2,11 +2,11 @@
     <Layout>
         <!-- Mobile -->
         <template v-slot:mobile>
-            <div class="row justify-content-center">
+            <bsb-row class="justify-content-center">
                 <div class="col-12 col-md-10">
-                    <h1 class="mt-5 text-center">Bangsus Sistem</h1>
-                    <h5 class="mt-5">Selamat Datang di Bangsus Sistem</h5>
-                    <p class="text-muted">Login untuk melanjutkan</p>
+                    <Title />
+                    <WelcomeMessage class="mt-5" />
+                    <Description />
                     <StandardForm v-show="pageMeta.standardLogin" />
                     <TokenForm v-show="!pageMeta.standardLogin" />
                     <SwitchLoginModeLink
@@ -14,17 +14,17 @@
                         @toggleMode="toggleLoginMode"
                     />
                 </div>
-            </div>
+            </bsb-row>
         </template>
         <!-- Desktop -->
         <template v-slot:desktop>
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-4">
-                    <h1 class="mt-5 text-center">Bangsus Sistem</h1>
+                    <Title />
                     <div class="card mt-5 shadow-sm">
                         <div class="card-body p-5">
-                            <h5>Selamat Datang di Bangsus Sistem</h5>
-                            <p class="text-muted">Login untuk melanjutkan</p>
+                            <WelcomeMessage />
+                            <Description />
                             <StandardForm v-show="pageMeta.standardLogin" />
                             <TokenForm v-show="!pageMeta.standardLogin" />
                             <SwitchLoginModeLink
@@ -41,6 +41,9 @@
 
 <script>
 import Layout from '../../layouts/Blank'
+import Title from './sections/Title'
+import WelcomeMessage from './sections/WelcomeMessage'
+import Description from './sections/Description'
 import StandardForm from './sections/StandardForm'
 import TokenForm from './sections/TokenForm'
 import SwitchLoginModeLink from './sections/SwitchLoginModeLink'
@@ -48,6 +51,9 @@ import SwitchLoginModeLink from './sections/SwitchLoginModeLink'
 export default {
     components: {
         Layout,
+        Title,
+        WelcomeMessage,
+        Description,
         StandardForm,
         TokenForm,
         SwitchLoginModeLink,
