@@ -74,7 +74,9 @@ export default {
         /**
          * Utils
          */
+        'col': require('./utils/Col').default,
         'container-fluid': require('./utils/ContainerFluid').default,
         'page-wrapper': require('./utils/PageWrapper').default,
+        'row': require('./utils/Row').default,
     }
 }
