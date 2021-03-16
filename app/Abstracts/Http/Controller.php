@@ -39,6 +39,7 @@ class Controller extends BaseController
      */
     public function reveal(Widget $widget, $request, ...$args)
     {
-        return $widget->fetch($request, ...$args);
+        $widget->compute($request, ...$args);
+        return $widget->fetch();
     }
 }
