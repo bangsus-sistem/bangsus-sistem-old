@@ -2,13 +2,15 @@
     <div>
         <bsb-screen>
             <template v-slot:mobile>
-                <div class="px-3">
+                <bsb-container-fluid class="px-3">
                     <slot name="mobile" />
-                </div>
+                </bsb-container-fluid>
                 <bsb-screen-mode-wrapper label="Mode Mobile" />
             </template>
             <template v-slot:desktop>
-                <slot name="desktop" />
+                <bsb-container-fluid>
+                    <slot name="desktop" />
+                </bsb-container-fluid>
                 <bsb-screen-mode-wrapper label="Mode Desktop" />
             </template>
         </bsb-screen>
