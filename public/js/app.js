@@ -46367,7 +46367,7 @@ var render = function() {
                   _vm._v("Bangsus Sistem")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "card mt-5" }, [
+                _c("div", { staticClass: "card mt-5 shadow-sm" }, [
                   _c(
                     "div",
                     { staticClass: "card-body p-5" },
