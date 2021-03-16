@@ -21,7 +21,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-4">
                     <h1 class="mt-5 text-center">Bangsus Sistem</h1>
-                    <div class="card mt-5">
+                    <div class="card mt-5 shadow-sm">
                         <div class="card-body p-5">
                             <h5>Selamat Datang di Bangsus Sistem</h5>
                             <p class="text-muted">Login untuk melanjutkan</p>
