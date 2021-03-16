@@ -21,8 +21,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-4">
                     <Title />
-                    <div class="card mt-5 shadow-sm">
-                        <div class="card-body p-5">
+                    <bsb-card class="mt-5">
+                        <bsb-card-body class="p-5">
                             <WelcomeMessage />
                             <Description />
                             <StandardForm v-show="pageMeta.standardLogin" />
@@ -31,8 +31,8 @@
                                 :standard-mode-val="pageMeta.standardLogin"
                                 @toggleMode="toggleLoginMode"
                             />
-                        </div>
-                    </div>
+                        </bsb-card-body>
+                    </bsb-card>
                 </div>
             </div>
         </template>
