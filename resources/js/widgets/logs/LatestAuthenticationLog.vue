@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 col-lg-6">
+    <div class="col-md-12 col-lg-8 col-xl-6">
         <bsb-card>
             <bsb-card-body>
                 <h5 class="card-title">Login Terakhir</h5>
