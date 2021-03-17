@@ -2643,6 +2643,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sections_Flashers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sections/Flashers */ "./resources/js/layouts/sections/Flashers.vue");
 /* harmony import */ var _sections_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sections/Sidebar */ "./resources/js/layouts/sections/Sidebar.vue");
 /* harmony import */ var _sections_Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sections/Navbar */ "./resources/js/layouts/sections/Navbar.vue");
+/* harmony import */ var _mixins_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mixins/lang */ "./resources/js/layouts/mixins/lang.js");
 //
 //
 //
@@ -2667,6 +2668,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -2675,7 +2677,8 @@ __webpack_require__.r(__webpack_exports__);
     Flashers: _sections_Flashers__WEBPACK_IMPORTED_MODULE_0__.default,
     Sidebar: _sections_Sidebar__WEBPACK_IMPORTED_MODULE_1__.default,
     Navbar: _sections_Navbar__WEBPACK_IMPORTED_MODULE_2__.default
-  }
+  },
+  mixins: [_mixins_lang__WEBPACK_IMPORTED_MODULE_3__.default]
 });
 
 /***/ }),
@@ -2692,6 +2695,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _sections_Flashers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sections/Flashers */ "./resources/js/layouts/sections/Flashers.vue");
+/* harmony import */ var _mixins_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mixins/lang */ "./resources/js/layouts/mixins/lang.js");
 //
 //
 //
@@ -2713,10 +2717,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Flashers: _sections_Flashers__WEBPACK_IMPORTED_MODULE_0__.default
-  }
+  },
+  mixins: [_mixins_lang__WEBPACK_IMPORTED_MODULE_1__.default]
 });
 
 /***/ }),
@@ -3570,6 +3576,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/layouts/mixins/lang.js":
+/*!*********************************************!*\
+  !*** ./resources/js/layouts/mixins/lang.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  created: function created() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/ajax/utils/language_resources').then(function (res) {
+      _this.$store.dispatch('utils/lang/setSrc', res.data);
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/mixins/data.js":
 /*!*************************************!*\
   !*** ./resources/js/mixins/data.js ***!
@@ -3719,7 +3751,7 @@ var errorMethods = {
    * @return {String}
    */
   parseErrorMessage: function parseErrorMessage(err) {
-    return err.response.data.message || 'Terjadi kesalahan';
+    return err.response.data.message || this.__('errors.default');
   },
 
   /**
@@ -3736,15 +3768,9 @@ var errorMethods = {
 
     if (status == 401) {
       if (this.$route.name === 'login') {
-        this.$store.dispatch('utils/flashers/addFlasher', {
-          color: 'danger',
-          content: 'Username atau password salah'
-        });
+        this.addErrorFlasher(this.__('errors.authenticating'));
       } else {
-        this.$store.dispatch('utils/flashers/addFlasher', {
-          color: 'danger',
-          content: 'Sesi anda sudah habis'
-        });
+        this.addErrorFlasher(this.__('errors.unauthenticated'));
         this.$router.push({
           name: 'login'
         });
@@ -3757,10 +3783,7 @@ var errorMethods = {
       this.setPageError(true);
 
       if (flash) {
-        this.$store.dispatch('utils/flashers/addFlasher', {
-          color: 'danger',
-          content: 'Data tidak ditemukan'
-        });
+        this.addErrorFlasher(this.__('errors.not_found'));
       }
     } // These are the status codes that would be treated as a
     // page error.
@@ -3776,10 +3799,7 @@ var errorMethods = {
       // to the flasher wrapper.
 
       if (flash) {
-        this.$store.dispatch('utils/flashers/addFlasher', {
-          color: 'danger',
-          content: this.parseErrorMessage(err)
-        });
+        this.addErrorFlasher(this.parseErrorMessage(err));
       }
     } // These are the status code that would be treated as a 
     // form error.
@@ -3796,6 +3816,68 @@ var errorMethods = {
 
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorMethods);
+
+/***/ }),
+
+/***/ "./resources/js/mixins/methods/flasher-methods.js":
+/*!********************************************************!*\
+  !*** ./resources/js/mixins/methods/flasher-methods.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var flasherMethods = {
+  /**
+  | ---------------------------------------------------------------
+  | FLASHER FUNCTIONALITIES
+  | ---------------------------------------------------------------
+  | 
+  */
+
+  /**
+   * Dispatch new flashers to the store.
+   * 
+   * @param  {String}  content
+   * @param  {String}  color
+   * @return {Number}
+   */
+  addFlasher: function addFlasher() {
+    var content = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';
+    this.$store.dispatch('utils/flashers/addFlasher', {
+      content: content,
+      color: color
+    });
+  },
+
+  /**
+   * Dispatch new success flashers to the store.
+   * 
+   * @param  {String}  content
+   * @return {Number}
+   */
+  addSuccessFlasher: function addSuccessFlasher() {
+    var content = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    this.addFlasher(content, 'success');
+  },
+
+  /**
+   * Dispatch new success flashers to the store.
+   * 
+   * @param  {String}  content
+   * @return {Number}
+   */
+  addErrorFlasher: function addErrorFlasher() {
+    var content = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    this.addFlasher(content, 'danger');
+  } // --------------------------------------------------------------
+
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (flasherMethods);
 
 /***/ }),
 
@@ -4111,10 +4193,8 @@ var formMethods = {
     this.setFormMessage(err);
 
     if (flash) {
-      this.$store.dispatch('utils/flashers/addFlasher', {
-        color: 'danger',
-        content: 'Cek kembali data anda'
-      });
+      console.log(this.__('errors'));
+      this.addErrorFlasher(this.__('errors.form'));
     }
   },
 
@@ -4236,6 +4316,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _state_methods__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./state-methods */ "./resources/js/mixins/methods/state-methods.js");
 /* harmony import */ var _resource_methods__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./resource-methods */ "./resources/js/mixins/methods/resource-methods.js");
 /* harmony import */ var _datetime_methods__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./datetime-methods */ "./resources/js/mixins/methods/datetime-methods.js");
+/* harmony import */ var _flasher_methods__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./flasher-methods */ "./resources/js/mixins/methods/flasher-methods.js");
+/* harmony import */ var _lang_methods__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lang-methods */ "./resources/js/mixins/methods/lang-methods.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -4250,9 +4332,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var methods = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _query_methods__WEBPACK_IMPORTED_MODULE_0__.default), _result_methods__WEBPACK_IMPORTED_MODULE_1__.default), _form_methods__WEBPACK_IMPORTED_MODULE_2__.default), _error_methods__WEBPACK_IMPORTED_MODULE_3__.default), _state_methods__WEBPACK_IMPORTED_MODULE_4__.default), _resource_methods__WEBPACK_IMPORTED_MODULE_5__.default), _datetime_methods__WEBPACK_IMPORTED_MODULE_6__.default);
+
+
+var methods = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _query_methods__WEBPACK_IMPORTED_MODULE_0__.default), _result_methods__WEBPACK_IMPORTED_MODULE_1__.default), _form_methods__WEBPACK_IMPORTED_MODULE_2__.default), _error_methods__WEBPACK_IMPORTED_MODULE_3__.default), _state_methods__WEBPACK_IMPORTED_MODULE_4__.default), _resource_methods__WEBPACK_IMPORTED_MODULE_5__.default), _datetime_methods__WEBPACK_IMPORTED_MODULE_6__.default), _flasher_methods__WEBPACK_IMPORTED_MODULE_7__.default), _lang_methods__WEBPACK_IMPORTED_MODULE_8__.default);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (methods);
+
+/***/ }),
+
+/***/ "./resources/js/mixins/methods/lang-methods.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/mixins/methods/lang-methods.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var flasherMethods = {
+  /**
+  | ---------------------------------------------------------------
+  | LANG FUNCTIONALITIES
+  | ---------------------------------------------------------------
+  | 
+  */
+
+  /**
+   * Get the language resource.
+   * 
+   * @param  {String}  index
+   * @return {*}
+   */
+  __: function __(index) {
+    var res = this.$store.getters['utils/lang/src'];
+    var indexes = index.split('.');
+    indexes.forEach(function (index) {
+      res = res[index];
+    });
+    return res;
+  } // --------------------------------------------------------------
+
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (flasherMethods);
 
 /***/ }),
 
@@ -5088,11 +5211,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _utils_flashers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/flashers */ "./resources/js/store/utils/flashers.js");
 /* harmony import */ var _utils_version_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/version-control */ "./resources/js/store/utils/version-control.js");
+/* harmony import */ var _utils_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/lang */ "./resources/js/store/utils/lang.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -5109,7 +5234,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // Utils.VersionControl package
         versionControl: _objectSpread({
           namespaced: true
-        }, _utils_version_control__WEBPACK_IMPORTED_MODULE_1__.default)
+        }, _utils_version_control__WEBPACK_IMPORTED_MODULE_1__.default),
+        // Utils.Lang package
+        lang: _objectSpread({
+          namespaced: true
+        }, _utils_lang__WEBPACK_IMPORTED_MODULE_2__.default)
       }
     }
   }
@@ -5185,6 +5314,41 @@ __webpack_require__.r(__webpack_exports__);
     },
     buildStoredFlashersTimeout: function buildStoredFlashersTimeout(context) {
       context.commit('buildStoredFlashersTimeout');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/utils/lang.js":
+/*!******************************************!*\
+  !*** ./resources/js/store/utils/lang.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  state: {
+    src: JSON.parse(localStorage.getItem('langSrc')) || []
+  },
+  getters: {
+    src: function src(state) {
+      return state.src;
+    }
+  },
+  mutations: {
+    setSrc: function setSrc(state, data) {
+      state.src = data;
+      localStorage.setItem('langSrc', JSON.stringify(state.src));
+    }
+  },
+  actions: {
+    setSrc: function setSrc(context, data) {
+      context.commit('setSrc', data);
     }
   }
 });
