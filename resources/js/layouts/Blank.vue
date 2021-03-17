@@ -20,12 +20,10 @@
 
 <script>
 import Flashers from './sections/Flashers'
-import langMixin from './mixins/lang'
 
 export default {
     components: {
         Flashers,
     },
-    mixins: [ langMixin ]
 }
 </script>
