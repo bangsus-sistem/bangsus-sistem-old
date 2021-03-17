@@ -1,14 +1,24 @@
 <template>
     <div>
-        <router-view />
-        <div class="app-version-wrapper">
-            {{ appVersionComputed }}
-        </div>
+        <template v-if="state.page.loading">
+            <Loading />
+        </template>
+        <template v-else>
+            <router-view />
+            <div class="app-version-wrapper">
+                {{ appVersionComputed }}
+            </div>
+        </template>
     </div>
 </template>
 
 <script>
+import Loading from './Loading'
+
 export default {
+    components: {
+        Loading,
+    },
     props: {
         appVersion: {
             type: String,
@@ -34,8 +44,22 @@ export default {
             return 'v' + this.phpVersion
         },
     },
+    data() {
+        return {
+            state: {
+                page: {
+                    loading: true,
+                },
+            }
+        }
+    },
     created() {
         this.$store.dispatch('utils/versionControl/setAppVersion', this.appVersion)
+        axios.get('/ajax/utils/language_resources')
+            .then(res => {
+                this.$store.dispatch('utils/lang/setSrc', res.data)
+                this.state.page.loading = false
+            })
     },
 }
 </script>
