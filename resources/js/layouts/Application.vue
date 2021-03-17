@@ -26,12 +26,14 @@
 import Flashers from './sections/Flashers'
 import Sidebar from './sections/Sidebar'
 import Navbar from './sections/Navbar'
+import langMixin from './mixins/lang'
 
 export default {
     components: {
         Flashers,
         Sidebar,
         Navbar,
-    }
+    },
+    mixins: [ langMixin ]
 }
 </script>
