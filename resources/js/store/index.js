@@ -1,5 +1,6 @@
 import flashers from './utils/flashers'
 import versionControl from './utils/version-control'
+import lang from './utils/lang'
 
 export default {
     modules: {
@@ -19,7 +20,13 @@ export default {
                 versionControl: {
                     namespaced: true,
                     ...versionControl,
-                }
+                },
+
+                // Utils.Lang package
+                lang: {
+                    namespaced: true,
+                    ...lang,
+                },
             }
         },
     }
