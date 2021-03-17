@@ -5,6 +5,8 @@ import errorMethods from './error-methods'
 import stateMethods from './state-methods'
 import resourceMethods from './resource-methods'
 import datetimeMethods from './datetime-methods'
+import flasherMethods from './flasher-methods'
+import langMethods from './lang-methods'
 
 
 const methods = {
@@ -15,6 +17,8 @@ const methods = {
     ...stateMethods,
     ...resourceMethods,
     ...datetimeMethods,
+    ...flasherMethods,
+    ...langMethods,
 }
 
 export default methods

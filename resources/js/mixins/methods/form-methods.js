@@ -304,10 +304,8 @@ const formMethods = {
         this.setFormMessage(err)
 
         if (flash) {
-            this.$store.dispatch('utils/flashers/addFlasher', {
-                color: 'danger',
-                content: 'Cek kembali data anda',
-            })
+            console.log(this.__('errors'))
+            this.addErrorFlasher(this.__('errors.form'))
         }
     },
 

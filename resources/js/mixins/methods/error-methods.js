@@ -26,7 +26,7 @@ const errorMethods = {
      * @return {String}
      */
     parseErrorMessage(err) {
-        return err.response.data.message || 'Terjadi kesalahan'
+        return err.response.data.message || this.__('errors.default')
     },
 
     /**
@@ -43,15 +43,9 @@ const errorMethods = {
         // If the status is 401, then we need to move to the login page.
         if (status == 401) {
             if (this.$route.name === 'login') {
-                this.$store.dispatch('utils/flashers/addFlasher', {
-                    color: 'danger',
-                    content: 'Username atau password salah',
-                })
+                this.addErrorFlasher(this.__('errors.authenticating'))
             } else {
-                this.$store.dispatch('utils/flashers/addFlasher', {
-                    color: 'danger',
-                    content: 'Sesi anda sudah habis'
-                })
+                this.addErrorFlasher(this.__('errors.unauthenticated'))
                 this.$router.push({ name: 'login' })
             }
         }
@@ -61,10 +55,7 @@ const errorMethods = {
         if (status == 404) {
             this.setPageError(true)
             if (flash) {
-                this.$store.dispatch('utils/flashers/addFlasher', {
-                    color: 'danger',
-                    content: 'Data tidak ditemukan'
-                })
+                this.addErrorFlasher(this.__('errors.not_found'))
             }
         }
 
@@ -82,10 +73,7 @@ const errorMethods = {
             // If the flash is true, then we flash the error message
             // to the flasher wrapper.
             if (flash) {
-                this.$store.dispatch('utils/flashers/addFlasher', {
-                    color: 'danger',
-                    content: this.parseErrorMessage(err)
-                })
+                this.addErrorFlasher(this.parseErrorMessage(err))
             }
         }
 
