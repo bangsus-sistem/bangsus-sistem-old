@@ -3,10 +3,15 @@
 namespace App\Abstracts\Http;
 
 use Illuminate\Auth\Access\AuthorizationException;
-use App\Auth\Permission;
+use App\Auth\FeaturePermission;
 
 class AuthorizedRequest extends FormRequest
 {
+    /**
+     * @var string
+     */
+    public $type;
+
     /**
      * Default unauthorized message.
      * 
@@ -21,7 +26,7 @@ class AuthorizedRequest extends FormRequest
      */
     public function authorize()
     {
-        return with(new Permission($this))->verify()->log()->result();
+        return PermissionFactory::make($this)->call();
     }
 
     /**
