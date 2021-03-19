@@ -13,7 +13,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roleFeatures = [
+        $roles = [
             [
                 'id' => 2,
                 'code' => 'ADM',
@@ -28,6 +28,7 @@ class RoleSeeder extends Seeder
                     'branch' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
                 'widgets' => [
+                    'feature_log' => ['traffic'],
                     'authentication_log' => ['traffic', 'latest_data'],
                 ],
             ],
@@ -56,8 +57,9 @@ class RoleSeeder extends Seeder
                 ],
             ],
         ];
-        \DB::table('roles')->insert($this->parseRole($roleFeatures));
-        \DB::table('role_features')->insert($this->parseFeature($roleFeatures));
+        \DB::table('roles')->insert($this->parseRole($roles));
+        \DB::table('role_features')->insert($this->parseFeature($roles));
+        \DB::table('role_widgets')->insert($this->parseWidget($role));
     }
 
     /**
