@@ -36,8 +36,7 @@ class WidgetController extends Controller
                 Widget::where(
                     $this->buildWhere()
                         ->index('module_id')->mode('id')
-                        ->index('ref')->mode('string')
-                        ->index('name')->mode('string')
+                        ->index('widget_type_id')->mode('id')
                         ->done()
                 )->get()
             ),
