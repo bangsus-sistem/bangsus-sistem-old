@@ -31,6 +31,10 @@ class StoreRequest extends AuthorizedRequest
                 'required',
                 'max:200',
             ],
+            'note' => [
+                'nullable',
+                'max:1000',
+            ],
             'feature_ids' => [
                 'required',
                 'array',
@@ -40,9 +44,13 @@ class StoreRequest extends AuthorizedRequest
                 'required',
                 'bsb_exists:\App\Database\Models\Auth\Feature',
             ],
-            'note' => [
-                'nullable',
-                'max:1000',
+            'widget_ids' => [
+                'required',
+                'array',
+            ],
+            'widget_ids.*' => [
+                'required',
+                'bsb_exists:\App\Database\Models\Auth\Widget',
             ],
         ];
     }
