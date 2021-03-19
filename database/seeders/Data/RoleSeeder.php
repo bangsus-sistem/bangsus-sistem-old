@@ -27,6 +27,9 @@ class RoleSeeder extends Seeder
                     'branch_type' => ['index', 'create', 'read', 'update', 'delete'],
                     'branch' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
+                'widgets' => [
+                    'authentication_log' => ['traffic', 'latest_data'],
+                ],
             ],
             [
                 'id' => 3,
@@ -72,6 +75,7 @@ class RoleSeeder extends Seeder
                 'active' => true,
                 'locked' => false,
                 'all_access' => false,
+                'all_widget' => false,
                 'note' => '',
                 'user_create_id' => 1,
                 'created_at' => now(),
@@ -102,6 +106,38 @@ class RoleSeeder extends Seeder
                         'id' => null,
                         'role_id' => $role['id'],
                         'feature_id' => $feature->id,
+                        'access' => true,
+                        'user_create_id' => 1,
+                        'created_at' => now(),
+                    ];
+                }
+            }
+        }
+        return $return;
+    }
+
+    /**
+     * @param  array  $data
+     * @return array
+     */
+    private function parseWidget($data)
+    {
+        $return = [];
+        $modules = \DB::table('modules')->get();
+        $widgetTypes = \DB::table('widget_types')->get();
+        $widgets = \DB::table('widgets')->get();
+        foreach ($data as $role) {
+            foreach ($role['widgets'] as $moduleRef => $widgetTypeRefs) {
+                foreach ($widgetTypeRefs as $widgetTypeRef) {
+                    $module = $modules->firstWhere('ref', $moduleRef);
+                    $widgetType = $widgetTypes->firstWhere('ref', $widgetTypeRef);
+                    $widget = $widgets->where('module_id', $module->id)
+                        ->where('widget_type_id', $widgetType->id)
+                        ->first();
+                    $return[] = [
+                        'id' => null,
+                        'role_id' => $role['id'],
+                        'widget_id' => $widget->id,
                         'access' => true,
                         'user_create_id' => 1,
                         'created_at' => now(),

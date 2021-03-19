@@ -18,6 +18,7 @@ class FeatureSeeder extends Seeder
             'module' => ['index', 'read'],
             'action' => ['index', 'read'],
             'feature' => ['index', 'read'],
+            'widget' => ['index', 'read'],
             'role' => ['index', 'create', 'read', 'update', 'delete'],
             'user' => ['index', 'create', 'read', 'update', 'delete'],
             'authentication_token' => ['index', 'create', 'read', 'update', 'delete'],
