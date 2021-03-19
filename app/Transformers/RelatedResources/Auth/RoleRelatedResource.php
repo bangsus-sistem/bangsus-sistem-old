@@ -22,6 +22,7 @@ class RoleRelatedResource extends RelatedResource
             'locked' => $this->locked,
             'all_access' => $this->all_access,
             'role_features' => new RoleFeatureRelatedCollection($this->roleFeatures),
+            'role_widgets' => new RoleWidgetRelatedCollection($this->roleWidgets),
             'user_create' => new UserSingleResource($this->userCreate),
             'created_at' => $this->created_at,
             'user_update' => new UserSingleResource($this->userUpdate),
