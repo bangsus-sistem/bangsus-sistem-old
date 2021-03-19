@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Res\Logs\AuthenticationLog;
 
-use App\Abstracts\Http\AuthorizedRequest;
+use App\Abstracts\Http\Requests\FeatureRequest;
 
-class DestroyRequest extends AuthorizedRequest
+class DestroyRequest extends FeatureRequest
 {
     /**
      * @var string

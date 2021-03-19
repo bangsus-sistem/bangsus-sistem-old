@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Res\Auth\User;
 
-use App\Abstracts\Http\AuthorizedRequest;
+use App\Abstracts\Http\Requests\FeatureRequest;
 
-class RevisePasswordRequest extends AuthorizedRequest
+class RevisePasswordRequest extends FeatureRequest
 {
     /**
      * @var string

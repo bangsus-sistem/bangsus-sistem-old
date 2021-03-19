@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Res\Auth\Module;
 
-use App\Abstracts\Http\AuthorizedRequest;
+use App\Abstracts\Http\Requests\FeatureRequest;
 
-class ShowRequest extends AuthorizedRequest
+class ShowRequest extends FeatureRequest
 {
     /**
      * @var string

@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Res\Auth\Role;
 
-use App\Abstracts\Http\AuthorizedRequest;
+use App\Abstracts\Http\Requests\FeatureRequest;
 use App\Validation\Auth\Role\RoleIsDeletableRule;
 
-class DestroyRequest extends AuthorizedRequest
+class DestroyRequest extends FeatureRequest
 {
     /**
      * @var string

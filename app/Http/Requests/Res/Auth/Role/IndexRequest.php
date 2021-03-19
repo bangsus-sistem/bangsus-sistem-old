@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Res\Auth\Role;
 
-use App\Abstracts\Http\AuthorizedRequest;
+use App\Abstracts\Http\Requests\FeatureRequest;
 
-class IndexRequest extends AuthorizedRequest
+class IndexRequest extends FeatureRequest
 {
     /**
      * @var string

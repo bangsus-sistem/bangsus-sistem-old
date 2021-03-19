@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Res\Auth\User;
 
-use App\Abstracts\Http\AuthorizedRequest;
+use App\Abstracts\Http\Requests\FeatureRequest;
 use Illuminate\Validation\Rule;
 
-class AmendRequest extends AuthorizedRequest
+class AmendRequest extends FeatureRequest
 {
     /**
      * @var string
