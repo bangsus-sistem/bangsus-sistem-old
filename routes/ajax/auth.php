@@ -26,6 +26,12 @@ Route::prefix('feature')->group(function () {
     Route::get('{id}', 'FeatureController@show');
 });
 
+Route::prefix('widget_type')->group(function () {
+    Route::get('all', 'WidgetTypeController@manifest');
+    Route::get('', 'WidgetTypeController@index');
+    Route::get('{id}', 'WidgetTypeController@show');
+});
+
 Route::prefix('widget')->group(function () {
     Route::get('all', 'WidgetController@manifest');
     Route::get('', 'WidgetController@index');
