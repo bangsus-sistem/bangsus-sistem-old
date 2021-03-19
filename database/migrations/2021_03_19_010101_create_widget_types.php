@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWidgets extends Migration
+class CreateWidgetTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateWidgets extends Migration
      */
     public function up()
     {
-        Schema::create('widgets', function (Blueprint $table) {
+        Schema::create('widget_types', function (Blueprint $table) {
             $table->id();
-            $table->module();
-            $table->widgetType();
+            $table->ref();
+            $table->name();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateWidgets extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('widgets');
+        Schema::dropIfExists('widget_types');
     }
 }
