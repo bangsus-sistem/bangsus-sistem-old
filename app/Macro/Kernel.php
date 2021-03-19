@@ -18,6 +18,7 @@ class Kernel
             'allAccess' => Database\Blueprints\Booleans\AllAccessBlueprint::class,
             'allBranchAccess' => Database\Blueprints\Booleans\AllBranchAccessBlueprint::class,
             'allBranchTypeAccess' => Database\Blueprints\Booleans\AllBranchTypeAccessBlueprint::class,
+            'allWidget' => Database\Blueprints\Booleans\AllWidgetBlueprint::class,
             'locked' => Database\Blueprints\Booleans\LockedBlueprint::class,
             'state' => Database\Blueprints\Booleans\StateBlueprint::class,
             
@@ -34,6 +35,7 @@ class Kernel
             'userDelete' => Database\Blueprints\Foreigns\UserDeleteBlueprint::class,
             'userTimestamps' => Database\Blueprints\Foreigns\UserTimestampsBlueprint::class,
             'userUpdate' => Database\Blueprints\Foreigns\UserUpdateBlueprint::class,
+            'widget' => Database\Blueprints\Foreigns\WidgetBlueprint::class,
 
             // String macro.
             'code' => Database\Blueprints\Strings\CodeBlueprint::class,
