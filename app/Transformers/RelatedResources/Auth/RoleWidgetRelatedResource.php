@@ -20,7 +20,7 @@ class RoleWidgetRelatedResource extends RelatedResource
         return [
             'id' => $this->id,
             'role' => new RoleSingleResource($this->role),
-            'feature' => new WidgetSingleResource($this->feature),
+            'widget' => new WidgetSingleResource($this->widget),
             'access' => $this->access,
             'user_create' => new UserSingleResource($this->userCreate),
             'created_at' => $this->created_at,
