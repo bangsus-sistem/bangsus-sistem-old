@@ -6,6 +6,7 @@ use App\Abstracts\Http\Job;
 use App\Database\Models\Auth\{
     Role,
     RoleFeature,
+    RoleWidget,
 };
 
 class StoreJob extends Job
@@ -32,6 +33,14 @@ class StoreJob extends Job
                 $roleFeature->feature_id = $featureId;
                 $roleFeature->access = true;
                 $roleFeature->save();
+            }
+
+            foreach ($request->input('widget_ids') as $widgetId) {
+                $roleWidget = new RoleWidget;
+                $roleWidget->role_id = $role->id;
+                $roleWidget->widget_id = $widgetId;
+                $roleWidget->access = true;
+                $roleWidget->save();
             }
         });
         return $role;

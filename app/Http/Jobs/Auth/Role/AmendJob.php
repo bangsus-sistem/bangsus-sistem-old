@@ -6,6 +6,7 @@ use App\Abstracts\Http\Job;
 use App\Database\Models\Auth\{
     Role,
     RoleFeature,
+    RoleWidget,
 };
 
 class AmendJob extends Job
@@ -22,6 +23,7 @@ class AmendJob extends Job
             $role->note = $request->input('note');
             $role->save();
 
+            // Handle the features.
             $featureIds = $request->input('feature_ids');
             $role->roleFeatures->whereNotIn('feature_id', $featureIds)
                 ->each(function ($roleFeature) {
@@ -31,9 +33,7 @@ class AmendJob extends Job
 
             foreach ($featureIds as $featureId) {
                 $roleFeature = $role->roleFeatures
-                    ->where([
-                        'feature_id' => $featureId,
-                    ])
+                    ->where('feature_id', $featureId)
                     ->first();
                 
                 if (is_null($roleFeature)) {
@@ -46,6 +46,31 @@ class AmendJob extends Job
                 
                 $roleFeature->access = true;
                 $roleFeature->save();
+            }
+
+            // Handle the widgets.
+            $widgetIds = $request->input('widget_ids');
+            $role->roleWidgets->whereNotIn('widget_id', $widgetIds)
+                ->each(function ($roleWidget) {
+                    $roleWidget->access = false;
+                    $roleWidget->save();
+                });
+
+            foreach ($widgetIds as $widgetId) {
+                $roleWidget = $role->roleWidgets
+                    ->where('widget_id', $widgetId)
+                    ->first();
+                
+                if (is_null($roleWidget)) {
+                    $roleWidget = new RoleWidget;
+                    $roleWidget->role_id = $role->id;
+                    $roleWidget->widget_id = $widgetId;
+                } else {
+                    if ($roleWidget->access) continue;
+                }
+                
+                $roleWidget->access = true;
+                $roleWidget->save();
             }
         });
         return $role;
