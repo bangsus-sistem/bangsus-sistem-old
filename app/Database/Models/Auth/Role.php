@@ -26,4 +26,20 @@ class Role extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function roleFeatures()
+    {
+        return $this->hasMany(RoleFeature::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function roleWidgets()
+    {
+        return $this->hasMany(RoleWidget::class);
+    }
 }
