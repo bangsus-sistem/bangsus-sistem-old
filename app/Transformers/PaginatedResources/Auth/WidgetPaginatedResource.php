@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Transformers\SingleResources\Auth;
+namespace App\Transformers\PaginatedResources\Auth;
 
-use App\Abstracts\Transformers\SingleResource;
+use App\Abstracts\Transformers\PaginatedResource;
+use App\Transformers\SingleResources\Auth\{
+    ModuleSingleResource,
+    WidgetTypeSingleResource,
+};
 
-class FeatureSingleResource extends SingleResource
+class WidgetPaginatedResource extends PaginatedResource
 {
     /**
      * @param  \Illuminate\Http\Request  $request

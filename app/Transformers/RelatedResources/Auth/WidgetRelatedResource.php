@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Transformers\SingleResources\Auth;
+namespace App\Transformers\RelatedResources\Auth;
 
-use App\Abstracts\Transformers\SingleResource;
+use App\Abstracts\Transformers\RelatedResource;
+use App\Transformers\SingleResources\Auth\{
+    ModuleSingleResource,
+    WidgetTypeSingleResource,
+};
 
-class FeatureSingleResource extends SingleResource
+class WidgetRelatedResource extends RelatedResource
 {
     /**
      * @param  \Illuminate\Http\Request  $request

@@ -4,7 +4,7 @@ namespace App\Transformers\SingleResources\Auth;
 
 use App\Abstracts\Transformers\SingleResource;
 
-class FeatureSingleResource extends SingleResource
+class WidgetTypeSingleResource extends SingleResource
 {
     /**
      * @param  \Illuminate\Http\Request  $request
@@ -14,8 +14,8 @@ class FeatureSingleResource extends SingleResource
     {
         return [
             'id' => $this->id,
-            'module' => new ModuleSingleResource($this->module),
-            'widget_type' => new WidgetTypeSingleResource($this->widgetType),
+            'ref' => $this->ref,
+            'name' => $this->name,
         ];
     }
 }
