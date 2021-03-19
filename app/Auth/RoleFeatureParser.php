@@ -4,7 +4,7 @@ namespace App\Auth;
 
 use App\Database\Models\Auth\RoleFeature;
 
-class RoleFeatureParser
+class RoleFeatureParser extends Parser
 {
     /**
      * @var \App\Database\Models\Auth\Role

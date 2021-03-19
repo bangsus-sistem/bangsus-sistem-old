@@ -2,10 +2,10 @@
 
 namespace App\Auth;
 
-use App\Database\Models\Auth\Feature;
+use App\Database\Models\Auth\Widget;
 use App\Exceptions\RequestAuthorizationException;
 
-class RequestedFeatureParser extends Parser
+class RequestedWidgetParser extends Parser
 {
     /**
      * @var string
@@ -15,38 +15,38 @@ class RequestedFeatureParser extends Parser
     /**
      * @var string
      */
-    protected $actionRef;
+    protected $widgetTypeRef;
 
     /**
      * @param  string  $moduleRef
-     * @param  string  $actionRef
+     * @param  string  $widgetTypeRef
      */
-    public function __construct($moduleRef, $actionRef)
+    public function __construct($moduleRef, $widgetTypeRef)
     {
         $this->moduleRef = $moduleRef;
-        $this->actionRef = $actionRef;
+        $this->widgetTypeRef = $widgetTypeRef;
     }
 
     /**
-     * @return \App\Database\Models\Auth\Feature
+     * @return \App\Database\Models\Auth\Widget
      */
     public function get()
     {
-        $feature = Feature::whereHas(
+        $widget = Widget::whereHas(
             'module',
             fn ($query) => $query->where('ref', $this->moduleRef)
         )
             ->whereHas(
-                'action',
-                fn ($query) => $query->where('ref', $this->actionRef)
+                'widgetType',
+                fn ($query) => $query->where('ref', $this->widgetTypeRef)
             )
             ->first();
 
-        if (is_null($feature))
+        if (is_null($widget))
             throw new RequestAuthorizationException(
-                'The requested feature not found'
+                'The requested widget not found'
             );
 
-        return $feature;
+        return $widget;
     }
 }

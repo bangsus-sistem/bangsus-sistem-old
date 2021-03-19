@@ -1,13 +1,8 @@
 <?php
 
-namespace App\Abstracts\Http;
+namespace App\Auth;
 
-use App\Database\Models\Auth\User;
-use App\Database\Models\Auth\RoleFeature;
-use LogicException;
-use App\Loggers\FeatureLogger;
-
-class Permission
+abstract class Permission
 {
     /**
      * @var \Illuminate\Http\Request
@@ -30,16 +25,8 @@ class Permission
     public function __construct($request)
     {
         $this->request = $request;
-        $this->boot();
-    }
-
-    /**
-     * @return void
-     */
-    private function boot()
-    {
         $this->setUser();
-        $this->setRequestedFeature();
+        $this->boot();
     }
 
     /**
@@ -53,75 +40,9 @@ class Permission
     /**
      * @return void
      */
-    private function setRequestedFeature()
+    public function boot()
     {
-        $this->requestedFeature = with(
-            new RequestedFeatureParser(
-                $this->request->moduleRef,
-                $this->request->actionRef,
-            )
-        )->get();
-    }
-
-    /**
-     * @return \App\Http\Authorizations\Permission
-     */
-    public function verify()
-    {
-        if (config('auth.role.with_all_access_field')) {
-            if ($this->checkIfRoleHasAllAccessPrivilege()) {
-                $this->result = true;
-                return $this;
-            }
-        }
-
-        if ( ! $this->checkIfRoleIsAuthorized()) {
-            $this->result = false;
-            return $this;
-        }
-
-        $this->result = true;
-        return $this;
-    }
-
-    /**
-     * @return \App\Http\Authorizations\Permission
-     */
-    public function log()
-    {
-        FeatureLogger::log(
-            $this->request->ip,
-            $this->result,
-            [
-                'user_id' => $this->user->id,
-                'feature_id' => $this->requestedFeature->id,
-            ]
-        );
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    private function checkIfRoleHasAllAccessPrivilege()
-    {
-        return $this->user->role->all_access;
-    }
-
-    /**
-     * @return bool
-     */
-    private function checkIfRoleIsAuthorized()
-    {
-        $roleFeature = with(new RoleFeatureParser(
-            $this->user->role,
-            $this->requestedFeature,
-        ))->get();
-
-        if (is_null($roleFeature)) return false;
-
-        return $roleFeature->access;
+        //
     }
 
     /**
@@ -134,4 +55,9 @@ class Permission
 
         return $this->result;
     }
+
+    /**
+     * @return bool
+     */
+    abstract public function call();
 }
