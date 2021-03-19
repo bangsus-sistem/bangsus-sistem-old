@@ -36,6 +36,7 @@ class Kernel
             'userTimestamps' => Database\Blueprints\Foreigns\UserTimestampsBlueprint::class,
             'userUpdate' => Database\Blueprints\Foreigns\UserUpdateBlueprint::class,
             'widget' => Database\Blueprints\Foreigns\WidgetBlueprint::class,
+            'widgetType' => Database\Blueprints\Foreigns\WidgetTypeBlueprint::class,
 
             // String macro.
             'code' => Database\Blueprints\Strings\CodeBlueprint::class,
