@@ -18,4 +18,12 @@ class Widget extends Model
     {
         return $this->belongsTo(Module::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function widgetType()
+    {
+        return $this->belongsTo(Widget::class);
+    }
 }
