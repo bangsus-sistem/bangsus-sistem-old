@@ -31,7 +31,6 @@ class CreateUsersAndRoles extends Migration
             $table->role();
             $table->active();
             $table->locked();
-            $table->allAccess();
             $table->allBranchAccess();
             $table->note();
         });
