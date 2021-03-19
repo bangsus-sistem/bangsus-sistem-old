@@ -3,7 +3,7 @@
 namespace App\Abstracts\Http;
 
 use Illuminate\Auth\Access\AuthorizationException;
-use App\Auth\FeaturePermission;
+use App\Auth\Factory as PermissionFactory;
 
 class AuthorizedRequest extends FormRequest
 {
