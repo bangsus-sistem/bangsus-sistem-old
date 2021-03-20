@@ -16,6 +16,7 @@ abstract class Widget
     abstract public function compute($request);
 
     /**
+     * @final
      * @return array
      */
     final public function fetch()
