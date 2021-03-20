@@ -26,4 +26,12 @@ class Widget extends Model
     {
         return $this->belongsTo(Widget::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function roleWidgets()
+    {
+        return $this->hasMany(RoleWidget::class);
+    }
 }

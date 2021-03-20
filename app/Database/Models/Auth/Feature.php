@@ -26,4 +26,12 @@ class Feature extends Model
     {
         return $this->belongsTo(Action::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function roleFeatures()
+    {
+        return $this->hasMany(RoleFeature::class);
+    }
 }
