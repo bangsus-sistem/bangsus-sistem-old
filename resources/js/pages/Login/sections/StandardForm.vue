@@ -49,7 +49,14 @@ export default {
                     this.submitForm('/ajax/logs/authentication_log/login', 'post', {
                         resolve: true,
                         reject: false
-                    }).then(() => this.$router.push({ name: 'dashboard' }))
+                    }).then(() => {
+                        axios.get('/ajax/utils/authorization')
+                            .then(res => {
+                                this.$store.dispatch('utils/auth/setFeatures', res.data.features)
+                                this.$store.dispatch('utils/auth/setWidgets', res.data.widgets)
+                                this.$router.push({ name: 'dashboard' })
+                            })
+                    })
                 })
                 .catch(err => this.handleResultError(err))
                 .finally(() => this.stopFormLoading())

@@ -58,7 +58,17 @@ export default {
         axios.get('/ajax/utils/language_resources')
             .then(res => {
                 this.$store.dispatch('utils/lang/setSrc', res.data)
-                this.state.page.loading = false
+                axios.get('/ajax/utils/authorization')
+                    .then(res => {
+                        this.$store.dispatch('utils/auth/setFeatures', res.data.features)
+                        this.$store.dispatch('utils/auth/setWidgets', res.data.widgets)
+                        this.state.page.loading = false
+                    })
+                    .catch(err => {
+                        if (err.response.status == 401) {
+                            this.state.page.loading = false
+                        }
+                    })
             })
     },
 }
