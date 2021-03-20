@@ -1906,7 +1906,17 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/ajax/utils/language_resources').then(function (res) {
       _this.$store.dispatch('utils/lang/setSrc', res.data);
 
-      _this.state.page.loading = false;
+      axios.get('/ajax/utils/authorization').then(function (res) {
+        _this.$store.dispatch('utils/auth/setFeatures', res.data.features);
+
+        _this.$store.dispatch('utils/auth/setWidgets', res.data.widgets);
+
+        _this.state.page.loading = false;
+      })["catch"](function (err) {
+        if (err.response.status == 401) {
+          _this.state.page.loading = false;
+        }
+      });
     });
   }
 });
@@ -3033,8 +3043,14 @@ __webpack_require__.r(__webpack_exports__);
           resolve: true,
           reject: false
         }).then(function () {
-          return _this.$router.push({
-            name: 'dashboard'
+          axios.get('/ajax/utils/authorization').then(function (res) {
+            _this.$store.dispatch('utils/auth/setFeatures', res.data.features);
+
+            _this.$store.dispatch('utils/auth/setWidgets', res.data.widgets);
+
+            _this.$router.push({
+              name: 'dashboard'
+            });
           });
         });
       })["catch"](function (err) {
@@ -5264,11 +5280,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_flashers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/flashers */ "./resources/js/store/utils/flashers.js");
 /* harmony import */ var _utils_version_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/version-control */ "./resources/js/store/utils/version-control.js");
 /* harmony import */ var _utils_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/lang */ "./resources/js/store/utils/lang.js");
+/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/auth */ "./resources/js/store/utils/auth.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -5290,8 +5308,56 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // Utils.Lang package
         lang: _objectSpread({
           namespaced: true
-        }, _utils_lang__WEBPACK_IMPORTED_MODULE_2__.default)
+        }, _utils_lang__WEBPACK_IMPORTED_MODULE_2__.default),
+        // Utils.Auth package
+        auth: _objectSpread({
+          namespaced: true
+        }, _utils_auth__WEBPACK_IMPORTED_MODULE_3__.default)
       }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/utils/auth.js":
+/*!******************************************!*\
+  !*** ./resources/js/store/utils/auth.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  state: {
+    features: [],
+    widgets: []
+  },
+  getters: {
+    features: function features(state) {
+      return state.features;
+    },
+    widgets: function widgets(state) {
+      return state.widgets;
+    }
+  },
+  mutations: {
+    setFeatures: function setFeatures(state, data) {
+      state.features = data;
+    },
+    setWidgets: function setWidgets(state, data) {
+      state.widgets = data;
+    }
+  },
+  actions: {
+    setFeatures: function setFeatures(context, data) {
+      context.commit('setFeatures', data);
+    },
+    setWidgets: function setWidgets(context, data) {
+      context.commit('setWidgets', data);
     }
   }
 });
