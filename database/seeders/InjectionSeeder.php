@@ -17,7 +17,9 @@ class InjectionSeeder extends Seeder
             Injections\PackageSeeder::class,
             Injections\ModuleSeeder::class,
             Injections\ActionSeeder::class,
+            Injections\WidgetTypeSeeder::class,
             Injections\FeatureSeeder::class,
+            Injections\WidgetSeeder::class,
             Injections\UserRoleSeeder::class,
         ]);
     }

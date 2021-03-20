@@ -17,7 +17,7 @@ class WidgetSeeder extends Seeder
             'authentication_log' => ['traffic'],
             'feature_log' => ['traffic', 'latest_data'],
         ]);
-        \DB::table('widget_types')->insert($data);
+        \DB::table('widgets')->insert($data);
     }
 
     /**
@@ -29,10 +29,10 @@ class WidgetSeeder extends Seeder
         $return = [];
         $modules = \DB::table('modules')->get();
         $widgetTypes = \DB::table('widget_types')->get();
-        foreach ($data as $moduleRef => $widgetTypes) {
+        foreach ($data as $moduleRef => $widgetTypeRefs) {
             $module = $modules->firstWhere('ref', $moduleRef);
-            foreach ($widgetTypes as $widgetType) {
-                $widgetType = $widgetTypes->firstWhere('ref', $widgetType);
+            foreach ($widgetTypeRefs as $widgetTypeRef) {
+                $widgetType = $widgetTypes->firstWhere('ref', $widgetTypeRef);
                 $return[] = [
                     'id' => null,
                     'module_id' => $module->id,
