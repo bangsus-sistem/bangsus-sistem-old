@@ -2872,7 +2872,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -3221,6 +3220,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _sections_WidgetWrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sections/WidgetWrapper */ "./resources/js/widgets/sections/WidgetWrapper.vue");
+/* harmony import */ var _mixins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins */ "./resources/js/widgets/mixins/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3251,10 +3260,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     WidgetWrapper: _sections_WidgetWrapper__WEBPACK_IMPORTED_MODULE_0__.default
-  }
+  },
+  data: function data() {
+    return {
+      meta: {
+        source: '/ajax/logs/authentication_log/widget/traffic'
+      },
+      data: {}
+    };
+  },
+  mixins: [_mixins__WEBPACK_IMPORTED_MODULE_1__.default]
 });
 
 /***/ }),
@@ -3271,6 +3290,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _sections_WidgetWrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sections/WidgetWrapper */ "./resources/js/widgets/sections/WidgetWrapper.vue");
+/* harmony import */ var _mixins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mixins */ "./resources/js/widgets/mixins/index.js");
+//
 //
 //
 //
@@ -3309,10 +3330,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     WidgetWrapper: _sections_WidgetWrapper__WEBPACK_IMPORTED_MODULE_0__.default
-  }
+  },
+  data: function data() {
+    return {
+      meta: {
+        source: '/ajax/logs/feature_log/widget/traffic'
+      },
+      data: {}
+    };
+  },
+  mixins: [_mixins__WEBPACK_IMPORTED_MODULE_1__.default]
 });
 
 /***/ }),
@@ -3413,6 +3444,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     moduleRef: {
@@ -3422,6 +3463,14 @@ __webpack_require__.r(__webpack_exports__);
     widgetTypeRef: {
       required: true,
       type: String
+    },
+    loading: {
+      type: Boolean,
+      "default": false
+    },
+    title: {
+      type: String,
+      required: true
     }
   },
   data: function data() {
@@ -5740,6 +5789,52 @@ __webpack_require__.r(__webpack_exports__);
     setAppVersion: function setAppVersion(context, ver) {
       context.commit('setAppVersion', ver);
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/widgets/mixins/index.js":
+/*!**********************************************!*\
+  !*** ./resources/js/widgets/mixins/index.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      state: {
+        widget: {
+          loading: true
+        }
+      }
+    };
+  },
+  methods: {
+    startWidgetLoading: function startWidgetLoading() {
+      this.state.widget.loading = true;
+    },
+    stopWidgetLoading: function stopWidgetLoading() {
+      this.state.widget.loading = false;
+    },
+    fetchData: function fetchData() {
+      var _this = this;
+
+      this.startWidgetLoading();
+      axios.get(this.meta.source).then(function (res) {
+        _this.data = res.data;
+
+        _this.stopWidgetLoading();
+      });
+    }
+  },
+  created: function created() {
+    this.fetchData();
   }
 });
 
@@ -47916,9 +48011,7 @@ var render = function() {
               [
                 _c("FeatureRequestTraffic", { staticClass: "my-3" }),
                 _vm._v(" "),
-                _c("AuthenticationLogTraffic", { staticClass: "my-3" }),
-                _vm._v(" "),
-                _c("LatestAuthenticationLog", { staticClass: "my-3" })
+                _c("AuthenticationLogTraffic", { staticClass: "my-3" })
               ],
               1
             )
@@ -48410,57 +48503,59 @@ var render = function() {
       staticClass: "col-12 col-lg-6 col-xl-4",
       attrs: {
         "module-ref": "authentication_log",
-        "widget-type-ref": "traffic"
+        "widget-type-ref": "traffic",
+        loading: _vm.state.widget.loading,
+        title: "Traffic Login User"
       }
     },
     [
-      _c(
-        "bsb-card",
-        [
-          _c(
-            "bsb-card-body",
-            [
-              _c("h5", { staticClass: "card-title" }, [
-                _vm._v("Traffic Login Pengguna")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group mt-4" }, [
-                _c("select", { staticClass: "form-control form-control-sm" }, [
-                  _c("option", [_vm._v("5 menit terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("15 menit terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("1 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("2 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("6 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("12 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("24 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("3 hari terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("1 minggu terakhir")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("bsb-row", [
-                _c("div", { staticClass: "col text-center" }, [
-                  _c("h5", { staticClass: "text-yellow-600" }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-yellow-600" }, [
-                    _vm._v("Pengguna")
-                  ])
-                ])
-              ])
-            ],
-            1
-          )
-        ],
-        1
-      )
+      _c("div", { staticClass: "form-group mt-4" }, [
+        _c("select", { staticClass: "form-control form-control-sm" }, [
+          _c("option", [_vm._v("5 menit terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("15 menit terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("1 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("2 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("6 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("12 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("24 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("3 hari terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("1 minggu terakhir")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("bsb-row", [
+        _c("div", { staticClass: "col text-center" }, [
+          _c("h5", { staticClass: "text-green-600" }, [
+            _vm._v(_vm._s(_vm.data["users_count"]))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "text-green-600" }, [_vm._v("Pengguna")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col text-center" }, [
+          _c("h5", { staticClass: "text-blue-600" }, [
+            _vm._v(_vm._s(_vm.data["logins_count"]))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "text-blue-600" }, [_vm._v("Login")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col text-center" }, [
+          _c("h5", { staticClass: "text-yellow-600" }, [
+            _vm._v(_vm._s(_vm.data["logouts_count"]))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "text-yellow-600" }, [_vm._v("Logout")])
+        ])
+      ])
     ],
     1
   )
@@ -48492,72 +48587,61 @@ var render = function() {
     "WidgetWrapper",
     {
       staticClass: "col-12 col-lg-6 col-xl-4",
-      attrs: { "module-ref": "feature_log", "widget-type-ref": "traffic" }
+      attrs: {
+        "module-ref": "feature_log",
+        "widget-type-ref": "traffic",
+        loading: _vm.state.widget.loading,
+        title: "Traffic Request Fitur"
+      }
     },
     [
-      _c(
-        "bsb-card",
-        [
-          _c(
-            "bsb-card-body",
-            [
-              _c("h5", { staticClass: "card-title" }, [
-                _vm._v("Traffic Request Fitur")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group mt-4" }, [
-                _c("select", { staticClass: "form-control form-control-sm" }, [
-                  _c("option", [_vm._v("5 menit terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("15 menit terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("1 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("2 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("6 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("12 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("24 jam terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("3 hari terakhir")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("1 minggu terakhir")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("bsb-row", [
-                _c("div", { staticClass: "col text-center" }, [
-                  _c("h5", { staticClass: "text-green-500" }, [_vm._v("20")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-green-500" }, [
-                    _vm._v("Permintaan")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col text-center" }, [
-                  _c("h5", { staticClass: "text-red-400" }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-red-400" }, [
-                    _vm._v("Fitur Diakses")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col text-center" }, [
-                  _c("h5", { staticClass: "text-yellow-600" }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-yellow-600" }, [
-                    _vm._v("Pengguna")
-                  ])
-                ])
-              ])
-            ],
-            1
-          )
-        ],
-        1
-      )
+      _c("div", { staticClass: "form-group mt-4" }, [
+        _c("select", { staticClass: "form-control form-control-sm" }, [
+          _c("option", [_vm._v("5 menit terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("15 menit terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("1 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("2 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("6 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("12 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("24 jam terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("3 hari terakhir")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("1 minggu terakhir")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("bsb-row", [
+        _c("div", { staticClass: "col text-center" }, [
+          _c("h5", { staticClass: "text-green-500" }, [
+            _vm._v(_vm._s(_vm.data["requests_count"]))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "text-green-500" }, [_vm._v("Permintaan")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col text-center" }, [
+          _c("h5", { staticClass: "text-red-400" }, [
+            _vm._v(_vm._s(_vm.data["features_count"]))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "text-red-400" }, [_vm._v("Fitur Diakses")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col text-center" }, [
+          _c("h5", { staticClass: "text-yellow-600" }, [
+            _vm._v(_vm._s(_vm.data["users_count"]))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "text-yellow-600" }, [_vm._v("Pengguna")])
+        ])
+      ])
     ],
     1
   )
@@ -48709,7 +48793,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.state.widget.show ? _c("div", [_vm._t("default")], 2) : _vm._e()
+  return _vm.state.widget.show
+    ? _c(
+        "div",
+        [
+          _c(
+            "bsb-card",
+            [
+              _c("bsb-card-body", [
+                _vm.loading
+                  ? _c(
+                      "div",
+                      { staticClass: "text-center" },
+                      [_c("bsb-spinner")],
+                      1
+                    )
+                  : _c(
+                      "div",
+                      [
+                        _c("h5", { staticClass: "card-title" }, [
+                          _vm._v(_vm._s(_vm.title))
+                        ]),
+                        _vm._v(" "),
+                        _vm._t("default")
+                      ],
+                      2
+                    )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
