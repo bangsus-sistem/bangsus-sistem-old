@@ -15,12 +15,12 @@ class TrafficWidget extends Widget
         $featureLogs = \DB::table('feature_logs');
         
         $this->data = [
-            'requests_count' => with($featureLogs)
+            'requests_count' => with(clone $featureLogs)
                 ->count(),
-            'features_count' => with($featureLogs)
+            'features_count' => with(clone $featureLogs)
                 ->distinct()
                 ->count('feature_id'),
-            'users_count' => with($featureLogs)
+            'users_count' => with(clone $featureLogs)
                 ->distinct()
                 ->count('user_id'),
         ];

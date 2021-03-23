@@ -15,14 +15,14 @@ class TrafficWidget extends Widget
         $authenticationLogs = \DB::table('authentication_logs');
         
         $this->data = [
-            'users_count' => with($authenticationLogs)
+            'users_count' => with(clone $authenticationLogs)
                 ->distinct()
                 ->count('user_id'),
-            'logins_count' => with($authenticationLogs)
-                ->where('state', true)
+            'logins_count' => with(clone $authenticationLogs)
+                ->where('state', 1)
                 ->count(),
-            'logouts_count' => with($authenticationLogs)
-                ->where('state', false)
+            'logouts_count' => with(clone $authenticationLogs)
+                ->where('state', 0)
                 ->count(),
         ];
     }
