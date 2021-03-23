@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-12 col-lg-8 col-xl-6">
+    <WidgetWrapper module-ref="authentication_log" widget-type-ref="latest_data" class="col-md-12 col-lg-8 col-xl-6">
         <bsb-card>
             <bsb-card-body>
                 <h5 class="card-title">Login Terakhir</h5>
@@ -53,5 +53,15 @@
                     </div>
             </bsb-card-body>
         </bsb-card>
-    </div>
+    </WidgetWrapper>
 </template>
+
+<script>
+import WidgetWrapper from '../sections/WidgetWrapper'
+
+export default {
+    components: {
+        WidgetWrapper,
+    }
+}
+</script>

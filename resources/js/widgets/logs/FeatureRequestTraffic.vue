@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 col-lg-6 col-xl-4">
+    <WidgetWrapper module-ref="feature_log" widget-type-ref="traffic" class="col-12 col-lg-6 col-xl-4">
         <bsb-card>
             <bsb-card-body>
                 <h5 class="card-title">Traffic Request Fitur</h5>
@@ -32,5 +32,15 @@
                 </bsb-row>
             </bsb-card-body>
         </bsb-card>
-    </div>
+    </WidgetWrapper>
 </template>
+
+<script>
+import WidgetWrapper from '../sections/WidgetWrapper'
+
+export default {
+    components: {
+        WidgetWrapper,
+    }
+}
+</script>
