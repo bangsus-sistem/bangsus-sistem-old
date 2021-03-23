@@ -10,7 +10,6 @@
             <bsb-row class="mt-3">
                 <FeatureRequestTraffic class="my-3" />
                 <AuthenticationLogTraffic class="my-3" />
-                <LatestAuthenticationLog class="my-3" />
             </bsb-row>
         </template>
     </Layout>
