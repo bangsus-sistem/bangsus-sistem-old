@@ -1,6 +1,16 @@
 <template>
     <div v-if="state.widget.show">
-        <slot/>
+        <bsb-card>
+            <bsb-card-body>
+                <div class="text-center" v-if="loading">
+                    <bsb-spinner/>
+                </div>
+                <div v-else>
+                    <h5 class="card-title">{{ title }}</h5>
+                    <slot/>
+                </div>
+            </bsb-card-body>
+        </bsb-card>
     </div>
 </template>
 
@@ -14,6 +24,14 @@ export default {
         widgetTypeRef: {
             required: true,
             type: String,
+        },
+        loading: {
+            type: Boolean,
+            default: false,
+        },
+        title: {
+            type: String,
+            required: true,
         },
     },
     data() {
