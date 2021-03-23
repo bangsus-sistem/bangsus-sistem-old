@@ -9,5 +9,5 @@ class FeatureRequest extends AuthorizedRequest
     /**
      * @var string
      */
-    public $type = 'feature';
+    public $permissionType = 'feature';
 }

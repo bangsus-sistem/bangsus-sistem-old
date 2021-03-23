@@ -9,5 +9,5 @@ class WidgetRequest extends AuthorizedRequest
     /**
      * @var string
      */
-    public $type = 'widget';
+    public $permissionType = 'widget';
 }
