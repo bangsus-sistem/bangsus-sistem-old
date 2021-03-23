@@ -24,7 +24,7 @@ class Widget extends Model
      */
     public function widgetType()
     {
-        return $this->belongsTo(Widget::class);
+        return $this->belongsTo(WidgetType::class);
     }
 
     /**
