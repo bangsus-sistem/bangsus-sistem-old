@@ -10,12 +10,12 @@ class StoreRequest extends FeatureRequest
     /**
      * @var string
      */
-    protected $moduleRef = 'user';
+    public $moduleRef = 'user';
 
     /**
      * @var string
      */
-    protected $actionRef = 'create';
+    public $actionRef = 'create';
 
     /**
      * @return array

@@ -9,12 +9,12 @@ class DestroyRequest extends FeatureRequest
     /**
      * @var string
      */
-    protected $moduleRef = 'authentication_log';
+    public $moduleRef = 'authentication_log';
 
     /**
      * @var string
      */
-    protected $actionRef = 'delete';
+    public $actionRef = 'delete';
 
     /**
      * @return array

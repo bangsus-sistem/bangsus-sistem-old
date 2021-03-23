@@ -10,12 +10,12 @@ class AmendRequest extends FeatureRequest
     /**
      * @var string
      */
-    protected $moduleRef = 'user';
+    public $moduleRef = 'user';
 
     /**
      * @var string
      */
-    protected $actionRef = 'update';
+    public $actionRef = 'update';
 
     /**
      * @return array

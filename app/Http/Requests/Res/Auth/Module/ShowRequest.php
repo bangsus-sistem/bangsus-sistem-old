@@ -9,10 +9,10 @@ class ShowRequest extends FeatureRequest
     /**
      * @var string
      */
-    protected $moduleRef = 'module';
+    public $moduleRef = 'module';
 
     /**
      * @var string
      */
-    protected $actionRef = 'read';
+    public $actionRef = 'read';
 }

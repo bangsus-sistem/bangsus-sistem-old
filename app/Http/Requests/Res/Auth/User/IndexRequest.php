@@ -9,10 +9,10 @@ class IndexRequest extends FeatureRequest
     /**
      * @var string
      */
-    protected $moduleRef = 'user';
+    public $moduleRef = 'user';
 
     /**
      * @var string
      */
-    protected $actionRef = 'index';
+    public $actionRef = 'index';
 }

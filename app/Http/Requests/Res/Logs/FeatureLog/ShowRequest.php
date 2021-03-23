@@ -9,10 +9,10 @@ class ShowRequest extends FeatureRequest
     /**
      * @var string
      */
-    protected $moduleRef = 'feature_log';
+    public $moduleRef = 'feature_log';
 
     /**
      * @var string
      */
-    protected $actionRef = 'read';
+    public $actionRef = 'read';
 }
