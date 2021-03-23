@@ -14,7 +14,7 @@ class WidgetSeeder extends Seeder
     public function run()
     {
         $data = $this->parseData([
-            'authentication_log' => ['traffic'],
+            'authentication_log' => ['traffic', 'latest_data'],
             'feature_log' => ['traffic', 'latest_data'],
         ]);
         \DB::table('widgets')->insert($data);
