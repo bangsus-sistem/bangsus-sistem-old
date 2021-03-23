@@ -118,6 +118,7 @@ return [
 
     'role' => [
         'with_all_access_field' => true,
+        'with_all_widget_field' => true,
     ],
 
 ];
