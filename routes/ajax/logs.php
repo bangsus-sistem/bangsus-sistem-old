@@ -8,6 +8,10 @@ Route::prefix('authentication_log')->group(function () {
     Route::get('{id}', 'AuthenticationLogController@show');
     Route::post('logout', 'AuthenticationLogController@storeLogout');
     Route::delete('', 'AuthenticationLogController@destroy');
+    Route::prefix('widget')->group(function () {
+        Route::get('traffic', 'AuthenticationLogController@revealTraffic');
+        Route::get('latest_data', 'AuthenticationLogController@revealLatestData');
+    });
 });
 
 Route::prefix('feature_log')->group(function () {
@@ -16,4 +20,8 @@ Route::prefix('feature_log')->group(function () {
     Route::get('{id}', 'FeatureLogController@show');
     Route::post('logout', 'FeatureLogController@storeLogout');
     Route::delete('', 'FeatureLogController@destroy');
+    Route::prefix('widget')->group(function () {
+        Route::get('traffic', 'FeatureLogController@revealTraffic');
+        Route::get('latest_data', 'FeatureLogController@revealLatestData');
+    });
 });
