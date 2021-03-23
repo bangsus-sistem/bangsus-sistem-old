@@ -2,22 +2,24 @@
 
 namespace App\Auth;
 
+use App\Database\Models\Auth\User;
+
 abstract class Permission
 {
     /**
      * @var \Illuminate\Http\Request
      */
-    private $request;
+    protected $request;
 
     /**
      * @var \App\Database\Models\Auth\User
      */
-    private $user;
+    protected $user;
 
     /**
      * @var bool
      */
-    private $result;
+    protected $result;
 
     /**
      * @param  \Illuminate\Http\Request  $request
@@ -40,7 +42,7 @@ abstract class Permission
     /**
      * @return void
      */
-    public function boot()
+    protected function boot()
     {
         //
     }

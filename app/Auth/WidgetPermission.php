@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Abstracts\Http;
+namespace App\Auth;
 
 use App\Database\Models\Auth\User;
 use App\Database\Models\Auth\RoleWidget;
@@ -16,7 +16,7 @@ class WidgetPermission extends Permission
     /**
      * @return void
      */
-    private function boot()
+    protected function boot()
     {
         $this->setRequestedWidget();
     }

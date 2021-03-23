@@ -17,7 +17,7 @@ class FeaturePermission extends Permission
     /**
      * @return void
      */
-    private function boot()
+    protected function boot()
     {
         $this->setRequestedFeature();
     }

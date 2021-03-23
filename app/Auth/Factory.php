@@ -5,14 +5,19 @@ namespace App\Auth;
 class Factory
 {
     /**
+     * @var string
+     */
+    protected static $namespace = '\\App\\Auth\\';
+
+    /**
      * @param  \Illuminate\Http\Request  $request
      * @return \App\Auth\Permission
      */
     public static function make($request)
     {
         $permissionType = $request->permissionType;
-        $permissionClass = ucfirst($permissionType).'Permission';
+        $permissionClass = static::$namespace.ucfirst($permissionType).'Permission';
 
-        return new $permission($request);
+        return new $permissionClass($request);
     }
 }
