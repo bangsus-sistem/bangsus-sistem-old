@@ -10,6 +10,8 @@ use App\Http\Requests\Res\Logs\AuthenticationLog\{
     StoreTokenRequest,
     StoreLogoutRequest,
     DestroyRequest,
+    RevealTrafficRequest,
+    RevealLatestDataRequest,
 };
 use App\Http\Jobs\Logs\AuthenticationLog\{
     StoreLoginJob,
@@ -21,6 +23,10 @@ use App\Http\Services\Ajax\{
     LoginService,
     TokenService,
     LogoutService,
+};
+use App\Widgets\Logs\AuthenticationLog\{
+    TrafficWidget,
+    LatestDataWidget,
 };
 use App\Database\Models\Logs\AuthenticationLog;
 use App\Transformers\SingleCollections\Logs\AuthenticationLogSingleCollection;
@@ -138,5 +144,15 @@ class AuthenticationLogController extends Controller
             $this->dispatch(new DestroyJob, $request),
             204
         );
+    }
+
+    /**
+     * @param  \App\Http\Request\Res\Logs\AuthenticationLog\RevealTrafficRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function revealTraffic(RevealTrafficRequest $request)
+    {
+        return response()
+            ->json($this->reveal(new TrafficWidget, $request), 200);
     }
 }
