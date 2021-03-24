@@ -3270,7 +3270,10 @@ __webpack_require__.r(__webpack_exports__);
       meta: {
         source: '/ajax/logs/authentication_log/widget/traffic'
       },
-      data: {}
+      data: {},
+      query: {
+        'timestamp': '300'
+      }
     };
   },
   mixins: [_mixins__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -3340,7 +3343,10 @@ __webpack_require__.r(__webpack_exports__);
       meta: {
         source: '/ajax/logs/feature_log/widget/traffic'
       },
-      data: {}
+      data: {},
+      query: {
+        'timestamp': '300'
+      }
     };
   },
   mixins: [_mixins__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -5826,11 +5832,26 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.startWidgetLoading();
-      axios.get(this.meta.source).then(function (res) {
-        _this.data = res.data;
+      this.requestData().then(function (res) {
+        _this.setData(res);
 
         _this.stopWidgetLoading();
       });
+    },
+    reloadData: function reloadData() {
+      var _this2 = this;
+
+      this.requestData().then(function (res) {
+        return _this2.setData(res);
+      });
+    },
+    requestData: function requestData() {
+      return axios.get(this.meta.source, {
+        params: this.query
+      });
+    },
+    setData: function setData(res) {
+      this.data = res.data;
     }
   },
   created: function created() {
@@ -48510,25 +48531,77 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "form-group mt-4" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", [_vm._v("5 menit terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("15 menit terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("1 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("2 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("6 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("12 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("24 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("3 hari terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("1 minggu terakhir")])
-        ])
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.query.timestamp,
+                expression: "query.timestamp"
+              }
+            ],
+            staticClass: "form-control form-control-sm",
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.query,
+                    "timestamp",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                },
+                _vm.reloadData
+              ]
+            }
+          },
+          [
+            _c("option", { attrs: { value: "300" } }, [
+              _vm._v("5 menit terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "900" } }, [
+              _vm._v("15 menit terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3600" } }, [
+              _vm._v("1 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "7200" } }, [
+              _vm._v("2 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "21600" } }, [
+              _vm._v("6 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "43200" } }, [
+              _vm._v("12 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "86400" } }, [
+              _vm._v("24 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "259200" } }, [
+              _vm._v("3 hari terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "604800" } }, [
+              _vm._v("1 minggu terakhir")
+            ])
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("bsb-row", [
@@ -48596,25 +48669,77 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "form-group mt-4" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", [_vm._v("5 menit terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("15 menit terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("1 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("2 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("6 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("12 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("24 jam terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("3 hari terakhir")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("1 minggu terakhir")])
-        ])
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.query.timestamp,
+                expression: "query.timestamp"
+              }
+            ],
+            staticClass: "form-control form-control-sm",
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.query,
+                    "timestamp",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                },
+                _vm.reloadData
+              ]
+            }
+          },
+          [
+            _c("option", { attrs: { value: "300" } }, [
+              _vm._v("5 menit terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "900" } }, [
+              _vm._v("15 menit terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3600" } }, [
+              _vm._v("1 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "7200" } }, [
+              _vm._v("2 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "21600" } }, [
+              _vm._v("6 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "43200" } }, [
+              _vm._v("12 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "86400" } }, [
+              _vm._v("24 jam terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "259200" } }, [
+              _vm._v("3 hari terakhir")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "604800" } }, [
+              _vm._v("1 minggu terakhir")
+            ])
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("bsb-row", [

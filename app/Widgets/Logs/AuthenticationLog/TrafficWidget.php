@@ -3,6 +3,7 @@
 namespace App\Widgets\Logs\AuthenticationLog;
 
 use App\Abstracts\Widget;
+use Carbon\Carbon;
 
 class TrafficWidget extends Widget
 {
@@ -12,7 +13,12 @@ class TrafficWidget extends Widget
      */
     public function compute($request)
     {
-        $authenticationLogs = \DB::table('authentication_logs');
+        $endTimestamp = Carbon::now()->toImmutable();
+        $startTimestamp = $endTimestamp->subSeconds(
+            $request->query('timestamp')
+        );
+        $authenticationLogs = \DB::table('authentication_logs')
+            ->whereBetween('created_at', [$startTimestamp, $endTimestamp]);
         
         $this->data = [
             'users_count' => with(clone $authenticationLogs)

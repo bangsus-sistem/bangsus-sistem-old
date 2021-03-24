@@ -12,7 +12,12 @@ class TrafficWidget extends Widget
      */
     public function compute($request)
     {
-        $featureLogs = \DB::table('feature_logs');
+        $endTimestamp = Carbon::now()->toImmutable();
+        $startTimestamp = $endTimestamp->subSeconds(
+            $request->query('timestamp')
+        );
+        $featureLogs = \DB::table('feature_logs')
+            ->whereBetween('created_at', [$startTimestamp, $endTimestamp]);
         
         $this->data = [
             'requests_count' => with(clone $featureLogs)

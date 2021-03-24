@@ -7,16 +7,16 @@
         title="Traffic Login User"
     >
         <div class="form-group mt-4">
-            <select class="form-control form-control-sm">
-                <option>5 menit terakhir</option>
-                <option>15 menit terakhir</option>
-                <option>1 jam terakhir</option>
-                <option>2 jam terakhir</option>
-                <option>6 jam terakhir</option>
-                <option>12 jam terakhir</option>
-                <option>24 jam terakhir</option>
-                <option>3 hari terakhir</option>
-                <option>1 minggu terakhir</option>
+            <select class="form-control form-control-sm" v-model="query.timestamp" @change="reloadData">
+                <option value="300">5 menit terakhir</option>
+                <option value="900">15 menit terakhir</option>
+                <option value="3600">1 jam terakhir</option>
+                <option value="7200">2 jam terakhir</option>
+                <option value="21600">6 jam terakhir</option>
+                <option value="43200">12 jam terakhir</option>
+                <option value="86400">24 jam terakhir</option>
+                <option value="259200">3 hari terakhir</option>
+                <option value="604800">1 minggu terakhir</option>
             </select>
         </div>
         <bsb-row>
@@ -50,6 +50,9 @@ export default {
                 source: '/ajax/logs/authentication_log/widget/traffic'
             },
             data: {},
+            query: {
+                'timestamp': '300',
+            },
         }
     },
     mixins: [ mixins ],
