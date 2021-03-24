@@ -17,12 +17,20 @@ export default {
         },
         fetchData() {
             this.startWidgetLoading()
-            axios.get(this.meta.source)
-                .then(res => {
-                    this.data = res.data
-                    this.stopWidgetLoading()
-                })
+            this.requestData().then(res => {
+                this.setData(res)
+                this.stopWidgetLoading()
+            })
         },
+        reloadData() {
+            this.requestData().then(res => this.setData(res))
+        },
+        requestData() {
+            return axios.get(this.meta.source, { params: this.query })
+        },
+        setData(res) {
+            this.data = res.data
+        }
     },
     created() {
         this.fetchData()
