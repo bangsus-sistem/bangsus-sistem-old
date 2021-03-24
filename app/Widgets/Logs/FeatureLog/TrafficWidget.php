@@ -3,6 +3,7 @@
 namespace App\Widgets\Logs\FeatureLog;
 
 use App\Abstracts\Widget;
+use Carbon\Carbon;
 
 class TrafficWidget extends Widget
 {
