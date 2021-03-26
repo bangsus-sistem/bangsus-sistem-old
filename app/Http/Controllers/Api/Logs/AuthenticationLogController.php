@@ -7,8 +7,14 @@ use App\Http\Requests\Res\Logs\AuthenticationLog\{
     IndexRequest,
     ShowRequest,
     DestroyRequest,
+    RevealTrafficRequest,
+    RevealLatestDataRequest,
 };
 use App\Http\Jobs\Logs\AuthenticationLog\DestroyJob;
+use App\Widgets\Logs\AuthenticationLog\{
+    TrafficWidget,
+    LatestDataWidget,
+};
 use App\Database\Models\Logs\AuthenticationLog;
 use App\Transformers\SingleCollections\Logs\AuthenticationLogSingleCollection;
 use App\Transformers\PaginatedCollections\Logs\AuthenticationLogPaginatedCollection;
@@ -74,5 +80,25 @@ class AuthenticationLogController extends Controller
             $this->dispatch(new DestroyJob, $request),
             204
         );
+    }
+
+    /**
+     * @param  \App\Http\Request\Res\Logs\AuthenticationLog\RevealTrafficRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function revealTraffic(RevealTrafficRequest $request)
+    {
+        return response()
+            ->json($this->reveal(new TrafficWidget, $request), 200);
+    }
+
+    /**
+     * @param  \App\Http\Request\Res\Logs\AuthenticationLog\RevealLatestDataRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function revealLatestData(RevealLatestDataRequest $request)
+    {
+        return response()
+            ->json($this->reveal(new LatestDataWidget, $request), 200);
     }
 }

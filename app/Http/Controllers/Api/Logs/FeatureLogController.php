@@ -7,8 +7,14 @@ use App\Http\Requests\Res\Logs\FeatureLog\{
     IndexRequest,
     ShowRequest,
     DestroyRequest,
+    RevealTrafficRequest,
+    RevealLatestDataRequest,
 };
 use App\Http\Jobs\Logs\FeatureLog\DestroyJob;
+use App\Widgets\Logs\FeatureLog\{
+    TrafficWidget,
+    LatestDataWidget,
+};
 use App\Database\Models\Logs\FeatureLog;
 use App\Transformers\SingleCollections\Logs\FeatureLogSingleCollection;
 use App\Transformers\PaginatedCollections\Logs\FeatureLogPaginatedCollection;
@@ -74,5 +80,25 @@ class FeatureLogController extends Controller
             $this->dispatch(new DestroyJob, $request),
             204
         );
+    }
+
+    /**
+     * @param  \App\Http\Request\Res\Logs\FeatureLog\RevealTrafficRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function revealTraffic(RevealTrafficRequest $request)
+    {
+        return response()
+            ->json($this->reveal(new TrafficWidget, $request), 200);
+    }
+
+    /**
+     * @param  \App\Http\Request\Res\Logs\FeatureLog\RevealLatestDataRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function revealLatestData(RevealLatestDataRequest $request)
+    {
+        return response()
+            ->json($this->reveal(new LatestDataWidget, $request), 200);
     }
 }

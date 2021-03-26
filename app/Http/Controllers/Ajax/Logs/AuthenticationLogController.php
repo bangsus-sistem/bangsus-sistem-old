@@ -155,4 +155,14 @@ class AuthenticationLogController extends Controller
         return response()
             ->json($this->reveal(new TrafficWidget, $request), 200);
     }
+
+    /**
+     * @param  \App\Http\Request\Res\Logs\AuthenticationLog\RevealLatestDataRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function revealLatestData(RevealLatestDataRequest $request)
+    {
+        return response()
+            ->json($this->reveal(new LatestDataWidget, $request), 200);
+    }
 }
