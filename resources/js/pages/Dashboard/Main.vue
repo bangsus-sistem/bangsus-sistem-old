@@ -1,5 +1,5 @@
 <template>
-    <Layout :breadcrumbs="msc.breadcrumbs">
+    <Layout :breadcrumbs="msc.breadcrumbs" active="dashboard">
         <!-- Mobile -->
         <template v-slot:mobile>
             

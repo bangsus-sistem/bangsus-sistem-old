@@ -8,7 +8,7 @@
                 <bsb-screen-mode-wrapper label="Mode Mobile" />
             </template>
             <template v-slot:desktop>
-                <Sidebar />
+                <Sidebar :active="active" />
                 <bsb-page-wrapper>
                     <Navbar />
                     <Breadcrumb :breadcrumbs="breadcrumbs" />
@@ -40,6 +40,10 @@ export default {
         breadcrumbs: {
             required: true,
             type: Array,
+        },
+        active: {
+            type: String,
+            default: '',
         },
     }
 }

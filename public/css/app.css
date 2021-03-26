@@ -30945,6 +30945,93 @@ readers do not read off random characters that represent icons */
   padding: 20px;
 }
 
+.sidebar-items {
+  padding-top: 20px;
+}
+
+.sidebar-items .sidebar-item {
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+  color: #9ca3af;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.sidebar-items .sidebar-item.active {
+  color: #fff;
+}
+
+.sidebar-items .sidebar-item.active > a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+}
+
+.sidebar-items .sidebar-item.active > a:hover {
+  color: #fff;
+}
+
+.sidebar-items .sidebar-item > a {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+}
+
+.sidebar-items .sidebar-item > a:hover {
+  color: #d1d5db;
+}
+
+.sidebar-items .sidebar-item .sidebar-icon {
+  margin-right: 15px;
+}
+
+.sidebar-items .sidebar-item .sidebar-toggle-icon {
+  position: absolute;
+  right: 0;
+}
+
+.sidebar-items .sidebar-item .sidebar-collapse {
+  display: none;
+}
+
+.sidebar-items .sidebar-item .sidebar-collapse.active {
+  display: block;
+}
+
+.sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item {
+  padding-left: 35px;
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item.active {
+  color: #fff;
+}
+
+.sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item.active > a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+}
+
+.sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item.active > a:hover {
+  color: #fff;
+}
+
+.sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item > a {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+}
+
+.sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item > a:hover {
+  color: #d1d5db;
+}
+
 .page-wrapper {
   padding-left: 250px;
 }

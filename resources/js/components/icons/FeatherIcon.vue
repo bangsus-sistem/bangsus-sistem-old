@@ -11,7 +11,7 @@ export default {
         },
         color: {
             type: String,
-            default: 'gray-900',
+            default: '',
         },
         size: {
             type: Number,
@@ -26,7 +26,7 @@ export default {
             })
         },
         className() {
-            return 'text-' + this.color
+            return 'text-' + this.color + ' d-flex align-items-center'
         }
     }
 }

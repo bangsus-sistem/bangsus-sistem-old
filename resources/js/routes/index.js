@@ -22,4 +22,10 @@ export default [
         component: page('Dashboard'),
         beforeEnter: middleware(appMiddleware),
     },
+    {
+        path: '/system/role',
+        name: 'system.role',
+        component: page('System/Role'),
+        beforeEnter: middleware(appMiddleware),
+    },
 ]
