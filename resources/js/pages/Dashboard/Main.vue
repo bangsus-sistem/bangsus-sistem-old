@@ -1,5 +1,5 @@
 <template>
-    <Layout>
+    <Layout :breadcrumbs="msc.breadcrumbs">
         <!-- Mobile -->
         <template v-slot:mobile>
             
@@ -28,5 +28,16 @@ export default {
         AuthenticationLogTraffic,
         LatestAuthenticationLog,
     },
+    data() {
+        return {
+            msc: {
+                breadcrumbs: [
+                    {
+                        label: 'Dashboard',
+                    },
+                ]
+            }
+        }
+    }
 }
 </script>

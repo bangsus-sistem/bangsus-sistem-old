@@ -11,6 +11,7 @@
                 <Sidebar />
                 <bsb-page-wrapper>
                     <Navbar />
+                    <Breadcrumb :breadcrumbs="breadcrumbs" />
                     <bsb-container-fluid class="px-4 pt-4">
                         <slot name="desktop" />
                     </bsb-container-fluid>
@@ -26,12 +27,20 @@
 import Flashers from './sections/Flashers'
 import Sidebar from './sections/Sidebar'
 import Navbar from './sections/Navbar'
+import Breadcrumb from './sections/Breadcrumb'
 
 export default {
     components: {
         Flashers,
         Sidebar,
         Navbar,
+        Breadcrumb,
+    },
+    props: {
+        breadcrumbs: {
+            required: true,
+            type: Array,
+        },
     }
 }
 </script>
