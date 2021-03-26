@@ -1,67 +1,53 @@
 <template>
-    <WidgetWrapper module-ref="authentication_log" widget-type-ref="latest_data" class="col-md-12 col-lg-8 col-xl-6">
-        <bsb-card>
-            <bsb-card-body>
-                <h5 class="card-title">Login Terakhir</h5>
-                    <div class="table-responsive">
-                        <table class="table table-hover table-sm">
-                            <thead>
-                                <th>#</th>
-                                <th>Nama Lengkap</th>
-                                <th>Username</th>
-                                <th>Login/Logout</th>
-                                <th>Waktu</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Superadmin Bangsus</td>
-                                    <td>superadmin@bangsus</td>
-                                    <td>Login</td>
-                                    <td>19 September 2020 00:00:00</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Superadmin Bangsus</td>
-                                    <td>superadmin@bangsus</td>
-                                    <td>Login</td>
-                                    <td>19 September 2020 00:00:00</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Superadmin Bangsus</td>
-                                    <td>superadmin@bangsus</td>
-                                    <td>Login</td>
-                                    <td>19 September 2020 00:00:00</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Superadmin Bangsus</td>
-                                    <td>superadmin@bangsus</td>
-                                    <td>Login</td>
-                                    <td>19 September 2020 00:00:00</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Superadmin Bangsus</td>
-                                    <td>superadmin@bangsus</td>
-                                    <td>Login</td>
-                                    <td>19 September 2020 00:00:00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-            </bsb-card-body>
-        </bsb-card>
+    <WidgetWrapper
+        module-ref="authentication_log"
+        widget-type-ref="latest_data"
+        class="col-md-12 col-lg-8 col-xl-6"
+        :loading="state.widget.loading"
+        title="Log Autentikasi Terakhir"
+    >
+        <div class="table-responsive">
+            <table class="table table-hover table-sm">
+                <thead>
+                    <th>#</th>
+                    <th>Nama Lengkap</th>
+                    <th>Username</th>
+                    <th>Login/Logout</th>
+                    <th>Waktu</th>
+                </thead>
+                <tbody>
+                    <tr v-for="(authenticationLog, i) in data['authentication_logs']" :key="i">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ authenticationLog['full_name'] }}</td>
+                        <td>{{ authenticationLog['username'] }}</td>
+                        <td>{{ authenticationLog['state'] }}</td>
+                        <td>{{ standardDatetime(authenticationLog['created_at']) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </WidgetWrapper>
 </template>
 
 <script>
 import WidgetWrapper from '../sections/WidgetWrapper'
+import mixins from '../mixins'
 
 export default {
     components: {
         WidgetWrapper,
-    }
+    },
+    data() {
+        return {
+            meta: {
+                source: '/ajax/logs/authentication_log/widget/latest_data'
+            },
+            data: {},
+            query: {
+                'timestamp': '300',
+            },
+        }
+    },
+    mixins: [ mixins ]
 }
 </script>

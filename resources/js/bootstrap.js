@@ -42,3 +42,5 @@ window.feather = require('feather-icons');
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+window.moment = require('moment')

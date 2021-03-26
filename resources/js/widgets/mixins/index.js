@@ -30,7 +30,11 @@ export default {
         },
         setData(res) {
             this.data = res.data
-        }
+        },
+        standardDatetime(datetime = null) {
+            moment.locale('id')
+            return datetime == null ? '-' : moment(datetime).format('dddd, Do MMMM YYYY H:mm:ss')
+        },
     },
     created() {
         this.fetchData()
