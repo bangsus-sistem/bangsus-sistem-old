@@ -14,7 +14,7 @@ export default {
     props: {
         active: {
             required: true,
-        }
-    }
+        },
+    },
 }
 </script>

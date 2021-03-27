@@ -4,7 +4,7 @@
         <bsb-sidebar-items>
             <bsb-sidebar-item
                 :active="sidebar.active"
-                v-for="(sidebar, i) in authenticatedSidebars"
+                v-for="(sidebar, i) in sidebars"
                 :key="i"
             >
                 <template v-if="sidebar.children">
@@ -51,6 +51,7 @@ export default {
                     title: 'Dashboard',
                     icon: 'layout',
                     route: { name: 'dashboard' },
+                    active: false,
                 },
                 {
                     title: 'Sistem',
@@ -62,7 +63,8 @@ export default {
                             access: {
                                 moduleRef: 'role',
                                 actionRef: 'index',
-                            }
+                            },
+                            active: false,
                         },
                         {
                             title: 'User',
@@ -70,60 +72,32 @@ export default {
                             access: {
                                 moduleRef: 'user',
                                 actionRef: 'index',
-                            }
+                            },
+                            active: false,
                         },
                     ],
                     collapse: false,
                 },
+                {
+                    title: 'Master',
+                    icon: 'tool',
+                    children: [
+                        {
+                            title: 'Pen',
+                            route: { name: '' },
+                            active: false,
+                        },
+                    ],
+                    collapse: false,
+                }
             ],
             collapsedIndex: null,
         }
     },
     methods: {
         initiateSidebar() {
-            this.sidebars.forEach((sidebar, i) => {
-                if (sidebar.children) {
-                    sidebar.children.forEach((sidebarChildren, j) => {
-                        if (sidebarChildren.route.name == this.active) {
-                            this.toggleCollapseSidebar(i)
-                            this.activateSidebar(i, j)
-                        }
-                    })
-                } else {
-                    if (sidebar.route.name == this.active) {
-                        this.activateSidebar(i)
-                    }
-                }
-            })
-        },
-        toggleCollapseSidebar(i) {
-            if (this.collapsedIndex == i) {
-                this.sidebars[i].collapse = false
-                this.collapsedIndex = null
-            } else {
-                this.sidebars[i].collapse = true
-                this.collapsedIndex = i
-            }
-        },
-        activateSidebar(i, j = null) {
-            this.sidebars[i].active = true
-            if (j != null) this.sidebars[i].children[j].active = true
-        },
-        getFeatureAuth() {
-            this.featureAuth = this.$store.getters['utils/auth/features']
-        },
-        findFeature(moduleRef, actionRef) {
-            return lodash.find(this.featureAuth, (feature) => {
-                return feature['module']['ref'] == moduleRef && feature['action']['ref'] == actionRef
-            })
-        }
-    },
-    computed: {
-        authenticatedSidebars() {
-            const sidebars = this.sidebars
-
             let computedSidebars = []
-            sidebars.forEach(sidebar=> {
+            this.sidebars.forEach(sidebar=> {
                 // Check if the sidebar has children.
                 if (sidebar.children) {
 
@@ -160,7 +134,9 @@ export default {
                 }
             })
 
-            computedSidebars.forEach((sidebar, i) => {
+            this.sidebar = computedSidebars
+
+            this.sidebar.forEach((sidebar, i) => {
                 if (sidebar.children) {
                     sidebar.children.forEach((sidebarChildren, j) => {
                         if (sidebarChildren.route.name == this.active) {
@@ -174,12 +150,34 @@ export default {
                     }
                 }
             })
-
-            return computedSidebars
+        },
+        toggleCollapseSidebar(i) {
+            if (this.collapsedIndex == i) {
+                this.sidebars[i].collapse = false
+                this.collapsedIndex = null
+            } else {
+                this.sidebars[i].collapse = true
+                this.collapsedIndex = i
+            }
+        },
+        activateSidebar(i, j = null) {
+            this.sidebars[i].active = true
+            if (j != null) {
+                this.sidebars[i].children[j].active = true
+            }
+        },
+        getFeatureAuth() {
+            this.featureAuth = this.$store.getters['utils/auth/features']
+        },
+        findFeature(moduleRef, actionRef) {
+            return lodash.find(this.featureAuth, (feature) => {
+                return feature['module']['ref'] == moduleRef && feature['action']['ref'] == actionRef
+            })
         }
     },
     created() {
         this.getFeatureAuth()
+        this.initiateSidebar()
     }
 }
 </script>

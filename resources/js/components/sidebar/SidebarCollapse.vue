@@ -14,7 +14,6 @@ export default {
     props: {
         collapse: {
             required: true,
-            type: Boolean,
         },
     }
 }
