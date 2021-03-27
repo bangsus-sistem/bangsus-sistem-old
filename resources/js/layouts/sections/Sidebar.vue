@@ -58,6 +58,30 @@ export default {
                     icon: 'tool',
                     children: [
                         {
+                            title: 'Package',
+                            route: { name: 'system.package' },
+                            access: {
+                                moduleRef: 'package',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Modul',
+                            route: { name: 'system.module' },
+                            access: {
+                                moduleRef: 'module',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Aksi',
+                            route: { name: 'system.action' },
+                            access: {
+                                moduleRef: 'action',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
                             title: 'Role',
                             route: { name: 'system.role' },
                             access: {
