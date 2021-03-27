@@ -1,12 +1,15 @@
 <template>
     <div>
         <bsb-screen>
+            <!-- Mobile -->
             <template v-slot:mobile>
+                <Sidebar :active="active"/>
                 <div class="px-5">
                     <slot name="mobile" />
                 </div>
                 <bsb-screen-mode-wrapper label="Mode Mobile" />
             </template>
+            <!-- Desktop -->
             <template v-slot:desktop>
                 <Sidebar :active="active" />
                 <bsb-page-wrapper>

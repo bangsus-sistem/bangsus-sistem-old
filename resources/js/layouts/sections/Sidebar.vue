@@ -1,49 +1,38 @@
 <template>
     <bsb-sidebar>
         <bsb-sidebar-title>Bangsus Sistem</bsb-sidebar-title>
-        <div class="sidebar-items">
-            <div
-                :class="{
-                    'sidebar-item': true,
-                    'active': sidebar.active
-                }"
+        <bsb-sidebar-items>
+            <bsb-sidebar-item
+                :active="sidebar.active"
                 v-for="(sidebar, i) in sidebars"
                 :key="i"
             >
                 <template v-if="sidebar.children">
                     <a href="#" @click="toggleCollapseSidebar(i)">
-                        <bsb-feather-icon :icon="sidebar.icon" :size="20" class="sidebar-icon" />
-                        <span class="sidebar-title">
-                            {{ sidebar.label }}
-                        </span>
-                        <template>
-                            <bsb-feather-icon icon="chevron-up" class="sidebar-toggle-icon" v-if="sidebar.collapse" />
-                            <bsb-feather-icon icon="chevron-down" class="sidebar-toggle-icon" v-else />
-                        </template>
+                        <bsb-sidebar-item-icon :icon="sidebar.icon" />
+                        <bsb-sidebar-item-title :title="sidebar.title" />
+                        <bsb-sidebar-item-toggle-icon :collapse="sidebar.collapse" />
                     </a>
-                    <div :class="{ 'sidebar-collapse': true, 'active': sidebar.collapse }">
-                        <div
-                            :class="{
-                                'sidebar-collapse-item': true,
-                                'active': sidebarChildren.active
-                            }"
+                    <bsb-sidebar-collapse
+                        :collapse="sidebar.collapse"
+                    >
+                        <bsb-sidebar-collapse-item
+                            :active="sidebarChildren.active"
                             v-for="(sidebarChildren, i) in sidebar.children"
                             :key="i"
                         >
                             <router-link :to="sidebarChildren.route">
-                                {{ sidebarChildren.label }}
+                                {{ sidebarChildren.title }}
                             </router-link>
-                        </div>
-                    </div>
+                        </bsb-sidebar-collapse-item>
+                    </bsb-sidebar-collapse>
                 </template>
                 <router-link :to="sidebar.route" v-else>
-                    <bsb-feather-icon :icon="sidebar.icon" :size="20" class="sidebar-icon" />
-                    <span class="sidebar-title">
-                        {{ sidebar.label }}
-                    </span>
+                    <bsb-sidebar-item-icon :icon="sidebar.icon" />
+                    <bsb-sidebar-item-title :title="sidebar.title" />
                 </router-link>
-            </div>
-        </div>
+            </bsb-sidebar-item>
+        </bsb-sidebar-items>
     </bsb-sidebar>
 </template>
 
@@ -59,22 +48,22 @@ export default {
         return {
             sidebars: [
                 {
-                    label: 'Dashboard',
+                    title: 'Dashboard',
                     icon: 'layout',
                     route: { name: 'dashboard' },
                 },
                 {
-                    label: 'Sistem',
+                    title: 'Sistem',
                     icon: 'tool',
                     route: { name: 'system' },
                     children: [
-                        { label: 'Role', route: { name: 'system.role' } },
-                        { label: 'User', route: { name: 'user' } },
+                        { title: 'Role', route: { name: 'system.role' } },
+                        { title: 'User', route: { name: 'user' } },
                     ],
                     collapse: false,
                 },
                 {
-                    label: 'Master',
+                    title: 'Master',
                     icon: 'database',
                     route: { name: 'master' },
                 },
@@ -83,6 +72,22 @@ export default {
         }
     },
     methods: {
+        initiateSidebar() {
+            this.sidebars.forEach((sidebar, i) => {
+                if (sidebar.children) {
+                    sidebar.children.forEach((sidebarChildren, j) => {
+                        if (sidebarChildren.route.name == this.active) {
+                            this.toggleCollapseSidebar(i)
+                            this.activateSidebar(i, j)
+                        }
+                    })
+                } else {
+                    if (sidebar.route.name == this.active) {
+                        this.activateSidebar(i)
+                    }
+                }
+            })
+        },
         toggleCollapseSidebar(i) {
             if (this.collapsedIndex == i) {
                 this.sidebars[i].collapse = false
@@ -95,23 +100,10 @@ export default {
         activateSidebar(i, j = null) {
             this.sidebars[i].active = true
             if (j != null) this.sidebars[i].children[j].active = true
-        }
+        },
     },
     created() {
-        this.sidebars.forEach((sidebar, i) => {
-            if (sidebar.children) {
-                sidebar.children.forEach((sidebarChildren, j) => {
-                    if (sidebarChildren.route.name == this.active) {
-                        this.toggleCollapseSidebar(i)
-                        this.activateSidebar(i, j)
-                    }
-                })
-            } else {
-                if (sidebar.route.name == this.active) {
-                    this.activateSidebar(i)
-                }
-            }
-        })
+        this.initiateSidebar()
     }
 }
 </script>
