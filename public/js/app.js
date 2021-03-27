@@ -3142,6 +3142,33 @@ __webpack_require__.r(__webpack_exports__);
         title: 'Sistem',
         icon: 'tool',
         children: [{
+          title: 'Package',
+          route: {
+            name: 'system.package'
+          },
+          access: {
+            moduleRef: 'package',
+            actionRef: 'index'
+          }
+        }, {
+          title: 'Modul',
+          route: {
+            name: 'system.module'
+          },
+          access: {
+            moduleRef: 'module',
+            actionRef: 'index'
+          }
+        }, {
+          title: 'Aksi',
+          route: {
+            name: 'system.action'
+          },
+          access: {
+            moduleRef: 'action',
+            actionRef: 'index'
+          }
+        }, {
           title: 'Role',
           route: {
             name: 'system.role'
@@ -3645,6 +3672,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _layouts_Application__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../layouts/Application */ "./resources/js/layouts/Application.vue");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -71435,7 +71469,23 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("Layout", {
-    attrs: { breadcrumbs: _vm.msc.breadcrumbs, active: "system.role" }
+    attrs: { breadcrumbs: _vm.msc.breadcrumbs, active: "system.role" },
+    scopedSlots: _vm._u([
+      {
+        key: "mobile",
+        fn: function() {
+          return undefined
+        },
+        proxy: true
+      },
+      {
+        key: "desktop",
+        fn: function() {
+          return [_c("h3", [_vm._v("Role")])]
+        },
+        proxy: true
+      }
+    ])
   })
 }
 var staticRenderFns = []
