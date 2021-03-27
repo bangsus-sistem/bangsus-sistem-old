@@ -2661,8 +2661,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     collapse: {
-      required: true,
-      type: Boolean
+      required: true
     }
   }
 });
@@ -2807,8 +2806,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     collapse: {
-      type: Boolean,
-      required: true
+      type: Boolean
     }
   }
 });
@@ -3138,7 +3136,8 @@ __webpack_require__.r(__webpack_exports__);
         icon: 'layout',
         route: {
           name: 'dashboard'
-        }
+        },
+        active: false
       }, {
         title: 'Sistem',
         icon: 'tool',
@@ -3150,7 +3149,8 @@ __webpack_require__.r(__webpack_exports__);
           access: {
             moduleRef: 'role',
             actionRef: 'index'
-          }
+          },
+          active: false
         }, {
           title: 'User',
           route: {
@@ -3159,7 +3159,19 @@ __webpack_require__.r(__webpack_exports__);
           access: {
             moduleRef: 'user',
             actionRef: 'index'
-          }
+          },
+          active: false
+        }],
+        collapse: false
+      }, {
+        title: 'Master',
+        icon: 'tool',
+        children: [{
+          title: 'Pen',
+          route: {
+            name: ''
+          },
+          active: false
         }],
         collapse: false
       }],
@@ -3170,7 +3182,41 @@ __webpack_require__.r(__webpack_exports__);
     initiateSidebar: function initiateSidebar() {
       var _this = this;
 
-      this.sidebars.forEach(function (sidebar, i) {
+      var computedSidebars = [];
+      this.sidebars.forEach(function (sidebar) {
+        // Check if the sidebar has children.
+        if (sidebar.children) {
+          // Stack the sidebar children.
+          var computedSidebarChildren = [];
+          sidebar.children.forEach(function (sidebarChildren) {
+            if (sidebarChildren.access) {
+              var feature = _this.findFeature(sidebarChildren.access.moduleRef, sidebarChildren.access.actionRef);
+
+              if (feature) computedSidebarChildren.push(sidebarChildren);
+            } else {
+              computedSidebarChildren.push(sidebarChildren);
+            }
+          }); // Evaluate the count of accessible sidebar children.
+          // If none then we won't show the sidebar at all.
+
+          if (computedSidebarChildren.length > 0) {
+            sidebar.children = computedSidebarChildren;
+            computedSidebars.push(sidebar);
+          }
+        } else {
+          // If the sidebar has access then we simply evaluate.
+          // If none, then add it directly.
+          if (sidebar.access) {
+            var feature = _this.findFeature(sidebar.access.moduleRef, sidebar.access.actionRef);
+
+            if (feature) computedSidebars.push(sidebar);
+          } else {
+            computedSidebars.push(sidebar);
+          }
+        }
+      });
+      this.sidebar = computedSidebars;
+      this.sidebar.forEach(function (sidebar, i) {
         if (sidebar.children) {
           sidebar.children.forEach(function (sidebarChildren, j) {
             if (sidebarChildren.route.name == _this.active) {
@@ -3198,7 +3244,10 @@ __webpack_require__.r(__webpack_exports__);
     activateSidebar: function activateSidebar(i) {
       var j = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
       this.sidebars[i].active = true;
-      if (j != null) this.sidebars[i].children[j].active = true;
+
+      if (j != null) {
+        this.sidebars[i].children[j].active = true;
+      }
     },
     getFeatureAuth: function getFeatureAuth() {
       this.featureAuth = this.$store.getters['utils/auth/features'];
@@ -3209,64 +3258,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  computed: {
-    authenticatedSidebars: function authenticatedSidebars() {
-      var _this2 = this;
-
-      var sidebars = this.sidebars;
-      var computedSidebars = [];
-      sidebars.forEach(function (sidebar) {
-        // Check if the sidebar has children.
-        if (sidebar.children) {
-          // Stack the sidebar children.
-          var computedSidebarChildren = [];
-          sidebar.children.forEach(function (sidebarChildren) {
-            if (sidebarChildren.access) {
-              var feature = _this2.findFeature(sidebarChildren.access.moduleRef, sidebarChildren.access.actionRef);
-
-              if (feature) computedSidebarChildren.push(sidebarChildren);
-            } else {
-              computedSidebarChildren.push(sidebarChildren);
-            }
-          }); // Evaluate the count of accessible sidebar children.
-          // If none then we won't show the sidebar at all.
-
-          if (computedSidebarChildren.length > 0) {
-            sidebar.children = computedSidebarChildren;
-            computedSidebars.push(sidebar);
-          }
-        } else {
-          // If the sidebar has access then we simply evaluate.
-          // If none, then add it directly.
-          if (sidebar.access) {
-            var feature = _this2.findFeature(sidebar.access.moduleRef, sidebar.access.actionRef);
-
-            if (feature) computedSidebars.push(sidebar);
-          } else {
-            computedSidebars.push(sidebar);
-          }
-        }
-      });
-      computedSidebars.forEach(function (sidebar, i) {
-        if (sidebar.children) {
-          sidebar.children.forEach(function (sidebarChildren, j) {
-            if (sidebarChildren.route.name == _this2.active) {
-              _this2.toggleCollapseSidebar(i);
-
-              _this2.activateSidebar(i, j);
-            }
-          });
-        } else {
-          if (sidebar.route.name == _this2.active) {
-            _this2.activateSidebar(i);
-          }
-        }
-      });
-      return computedSidebars;
-    }
-  },
   created: function created() {
     this.getFeatureAuth();
+    this.initiateSidebar();
   }
 });
 
@@ -70835,7 +70829,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "bsb-sidebar-items",
-        _vm._l(_vm.authenticatedSidebars, function(sidebar, i) {
+        _vm._l(_vm.sidebars, function(sidebar, i) {
           return _c(
             "bsb-sidebar-item",
             { key: i, attrs: { active: sidebar.active } },
