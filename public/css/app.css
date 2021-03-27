@@ -30998,12 +30998,16 @@ readers do not read off random characters that represent icons */
 
 .sidebar .sidebar-items .sidebar-item .sidebar-collapse.active {
   display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .sidebar .sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item {
   padding-left: 35px;
   font-size: 14px;
   font-weight: lighter;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .sidebar .sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item.active {
