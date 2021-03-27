@@ -78,18 +78,6 @@ export default {
                     ],
                     collapse: false,
                 },
-                {
-                    title: 'Master',
-                    icon: 'tool',
-                    children: [
-                        {
-                            title: 'Pen',
-                            route: { name: '' },
-                            active: false,
-                        },
-                    ],
-                    collapse: false,
-                }
             ],
             collapsedIndex: null,
         }

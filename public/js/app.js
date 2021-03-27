@@ -3163,17 +3163,6 @@ __webpack_require__.r(__webpack_exports__);
           active: false
         }],
         collapse: false
-      }, {
-        title: 'Master',
-        icon: 'tool',
-        children: [{
-          title: 'Pen',
-          route: {
-            name: ''
-          },
-          active: false
-        }],
-        collapse: false
       }],
       collapsedIndex: null
     };
