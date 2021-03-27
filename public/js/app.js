@@ -3142,27 +3142,26 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         title: 'Sistem',
         icon: 'tool',
-        route: {
-          name: 'system'
-        },
         children: [{
           title: 'Role',
           route: {
             name: 'system.role'
+          },
+          access: {
+            moduleRef: 'role',
+            actionRef: 'index'
           }
         }, {
           title: 'User',
           route: {
             name: 'user'
+          },
+          access: {
+            moduleRef: 'user',
+            actionRef: 'index'
           }
         }],
         collapse: false
-      }, {
-        title: 'Master',
-        icon: 'database',
-        route: {
-          name: 'master'
-        }
       }],
       collapsedIndex: null
     };
@@ -3200,10 +3199,74 @@ __webpack_require__.r(__webpack_exports__);
       var j = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
       this.sidebars[i].active = true;
       if (j != null) this.sidebars[i].children[j].active = true;
+    },
+    getFeatureAuth: function getFeatureAuth() {
+      this.featureAuth = this.$store.getters['utils/auth/features'];
+    },
+    findFeature: function findFeature(moduleRef, actionRef) {
+      return lodash.find(this.featureAuth, function (feature) {
+        return feature['module']['ref'] == moduleRef && feature['action']['ref'] == actionRef;
+      });
+    }
+  },
+  computed: {
+    authenticatedSidebars: function authenticatedSidebars() {
+      var _this2 = this;
+
+      var sidebars = this.sidebars;
+      var computedSidebars = [];
+      sidebars.forEach(function (sidebar) {
+        // Check if the sidebar has children.
+        if (sidebar.children) {
+          // Stack the sidebar children.
+          var computedSidebarChildren = [];
+          sidebar.children.forEach(function (sidebarChildren) {
+            if (sidebarChildren.access) {
+              var feature = _this2.findFeature(sidebarChildren.access.moduleRef, sidebarChildren.access.actionRef);
+
+              if (feature) computedSidebarChildren.push(sidebarChildren);
+            } else {
+              computedSidebarChildren.push(sidebarChildren);
+            }
+          }); // Evaluate the count of accessible sidebar children.
+          // If none then we won't show the sidebar at all.
+
+          if (computedSidebarChildren.length > 0) {
+            sidebar.children = computedSidebarChildren;
+            computedSidebars.push(sidebar);
+          }
+        } else {
+          // If the sidebar has access then we simply evaluate.
+          // If none, then add it directly.
+          if (sidebar.access) {
+            var feature = _this2.findFeature(sidebar.access.moduleRef, sidebar.access.actionRef);
+
+            if (feature) computedSidebars.push(sidebar);
+          } else {
+            computedSidebars.push(sidebar);
+          }
+        }
+      });
+      computedSidebars.forEach(function (sidebar, i) {
+        if (sidebar.children) {
+          sidebar.children.forEach(function (sidebarChildren, j) {
+            if (sidebarChildren.route.name == _this2.active) {
+              _this2.toggleCollapseSidebar(i);
+
+              _this2.activateSidebar(i, j);
+            }
+          });
+        } else {
+          if (sidebar.route.name == _this2.active) {
+            _this2.activateSidebar(i);
+          }
+        }
+      });
+      return computedSidebars;
     }
   },
   created: function created() {
-    this.initiateSidebar();
+    this.getFeatureAuth();
   }
 });
 
@@ -70772,7 +70835,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "bsb-sidebar-items",
-        _vm._l(_vm.sidebars, function(sidebar, i) {
+        _vm._l(_vm.authenticatedSidebars, function(sidebar, i) {
           return _c(
             "bsb-sidebar-item",
             { key: i, attrs: { active: sidebar.active } },
