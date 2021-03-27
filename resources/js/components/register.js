@@ -70,6 +70,13 @@ export default {
          * Sidebar
          */
         'sidebar': require('./sidebar/Sidebar').default,
+        'sidebar-collapse': require('./sidebar/SidebarCollapse').default,
+        'sidebar-collapse-item': require('./sidebar/SidebarCollapseItem').default,
+        'sidebar-item': require('./sidebar/SidebarItem').default,
+        'sidebar-item-icon': require('./sidebar/SidebarItemIcon').default,
+        'sidebar-items': require('./sidebar/SidebarItems').default,
+        'sidebar-item-title': require('./sidebar/SidebarItemTitle').default,
+        'sidebar-item-toggle-icon': require('./sidebar/SidebarItemToggleIcon').default,
         'sidebar-title': require('./sidebar/SidebarTitle').default,
 
         /**
