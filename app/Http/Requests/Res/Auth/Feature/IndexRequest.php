@@ -2,17 +2,20 @@
 
 namespace App\Http\Requests\Res\Auth\Feature;
 
-use App\Abstracts\Http\Requests\FeatureRequest;
+use App\Foundation\Http\AuthRequest;
 
-class IndexRequest extends FeatureRequest
+class IndexRequest extends AuthRequest
 {
     /**
      * @var string
      */
-    public $moduleRef = 'feature';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'index';
+    protected $refs = [
+        'module_ref' => 'feature',
+        'action_ref' => 'index',
+    ];
 }

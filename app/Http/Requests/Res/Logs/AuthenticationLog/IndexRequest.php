@@ -2,17 +2,20 @@
 
 namespace App\Http\Requests\Res\Logs\AuthenticationLog;
 
-use App\Abstracts\Http\Requests\FeatureRequest;
+use App\Foundation\Http\AuthRequest;
 
-class IndexRequest extends FeatureRequest
+class IndexRequest extends AuthRequest
 {
     /**
      * @var string
      */
-    public $moduleRef = 'authentication_log';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'index';
+    protected $refs = [
+        'module_ref' => 'authentication_log',
+        'action_ref' => 'index',
+    ];
 }
