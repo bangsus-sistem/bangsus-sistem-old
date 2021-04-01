@@ -20,6 +20,11 @@ return [
             'rules' => true,
         ],
         'kernel' => \App\Macro\Kernel::class,
+        'config' => [
+            'rule' => [
+                'prefix' => 'bsb',
+            ],
+        ],
     ],
     'observer' => [
         'kernel' => \App\Observers\Kernel::class,
