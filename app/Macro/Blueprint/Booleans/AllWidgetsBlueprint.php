@@ -5,7 +5,7 @@ namespace App\Macro\Blueprint\Booleans;
 use App\Foundation\Macro\BlueprintContract;
 use Closure;
 
-class AllWidgetBlueprint implements BlueprintContract
+class AllWidgetsBlueprint implements BlueprintContract
 {
     /**
      * @return \Closure
@@ -14,7 +14,7 @@ class AllWidgetBlueprint implements BlueprintContract
     {
         return (
             function () {
-                return $this->boolean('all_widget');
+                return $this->boolean('all_widgets');
             }
         );
     }

@@ -5,7 +5,7 @@ namespace App\Macro\Blueprint\Booleans;
 use App\Foundation\Macro\BlueprintContract;
 use Closure;
 
-class AllAccessBlueprint implements BlueprintContract
+class AllFeaturesBlueprint implements BlueprintContract
 {
     /**
      * @return \Closure
@@ -14,7 +14,7 @@ class AllAccessBlueprint implements BlueprintContract
     {
         return (
             function () {
-                return $this->boolean('all_access');
+                return $this->boolean('all_features');
             }
         );
     }

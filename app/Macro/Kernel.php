@@ -11,10 +11,11 @@ class Kernel
         // Boolean macro.
         'access' => Blueprint\Boolean\AccessBlueprint::class,
         'active' => Blueprint\Boolean\ActiveBlueprint::class,
-        'allAccess' => Blueprint\Boolean\AllAccessBlueprint::class,
+        'allFeatures' => Blueprint\Boolean\AllFeaturesBlueprint::class,
         'allBranchAccess' => Blueprint\Boolean\AllBranchAccessBlueprint::class,
         'allBranchTypeAccess' => Blueprint\Boolean\AllBranchTypeAccessBlueprint::class,
-        'allWidget' => Blueprint\Boolean\AllWidgetBlueprint::class,
+        'allFeatures' => Blueprint\Boolean\AllFeaturesBlueprint::class,
+        'allWidgets' => Blueprint\Boolean\AllWidgetsBlueprint::class,
         'locked' => Blueprint\Boolean\LockedBlueprint::class,
         'state' => Blueprint\Boolean\StateBlueprint::class,
         // Foreign macro.

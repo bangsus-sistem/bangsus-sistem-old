@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoleWidgets extends Migration
+class CreateRoleWidget extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,8 @@ class CreateRoleWidgets extends Migration
     public function up()
     {
         Schema::create('role_widgets', function (Blueprint $table) {
-            $table->id();
             $table->role();
             $table->widget();
-            $table->access();
-            $table->userTimestamps();
-            $table->timestamps();
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoleFeatures extends Migration
+class CreateRoleFeature extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,8 @@ class CreateRoleFeatures extends Migration
     public function up()
     {
         Schema::create('role_features', function (Blueprint $table) {
-            $table->id();
             $table->role();
             $table->feature();
-            $table->access();
-            $table->userTimestamps();
-            $table->timestamps();
         });
     }
 

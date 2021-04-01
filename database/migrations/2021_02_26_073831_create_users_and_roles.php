@@ -19,8 +19,8 @@ class CreateUsersAndRoles extends Migration
             $table->name();
             $table->active();
             $table->locked();
-            $table->allAccess();
-            $table->allWidget();
+            $table->allFeatures();
+            $table->allWidgets();
             $table->note();
         });
         Schema::create('users', function (Blueprint $table) {
@@ -31,6 +31,7 @@ class CreateUsersAndRoles extends Migration
             $table->role();
             $table->active();
             $table->locked();
+            $table->hidden();
             $table->allBranchAccess();
             $table->note();
         });
