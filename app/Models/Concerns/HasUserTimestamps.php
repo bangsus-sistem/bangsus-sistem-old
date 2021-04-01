@@ -5,18 +5,20 @@ namespace App\Models\Concerns;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Auth\User;
 
-trait UserTimestamps
+trait HasUserTimestamps
 {
     /**
      * @return void
      */
-    public static function bootUserTimestamps()
+    public static function bootHasUserTimestamps()
     {
         static::creating(function ($model) {
-            $model->user_create_id = Auth::user()->id;
+            $user = Auth::user();
+            if ( ! is_null($user)) $model->user_create_id = $user->id;
         });
         static::updating(function ($model) {
-            $model->user_update_id = Auth::user()->id;
+            $user = Auth::user();
+            if ( ! is_null($user)) $model->user_update_id = $user->id;
         });
     }
 

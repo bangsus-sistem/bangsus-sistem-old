@@ -5,20 +5,28 @@ namespace App\Models\Concerns;
 trait LockedFlag
 {
     /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return void
      */
-    public function scopeIsLocked()
+    public static function bootLockedFlag()
     {
-        return $query->where('locked', true);
+        static::creating(fn ($model) => false);
+        static::updating(fn ($model) => false);
+        static::deleting(fn ($model) => false);
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return boolean
      */
-    public function scopeIsNotLocked()
+    public function isLocked()
     {
-        return $query->where('locked', false);
+        return $this->locked;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isNotLocked()
+    {
+        return ! $this->locked;
     }
 }

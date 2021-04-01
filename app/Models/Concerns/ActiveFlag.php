@@ -5,20 +5,36 @@ namespace App\Models\Concerns;
 trait ActiveFlag
 {
     /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  \Illuminate\Database\Eloquent\Builder
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeIsActive()
+    public function scopeActive($query)
     {
         return $query->where('active', true);
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  \Illuminate\Database\Eloquent\Builder
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeIsNotActive()
+    public function scopeInactive($query)
     {
-        return $query->where('active', false);
+        return ! $query->active();
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isInactive()
+    {
+        return ! $this->active;
     }
 }
