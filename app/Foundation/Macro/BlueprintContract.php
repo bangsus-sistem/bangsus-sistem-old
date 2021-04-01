@@ -14,5 +14,5 @@ interface BlueprintContract
     /**
      * @return \Closure
      */
-    public function register() : Closure;
+    public static function register() : Closure;
 }
