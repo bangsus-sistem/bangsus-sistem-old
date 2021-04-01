@@ -4,6 +4,7 @@ namespace App\Foundation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Validator;
 use App\Foundation\Macro\{
     MacroException,
     BlueprintContract,
@@ -77,10 +78,10 @@ class MacroServiceProvider extends ServiceProvider
             $ruleName = config('foundation.macro.config.rule.prefix').'_'.$ruleName;
 
             $rule = new $ruleClass;
-            if ( ! $rule instanceof BlueprintContract) {
+            if ( ! $rule instanceof RuleContract) {
                 $exception = new MacroException;
                 $exception->problem('rule_has_no_contract', [
-                    'methodName' => $methodName,
+                    'ruleName' => $ruleName,
                     'rule' => $ruleClass,
                 ]);
                 throw $exception;
