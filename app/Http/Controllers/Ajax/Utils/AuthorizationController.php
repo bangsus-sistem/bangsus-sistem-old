@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Ajax\Utils;
 
 use App\Abstracts\Http\Controller;
 use Illuminate\Http\Request;
-use App\Database\Models\Auth\{
+use App\Models\Auth\{
     Feature,
     Widget,
 };
@@ -26,7 +26,7 @@ class AuthorizationController extends Controller
     public function index(Request $request)
     {
         $role = $request->user()->role;
-        $features = $role->all_access
+        $features = $role->all_features
             ?   Feature::with('action', 'module')->get()
             :   Feature::whereHas('roleFeatures',
                     function ($query) use ($role) {
@@ -35,7 +35,7 @@ class AuthorizationController extends Controller
                 )
                     ->with('action', 'module')
                     ->get();
-        $widgets = $role->all_access
+        $widgets = $role->all_widgets
             ?   Widget::with('widgetType', 'module')->get()
             :   Widget::whereHas('roleWidgets',
                     function ($query) use ($role) {
