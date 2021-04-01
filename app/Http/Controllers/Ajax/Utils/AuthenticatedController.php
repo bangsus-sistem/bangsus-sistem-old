@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Ajax\Utils;
 
-use App\Abstracts\Http\Controller;
+use App\Foundation\Http\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
