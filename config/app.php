@@ -166,6 +166,12 @@ return [
          * Package Service Providers...
          */
 
+        /**
+         * Foundation Service Providers...
+         */
+        App\Foundation\Providers\MacroServiceProvider::class,
+        App\Foundation\Providers\ObserverServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -173,7 +179,6 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\MacroServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],
