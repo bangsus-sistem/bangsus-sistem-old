@@ -49,13 +49,8 @@ class Kernel
     /**
      * @var array
      */
-    public static $validation = [
-
-        // Rule macro.
-        'rules' => [
-
-            // Database rule.
-            'exists' => Validation\Rules\Database\ExistsRule::class,
-        ],
+    public static $rules = [
+        // Database rule.
+        'exists' => Rule\Database\ExistsRule::class,
     ];
 }

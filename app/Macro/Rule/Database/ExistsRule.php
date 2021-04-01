@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Macro\Validation\Rules\Database;
+namespace App\Macro\Rules\Database;
 
-use App\Contracts\Macro\Validation\RuleContract;
+use App\Foundation\Macro\RuleContract;
 
 class ExistsRule implements RuleContract
 {
