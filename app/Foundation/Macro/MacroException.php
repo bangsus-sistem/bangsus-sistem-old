@@ -12,6 +12,7 @@ class MacroException extends Exception
      */
     private $messages = [
         'blueprint_has_no_contract' => 'Blueprint macro \':methodName\' of :blueprint must implements '.BlueprintContract::class,
+        'rule_has_no_contract' => 'Blueprint macro \':ruleName\' of :rule must implements '.RuleContract::class,
     ];
 
     /**
