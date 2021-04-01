@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Macro\Rules\Database;
+namespace App\Macro\Rule\Database;
 
 use App\Foundation\Macro\RuleContract;
 

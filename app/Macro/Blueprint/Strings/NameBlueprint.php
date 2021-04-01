@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Macro\Blueprints\Strings;
+namespace App\Macro\Blueprint\Strings;
 
-use App\Contracts\Macro\BlueprintContract;
+use App\Foundation\Macro\BlueprintContract;
 use Closure;
 
 class NameBlueprint implements BlueprintContract

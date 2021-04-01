@@ -9,15 +9,15 @@ class Kernel
      */
     public static $blueprints = [
         // Boolean macro.
-        'access' => Blueprint\Boolean\AccessBlueprint::class,
-        'active' => Blueprint\Boolean\ActiveBlueprint::class,
-        'allFeatures' => Blueprint\Boolean\AllFeaturesBlueprint::class,
-        'allBranchAccess' => Blueprint\Boolean\AllBranchAccessBlueprint::class,
-        'allBranchTypeAccess' => Blueprint\Boolean\AllBranchTypeAccessBlueprint::class,
-        'allFeatures' => Blueprint\Boolean\AllFeaturesBlueprint::class,
-        'allWidgets' => Blueprint\Boolean\AllWidgetsBlueprint::class,
-        'locked' => Blueprint\Boolean\LockedBlueprint::class,
-        'state' => Blueprint\Boolean\StateBlueprint::class,
+        'access' => Blueprint\Booleans\AccessBlueprint::class,
+        'active' => Blueprint\Booleans\ActiveBlueprint::class,
+        'allFeatures' => Blueprint\Booleans\AllFeaturesBlueprint::class,
+        'allBranchAccess' => Blueprint\Booleans\AllBranchAccessBlueprint::class,
+        'allBranchTypeAccess' => Blueprint\Booleans\AllBranchTypeAccessBlueprint::class,
+        'allFeatures' => Blueprint\Booleans\AllFeaturesBlueprint::class,
+        'allWidgets' => Blueprint\Booleans\AllWidgetsBlueprint::class,
+        'locked' => Blueprint\Booleans\LockedBlueprint::class,
+        'state' => Blueprint\Booleans\StateBlueprint::class,
         // Foreign macro.
         'action' => Blueprint\Foreign\ActionBlueprint::class,
         'branch' => Blueprint\Foreign\BranchBlueprint::class,
