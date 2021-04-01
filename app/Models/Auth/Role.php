@@ -28,18 +28,18 @@ class Role extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function roleFeatures()
+    public function features()
     {
-        return $this->hasMany(RoleFeature::class);
+        return $this->belongsToMany(Feature::class, 'role_feature');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function roleWidgets()
+    public function widgets()
     {
-        return $this->hasMany(RoleWidget::class);
+        return $this->belongsToMany(Widget::class, 'role_widget');
     }
 }
