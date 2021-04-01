@@ -7,6 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use App\Foundation\Macro\{
     MacroException,
     BlueprintContract,
+    RuleContract,
 };
 
 class MacroServiceProvider extends ServiceProvider
@@ -28,7 +29,7 @@ class MacroServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->bootRuleMacros();
     }
 
     /**
@@ -59,6 +60,37 @@ class MacroServiceProvider extends ServiceProvider
                     BlueprintContract::MAIN_METHOD
                 ])
             );
+        }
+    }
+
+    /**
+     * @return void
+     */
+    private function bootRuleMacros()
+    {
+        if ( ! config('foundation.macro.register.rules')) return;
+
+        $kernel = config('foundation.macro.kernel');
+        $rules = $kernel::$rules;
+
+        foreach ($rules as $ruleName => $ruleClass) {
+            $ruleName = config('foundation.macro.config.rule.prefix').'_'.$ruleName;
+
+            $rule = new $ruleClass;
+            if ( ! $rule instanceof BlueprintContract) {
+                $exception = new MacroException;
+                $exception->problem('rule_has_no_contract', [
+                    'methodName' => $methodName,
+                    'rule' => $ruleClass,
+                ]);
+                throw $exception;
+            }
+
+            $ruleClassMethod = $ruleClass.'@'.RuleContract::VALIDATE_METHOD;
+            $replacerClassMethod = $ruleClass.'@'.RuleContract::REPLACE_METHOD;
+
+            Validator::extend($ruleName, $ruleClassMethod);
+            Validator::replacer($ruleName, $replacerClassMethod);
         }
     }
 }
