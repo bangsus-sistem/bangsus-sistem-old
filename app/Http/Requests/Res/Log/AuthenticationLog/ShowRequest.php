@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Res\Logs\AuthenticationLog;
+namespace App\Http\Requests\Res\Log\AuthenticationLog;
 
 use App\Foundation\Http\AuthRequest;
 
@@ -9,10 +9,13 @@ class ShowRequest extends AuthRequest
     /**
      * @var string
      */
-    public $moduleRef = 'authentication_log';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'read';
+    protected $refs = [
+        'module_ref' => 'authentication_log',
+        'action_ref' => 'read',
+    ];
 }

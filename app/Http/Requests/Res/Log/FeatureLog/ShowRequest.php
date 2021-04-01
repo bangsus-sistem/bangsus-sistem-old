@@ -9,10 +9,13 @@ class ShowRequest extends AuthRequest
     /**
      * @var string
      */
-    public $moduleRef = 'feature_log';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'read';
+    protected $refs = [
+        'module_ref' => 'feature_log',
+        'action_ref' => 'read',
+    ];
 }

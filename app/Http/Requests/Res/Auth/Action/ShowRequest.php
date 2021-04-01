@@ -2,17 +2,20 @@
 
 namespace App\Http\Requests\Res\Auth\Action;
 
-use App\Abstracts\Http\Requests\FeatureRequest;
+use App\Foundation\Http\AuthRequest;
 
-class ShowRequest extends FeatureRequest
+class ShowRequest extends AuthRequest
 {
     /**
      * @var string
      */
-    public $moduleRef = 'action';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'read';
+    protected $refs = [
+        'module_ref' => 'action',
+        'action_ref' => 'read',
+    ];
 }
