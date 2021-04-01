@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Foundation\Macro;
+
+use Closure;
+
+interface BlueprintContract
+{
+    /**
+     * @var string
+     */
+    const MAIN_METHOD = 'register';
+
+    /**
+     * @return \Closure
+     */
+    public function register() : Closure;
+}
