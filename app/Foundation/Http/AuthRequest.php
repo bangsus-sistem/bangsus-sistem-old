@@ -2,8 +2,13 @@
 
 namespace App\Foundation\Http;
 
-use Illuminate\Support\Facade\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Foundation\Database\Eloquent\{
+    AuthModel,
+    AuthModelException,
+};
+use Illuminate\Auth\AuthenticationException;
 
 class AuthRequest extends FormRequest
 {
@@ -12,10 +17,13 @@ class AuthRequest extends FormRequest
      */
     public function authorize()
     {
+        if ( ! Auth::check()) throw new AuthenticationException;
         $type = $this->type;
-        $model = config('http.request.'.$type.'.model');
+        $model = config('foundation.http.request.'.$type.'.model');
         if ( ! (new $model) instanceof AuthModel) {
-            throw new AuthorizedRequestException;
+            $exception = new AuthModelException;
+            $exception->problem('model_has_no_contract');
+            throw new $exception;
         }
         $instance = $model::getAuthorization($this->refs);
 
