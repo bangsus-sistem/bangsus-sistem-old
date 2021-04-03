@@ -3,35 +3,38 @@
 namespace App\Models\Auth;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Foundation\Database\Eloquent\AuthModel;
 
-class Widget extends Model
+class Widget extends Model implements AuthModel
 {
     /**
-     * @var bool
+     * @var boolean
      */
     public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function module()
+    public function package()
     {
-        return $this->belongsTo(Module::class);
+        return $this->belongsTo(Package::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function widgetType()
+    public function roles()
     {
-        return $this->belongsTo(WidgetType::class);
+        return $this->belongsToMany(Role::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @param  array  $refs
+     * @return \App\Models\Auth\Widget
      */
-    public function roleWidgets()
+    public static function getAuthorization($refs)
     {
-        return $this->hasMany(RoleWidget::class);
+        return static::where('ref', $refs['widget'])
+            ->first();
     }
 }

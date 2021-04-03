@@ -6,18 +6,21 @@ use Illuminate\Database\Eloquent\{
     Model,
     SoftDeletes,
 };
-use App\Models\Concerns\UserDelete;
+use App\Models\Concerns\{
+    HasUser,
+    HasUserDelete,
+    ExpiredTimestamp,
+};
 
 class ApiToken extends Model
 {
-    use SoftDeletes;
-    use UserDelete;
+    use SoftDeletes, HasUser, HasUserDelete, ExpiredTimestamp;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function bearerToken()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(ApiToken::class);
     }
 }

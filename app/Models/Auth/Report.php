@@ -5,7 +5,7 @@ namespace App\Models\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Foundation\Database\Eloquent\AuthModel;
 
-class Feature extends Model implements AuthModel
+class Report extends Model implements AuthModel
 {
     /**
      * @var boolean
@@ -15,17 +15,9 @@ class Feature extends Model implements AuthModel
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function module()
+    public function package()
     {
-        return $this->belongsTo(Module::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function action()
-    {
-        return $this->belongsTo(Action::class);
+        return $this->belongsTo(Package::class);
     }
 
     /**
@@ -38,16 +30,11 @@ class Feature extends Model implements AuthModel
 
     /**
      * @param  array  $refs
-     * @return \App\Models\Auth\Feature
+     * @return \App\Models\Auth\Report
      */
     public static function getAuthorization($refs)
     {
-        return static::whereHas('module',
-            fn ($query) => $query->where('ref', $refs['module'])
-        )
-            ->whereHas('action', 
-                fn ($query) => $query->where('ref', $refs['action'])
-            )
+        return static::where('ref', $refs['report'])
             ->first();
     }
 }

@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\{
     SoftDeletes,
 };
 use App\Models\Concerns\{
+    HasUserTimestamps,
+    HasUserDelete,
     ActiveFlag,
+    HiddenFlag,
     LockedFlag,
-    UserDelete,
-    UserTimestamps,
 };
 
 class Role extends Model
 {
-    use SoftDeletes;
-    use UserTimestamps, UserDelete;
-    use ActiveFlag, LockedFlag;
+    use SoftDeletes, HasUserTimestamps, HasUserDelete, ActiveFlag, HiddenFlag,
+        LockedFlag;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -41,5 +41,13 @@ class Role extends Model
     public function widgets()
     {
         return $this->belongsToMany(Widget::class, 'role_widget');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function reports()
+    {
+        return $this->belongsToMany(Report::class, 'role_report');
     }
 }

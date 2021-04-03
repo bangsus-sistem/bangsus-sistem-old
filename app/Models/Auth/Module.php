@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Module extends Model
 {
     /**
-     * @var bool
+     * @var boolean
      */
     public $timestamps = false;
 
