@@ -20,8 +20,10 @@ class Kernel
         'state' => Blueprint\Booleans\StateBlueprint::class,
         // Foreign macro.
         'action' => Blueprint\Foreign\ActionBlueprint::class,
+        'bearerToken' => Blueprint\Foreign\BearerTokenBlueprint::class,
         'branch' => Blueprint\Foreign\BranchBlueprint::class,
         'branchType' => Blueprint\Foreign\BranchTypeBlueprint::class,
+        'entryPoint' => Blueprint\Foreign\EntryPointBlueprint::class,
         'feature' => Blueprint\Foreign\FeatureBlueprint::class,
         'module' => Blueprint\Foreign\ModuleBlueprint::class,
         'package' => Blueprint\Foreign\PackageBlueprint::class,
