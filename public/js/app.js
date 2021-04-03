@@ -3490,7 +3490,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.initiateForm();
       axios.get('/ajax/utils/csrf_cookie').then(function (res) {
-        _this.submitForm('/ajax/logs/authentication_log/login', 'post', {
+        _this.submitForm('/ajax/log/authentication_log/login', 'post', {
           resolve: true,
           reject: false
         }).then(function () {

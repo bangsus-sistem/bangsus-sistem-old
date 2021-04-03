@@ -46,7 +46,7 @@ export default {
             this.initiateForm()
             axios.get('/ajax/utils/csrf_cookie')
                 .then(res => {
-                    this.submitForm('/ajax/logs/authentication_log/login', 'post', {
+                    this.submitForm('/ajax/log/authentication_log/login', 'post', {
                         resolve: true,
                         reject: false
                     }).then(() => {
