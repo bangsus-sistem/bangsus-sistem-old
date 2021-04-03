@@ -13,14 +13,10 @@ class InjectionSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            Injections\PackageSeeder::class,
-            Injections\ModuleSeeder::class,
-            Injections\ActionSeeder::class,
-            Injections\WidgetTypeSeeder::class,
-            Injections\FeatureSeeder::class,
-            Injections\WidgetSeeder::class,
-            Injections\UserRoleSeeder::class,
-        ]);
+        \DB::transaction(function () {
+            $this->call([
+                Injections\AuthorizationSeeder::class,
+            ]);
+        });
     }
 }
