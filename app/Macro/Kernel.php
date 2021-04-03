@@ -25,6 +25,7 @@ class Kernel
         'feature' => Blueprint\Foreign\FeatureBlueprint::class,
         'module' => Blueprint\Foreign\ModuleBlueprint::class,
         'package' => Blueprint\Foreign\PackageBlueprint::class,
+        'report' => Blueprint\Foreign\ReportBlueprint::class,
         'role' => Blueprint\Foreign\RoleBlueprint::class,
         'user' => Blueprint\Foreign\UserBlueprint::class,
         'userCreate' => Blueprint\Foreign\UserCreateBlueprint::class,
@@ -41,6 +42,8 @@ class Kernel
         'ref' => Blueprint\Strings\RefBlueprint::class,
         'username' => Blueprint\Strings\UsernameBlueprint::class,
         'token' => Blueprint\Strings\TokenBlueprint::class,
+        // Text
+        'storageDir' => Blueprint\Text\StorageDirBlueprint::class,
         // Timestamps macro.
         'expiredAt' => Blueprint\Timestamp\ExpiredAtBlueprint::class,
         'usedAt' => Blueprint\Timestamp\UsedAtBlueprint::class,
