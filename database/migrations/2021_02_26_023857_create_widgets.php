@@ -15,8 +15,9 @@ class CreateWidgets extends Migration
     {
         Schema::create('widgets', function (Blueprint $table) {
             $table->id();
-            $table->module();
-            $table->widgetType();
+            $table->package();
+            $table->ref();
+            $table->name();
         });
     }
 
