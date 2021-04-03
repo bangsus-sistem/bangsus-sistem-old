@@ -274,7 +274,13 @@ const formMethods = {
      * @return {void}
      */
     flashFormSuccess() {
-        this.$store.dispatch('utils/flashers/addFlasher', { color: 'success', content: 'Berhasil' })
+        this.$store.dispatch(
+            'utils/flashers/addFlasher',
+            { 
+                color: 'success',
+                content: this.$store.getters['utils/lang/src'].success.form,
+            }
+        )
     },
 
     /**

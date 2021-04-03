@@ -10,6 +10,9 @@ return [
         ],
         'not_found' => 'Data tidak ditemukan.',
         'form' => 'Cek kembali data anda.',
-    ]
+    ],
+    'success' => [
+        'form' => 'Sukses.',
+    ],
 
 ];
