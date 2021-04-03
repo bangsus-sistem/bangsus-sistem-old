@@ -5,7 +5,7 @@ namespace App\Transformer\RelatedResources\Auth;
 use App\Foundation\Transformer\RelatedResource;
 use App\Transformer\SingleCollections\Auth\FeatureSingleCollection;
 
-class ModuleRelatedResource extends RelatedResource
+class ActionRelatedResource extends RelatedResource
 {
     /**
      * @param  \Illuminate\Http\Request  $request
