@@ -32,7 +32,6 @@ class Kernel
         'userTimestamps' => Blueprint\Foreign\UserTimestampsBlueprint::class,
         'userUpdate' => Blueprint\Foreign\UserUpdateBlueprint::class,
         'widget' => Blueprint\Foreign\WidgetBlueprint::class,
-        'widgetType' => Blueprint\Foreign\WidgetTypeBlueprint::class,
         // String macro.
         'code' => Blueprint\Strings\CodeBlueprint::class,
         'fullName' => Blueprint\Strings\FullNameBlueprint::class,
