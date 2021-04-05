@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Res\Auth;
 
-use App\Abstracts\Http\Controller;
+use App\Foundation\Http\Controller;
 use App\Http\Requests\Res\Auth\Package\{
     IndexRequest,
     ShowRequest,
