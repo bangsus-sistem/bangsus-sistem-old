@@ -42,6 +42,7 @@ class UserRoleSeeder extends Seeder
             'user_create_id' => 1,
             'created_at' => Carbon::now(),
         ]);
+        \DB::statement('insert into user_branch select 1, id from branches');
 
         \DB::table('roles')->where('id', 1)->update([
             'user_create_id' => 1,
