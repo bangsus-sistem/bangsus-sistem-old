@@ -15,6 +15,7 @@ class Kernel
         'allBranchAccess' => Blueprint\Booleans\AllBranchAccessBlueprint::class,
         'allBranchTypeAccess' => Blueprint\Booleans\AllBranchTypeAccessBlueprint::class,
         'allFeatures' => Blueprint\Booleans\AllFeaturesBlueprint::class,
+        'allReports' => Blueprint\Booleans\AllReportsBlueprint::class,
         'allWidgets' => Blueprint\Booleans\AllWidgetsBlueprint::class,
         'hidden' => Blueprint\Booleans\HiddenBlueprint::class,
         'locked' => Blueprint\Booleans\LockedBlueprint::class,
