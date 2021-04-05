@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Res\Logs\AuthenticationLog;
+namespace App\Http\Requests\Ajax\Log\AuthenticationLog;
 
-use App\Abstracts\Http\FormRequest;
+use App\Foundation\Http\FormRequest;
 
 class StoreLoginRequest extends FormRequest
 {
