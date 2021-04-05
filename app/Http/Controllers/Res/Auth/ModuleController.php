@@ -29,6 +29,7 @@ class ModuleController extends Controller
 
     /**
      * @param  \App\Http\Requests\Res\Auth\IndexRequest  $request
+     * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function index(IndexRequest $request)

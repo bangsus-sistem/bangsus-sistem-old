@@ -47,6 +47,7 @@ class PackageController extends Controller
     /**
      * @param  \App\Http\Requests\Res\Auth\Package\ShowRequest  $request
      * @param  int  $id
+     * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(ShowRequest $request, int $id)
