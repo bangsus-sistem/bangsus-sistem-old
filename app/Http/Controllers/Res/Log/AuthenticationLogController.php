@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Res\Log\AuthenticationLog\{
     IndexRequest,
     ShowRequest,
+    DestroyRequest,
 };
+use App\Tasks\Res\Log\AuthenticationLog\DestroyTask;
 use App\Models\Log\AuthenticationLog;
 use App\Transformer\SingleCollections\Log\AuthenticationLogSingleCollection;
 use App\Transformer\PaginatedCollections\Log\AuthenticationLogPaginatedCollection;
@@ -47,6 +49,7 @@ class AuthenticationLogController extends Controller
 
     /**
      * @param  \App\Http\Requests\Res\Log\ShowRequest  $request
+     * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(ShowRequest $request, $id)
@@ -54,5 +57,15 @@ class AuthenticationLogController extends Controller
         return response()->json(
             new AuthenticationLogRelatedResource(AuthenticationLog::findOrFail($id))
         );
+    }
+
+    /**
+     * @param  \App\Http\Requests\Res\Log\DestroyRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(DestroyRequest $request)
+    {
+        $this->transmit(new DestroyTask, $request);
+        return response()->noContent();
     }
 }
