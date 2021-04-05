@@ -13,7 +13,7 @@ class CreateRoleFeature extends Migration
      */
     public function up()
     {
-        Schema::create('role_features', function (Blueprint $table) {
+        Schema::create('role_feature', function (Blueprint $table) {
             $table->role();
             $table->feature();
         });

@@ -13,7 +13,7 @@ class CreateRoleWidget extends Migration
      */
     public function up()
     {
-        Schema::create('role_widgets', function (Blueprint $table) {
+        Schema::create('role_widget', function (Blueprint $table) {
             $table->role();
             $table->widget();
         });
