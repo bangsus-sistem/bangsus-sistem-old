@@ -1,20 +1,23 @@
 <?php
 
-namespace App\Http\Requests\Res\Logs\AuthenticationLog;
+namespace App\Http\Requests\Res\Log\AuthenticationLog;
 
-use App\Abstracts\Http\Requests\FeatureRequest;
+use App\Foundation\Http\AuthRequest;
 
-class DestroyRequest extends FeatureRequest
+class DestroyRequest extends AuthRequest
 {
     /**
      * @var string
      */
-    public $moduleRef = 'authentication_log';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'delete';
+    protected $refs = [
+        'module_ref' => 'authentication_log',
+        'action_ref' => 'index',
+    ];
 
     /**
      * @return array
@@ -24,7 +27,7 @@ class DestroyRequest extends FeatureRequest
         return [
             'id' => [
                 'required',
-                'bsb_exists:\App\Database\Models\Logs\AuthenticationLog',
+                'bsb_exists:\App\Models\Log\AuthenticationLog',
             ],
         ];
     }
