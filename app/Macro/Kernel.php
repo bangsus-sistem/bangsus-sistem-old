@@ -11,9 +11,7 @@ class Kernel
         // Boolean macro.
         'access' => Blueprint\Booleans\AccessBlueprint::class,
         'active' => Blueprint\Booleans\ActiveBlueprint::class,
-        'allFeatures' => Blueprint\Booleans\AllFeaturesBlueprint::class,
-        'allBranchAccess' => Blueprint\Booleans\AllBranchAccessBlueprint::class,
-        'allBranchTypeAccess' => Blueprint\Booleans\AllBranchTypeAccessBlueprint::class,
+        'allBranches' => Blueprint\Booleans\AllBranchesBlueprint::class,
         'allFeatures' => Blueprint\Booleans\AllFeaturesBlueprint::class,
         'allReports' => Blueprint\Booleans\AllReportsBlueprint::class,
         'allWidgets' => Blueprint\Booleans\AllWidgetsBlueprint::class,
