@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('logs/authentication_log')->group(function () {
-    Route::post('login', 'Logs\AuthenticationLogController@storeLogin');
-    Route::post('token', 'Logs\AuthenticationLogController@storeToken');
+Route::prefix('log/authentication_log')->group(function () {
+    Route::post('login', 'Log\AuthenticationLogController@storeLogin');
+    Route::post('authentication_token', 'Log\AuthenticationLogController@storeAuthenticationToken');
 });
