@@ -16,6 +16,8 @@ class InjectionSeeder extends Seeder
         \DB::transaction(function () {
             $this->call([
                 Injections\AuthorizationSeeder::class,
+                Injections\UserRoleSeeder::class,
+                Injections\ApiSeeder::class,
             ]);
         });
     }
