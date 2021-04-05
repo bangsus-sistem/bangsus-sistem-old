@@ -16,6 +16,7 @@ class Kernel
         'allBranchTypeAccess' => Blueprint\Booleans\AllBranchTypeAccessBlueprint::class,
         'allFeatures' => Blueprint\Booleans\AllFeaturesBlueprint::class,
         'allWidgets' => Blueprint\Booleans\AllWidgetsBlueprint::class,
+        'hidden' => Blueprint\Booleans\HiddenBlueprint::class,
         'locked' => Blueprint\Booleans\LockedBlueprint::class,
         'state' => Blueprint\Booleans\StateBlueprint::class,
         // Foreign macro.
@@ -41,6 +42,7 @@ class Kernel
         'name' => Blueprint\Strings\NameBlueprint::class,
         'note' => Blueprint\Strings\NoteBlueprint::class,
         'password' => Blueprint\Strings\PasswordBlueprint::class,
+        'pin' => Blueprint\Strings\PinBlueprint::class,
         'ref' => Blueprint\Strings\RefBlueprint::class,
         'username' => Blueprint\Strings\UsernameBlueprint::class,
         'token' => Blueprint\Strings\TokenBlueprint::class,
