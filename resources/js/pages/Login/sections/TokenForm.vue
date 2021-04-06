@@ -36,7 +36,7 @@ export default {
             this.initiateForm()
             axios.get('/ajax/utils/csrf_cookie')
                 .then(res => {
-                    this.submitForm('/ajax/logs/authentication_log/token', 'post', {
+                    this.submitForm('/ajax/log/authentication_log/token', 'post', {
                         resolve: true,
                         reject: false
                     }).then(() => this.$router.push({ name: 'dashboard' }))

@@ -7,6 +7,11 @@ use Illuminate\Support\Str;
 trait Problem
 {
     /**
+     * @var array
+     */
+    public array $replacers = [];
+
+    /**
      * @param  mixed  $problem
      * @param  array  $replacers
      * @return void
@@ -19,5 +24,6 @@ trait Problem
             $message = Str::replaceFirst($index, $replace, $message);
         }
         $this->message = $message;
+        $this->replacers = $replacers;
     }
 }

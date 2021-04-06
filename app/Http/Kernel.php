@@ -31,8 +31,8 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'ajax' => [
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
         'api' => [
             'throttle:api',

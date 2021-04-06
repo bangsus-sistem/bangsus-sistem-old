@@ -3,7 +3,7 @@
 <script>
 export default {
     created() {
-        axios.post('/ajax/logs/authentication_log/logout')
+        axios.post('/ajax/log/authentication_log/logout')
             .then(res => {
                 this.$router.push({ name: 'login' })
             })

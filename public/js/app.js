@@ -3614,7 +3614,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.initiateForm();
       axios.get('/ajax/utils/csrf_cookie').then(function (res) {
-        _this.submitForm('/ajax/logs/authentication_log/token', 'post', {
+        _this.submitForm('/ajax/log/authentication_log/token', 'post', {
           resolve: true,
           reject: false
         }).then(function () {
@@ -3650,7 +3650,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.post('/ajax/logs/authentication_log/logout').then(function (res) {
+    axios.post('/ajax/log/authentication_log/logout').then(function (res) {
       _this.$router.push({
         name: 'login'
       });
@@ -5014,7 +5014,7 @@ var formMethods = {
   flashFormSuccess: function flashFormSuccess() {
     this.$store.dispatch('utils/flashers/addFlasher', {
       color: 'success',
-      content: 'Berhasil'
+      content: this.$store.getters['utils/lang/src'].success.form
     });
   },
 

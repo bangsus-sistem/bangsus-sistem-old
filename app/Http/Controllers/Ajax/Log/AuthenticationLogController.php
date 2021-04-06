@@ -8,11 +8,8 @@ use App\Http\Requests\Ajax\Log\AuthenticationLog\{
     StoreLoginRequest,
     StoreAuthenticationTokenRequest,
 };
-use App\Tasks\Ajax\Log\AuthenticationLog\{
-    StoreLoginTask,
-    StoreAuthenticationTokenTask,
-    StoreLogoutTask,
-};
+use App\Tasks\Ajax\Log\AuthenticationLog\StoreTask;
+use App\Tasks\Ajax\Auth\AuthenticationToken\UseAuthenticationTokenTask;
 use App\Services\{
     SanctumLoginService,
     SanctumAuthenticationTokenService,
@@ -31,7 +28,7 @@ class AuthenticationLogController extends Controller
         return response()->json(
             new AuthenticationLogRelatedResource(
                 $this->transmit(
-                    new StoreLoginTask,
+                    new StoreTask,
                     $request,
                     $this->manage(new SanctumLoginService, $request)
                 )
@@ -46,12 +43,18 @@ class AuthenticationLogController extends Controller
      */
     public function storeAuthenticationToken(StoreAuthenticationTokenRequest $request)
     {
+        [$user, $authenticationToken] = $this->manage(
+            new SanctumAuthenticationTokenService,
+            $request
+        );
+        $this->transmit(new UseAuthenticationTokenTask, $request, $authenticationToken);
+        
         return response()->json(
             new AuthenticationLogRelatedResource(
                 $this->transmit(
-                    new StoreAuthenticationTokenTask,
+                    new StoreTask,
                     $request,
-                    $this->manage(new SanctumAuthenticationTokenService, $request)
+                    $user
                 )
             ),
             200
@@ -67,9 +70,10 @@ class AuthenticationLogController extends Controller
         return response()->json(
             new AuthenticationLogRelatedResource(
                 $this->transmit(
-                    new StoreLogoutTask,
+                    new StoreTask,
                     $request,
-                    $this->manage(new SanctumLogoutService, $request)
+                    $this->manage(new SanctumLogoutService, $request),
+                    false
                 )
             ),
             200

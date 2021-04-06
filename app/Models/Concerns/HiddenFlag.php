@@ -11,7 +11,7 @@ trait HiddenFlag
      */
     public static function bootHiddenFlag()
     {
-        static::addGlobalScope(new HiddenFlagScope);
+        // static::addGlobalScope(new HiddenFlagScope);
     }
 
     /**

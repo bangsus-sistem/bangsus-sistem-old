@@ -2,7 +2,7 @@
 
 namespace App\Foundation;
 
-use App\Database\{
+use App\Foundation\Database\{
     BuildWhere,
     Transaction,
 };
