@@ -26,27 +26,14 @@ class AuthorizationController extends Controller
     public function index(Request $request)
     {
         $role = $request->user()->role;
-        $features = $role->all_features
-            ?   Feature::with('action', 'module')->get()
-            :   Feature::whereHas('roleFeatures',
-                    function ($query) use ($role) {
-                        $query->where('role_id', $role->id);
-                    }
-                )
-                    ->with('action', 'module')
-                    ->get();
-        $widgets = $role->all_widgets
-            ?   Widget::with('widgetType', 'module')->get()
-            :   Widget::whereHas('roleWidgets',
-                    function ($query) use ($role) {
-                        $query->where('role_id', $role->id);
-                    }
-                )
-                    ->with('widgetType', 'module')
-                    ->get();
+        $features = $role->features()->with('module', 'action')->get();
+        $widgets = $role->widgets;
+        $reports = $role->reports;
+
         return response()->json([
             'features' => $features,
             'widgets' => $widgets,
+            'reports' => $reports,
         ]);
     }
 }

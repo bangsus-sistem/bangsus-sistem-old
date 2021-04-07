@@ -46,6 +46,16 @@ class AuthorizationSeeder extends Seeder
                     'name' => 'Widget',
                     'actions' => ['index', 'read'],
                 ],
+                [
+                    'ref' => 'role',
+                    'name' => 'Role',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'user',
+                    'name' => 'User',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
             ],
             'widgets' => [],
             'reports' => [],
@@ -67,6 +77,9 @@ class AuthorizationSeeder extends Seeder
 
         $modules = $this->parseModules();
         \DB::table('modules')->insert($modules);
+
+        $features = $this->parseFeatures();
+        \DB::table('features')->insert($features);
 
         $widgets = $this->parseWidgets();
         \DB::table('widgets')->insert($widgets);
@@ -131,16 +144,16 @@ class AuthorizationSeeder extends Seeder
         $actions = \DB::table('actions')->get();
 
         $parsedFeatures = [];
-        foreach ($this->package as $package)
+        foreach ($this->packages as $package)
             foreach ($package['modules'] as $module)
                 foreach ($module['actions'] as $action) {
-                    $module = with(clone $modules)
+                    $moduleMdl = with(clone $modules)
                         ->where('ref', $module['ref'])->first();
                     $action = with(clone $actions)
                         ->where('ref', $action)->first();
 
                     $parsedFeatures[] = [
-                        'module_id' => $module->id,
+                        'module_id' => $moduleMdl->id,
                         'action_id' => $action->id,
                     ];
                 }

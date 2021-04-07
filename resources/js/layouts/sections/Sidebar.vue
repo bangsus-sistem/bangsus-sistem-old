@@ -147,7 +147,7 @@ export default {
             })
 
             this.sidebar = computedSidebars
-
+            
             this.sidebar.forEach((sidebar, i) => {
                 if (sidebar.children) {
                     sidebar.children.forEach((sidebarChildren, j) => {
