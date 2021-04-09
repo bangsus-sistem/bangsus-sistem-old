@@ -9,6 +9,15 @@
 </head>
 <body>
     <div id="app">
+        <noscript>
+            <div class="container-fluid" id="no-javascript">
+                <div class="row py-5">
+                    <div class="col text-center">
+                        Anda harus mengaktifkan JavaScript untuk melanjutkan.
+                    </div>
+                </div>
+            </div>
+        </noscript>
         <app
             app-version="{{ $version['app'] }}"
             laravel-version="{{ $version['laravel'] }}"

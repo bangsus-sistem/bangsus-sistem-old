@@ -31036,6 +31036,121 @@ readers do not read off random characters that represent icons */
   color: #d1d5db;
 }
 
+.sidebar-mobile {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  padding: 20px;
+}
+
+.sidebar-mobile .sidebar-items {
+  padding-top: 20px;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item {
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+  color: #9ca3af;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item.active {
+  color: #fff;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item.active > a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item.active > a:hover {
+  color: #fff;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item > a {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item > a:hover {
+  color: #d1d5db;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-item-icon {
+  margin-right: 15px;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-item-toggle-icon {
+  position: absolute;
+  right: 0;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-collapse {
+  display: none;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-collapse.active {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item {
+  padding-left: 35px;
+  font-size: 14px;
+  font-weight: lighter;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item.active {
+  color: #fff;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item.active > a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item.active > a:hover {
+  color: #fff;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item > a {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+}
+
+.sidebar-mobile .sidebar-items .sidebar-item .sidebar-collapse.active .sidebar-collapse-item > a:hover {
+  color: #d1d5db;
+}
+
+.sidebar-mobile .sidebar-bars-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sidebar-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111827;
+  opacity: 0.5;
+  z-index: -1e+76;
+}
+
 .page-wrapper {
   padding-left: 250px;
 }

@@ -3,10 +3,10 @@
         <bsb-screen>
             <!-- Mobile -->
             <template v-slot:mobile>
-                <Sidebar :active="active"/>
-                <div class="px-5">
+                <SidebarMobile :active="active"/>
+                <bsb-page-wrapper-mobile>
                     <slot name="mobile" />
-                </div>
+                </bsb-page-wrapper-mobile>
                 <bsb-screen-mode-wrapper label="Mode Mobile" />
             </template>
             <!-- Desktop -->
@@ -29,6 +29,7 @@
 <script>
 import Flashers from './sections/Flashers'
 import Sidebar from './sections/Sidebar'
+import SidebarMobile from './sections/SidebarMobile'
 import Navbar from './sections/Navbar'
 import Breadcrumb from './sections/Breadcrumb'
 
@@ -36,6 +37,7 @@ export default {
     components: {
         Flashers,
         Sidebar,
+        SidebarMobile,
         Navbar,
         Breadcrumb,
     },

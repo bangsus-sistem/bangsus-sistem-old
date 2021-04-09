@@ -70,6 +70,7 @@ export default {
          * Sidebar
          */
         'sidebar': require('./sidebar/Sidebar').default,
+        'sidebar-bars-button': require('./sidebar/SidebarBarsButton').default,
         'sidebar-collapse': require('./sidebar/SidebarCollapse').default,
         'sidebar-collapse-item': require('./sidebar/SidebarCollapseItem').default,
         'sidebar-item': require('./sidebar/SidebarItem').default,
@@ -77,6 +78,7 @@ export default {
         'sidebar-items': require('./sidebar/SidebarItems').default,
         'sidebar-item-title': require('./sidebar/SidebarItemTitle').default,
         'sidebar-item-toggle-icon': require('./sidebar/SidebarItemToggleIcon').default,
+        'sidebar-mobile': require('./sidebar/SidebarMobile').default,
         'sidebar-title': require('./sidebar/SidebarTitle').default,
 
         /**
@@ -90,6 +92,7 @@ export default {
         'col': require('./utils/Col').default,
         'container-fluid': require('./utils/ContainerFluid').default,
         'page-wrapper': require('./utils/PageWrapper').default,
+        'page-wrapper-mobile': require('./utils/PageWrapperMobile').default,
         'row': require('./utils/Row').default,
     }
 }
