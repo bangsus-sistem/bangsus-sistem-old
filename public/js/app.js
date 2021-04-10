@@ -3004,6 +3004,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -71111,7 +71114,22 @@ var render = function() {
                 return [
                   _c("SidebarMobile", { attrs: { active: _vm.active } }),
                   _vm._v(" "),
-                  _c("bsb-page-wrapper-mobile", [_vm._t("mobile")], 2),
+                  _c(
+                    "bsb-page-wrapper-mobile",
+                    [
+                      _c("Breadcrumb", {
+                        attrs: { breadcrumbs: _vm.breadcrumbs }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "bsb-container-fluid",
+                        { staticClass: "px-4 pt-2" },
+                        [_vm._t("mobile")],
+                        2
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c("bsb-screen-mode-wrapper", {
                     attrs: { label: "Mode Mobile" }
@@ -72171,7 +72189,7 @@ var render = function() {
       {
         key: "mobile",
         fn: function() {
-          return undefined
+          return [_c("h3", [_vm._v("Role")])]
         },
         proxy: true
       },

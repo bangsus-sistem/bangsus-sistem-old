@@ -2,7 +2,7 @@
     <Layout :breadcrumbs="msc.breadcrumbs" active="system.role">
         <!-- Mobile -->
         <template v-slot:mobile>
-            
+            <h3>Role</h3>
         </template>
         <!-- Desktop -->
         <template v-slot:desktop>

@@ -5,7 +5,10 @@
             <template v-slot:mobile>
                 <SidebarMobile :active="active"/>
                 <bsb-page-wrapper-mobile>
-                    <slot name="mobile" />
+                    <Breadcrumb :breadcrumbs="breadcrumbs" />
+                    <bsb-container-fluid class="px-4 pt-2">
+                        <slot name="mobile" />
+                    </bsb-container-fluid>
                 </bsb-page-wrapper-mobile>
                 <bsb-screen-mode-wrapper label="Mode Mobile" />
             </template>
