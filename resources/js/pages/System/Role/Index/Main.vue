@@ -2,21 +2,25 @@
     <Layout :breadcrumbs="msc.breadcrumbs" active="system.role">
         <!-- Mobile -->
         <template v-slot:mobile>
-            <h3>Role</h3>
+            <Mobile />
         </template>
         <!-- Desktop -->
         <template v-slot:desktop>
-            <h3>Role</h3>
+            <Desktop />
         </template>
     </Layout>
 </template>
 
 <script>
-import Layout from '../../../layouts/Application'
+import Layout from '../../../../layouts/Application'
+import Desktop from './Desktop'
+import Mobile from './Mobile'
 
 export default {
     components: {
-        Layout
+        Layout,
+        Desktop,
+        Mobile,
     },
     data() {
         return {
@@ -29,8 +33,8 @@ export default {
                         label: 'Role',
                     }
                 ]
-            }
+            },
         }
-    }
+    },
 }
 </script>

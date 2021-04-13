@@ -2,7 +2,10 @@
     <Layout :breadcrumbs="msc.breadcrumbs" active="dashboard">
         <!-- Mobile -->
         <template v-slot:mobile>
-            
+            <h3>Dashboard</h3>
+            <bsb-row class="mt-3">
+
+            </bsb-row>
         </template>
         <!-- Desktop -->
         <template v-slot:desktop>
