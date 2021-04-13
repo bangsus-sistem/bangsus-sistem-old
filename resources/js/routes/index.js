@@ -23,9 +23,15 @@ export default [
         beforeEnter: middleware(appMiddleware),
     },
     {
+        path: '/system/package',
+        name: 'system.package',
+        component: page('System/Package/Index'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
         path: '/system/role',
         name: 'system.role',
-        component: page('System/Role'),
+        component: page('System/Role/Index'),
         beforeEnter: middleware(appMiddleware),
     },
 ]
