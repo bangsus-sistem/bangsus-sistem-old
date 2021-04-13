@@ -5,11 +5,10 @@ namespace App\Foundation\Database;
 trait BuildWhere
 {
     /**
-     * @param  \Illuminate\Http\Request
      * @return \App\Foundation\Database\WhereBuilder
      */
-    public function buildWhere($request)
+    public function buildWhere()
     {
-        return new WhereBuilder($request);
+        return new WhereBuilder();
     }
 }
