@@ -38,11 +38,12 @@ class AuthenticationLogController extends Controller
         return response()->json(
             new AuthenticationLogPaginatedCollection(
                 AuthenticationLog::where(
-                    $this->buildWhere($request)
+                    $this->buildWhere()
+                        ->with($request)
                         ->index('user')->mode('id')
                         ->index('state')->mode('boolean')
                         ->done()
-                )->get()
+                )->paginate($request->query('count'))
             )
         );
     }

@@ -37,11 +37,12 @@ class ModuleController extends Controller
         return response()->json(
             new ModulePaginatedCollection(
                 Module::where(
-                    $this->buildWhere($request)
+                    $this->buildWhere()
+                        ->with($request)
                         ->index('ref')->mode('string')
                         ->index('name')->mode('string')
                         ->done()
-                )->get()
+                )->paginate($request->query('count'))
             )
         );
     }

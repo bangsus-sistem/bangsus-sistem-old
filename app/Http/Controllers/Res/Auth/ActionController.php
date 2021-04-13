@@ -37,10 +37,11 @@ class ActionController extends Controller
             new ActionPaginatedCollection(
                 Action::where(
                     $this->buildWhere($request)
+                        ->with($request)
                         ->index('ref')->mode('string')
                         ->index('name')->mode('string')
                         ->done()
-                )->get()
+                )->paginate($request->query('count'))
             )
         );
     }

@@ -35,10 +35,11 @@ class PackageController extends Controller
             new PackagePaginatedCollection(
                 Package::where(
                     $this->buildWhere()
+                        ->with($request)
                         ->index('ref')->mode('string')
                         ->index('name')->mode('string')
                         ->done()
-                )->get()
+                )->paginate($request->query('count'))
             ),
             200
         );
