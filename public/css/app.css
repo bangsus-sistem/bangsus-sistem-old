@@ -30943,6 +30943,7 @@ readers do not read off random characters that represent icons */
   position: fixed;
   left: 0;
   padding: 20px;
+  z-index: 99999999999999;
 }
 
 .sidebar .sidebar-items {
@@ -31042,6 +31043,7 @@ readers do not read off random characters that represent icons */
   position: fixed;
   left: 0;
   padding: 20px;
+  z-index: 99999999999999;
 }
 
 .sidebar-mobile .sidebar-items {
@@ -31148,7 +31150,7 @@ readers do not read off random characters that represent icons */
   bottom: 0;
   background-color: #111827;
   opacity: 0.5;
-  z-index: -1e+76;
+  z-index: 9999999999;
 }
 
 .page-wrapper {
