@@ -31,6 +31,16 @@ class AuthRequest extends FormRequest
         $user = $userClass::findOrFail(Auth::id());
         $role = $user->role;
 
-        return $role->{Str::plural($type)}()->find($feature->id)->exists();
+        return $role->{Str::plural($type)}()->find($instance->id)->exists();
+    }
+
+    /**
+     * @var array
+     */
+    public function rules()
+    {
+        return [
+
+        ];
     }
 }
