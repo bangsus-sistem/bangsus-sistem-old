@@ -17,7 +17,34 @@ export default {
         /**
          * Buttons
          */
+        // Actions
+        'button-activate': require('./buttons/actions/ButtonActivate').default,
+        'button-create': require('./buttons/actions/ButtonCreate').default,
+        'button-deactivate': require('./buttons/actions/ButtonDeactivate').default,
+        'button-delete': require('./buttons/actions/ButtonDelete').default,
+        'button-post': require('./buttons/actions/ButtonPost').default,
+        'button-read': require('./buttons/actions/ButtonRead').default,
+        'button-update': require('./buttons/actions/ButtonUpdate').default,
+        // Contents
+        'button-activate-content': require('./buttons/contents/ButtonActivateContent').default,
+        'button-back-content': require('./buttons/contents/ButtonBackContent').default,
+        'button-create-content': require('./buttons/contents/ButtonCreateContent').default,
+        'button-deactivate-content': require('./buttons/contents/ButtonDeactivateContent').default,
+        'button-delete-content': require('./buttons/contents/ButtonDeleteContent').default,
+        'button-post-content': require('./buttons/contents/ButtonPostContent').default,
+        'button-read-content': require('./buttons/contents/ButtonReadContent').default,
+        'button-update-content': require('./buttons/contents/ButtonUpdateContent').default,
+        // Router Link
+        'button-router-link-back': require('./buttons/router-link/actions/ButtonRouterLinkBack').default,
+        'button-router-link-create': require('./buttons/router-link/actions/ButtonRouterLinkCreate').default,
+        'button-router-link-delete': require('./buttons/router-link/actions/ButtonRouterLinkDelete').default,
+        'button-router-link-read': require('./buttons/router-link/actions/ButtonRouterLinkRead').default,
+        'button-router-link-update': require('./buttons/router-link/actions/ButtonRouterLinkUpdate').default,
+        'button-router-link': require('./buttons/router-link/ButtonRouterLink').default,
+
         'button': require('./buttons/Button').default,
+        'button-group': require('./buttons/ButtonGroup').default,
+        'button-link': require('./buttons/ButtonLink').default,
         'button-spinner': require('./buttons/ButtonSpinner').default,
         'close-button': require('./buttons/CloseButton').default,
 
@@ -26,12 +53,30 @@ export default {
          */
         'card': require('./card/Card').default,
         'card-body': require('./card/CardBody').default,
+        'card-body-spinner': require('./card/CardBodySpinner').default,
+        'card-body-spinner-error': require('./card/CardBodySpinnerError').default,
+        'card-body-spinner-error-back': require('./card/CardBodySpinnerErrorBack').default,
+        'card-header': require('./card/CardHeader').default,
+        'mobile-card-spinner': require('./card/MobileCardSpinner').default,
+        'mobile-card-spinner-error': require('./card/MobileCardSpinnerError').default,
+        'mobile-card-spinner-error-back': require('./card/MobileCardSpinnerErrorBack').default,
+        'mobile-query-form': require('./card/MobileQueryForm').default,
 
         /**
          * Flashers
          */
         'flashers': require('./flashers/Flashers').default,
         'flasher-wrapper': require('./flashers/FlasherWrapper').default,
+
+        /**
+         * Form
+         */
+        'errors-wrapper': require('./form/ErrorsWrapper').default,
+        'form-check': require('./form/FormCheck').default,
+        'form-check-label': require('./form/FormCheckLabel').default,
+        'form-group': require('./form/FormGroup').default,
+        'form-inline': require('./form/FormInline').default,
+        'modal-form': require('./form/ModalForm').default,
 
         /**
          * Icon
@@ -44,7 +89,24 @@ export default {
          */
         'errors': require('./input/Errors').default,
         'input': require('./input/Input').default,
+        'input-append-prepend': require('./input/InputAppendPrepend').default,
+        'input-append-prepend-errors': require('./input/InputAppendPrependErrors').default,
         'input-errors': require('./input/InputErrors').default,
+        'input-group': require('./input/InputGroup').default,
+        'input-group-append': require('./input/InputGroupAppend').default,
+        'input-group-prepend': require('./input/InputGroupPrepend').default,
+        'input-group-text': require('./input/InputGroupText').default,
+        'select': require('./input/Select').default,
+        'select-errors': require('./input/SelectErrors').default,
+        'textarea': require('./input/Textarea').default,
+        'textarea-errors': require('./input/TextareaErrors').default,
+
+        /**
+         * List
+         */
+        'list-group': require('./list/ListGroup').default,
+        'list-group-item': require('./list/ListGroupItem').default,
+        'list-group-item-content': require('./list/ListGroupItemContent').default,
 
         /**
          * Mode
@@ -55,6 +117,16 @@ export default {
          * Navbar
          */
         'navbar': require('./navbar/Navbar').default,
+
+        /**
+         * Pagination
+         */
+        'data-index': require('./pagination/DataIndex').default,
+        'item-count': require('./pagination/ItemCount').default,
+        'item-count-label': require('./pagination/ItemCountLabel').default,
+        'item-count-select': require('./pagination/ItemCountSelect').default,
+        'page-button-group': require('./pagination/PageButtonGroup').default,
+        'refresh-button': require('./pagination/RefreshButton').default,
 
         /**
          * Sample
@@ -85,6 +157,20 @@ export default {
          * Spinner
          */
         'spinner': require('./spinner/Spinner').default,
+
+        /**
+         * Table
+         */
+        'table': require('./table/Table').default,
+        'table-responsive': require('./table/TableResponsive').default,
+        'table-responsive-footer': require('./table/TableResponsiveFooter').default,
+        'table-responsive-header': require('./table/TableResponsiveHeader').default,
+        'td': require('./table/Td').default,
+        'th': require('./table/Th').default,
+        'th-query': require('./table/ThQuery').default,
+        'th-sort': require('./table/ThSort').default,
+        'tr': require('./table/Tr').default,
+        'tr-query': require('./table/TrQuery').default,
 
         /**
          * Utils
