@@ -15,7 +15,7 @@ class IndexRequest extends AuthRequest
      * @var array
      */
     protected $refs = [
-        'module_ref' => 'package',
-        'action_ref' => 'index',
+        'module' => 'package',
+        'action' => 'index',
     ];
 }

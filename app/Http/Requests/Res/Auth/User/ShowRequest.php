@@ -15,7 +15,7 @@ class ShowRequest extends AuthRequest
      * @var array
      */
     protected $refs = [
-        'module_ref' => 'user',
-        'action_ref' => 'read',
+        'module' => 'user',
+        'action' => 'read',
     ];
 }
