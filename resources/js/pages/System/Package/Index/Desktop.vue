@@ -10,8 +10,8 @@
                 <h5 class="mb-3">Daftar Package</h5>
                 <bsb-table-responsive class="p-1 mt-3">
                     <bsb-table-responsive-header>
-                    <bsb-item-count :options="meta.counts" v-model="query.count" @input="search" />
-                </bsb-table-responsive-header>
+                        <bsb-item-count :options="meta.counts" v-model="query.count" @input="search" />
+                    </bsb-table-responsive-header>
                     <bsb-table :hover="true">
                         <thead class="thead-light">
                             <bsb-tr-query>

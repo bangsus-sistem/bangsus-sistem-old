@@ -21,6 +21,12 @@
                     Cari
                 </bsb-button-spinner>
             </bsb-mobile-query-form>
+            <bsb-item-count
+                :options="meta.counts"
+                v-model="query.count"
+                @input="search"
+                class="mt-3"
+            />
             <bsb-list-group class="mt-3 shadow-sm">
                 <bsb-list-group-item
                     class="list-group-item list-group-item-action"
@@ -37,15 +43,15 @@
                     </bsb-list-group-item-content>
                 </bsb-list-group-item>
             </bsb-list-group>
+                <div class="mt-3 text-center">
+                <bsb-data-index
+                    :first-item="result.meta['first_item']"
+                    :last-item="result.meta['last_item']"
+                    :total="result.meta['total']"
+                />
+                <bsb-page-button-group v-model="query.page" :last-page="result.meta['last_page']" @changed="search" />
+            </div>
         </bsb-mobile-card-spinner-error>
-        <div class="mt-3 text-center">
-            <bsb-data-index
-                :first-item="result.meta['first_item']"
-                :last-item="result.meta['last_item']"
-                :total="result.meta['total']"
-            />
-            <bsb-page-button-group v-model="query.page" :last-page="result.meta['last_page']" @changed="search" />
-        </div>
     </fragment>
 </template>
 

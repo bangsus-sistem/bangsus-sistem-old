@@ -5763,6 +5763,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_mixin__WEBPACK_IMPORTED_MODULE_0__.default]
@@ -78772,21 +78778,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "gb-c-input-group",
+    "bsb-input-group",
     [
       _vm.prependLabel
         ? _c(
-            "gb-c-input-group-prepend",
+            "bsb-input-group-prepend",
             [
-              _c("gb-c-input-group-text", {
-                attrs: { label: _vm.prependLabel }
-              })
+              _c("bsb-input-group-text", { attrs: { label: _vm.prependLabel } })
             ],
             1
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("gb-c-input", {
+      _c("bsb-input", {
         class: { "is-invalid": _vm.hasError },
         attrs: { type: _vm.type, value: _vm.value, readonly: _vm.readonly },
         on: {
@@ -78798,10 +78802,8 @@ var render = function() {
       _vm._v(" "),
       _vm.appendLabel
         ? _c(
-            "gb-c-input-group-append",
-            [
-              _c("gb-c-input-group-text", { attrs: { label: _vm.appendLabel } })
-            ],
+            "bsb-input-group-append",
+            [_c("bsb-input-group-text", { attrs: { label: _vm.appendLabel } })],
             1
           )
         : _vm._e()
@@ -78835,7 +78837,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("gb-c-input-append-prepend", {
+      _c("bsb-input-append-prepend", {
         attrs: {
           type: _vm.type,
           value: _vm.value,
@@ -78851,7 +78853,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("gb-c-errors-wrapper", { attrs: { errors: _vm.errors } })
+      _c("bsb-errors-wrapper", { attrs: { errors: _vm.errors } })
     ],
     1
   )
@@ -79091,7 +79093,7 @@ var render = function() {
     "div",
     [
       _c(
-        "gb-c-select",
+        "bsb-select",
         {
           class: { "is-invalid": _vm.errors.length > 0 },
           attrs: {
@@ -79114,7 +79116,7 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _c("gb-c-errors-wrapper", { attrs: { errors: _vm.errors } })
+      _c("bsb-errors-wrapper", { attrs: { errors: _vm.errors } })
     ],
     1
   )
@@ -79179,7 +79181,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("gb-c-textarea", {
+      _c("bsb-textarea", {
         class: { "is-invalid": _vm.errors.length > 0 },
         attrs: { value: _vm.value, readonly: _vm.readonly },
         on: {
@@ -79189,7 +79191,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("gb-c-errors-wrapper", { attrs: { errors: _vm.errors } })
+      _c("bsb-errors-wrapper", { attrs: { errors: _vm.errors } })
     ],
     1
   )
@@ -81987,6 +81989,19 @@ var render = function() {
             1
           ),
           _vm._v(" "),
+          _c("bsb-item-count", {
+            staticClass: "mt-3",
+            attrs: { options: _vm.meta.counts },
+            on: { input: _vm.search },
+            model: {
+              value: _vm.query.count,
+              callback: function($$v) {
+                _vm.$set(_vm.query, "count", $$v)
+              },
+              expression: "query.count"
+            }
+          }),
+          _vm._v(" "),
           _c(
             "bsb-list-group",
             { staticClass: "mt-3 shadow-sm" },
@@ -82038,34 +82053,34 @@ var render = function() {
               )
             }),
             1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "mt-3 text-center" },
-        [
-          _c("bsb-data-index", {
-            attrs: {
-              "first-item": _vm.result.meta["first_item"],
-              "last-item": _vm.result.meta["last_item"],
-              total: _vm.result.meta["total"]
-            }
-          }),
+          ),
           _vm._v(" "),
-          _c("bsb-page-button-group", {
-            attrs: { "last-page": _vm.result.meta["last_page"] },
-            on: { changed: _vm.search },
-            model: {
-              value: _vm.query.page,
-              callback: function($$v) {
-                _vm.$set(_vm.query, "page", $$v)
-              },
-              expression: "query.page"
-            }
-          })
+          _c(
+            "div",
+            { staticClass: "mt-3 text-center" },
+            [
+              _c("bsb-data-index", {
+                attrs: {
+                  "first-item": _vm.result.meta["first_item"],
+                  "last-item": _vm.result.meta["last_item"],
+                  total: _vm.result.meta["total"]
+                }
+              }),
+              _vm._v(" "),
+              _c("bsb-page-button-group", {
+                attrs: { "last-page": _vm.result.meta["last_page"] },
+                on: { changed: _vm.search },
+                model: {
+                  value: _vm.query.page,
+                  callback: function($$v) {
+                    _vm.$set(_vm.query, "page", $$v)
+                  },
+                  expression: "query.page"
+                }
+              })
+            ],
+            1
+          )
         ],
         1
       )
