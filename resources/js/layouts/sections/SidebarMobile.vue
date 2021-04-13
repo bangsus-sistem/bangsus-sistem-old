@@ -38,7 +38,7 @@
                 </bsb-sidebar-item>
             </bsb-sidebar-items>
         </bsb-sidebar-mobile>
-        <div class="p-3" v-if="!show">
+        <div class="p-3">
             <bsb-sidebar-bars-button @click="toggleShow" />
         </div>
     </div>
