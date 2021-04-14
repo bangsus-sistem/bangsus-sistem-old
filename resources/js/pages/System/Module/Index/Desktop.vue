@@ -1,13 +1,13 @@
 <template>
     <fragment>
-        <h3>Package</h3>
+        <h3>Modul</h3>
         <bsb-card class="mt-3">
             <bsb-card-body-spinner-error
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
             >
-                <h5 class="mb-3">Daftar Package</h5>
+                <h5 class="mb-3">Daftar Modul</h5>
                 <bsb-table-responsive class="p-1 mt-3">
                     <bsb-table-responsive-header>
                         <bsb-item-count :options="meta.counts" v-model="query.count" @input="search" />
@@ -16,6 +16,16 @@
                         <thead class="thead-light">
                             <bsb-tr-query>
                                 <bsb-th-query></bsb-th-query>
+                                <bsb-th-query>
+                                    <bsb-select size="sm"
+                                        v-model="query['package_id']"
+                                    >
+                                        <option value="*">Semua</option>
+                                        <option v-for="(_package, i) in resources['packages']" :key="i" :value="_package['id']">
+                                            {{ _package['name'] }}
+                                        </option>
+                                    </bsb-select>
+                                </bsb-th-query>
                                 <bsb-th-query>
                                     <bsb-input size="sm" type="text" v-model="query['ref']" />
                                 </bsb-th-query>
@@ -47,6 +57,7 @@
                         <tbody>
                             <tr v-for="(item, i) in result.items" :key="i">
                                 <bsb-td>{{ i + 1 }}</bsb-td>
+                                <bsb-td>{{ item['package']['ref'] }} - {{ item['package']['name'] }}</bsb-td>
                                 <bsb-td>{{ item['ref'] }}</bsb-td>
                                 <bsb-td>{{ item['name'] }}</bsb-td>
                                 <bsb-td></bsb-td>

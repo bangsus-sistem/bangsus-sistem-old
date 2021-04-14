@@ -14,7 +14,7 @@ class ModulePaginatedResource extends PaginatedResource
     {
         return [
             'id' => $this->id,
-            'package_id' => $this->package_id,
+            'package' => new PackagePaginatedResource($this->package),
             'ref' => $this->ref,
             'name' => $this->name,
         ];
