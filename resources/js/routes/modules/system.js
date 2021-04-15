@@ -23,6 +23,12 @@ export default [
         beforeEnter: middleware(appMiddleware),
     },
     {
+        path: 'module/read/:id',
+        name: 'system.module.read',
+        component: page('System/Module/Read'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
         path: 'role',
         name: 'system.role',
         component: page('System/Role/Index'),
