@@ -1,6 +1,8 @@
 import page from './page'
 import middleware from './middleware'
 
+import system from './modules/system'
+
 const appMiddleware = ['authenticated', 'versionCheck']
 
 export default [
@@ -23,21 +25,8 @@ export default [
         beforeEnter: middleware(appMiddleware),
     },
     {
-        path: '/system/package',
-        name: 'system.package',
-        component: page('System/Package/Index'),
-        beforeEnter: middleware(appMiddleware),
-    },
-    {
-        path: '/system/module',
-        name: 'system.module',
-        component: page('System/Module/Index'),
-        beforeEnter: middleware(appMiddleware),
-    },
-    {
-        path: '/system/role',
-        name: 'system.role',
-        component: page('System/Role/Index'),
-        beforeEnter: middleware(appMiddleware),
+        path: '/system',
+        component: { template: '<router-view></router-view>' },
+        children: system
     },
 ]

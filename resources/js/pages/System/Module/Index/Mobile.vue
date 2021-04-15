@@ -10,6 +10,17 @@
             <h5 class="mb-3">Daftar Modul</h5>
             <bsb-mobile-query-form>
                 <bsb-form-group>
+                    <label>Package</label>
+                    <bsb-select size="sm"
+                        v-model="query['package_id']"
+                    >
+                        <option value="*">Semua</option>
+                        <option v-for="(_package, i) in resources['packages']" :key="i" :value="_package['id']">
+                            {{ _package['name'] }}
+                        </option>
+                    </bsb-select>
+                </bsb-form-group>
+                <bsb-form-group>
                     <label>Referensi</label>
                     <bsb-input size="sm" type="text" v-model="query['ref']" />
                 </bsb-form-group>
@@ -40,7 +51,7 @@
                             <h6>{{ item['name'] }}</h6>
                         </template>
                         <template v-slot:right>
-                            <bsb-button-router-link-read :to="{ name: 'system.package.read', params: { id: item['id'] } }" />
+                            <bsb-button-router-link-read :to="{ name: 'system.module.read', params: { id: item['id'] } }" />
                         </template>
                     </bsb-list-group-item-content>
                 </bsb-list-group-item>

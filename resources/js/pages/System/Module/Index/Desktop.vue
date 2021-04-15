@@ -60,7 +60,9 @@
                                 <bsb-td>{{ item['package']['ref'] }} - {{ item['package']['name'] }}</bsb-td>
                                 <bsb-td>{{ item['ref'] }}</bsb-td>
                                 <bsb-td>{{ item['name'] }}</bsb-td>
-                                <bsb-td></bsb-td>
+                                <bsb-td justify="center">
+                                    <bsb-button-router-link-read :to="{ name: 'system.module.read', params: { id: item['id'] } }" />
+                                </bsb-td>
                             </tr>
                         </tbody>
                     </bsb-table>

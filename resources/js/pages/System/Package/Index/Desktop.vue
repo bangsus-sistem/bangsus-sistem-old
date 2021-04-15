@@ -49,7 +49,9 @@
                                 <bsb-td>{{ i + 1 }}</bsb-td>
                                 <bsb-td>{{ item['ref'] }}</bsb-td>
                                 <bsb-td>{{ item['name'] }}</bsb-td>
-                                <bsb-td></bsb-td>
+                                <bsb-td justify="center">
+                                    <bsb-button-router-link-read :to="{ name: 'system.package.read', params: { id: item['id'] } }" />
+                                </bsb-td>
                             </tr>
                         </tbody>
                     </bsb-table>
