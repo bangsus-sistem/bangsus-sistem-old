@@ -36,7 +36,7 @@ export default {
     methods: {
         prepare() {
             this.setQuery({
-                'package_id': this.$route.params.id,
+                'package_id': [this.$route.params.id],
                 'ref': [''],
                 'name': [''],
             })

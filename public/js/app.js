@@ -9268,7 +9268,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     prepare: function prepare() {
       this.setQuery({
-        'package_id': this.$route.params.id,
+        'package_id': [this.$route.params.id],
         'ref': [''],
         'name': ['']
       });
