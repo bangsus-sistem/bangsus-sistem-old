@@ -6215,6 +6215,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_mixin__WEBPACK_IMPORTED_MODULE_0__.default]
@@ -6287,6 +6344,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mixin */ "./resources/js/pages/System/Package/Read/mixin.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9132,11 +9235,54 @@ __webpack_require__.r(__webpack_exports__);
           'ref': '',
           'name': ''
         }
+      },
+      query: {
+        'package_id': this.$route.params.id,
+        'ref': '',
+        'name': ''
+      },
+      meta: {
+        sortOrders: [{
+          index: 'ref',
+          title: 'Referensi'
+        }, {
+          index: 'name',
+          title: 'Nama'
+        }]
       }
     };
   },
   created: function created() {
-    this.fetchAndSetFormData('/ajax/auth/package/' + this.$route.params.id);
+    var _this = this;
+
+    this.fetchAndSetFormData('/ajax/auth/package/' + this.$route.params.id, {
+      resolve: true,
+      reject: false
+    }, {
+      startLoading: true,
+      stopLoading: false
+    }).then(function (res) {
+      _this.prepare();
+    });
+  },
+  methods: {
+    prepare: function prepare() {
+      this.setQuery({
+        'package_id': this.$route.params.id,
+        'ref': [''],
+        'name': ['']
+      });
+      this.getAndSetResult();
+    },
+    search: function search() {
+      this.startResultLoading();
+      this.getAndSetResult(true, 'result');
+    },
+    fetchResult: function fetchResult() {
+      return axios.get('/ajax/auth/module', {
+        params: this.query
+      });
+    }
   }
 });
 
@@ -84479,8 +84625,212 @@ var render = function() {
                   )
                 ],
                 1
+              ),
+              _vm._v(" "),
+              _c("h5", { staticClass: "my-3" }, [_vm._v("Modul")]),
+              _vm._v(" "),
+              _c(
+                "bsb-table-responsive",
+                { staticClass: "p-1 mt-3" },
+                [
+                  _c(
+                    "bsb-table-responsive-header",
+                    [
+                      _c("bsb-item-count", {
+                        attrs: { options: _vm.meta.counts },
+                        on: { input: _vm.search },
+                        model: {
+                          value: _vm.query.count,
+                          callback: function($$v) {
+                            _vm.$set(_vm.query, "count", $$v)
+                          },
+                          expression: "query.count"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("bsb-table", { attrs: { hover: true } }, [
+                    _c(
+                      "thead",
+                      { staticClass: "thead-light" },
+                      [
+                        _c(
+                          "bsb-tr-query",
+                          [
+                            _c("bsb-th-query"),
+                            _vm._v(" "),
+                            _c(
+                              "bsb-th-query",
+                              [
+                                _c("bsb-input", {
+                                  attrs: { size: "sm", type: "text" },
+                                  model: {
+                                    value: _vm.query["ref"],
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.query, "ref", $$v)
+                                    },
+                                    expression: "query['ref']"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "bsb-th-query",
+                              [
+                                _c("bsb-input", {
+                                  attrs: { size: "sm", type: "text" },
+                                  model: {
+                                    value: _vm.query["name"],
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.query, "name", $$v)
+                                    },
+                                    expression: "query['name']"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "bsb-th-query",
+                              [
+                                _c(
+                                  "bsb-button-spinner",
+                                  {
+                                    attrs: {
+                                      color: "primary",
+                                      size: "sm",
+                                      loading: _vm.state.result.loading
+                                    },
+                                    on: { click: _vm.search }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                    Cari\n                                "
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "tr",
+                          [
+                            _c("bsb-th", [_vm._v("#")]),
+                            _vm._v(" "),
+                            _vm._l(_vm.meta.sortOrders, function(sortOrder, i) {
+                              return _c(
+                                "bsb-th-sort",
+                                {
+                                  key: i,
+                                  attrs: {
+                                    sort: _vm.query.sort == sortOrder.index,
+                                    order: _vm.query.order
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.changeSortOrder(
+                                        sortOrder.index
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                " +
+                                      _vm._s(sortOrder.title) +
+                                      "\n                            "
+                                  )
+                                ]
+                              )
+                            }),
+                            _vm._v(" "),
+                            _c("bsb-th", { attrs: { justify: "center" } }, [
+                              _vm._v(
+                                "\n                                Aksi\n                            "
+                              )
+                            ])
+                          ],
+                          2
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.result.items, function(item, i) {
+                        return _c(
+                          "tr",
+                          { key: i },
+                          [
+                            _c("bsb-td", [_vm._v(_vm._s(i + 1))]),
+                            _vm._v(" "),
+                            _c("bsb-td", [_vm._v(_vm._s(item["ref"]))]),
+                            _vm._v(" "),
+                            _c("bsb-td", [_vm._v(_vm._s(item["name"]))]),
+                            _vm._v(" "),
+                            _c(
+                              "bsb-td",
+                              { attrs: { justify: "center" } },
+                              [
+                                _c("bsb-button-router-link-read", {
+                                  attrs: {
+                                    to: {
+                                      name: "system.module.read",
+                                      params: { id: item["id"] }
+                                    }
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      }),
+                      0
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "bsb-table-responsive-footer",
+                    [
+                      _c("bsb-data-index", {
+                        attrs: {
+                          "first-item": _vm.result.meta["first_item"],
+                          "last-item": _vm.result.meta["last_item"],
+                          total: _vm.result.meta["total"]
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("bsb-page-button-group", {
+                        attrs: { "last-page": _vm.result.meta["last_page"] },
+                        on: { changed: _vm.search },
+                        model: {
+                          value: _vm.query.page,
+                          callback: function($$v) {
+                            _vm.$set(_vm.query, "page", $$v)
+                          },
+                          expression: "query.page"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
               )
-            ]
+            ],
+            1
           )
         ],
         1
@@ -84626,8 +84976,171 @@ var render = function() {
                   )
                 ],
                 1
+              ),
+              _vm._v(" "),
+              _c("h5", { staticClass: "mb-3" }, [_vm._v("Modul")]),
+              _vm._v(" "),
+              _c(
+                "bsb-mobile-query-form",
+                [
+                  _c(
+                    "bsb-form-group",
+                    [
+                      _c("label", [_vm._v("Referensi")]),
+                      _vm._v(" "),
+                      _c("bsb-input", {
+                        attrs: { size: "sm", type: "text" },
+                        model: {
+                          value: _vm.query["ref"],
+                          callback: function($$v) {
+                            _vm.$set(_vm.query, "ref", $$v)
+                          },
+                          expression: "query['ref']"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "bsb-form-group",
+                    [
+                      _c("label", [_vm._v("Nama")]),
+                      _vm._v(" "),
+                      _c("bsb-input", {
+                        attrs: { size: "sm", type: "text" },
+                        model: {
+                          value: _vm.query["name"],
+                          callback: function($$v) {
+                            _vm.$set(_vm.query, "name", $$v)
+                          },
+                          expression: "query['name']"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "bsb-button-spinner",
+                    {
+                      attrs: {
+                        color: "primary",
+                        size: "sm",
+                        loading: _vm.state.result.loading
+                      },
+                      on: { click: _vm.search }
+                    },
+                    [_vm._v("\n                    Cari\n                ")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("bsb-item-count", {
+                staticClass: "mt-3",
+                attrs: { options: _vm.meta.counts },
+                on: { input: _vm.search },
+                model: {
+                  value: _vm.query.count,
+                  callback: function($$v) {
+                    _vm.$set(_vm.query, "count", $$v)
+                  },
+                  expression: "query.count"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "bsb-list-group",
+                { staticClass: "mt-3 shadow-sm" },
+                _vm._l(_vm.result.items, function(item, i) {
+                  return _c(
+                    "bsb-list-group-item",
+                    {
+                      key: i,
+                      staticClass: "list-group-item list-group-item-action"
+                    },
+                    [
+                      _c("bsb-list-group-item-content", {
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "content",
+                              fn: function() {
+                                return [
+                                  _c("small", [
+                                    _vm._v(
+                                      _vm._s(item["package"]["ref"]) +
+                                        " - " +
+                                        _vm._s(item["package"]["name"])
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("small", [_vm._v(_vm._s(item["ref"]))]),
+                                  _vm._v(" "),
+                                  _c("h6", [_vm._v(_vm._s(item["name"]))])
+                                ]
+                              },
+                              proxy: true
+                            },
+                            {
+                              key: "right",
+                              fn: function() {
+                                return [
+                                  _c("bsb-button-router-link-read", {
+                                    attrs: {
+                                      to: {
+                                        name: "system.module.read",
+                                        params: { id: item["id"] }
+                                      }
+                                    }
+                                  })
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ],
+                          null,
+                          true
+                        )
+                      })
+                    ],
+                    1
+                  )
+                }),
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "mt-3 text-center" },
+                [
+                  _c("bsb-data-index", {
+                    attrs: {
+                      "first-item": _vm.result.meta["first_item"],
+                      "last-item": _vm.result.meta["last_item"],
+                      total: _vm.result.meta["total"]
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("bsb-page-button-group", {
+                    attrs: { "last-page": _vm.result.meta["last_page"] },
+                    on: { changed: _vm.search },
+                    model: {
+                      value: _vm.query.page,
+                      callback: function($$v) {
+                        _vm.$set(_vm.query, "page", $$v)
+                      },
+                      expression: "query.page"
+                    }
+                  })
+                ],
+                1
               )
-            ]
+            ],
+            1
           )
         ],
         1
