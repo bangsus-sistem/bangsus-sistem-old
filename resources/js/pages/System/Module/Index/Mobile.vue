@@ -56,7 +56,7 @@
                     </bsb-list-group-item-content>
                 </bsb-list-group-item>
             </bsb-list-group>
-                <div class="mt-3 text-center">
+            <div class="mt-3 text-center">
                 <bsb-data-index
                     :first-item="result.meta['first_item']"
                     :last-item="result.meta['last_item']"
