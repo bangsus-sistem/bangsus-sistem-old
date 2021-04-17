@@ -41,6 +41,30 @@ export default [
         beforeEnter: middleware(appMiddleware),
     },
     {
+        path: 'widget',
+        name: 'system.widget',
+        component: page('System/Widget/Index'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
+        path: 'widget/read/:id',
+        name: 'system.widget.read',
+        component: page('System/Widget/Read'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
+        path: 'report',
+        name: 'system.report',
+        component: page('System/Report/Index'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
+        path: 'report/read/:id',
+        name: 'system.report.read',
+        component: page('System/Report/Read'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
         path: 'role',
         name: 'system.role',
         component: page('System/Role/Index'),
