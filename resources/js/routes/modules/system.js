@@ -41,6 +41,18 @@ export default [
         beforeEnter: middleware(appMiddleware),
     },
     {
+        path: 'feature',
+        name: 'system.feature',
+        component: page('System/Feature/Index'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
+        path: 'feature/read/:id',
+        name: 'system.feature.read',
+        component: page('System/Feature/Read'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
         path: 'widget',
         name: 'system.widget',
         component: page('System/Widget/Index'),
