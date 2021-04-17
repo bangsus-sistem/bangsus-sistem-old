@@ -11,16 +11,69 @@ export default {
                 },
             },
             query: {
-                'package_id': this.$route.params.id,
-                'ref': '',
-                'name': '',
+                module: {
+                    'ref': '',
+                    'name': '',
+                },
+                widget: {
+                    'ref': '',
+                    'name': '',
+                },
+                report: {
+                    'ref': '',
+                    'name': '',
+                },
             },
             meta: {
-                sortOrders: [
-                    { index: 'ref', title: 'Referensi' },
-                    { index: 'name', title: 'Nama' },
-                ],
+                module: {
+                    sortOrders: [
+                        { index: 'ref', title: 'Referensi' },
+                        { index: 'name', title: 'Nama' },
+                    ],
+                    counts: [10, 25, 50, 100]
+                },
+                widget: {
+                    sortOrders: [
+                        { index: 'ref', title: 'Referensi' },
+                        { index: 'name', title: 'Nama' },
+                    ],
+                    counts: [10, 25, 50, 100]
+                },
+                report: {
+                    sortOrders: [
+                        { index: 'ref', title: 'Referensi' },
+                        { index: 'name', title: 'Nama' },
+                    ],
+                    counts: [10, 25, 50, 100]
+                },
             },
+            result: {
+                module: {
+                    items: [],
+                    meta: {
+
+                    }
+                },
+                widget: {
+                    items: [],
+                    meta: {
+
+                    }
+                },
+                report: {
+                    items: [],
+                    meta: {
+
+                    }
+                },
+            },
+            state: {
+                result: {
+                    module: { loading: false },
+                    widget: { loading: false },
+                    report: { loading: false },
+                }
+            }
         }
     },
     created() {
@@ -31,23 +84,55 @@ export default {
         )
             .then(res => {
                 this.prepare()
+                console.log(this.result)
             })
     },
     methods: {
         prepare() {
+            this.prepareModule()
+            this.prepareWidget()
+            this.prepareReport()
+        },
+        prepareModule() {
             this.setQuery({
-                'package_id': [this.$route.params.id],
                 'ref': [''],
                 'name': [''],
-            })
-            this.getAndSetResult()
+            }, 'module')
+            this.getAndSetResult(true, 'page', 'module')
         },
-        search() {
+        prepareWidget() {
+            this.setQuery({
+                'ref': [''],
+                'name': [''],
+            }, 'widget')
+            this.getAndSetResult(true, 'page', 'widget')
+        },
+        prepareReport() {
+            this.setQuery({
+                'ref': [''],
+                'name': [''],
+            }, 'report')
+            this.getAndSetResult(true, 'page', 'report')
+        },
+        searchModule() {
             this.startResultLoading()
-            this.getAndSetResult(true, 'result')
+            this.getAndSetResult(true, 'result', 'module')
         },
-        fetchResult() {
-            return axios.get('/ajax/auth/module', { params: this.query })
+        searchWidget() {
+            this.startResultLoading()
+            this.getAndSetResult(true, 'result', 'widget')
+        },
+        searchReport() {
+            this.startResultLoading()
+            this.getAndSetResult(true, 'result', 'report')
+        },
+        fetchResult(index) {
+            return axios.get('/ajax/auth/' + index, {
+                params: {
+                    'package_id': this.$route.params.id,
+                    ...this.query[index],
+                }
+            })
         },
     }
 }
