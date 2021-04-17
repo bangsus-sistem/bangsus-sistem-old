@@ -47,6 +47,11 @@ class AuthorizationSeeder extends Seeder
                     'actions' => ['index', 'read'],
                 ],
                 [
+                    'ref' => 'report',
+                    'name' => 'Report',
+                    'actions' => ['index', 'read'],
+                ],
+                [
                     'ref' => 'role',
                     'name' => 'Role',
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
