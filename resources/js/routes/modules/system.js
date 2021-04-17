@@ -29,6 +29,18 @@ export default [
         beforeEnter: middleware(appMiddleware),
     },
     {
+        path: 'action',
+        name: 'system.action',
+        component: page('System/Action/Index'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
+        path: 'action/read/:id',
+        name: 'system.action.read',
+        component: page('System/Action/Read'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
         path: 'role',
         name: 'system.role',
         component: page('System/Role/Index'),

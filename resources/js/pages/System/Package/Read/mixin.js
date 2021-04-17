@@ -30,21 +30,24 @@ export default {
                         { index: 'ref', title: 'Referensi' },
                         { index: 'name', title: 'Nama' },
                     ],
-                    counts: [10, 25, 50, 100]
+                    counts: [10, 25, 50, 100],
+                    show: false,
                 },
                 widget: {
                     sortOrders: [
                         { index: 'ref', title: 'Referensi' },
                         { index: 'name', title: 'Nama' },
                     ],
-                    counts: [10, 25, 50, 100]
+                    counts: [10, 25, 50, 100],
+                    show: false,
                 },
                 report: {
                     sortOrders: [
                         { index: 'ref', title: 'Referensi' },
                         { index: 'name', title: 'Nama' },
                     ],
-                    counts: [10, 25, 50, 100]
+                    counts: [10, 25, 50, 100],
+                    show: false,
                 },
             },
             result: {
@@ -84,7 +87,6 @@ export default {
         )
             .then(res => {
                 this.prepare()
-                console.log(this.result)
             })
     },
     methods: {
@@ -134,5 +136,8 @@ export default {
                 }
             })
         },
+        toggleShow(index) {
+            this.meta[index].show = ! this.meta[index].show
+        }
     }
 }
