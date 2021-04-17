@@ -69,19 +69,29 @@ const stateMethods = {
     /**
      * Start the loading of a result fetching.
      * 
+     * @param  {mixed}  index
      * @return {void}
      */
-    startResultLoading() {
-        this.state.result.loading = true
+    startResultLoading(index = null) {
+        if (index != null) {
+            this.state.result[index].loading = true
+        } else {
+            this.state.result.loading = true
+        }
     },
 
     /**
      * Stop the loading of a result fetching.
      * 
+     * @param  {mixed}  index
      * @return {void}
      */
-    stopResultLoading() {
-        this.state.result.loading = false
+    stopResultLoading(index) {
+        if (index != null) {
+            this.state.result[index].loading = false
+        } else {
+            this.state.result.loading = false
+        }
     },
 
     /**

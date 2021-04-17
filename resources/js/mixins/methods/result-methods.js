@@ -35,40 +35,52 @@ const resultMethods = {
      * Set the result items.
      * 
      * @param  {Object}  res
+     * @param  {mixed}  index
      * @return {void}
      */
-    setResultItems(res) {
-        this.result.items = this.parseResultItems(res)
+    setResultItems(res, index = null) {
+        if (index != null) {
+            this.result[index].items = this.parseResultItems(res)
+        } else {
+            this.result.items = this.parseResultItems(res)
+        }
     },
 
     /**
      * Set the result meta values.
      * 
      * @param  {Object}  res
+     * @param  {mixed}  index
      * @return {void}
      */
-    setResultMeta(res) {
-        this.result.meta = this.parseResultMeta(res)
+    setResultMeta(res, index = null) {
+        if (index != null) {
+            this.result[index].meta = this.parseResultMeta(res)
+        } else {
+            this.result.meta = this.parseResultMeta(res)
+        }
     },
 
     /**
      * Set the result.
      * 
      * @param  {Object}  res
+     * @param  {mixed}  index
      * @return {void}
      */
-    setResult(res) {
-        this.setResultItems(res)
-        this.setResultMeta(res)
+    setResult(res, index = null) {
+        this.setResultItems(res, index)
+        this.setResultMeta(res, index)
     },
 
     /**
      * 
      * @param  {Boolean}  spinner 
-     * @param  {String}   spinnerExpense 
+     * @param  {String}   spinnerExpense
+     * @param  {mixed}  index
      * @return {void}
      */
-    getAndSetResult(spinner = true, spinnerExpense = 'page') {
+    getAndSetResult(spinner = true, spinnerExpense = 'page', index = null) {
         
         // Determine the loading spinner that would be spinned.
         if (spinner) {
@@ -77,15 +89,15 @@ const resultMethods = {
                     this.startPageLoading()
                     break;
                 case 'result' :
-                    this.startResultLoading()
+                    this.startResultLoading(index)
                     break;
             }
         }
 
         // Fetch result.
-        this.fetchResult()
+        this.fetchResult(index)
             .then(res => {
-                this.setResult(res)
+                this.setResult(res, index)
                 this.refreshRouteWithQuery()
             })
             .catch(err => {
@@ -99,7 +111,7 @@ const resultMethods = {
                             this.stopPageLoading()
                             break;
                         case 'result' :
-                            this.stopResultLoading()
+                            this.stopResultLoading(index)
                             break;
                     }
                 }
