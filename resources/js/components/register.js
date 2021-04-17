@@ -83,6 +83,7 @@ export default {
          */
         'icon': require('./icons/Icon').default,
         'feather-icon': require('./icons/FeatherIcon').default,
+        'switch-icon': require('./icons/SwitchIcon').default,
 
         /**
          * Input
