@@ -44,6 +44,30 @@ export default {
                             },
                         },
                         {
+                            title: 'Fitur',
+                            route: { name: 'system.feature' },
+                            access: {
+                                moduleRef: 'feature',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Widget',
+                            route: { name: 'system.widget' },
+                            access: {
+                                moduleRef: 'widget',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Report',
+                            route: { name: 'system.report' },
+                            access: {
+                                moduleRef: 'report',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
                             title: 'Role',
                             route: { name: 'system.role' },
                             access: {
