@@ -33,12 +33,17 @@ class AuthorizationSeeder extends Seeder
                 ],
                 [
                     'ref' => 'module',
-                    'name' => 'Module',
+                    'name' => 'Modul',
                     'actions' => ['index', 'read'],
                 ],
                 [
                     'ref' => 'action',
-                    'name' => 'Action',
+                    'name' => 'Aksi',
+                    'actions' => ['index', 'read'],
+                ],
+                [
+                    'ref' => 'feature',
+                    'name' => 'Fitur',
                     'actions' => ['index', 'read'],
                 ],
                 [
