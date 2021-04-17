@@ -1,14 +1,14 @@
 <template>
     <fragment>
         <h3>Modul</h3>
-        <bsb-card class="mt-3">
+        <bsb-card class="my-3">
             <bsb-card-body-spinner-error
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
             >
                 <h5 class="mb-3">Daftar Modul</h5>
-                <bsb-table-responsive class="p-1 mt-3">
+                <bsb-table-responsive class="p-1 my-3">
                     <bsb-table-responsive-header>
                         <bsb-item-count :options="meta.counts" v-model="query.count" @input="search" />
                     </bsb-table-responsive-header>

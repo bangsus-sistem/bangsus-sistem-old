@@ -1,7 +1,7 @@
 <template>
     <fragment>
         <h3>Modul</h3>
-        <bsb-card class="mt-3">
+        <bsb-card class="my-3">
             <bsb-card-body-spinner-error
                 :loading="state.page.loading"
                 :error="state.page.error"
