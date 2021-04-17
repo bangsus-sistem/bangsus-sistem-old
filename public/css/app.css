@@ -30932,7 +30932,7 @@ readers do not read off random characters that represent icons */
   position: fixed;
   bottom: 10px;
   right: 10px;
-  z-index: -10000000000000000;
+  z-index: 10000000000000000;
   font-size: 14px;
   color: #9ca3af;
 }
@@ -31161,7 +31161,7 @@ readers do not read off random characters that represent icons */
   position: fixed;
   bottom: 30px;
   right: 10px;
-  z-index: -10000000000000000;
+  z-index: 10000000000000000;
   font-size: 14px;
   color: #9ca3af;
 }
