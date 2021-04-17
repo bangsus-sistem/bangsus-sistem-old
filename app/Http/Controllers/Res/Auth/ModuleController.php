@@ -39,6 +39,7 @@ class ModuleController extends Controller
                 Module::where(
                     $this->buildWhere()
                         ->with($request)
+                        ->index('package_id')->mode('id')
                         ->index('ref')->mode('string')
                         ->index('name')->mode('string')
                         ->done()
