@@ -41,7 +41,9 @@ class FeatureController extends Controller
                         ->index('module_id')->mode('id')
                         ->index('action_id')->mode('id')
                         ->done()
-                )->paginate($request->query('count'))
+                )
+                    ->orderBy($request->input('sort'), $request->input('order'))
+                    ->paginate($request->input('count'))
             )
         );
     }

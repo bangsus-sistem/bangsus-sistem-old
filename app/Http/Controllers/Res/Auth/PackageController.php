@@ -39,7 +39,9 @@ class PackageController extends Controller
                         ->index('ref')->mode('string')
                         ->index('name')->mode('string')
                         ->done()
-                )->paginate($request->query('count'))
+                )
+                    ->orderBy($request->input('sort'), $request->input('order'))
+                    ->paginate($request->input('count'))
             ),
             200
         );
