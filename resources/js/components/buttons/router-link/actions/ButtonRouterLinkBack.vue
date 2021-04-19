@@ -15,7 +15,9 @@ export default {
     },
     methods: {
         click() {
-            this.$router.go(-1)
+            const route = this.$store.getters['utils/history/latestBeforePlain']
+            console.log(route)
+            this.$router.replace(route)
         },
     }
 }

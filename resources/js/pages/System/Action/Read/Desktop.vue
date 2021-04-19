@@ -2,12 +2,12 @@
     <fragment>
         <h3>Aksi</h3>
         <bsb-card class="mt-3">
-            <bsb-card-body-spinner-error
+            <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
             >
-                <h5 class="mb-3">Lihat Aksi</h5>
+                <h5 class="my-3">Lihat Aksi</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""
@@ -74,7 +74,7 @@
                     </bsb-table-responsive>
                 </div>
                 <!-- End Feature -->
-            </bsb-card-body-spinner-error>
+            </bsb-card-body-spinner-error-back>
         </bsb-card>
     </fragment>
 </template>
