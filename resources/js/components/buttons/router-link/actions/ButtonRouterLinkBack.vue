@@ -17,7 +17,7 @@ export default {
         click() {
             const route = this.$store.getters['utils/history/latestBeforePlain']
             if (route != null) {
-                this.$router.replace(route)
+                this.$router.replace({ path: route.path })
             } else {
                 this.$router.replace(this.defaultBack)
             }
