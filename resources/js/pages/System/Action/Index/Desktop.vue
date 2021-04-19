@@ -7,7 +7,7 @@
                 :error="state.page.error"
                 :error-message="state.page.message"
             >
-                <h5 class="my-3">Daftar Aksi</h5>
+                <h5 class="mb-3">Daftar Aksi</h5>
                 <bsb-table-responsive class="p-1 my-3">
                     <bsb-table-responsive-header>
                         <bsb-item-count :options="meta.counts" v-model="query.count" @input="search" />

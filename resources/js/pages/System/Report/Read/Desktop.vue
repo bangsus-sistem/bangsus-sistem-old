@@ -8,7 +8,7 @@
                 :error-message="state.page.message"
                 :default-back="{ name: 'system.report' }"
             >
-                <h5 class="my-3">Lihat Report</h5>
+                <h5 class="mb-3">Lihat Report</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""

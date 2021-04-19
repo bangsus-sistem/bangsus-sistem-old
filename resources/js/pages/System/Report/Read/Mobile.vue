@@ -6,6 +6,7 @@
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
+                :default-back="{ name: 'system.report' }"
             >
                 <h5 class="mb-3">Lihat Report</h5>
                 <form

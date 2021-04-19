@@ -7,7 +7,7 @@
                 :error="state.page.error"
                 :error-message="state.page.message"
             >
-                <h5 class="my-3">Lihat Aksi</h5>
+                <h5 class="mb-3">Lihat Aksi</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""

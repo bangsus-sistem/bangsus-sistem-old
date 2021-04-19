@@ -5,7 +5,7 @@
         :error-message="errorMessage"
     >
         <template v-slot:always-render>
-            <bsb-button-router-link-back :default-back="defaultBack" />
+            <bsb-button-router-link-back :default-back="defaultBack" class="mb-3" />
         </template>
         <slot></slot>
     </bsb-card-body-spinner-error>

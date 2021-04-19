@@ -1,13 +1,14 @@
 <template>
     <fragment>
-        <h3>Modul</h3>
+        <h3>Fitur</h3>
         <bsb-card class="mt-3">
             <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
+                :default-back="{ name: 'system.feature' }"
             >
-                <h5 class="mb-3">Lihat Modul</h5>
+                <h5 class="mb-3">Lihat Fitur</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""

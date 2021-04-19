@@ -30,7 +30,7 @@ export default {
                         label: 'Sistem',
                     },
                     {
-                        label: 'Modul',
+                        label: 'Aksi',
                     },
                     {
                         label: 'Lihat',

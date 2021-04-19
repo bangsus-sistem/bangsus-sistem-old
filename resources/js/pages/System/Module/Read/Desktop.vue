@@ -8,7 +8,7 @@
                 :error-message="state.page.message"
                 :default-back="{ name: 'system.module' }"
             >
-                <h5 class="my-3">Lihat Modul</h5>
+                <h5 class="mb-3">Lihat Modul</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""
