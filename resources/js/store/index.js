@@ -1,6 +1,7 @@
 import flashers from './utils/flashers'
 import versionControl from './utils/version-control'
 import lang from './utils/lang'
+import history from './utils/history'
 import auth from './utils/auth'
 
 export default {
@@ -27,6 +28,12 @@ export default {
                 lang: {
                     namespaced: true,
                     ...lang,
+                },
+
+                // Utils.History package
+                history: {
+                    namespaced: true,
+                    ...history,
                 },
 
                 // Utils.Auth package
