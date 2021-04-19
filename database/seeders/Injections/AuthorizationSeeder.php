@@ -106,10 +106,10 @@ class AuthorizationSeeder extends Seeder
     private function parsePackages()
     {
         $parsedPackages = [];
-        foreach ($this->packages as $package)
+        foreach ($this->packages as ['ref' => $ref, 'name' => $name])
             $parsedPackages[] = [
-                'ref' => $package['ref'],
-                'name' => $package['name'],
+                'ref' => $ref,
+                'name' => $name,
             ];
 
         return $parsedPackages;
@@ -125,16 +125,15 @@ class AuthorizationSeeder extends Seeder
         $packages = \DB::table('packages')->get();
 
         $parsedModules = [];
-        foreach ($this->packages as $package) {
-            $packageRef = $package['ref'];
-            $modules = $package['modules'];
+        foreach ($this->packages as ['ref' => $ref, 'modules' => $modules]) {
+            $packageRef = $ref;
             $package = with(clone $packages)
                 ->where('ref', $packageRef)->first();
 
-            foreach ($modules as $module) {
+            foreach ($modules as ['ref' => $ref, 'name' => $name]) {
                 $parsedModules[] = [
-                    'ref' => $module['ref'],
-                    'name' => $module['name'],
+                    'ref' => $ref,
+                    'name' => $name,
                     'package_id' => $package->id,
                 ];
             }
@@ -155,15 +154,15 @@ class AuthorizationSeeder extends Seeder
 
         $parsedFeatures = [];
         foreach ($this->packages as $package)
-            foreach ($package['modules'] as $module)
-                foreach ($module['actions'] as $action) {
-                    $moduleMdl = with(clone $modules)
-                        ->where('ref', $module['ref'])->first();
+            foreach ($package['modules'] as ['ref' => $ref, 'actions' => $actionsArr])
+                foreach ($actionsArr as $actionRef) {
+                    $module = with(clone $modules)
+                        ->where('ref', $ref)->first();
                     $action = with(clone $actions)
-                        ->where('ref', $action)->first();
+                        ->where('ref', $actionRef)->first();
 
                     $parsedFeatures[] = [
-                        'module_id' => $moduleMdl->id,
+                        'module_id' => $module->id,
                         'action_id' => $action->id,
                     ];
                 }
@@ -179,16 +178,14 @@ class AuthorizationSeeder extends Seeder
         $packages = \DB::table('packages')->get();
 
         $parsedWidgets = [];
-        foreach ($this->packages as $package) {
-            $packageRef = $package['ref'];
-            $widgets = $package['widgets'];
+        foreach ($this->packages as ['ref' => $ref, 'widgets' => $widgets]) {
             $package = with(clone $packages)
-                ->where('ref', $packageRef)->first();
+                ->where('ref', $ref)->first();
 
-            foreach ($widgets as $widget) {
+            foreach ($widgets as ['ref' => $ref, 'name' => $name]) {
                 $parsedWidgets[] = [
-                    'ref' => $widget['ref'],
-                    'name' => $widget['name'],
+                    'ref' => $ref,
+                    'name' => $name,
                     'package_id' => $package->id,
                 ];
             }
@@ -205,16 +202,14 @@ class AuthorizationSeeder extends Seeder
         $packages = \DB::table('packages')->get();
 
         $parsedReports = [];
-        foreach ($this->packages as $package) {
-            $packageRef = $package['ref'];
-            $reports = $package['reports'];
+        foreach ($this->packages as ['ref' => $ref, 'widgets' => $widgets]) {
             $package = with(clone $packages)
-                ->where('ref', $packageRef)->first();
+                ->where('ref', $ref)->first();
 
-            foreach ($reports as $report) {
+            foreach ($reports as ['ref' => $ref, 'name' => $name]) {
                 $parsedReports[] = [
-                    'ref' => $report['ref'],
-                    'name' => $report['name'],
+                    'ref' => $ref,
+                    'name' => $name,
                     'package_id' => $package->id,
                 ];
             }
