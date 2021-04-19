@@ -7,7 +7,7 @@
 <script>
 export default {
     props: {
-        defaultBackLink: {
+        defaultBack: {
             default() {
                 return { name: 'dashboard' }
             }
@@ -16,8 +16,11 @@ export default {
     methods: {
         click() {
             const route = this.$store.getters['utils/history/latestBeforePlain']
-            console.log(route)
-            this.$router.replace(route)
+            if (route != null) {
+                this.$router.replace(route)
+            } else {
+                this.$router.replace(this.defaultBack)
+            }
         },
     }
 }

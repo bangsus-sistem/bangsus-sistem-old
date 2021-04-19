@@ -5,7 +5,7 @@
         :error-message="errorMessage"
     >
         <template v-slot:always-render>
-            <bsb-button-router-link-back :default-back-link="defaultBackLink" />
+            <bsb-button-router-link-back :default-back="defaultBack" />
         </template>
         <slot></slot>
     </bsb-card-body-spinner-error>
@@ -25,7 +25,7 @@ export default {
         errorMessage: {
             default: '',
         },
-        defaultBackLink: {
+        defaultBack: {
             default() {
                 return { name: 'dashboard' }
             }

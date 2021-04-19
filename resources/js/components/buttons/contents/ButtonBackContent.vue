@@ -1,6 +1,6 @@
 <template>
     <span>
-        <bsb-icon icon="backspace" />
+        <bsb-icon icon="backspace" color="light" />
         Kembali
     </span>
 </template>
