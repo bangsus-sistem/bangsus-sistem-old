@@ -2,12 +2,13 @@
     <fragment>
         <h3>Report</h3>
         <bsb-card class="my-3">
-            <bsb-card-body-spinner-error
+            <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
+                :default-back="{ name: 'system.report' }"
             >
-                <h5 class="mb-3">Lihat Report</h5>
+                <h5 class="my-3">Lihat Report</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""
@@ -25,7 +26,7 @@
                         <bsb-input v-model="form.data['name']" readonly />
                     </bsb-form-group>
                 </form>
-            </bsb-card-body-spinner-error>
+            </bsb-card-body-spinner-error-back>
         </bsb-card>
     </fragment>
 </template>

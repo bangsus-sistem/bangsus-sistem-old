@@ -2,12 +2,13 @@
     <fragment>
         <h3>Fitur</h3>
         <bsb-card class="my-3">
-            <bsb-card-body-spinner-error
+            <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
+                :default-back="{ name: 'system.feature' }"
             >
-                <h5 class="mb-3">Lihat Fitur</h5>
+                <h5 class="my-3">Lihat Fitur</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""
@@ -21,7 +22,7 @@
                         <bsb-input :value="form.data['action']['ref']+' - '+form.data['action']['name']" readonly />
                     </bsb-form-group>
                 </form>
-            </bsb-card-body-spinner-error>
+            </bsb-card-body-spinner-error-back>
         </bsb-card>
     </fragment>
 </template>

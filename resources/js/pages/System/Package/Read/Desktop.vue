@@ -2,12 +2,13 @@
     <fragment>
         <h3>Package</h3>
         <bsb-card class="my-3">
-            <bsb-card-body-spinner-error
+            <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
+                :default-back="{ name: 'system.package' }"
             >
-                <h5 class="mb-3">Lihat Package</h5>
+                <h5 class="my-3">Lihat Package</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""
@@ -210,7 +211,7 @@
                     </bsb-table-responsive>
                 </div>
                 <!-- End Report -->
-            </bsb-card-body-spinner-error>
+            </bsb-card-body-spinner-error-back>
         </bsb-card>
     </fragment>
 </template>

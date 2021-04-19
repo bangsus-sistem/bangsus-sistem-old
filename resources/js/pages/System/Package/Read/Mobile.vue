@@ -2,7 +2,7 @@
     <fragment>
         <h3>Package</h3>
         <bsb-card class="my-3">
-            <bsb-card-body-spinner-error
+            <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
@@ -183,7 +183,7 @@
                     </div>
                 </div>
                 <!-- End Report -->
-            </bsb-card-body-spinner-error>
+            </bsb-card-body-spinner-error-back>
         </bsb-card>
     </fragment>
 </template>

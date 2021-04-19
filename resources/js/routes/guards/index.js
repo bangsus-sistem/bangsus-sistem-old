@@ -54,6 +54,16 @@ const guards = {
      * Store history.
      */
     log: (to, from, next) => {
+        // Check the latest route from store, if it's the same, then we just
+        // skip.
+        const lastRoute = store.getters['utils/history/latestPlain']
+        if (lastRoute != undefined) {
+            if (lastRoute.name == to.name) {
+                next()
+                return
+            }
+        }
+
         // Check the route name, if it's different than before, then we need to
         // log it to the plain as well.
         if (to.name != from.name) {

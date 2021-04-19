@@ -2,12 +2,13 @@
     <fragment>
         <h3>Modul</h3>
         <bsb-card class="my-3">
-            <bsb-card-body-spinner-error
+            <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
+                :default-back="{ name: 'system.module' }"
             >
-                <h5 class="mb-3">Lihat Modul</h5>
+                <h5 class="my-3">Lihat Modul</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""
@@ -78,7 +79,7 @@
                     </bsb-table-responsive>
                 </div>
                 <!-- End Feature -->
-            </bsb-card-body-spinner-error>
+            </bsb-card-body-spinner-error-back>
         </bsb-card>
     </fragment>
 </template>

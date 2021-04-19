@@ -2,7 +2,7 @@
     <fragment>
         <h3>Modul</h3>
         <bsb-card class="mt-3">
-            <bsb-card-body-spinner-error
+            <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
@@ -25,7 +25,7 @@
                         <bsb-input v-model="form.data['name']" readonly />
                     </bsb-form-group>
                 </form>
-            </bsb-card-body-spinner-error>
+            </bsb-card-body-spinner-error-back>
         </bsb-card>
     </fragment>
 </template>
