@@ -50,6 +50,19 @@ const guards = {
             })
     },
 
+    /**
+     * Store history.
+     */
+    log: (to, from, next) => {
+        // Check the route name, if it's different than before, then we need to
+        // log it to the plain as well.
+        if (to.name != from.name) {
+            store.dispatch('utils/history/addPlain', to)
+        }
+        store.dispatch('utils/history/addDeep', to)
+        next()
+    },
+
 
 
     /**

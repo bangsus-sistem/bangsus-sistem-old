@@ -1,7 +1,7 @@
 import page from '../page'
 import middleware from '../middleware'
 
-const appMiddleware = ['authenticated', 'versionCheck']
+const appMiddleware = ['authenticated', 'versionCheck', 'log']
 
 export default [
     {
