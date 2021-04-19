@@ -272,7 +272,7 @@ const queryMethods = {
 
         // If the callSearch is specified to true then we will call
         // the search method.
-        if (callSearch) this.search()
+        if (callSearch) this.search(index)
     },
 
     /**

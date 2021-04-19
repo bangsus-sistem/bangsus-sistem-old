@@ -11,19 +11,62 @@ export default {
                 },
             },
             query: {
-                'action_id': this.$route.params.id,
-                'ref': '',
-                'name': '',
+                feature: {},
             },
             meta: {
-                sortOrders: [
-                    { index: 'ref', title: 'Referensi' },
-                    { index: 'name', title: 'Nama' },
-                ],
+                feature: {
+                    sortOrders: [
+                        { index: 'module_id', title: 'Modul' },
+                    ],
+                    counts: [10, 25, 50, 100],
+                    show: false,
+                },
+            },
+            result: {
+                feature: {
+                    items: [],
+                    meta: {}
+                },
+            },
+            state: {
+                result: {
+                    feature: { loading: false },
+                },
             },
         }
     },
     created() {
-        this.fetchAndSetFormData('/ajax/auth/action/' + this.$route.params.id)
+        this.fetchAndSetFormData(
+            '/ajax/auth/action/' + this.$route.params.id,
+            { resolve: true, reject: false },
+            { startLoading: true, stopLoading: false },
+        )
+            .then(res => {
+                this.prepare()
+            })
     },
+    methods: {
+        prepare() {
+            this.prepareFeature()
+        },
+        prepareFeature() {
+            this.setQuery({}, 'feature')
+            this.getAndSetResult(true, 'page', 'feature')
+        },
+        search(index) {
+            this.startResultLoading()
+            this.getAndSetResult(true, 'result', index)
+        },
+        fetchResult(index) {
+            return axios.get('/ajax/auth/' + index, {
+                params: {
+                    'action_id': this.$route.params.id,
+                    ...this.query[index],
+                }
+            })
+        },
+        toggleShow(index) {
+            this.meta[index].show = ! this.meta[index].show
+        }
+    }
 }

@@ -28,7 +28,7 @@
                     </label>
                     <bsb-table-responsive class="p-1 my-3" v-if="meta['module'].show">
                         <bsb-table-responsive-header>
-                            <bsb-item-count :options="meta['module'].counts" v-model="query['module'].count" @input="searchModule" />
+                            <bsb-item-count :options="meta['module'].counts" v-model="query['module'].count" @input="search('module')" />
                         </bsb-table-responsive-header>
                         <bsb-table :hover="true">
                             <thead class="thead-light">
@@ -41,7 +41,7 @@
                                         <bsb-input size="sm" type="text" v-model="query['module']['name']" />
                                     </bsb-th-query>
                                     <bsb-th-query>
-                                        <bsb-button-spinner color="primary" size="sm" @click="searchModule" :loading="state.result['module'].loading">
+                                        <bsb-button-spinner color="primary" size="sm" @click="search('module')" :loading="state.result['module'].loading">
                                             Cari
                                         </bsb-button-spinner>
                                     </bsb-th-query>
@@ -53,7 +53,7 @@
                                         :key="i"
                                         :sort="query['module'].sort == sortOrder.index"
                                         :order="query['module'].order"
-                                        @click="changeSortOrder(sortOrder.index)"
+                                        @click="changeSortOrder(sortOrder.index, true, 'module')"
                                     >
                                         {{ sortOrder.title }}
                                     </bsb-th-sort>
@@ -79,7 +79,7 @@
                                 :last-item="result['module'].meta['last_item']"
                                 :total="result['module'].meta['total']"
                             />
-                            <bsb-page-button-group v-model="query['module'].page" :last-page="result['module'].meta['last_page']" @changed="searchModule" />
+                            <bsb-page-button-group v-model="query['module'].page" :last-page="result['module'].meta['last_page']" @changed="search('module')" />
                         </bsb-table-responsive-footer>
                     </bsb-table-responsive>
                 </div>
@@ -91,7 +91,7 @@
                     </label>
                     <bsb-table-responsive class="p-1 my-3" v-if="meta['widget'].show">
                         <bsb-table-responsive-header>
-                            <bsb-item-count :options="meta['widget'].counts" v-model="query['widget'].count" @input="searchWidget" />
+                            <bsb-item-count :options="meta['widget'].counts" v-model="query['widget'].count" @input="search('widget')" />
                         </bsb-table-responsive-header>
                         <bsb-table :hover="true">
                             <thead class="thead-light">
@@ -104,7 +104,7 @@
                                         <bsb-input size="sm" type="text" v-model="query['widget']['name']" />
                                     </bsb-th-query>
                                     <bsb-th-query>
-                                        <bsb-button-spinner color="primary" size="sm" @click="searchWidget" :loading="state.result['widget'].loading">
+                                        <bsb-button-spinner color="primary" size="sm" @click="search('widget')" :loading="state.result['widget'].loading">
                                             Cari
                                         </bsb-button-spinner>
                                     </bsb-th-query>
@@ -116,7 +116,7 @@
                                         :key="i"
                                         :sort="query['widget'].sort == sortOrder.index"
                                         :order="query['widget'].order"
-                                        @click="changeSortOrder(sortOrder.index)"
+                                        @click="changeSortOrder(sortOrder.index, true, 'widget')"
                                     >
                                         {{ sortOrder.title }}
                                     </bsb-th-sort>
@@ -142,7 +142,7 @@
                                 :last-item="result['widget'].meta['last_item']"
                                 :total="result['widget'].meta['total']"
                             />
-                            <bsb-page-button-group v-model="query['widget'].page" :last-page="result['widget'].meta['last_page']" @changed="searchWidget" />
+                            <bsb-page-button-group v-model="query['widget'].page" :last-page="result['widget'].meta['last_page']" @changed="search('widget')" />
                         </bsb-table-responsive-footer>
                     </bsb-table-responsive>
                 </div>
@@ -154,7 +154,7 @@
                     </label>
                     <bsb-table-responsive class="p-1 my-3" v-if="meta['report'].show">
                         <bsb-table-responsive-header>
-                            <bsb-item-count :options="meta['report'].counts" v-model="query['report'].count" @input="searchReport" />
+                            <bsb-item-count :options="meta['report'].counts" v-model="query['report'].count" @input="search('report')" />
                         </bsb-table-responsive-header>
                         <bsb-table :hover="true">
                             <thead class="thead-light">
@@ -167,7 +167,7 @@
                                         <bsb-input size="sm" type="text" v-model="query['report']['name']" />
                                     </bsb-th-query>
                                     <bsb-th-query>
-                                        <bsb-button-spinner color="primary" size="sm" @click="searchReport" :loading="state.result['report'].loading">
+                                        <bsb-button-spinner color="primary" size="sm" @click="search('report')" :loading="state.result['report'].loading">
                                             Cari
                                         </bsb-button-spinner>
                                     </bsb-th-query>
@@ -179,7 +179,7 @@
                                         :key="i"
                                         :sort="query['report'].sort == sortOrder.index"
                                         :order="query['report'].order"
-                                        @click="changeSortOrder(sortOrder.index)"
+                                        @click="changeSortOrder(sortOrder.index, true, 'report')"
                                     >
                                         {{ sortOrder.title }}
                                     </bsb-th-sort>
@@ -205,7 +205,7 @@
                                 :last-item="result['report'].meta['last_item']"
                                 :total="result['report'].meta['total']"
                             />
-                            <bsb-page-button-group v-model="query['report'].page" :last-page="result['report'].meta['last_page']" @changed="searchReport" />
+                            <bsb-page-button-group v-model="query['report'].page" :last-page="result['report'].meta['last_page']" @changed="search('report')" />
                         </bsb-table-responsive-footer>
                     </bsb-table-responsive>
                 </div>

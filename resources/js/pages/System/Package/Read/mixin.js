@@ -53,21 +53,15 @@ export default {
             result: {
                 module: {
                     items: [],
-                    meta: {
-
-                    }
+                    meta: {}
                 },
                 widget: {
                     items: [],
-                    meta: {
-
-                    }
+                    meta: {}
                 },
                 report: {
                     items: [],
-                    meta: {
-
-                    }
+                    meta: {}
                 },
             },
             state: {
@@ -116,17 +110,9 @@ export default {
             }, 'report')
             this.getAndSetResult(true, 'page', 'report')
         },
-        searchModule() {
+        search(index) {
             this.startResultLoading()
-            this.getAndSetResult(true, 'result', 'module')
-        },
-        searchWidget() {
-            this.startResultLoading()
-            this.getAndSetResult(true, 'result', 'widget')
-        },
-        searchReport() {
-            this.startResultLoading()
-            this.getAndSetResult(true, 'result', 'report')
+            this.getAndSetResult(true, 'result', index)
         },
         fetchResult(index) {
             return axios.get('/ajax/auth/' + index, {

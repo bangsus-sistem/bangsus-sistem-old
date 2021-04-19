@@ -36,14 +36,14 @@
                                 <label>Nama</label>
                                 <bsb-input size="sm" type="text" v-model="query['module']['name']" />
                             </bsb-form-group>
-                            <bsb-button-spinner color="primary" size="sm" @click="searchModule" :loading="state.result['module'].loading">
+                            <bsb-button-spinner color="primary" size="sm" @click="search('module')" :loading="state.result['module'].loading">
                                 Cari
                             </bsb-button-spinner>
                         </bsb-mobile-query-form>
                         <bsb-item-count
                             :options="meta['module'].counts"
                             v-model="query['module'].count"
-                            @input="searchModule"
+                            @input="search('module')"
                             class="mt-3"
                         />
                         <bsb-list-group class="mt-3 shadow-sm">
@@ -70,7 +70,7 @@
                                 :last-item="result['module'].meta['last_item']"
                                 :total="result['module'].meta['total']"
                             />
-                            <bsb-page-button-group v-model="query['module'].page" :last-page="result['module'].meta['last_page']" @changed="searchModule" />
+                            <bsb-page-button-group v-model="query['module'].page" :last-page="result['module'].meta['last_page']" @changed="search('module')" />
                         </div>
                     </div>
                 </div>
@@ -90,14 +90,14 @@
                                 <label>Nama</label>
                                 <bsb-input size="sm" type="text" v-model="query['widget']['name']" />
                             </bsb-form-group>
-                            <bsb-button-spinner color="primary" size="sm" @click="searchWidget" :loading="state.result['widget'].loading">
+                            <bsb-button-spinner color="primary" size="sm" @click="search('widget')" :loading="state.result['widget'].loading">
                                 Cari
                             </bsb-button-spinner>
                         </bsb-mobile-query-form>
                         <bsb-item-count
                             :options="meta['widget'].counts"
                             v-model="query['widget'].count"
-                            @input="searchWidget"
+                            @input="search('widget')"
                             class="mt-3"
                         />
                         <bsb-list-group class="mt-3 shadow-sm">
@@ -124,7 +124,7 @@
                                 :last-item="result['widget'].meta['last_item']"
                                 :total="result['widget'].meta['total']"
                             />
-                            <bsb-page-button-group v-model="query['widget'].page" :last-page="result['widget'].meta['last_page']" @changed="searchWidget" />
+                            <bsb-page-button-group v-model="query['widget'].page" :last-page="result['widget'].meta['last_page']" @changed="search('widget')" />
                         </div>
                     </div>
                 </div>
@@ -144,14 +144,14 @@
                                 <label>Nama</label>
                                 <bsb-input size="sm" type="text" v-model="query['report']['name']" />
                             </bsb-form-group>
-                            <bsb-button-spinner color="primary" size="sm" @click="searchReport" :loading="state.result['report'].loading">
+                            <bsb-button-spinner color="primary" size="sm" @click="search('report')" :loading="state.result['report'].loading">
                                 Cari
                             </bsb-button-spinner>
                         </bsb-mobile-query-form>
                         <bsb-item-count
                             :options="meta['report'].counts"
                             v-model="query['report'].count"
-                            @input="searchReport"
+                            @input="search('report')"
                             class="mt-3"
                         />
                         <bsb-list-group class="mt-3 shadow-sm">
@@ -178,7 +178,7 @@
                                 :last-item="result['report'].meta['last_item']"
                                 :total="result['report'].meta['total']"
                             />
-                            <bsb-page-button-group v-model="query['report'].page" :last-page="result['report'].meta['last_page']" @changed="searchReport" />
+                            <bsb-page-button-group v-model="query['report'].page" :last-page="result['report'].meta['last_page']" @changed="search('report')" />
                         </div>
                     </div>
                 </div>
