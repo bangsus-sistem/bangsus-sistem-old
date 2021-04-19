@@ -28,6 +28,7 @@
         "@fortawesome/fontawesome-free": "^5.15.2",
         "feather-icons": "^4.28.0",
         "moment": "^2.29.1",
+        "qs": "^6.10.1",
         "vue-fragment": "^1.5.2",
         "vue-mobile-detection": "^1.0.0",
         "vue-router": "^3.5.1",
