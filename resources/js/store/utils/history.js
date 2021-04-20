@@ -51,6 +51,14 @@ export default {
             state.deep.push(data)
             localStorage.setItem('deepHistory', JSON.stringify(state.deep))
         },
+        resetPlain(state) {
+            state.plain = []
+            localStorage.setItem('plainHistory', JSON.stringify(state.plain))
+        },
+        resetDeep(state) {
+            state.deep = []
+            localStorage.setItem('deepHistory', JSON.stringify(state.deep))
+        },
     },
     actions: {
         addPlain(context, data) {
@@ -58,6 +66,16 @@ export default {
         },
         addDeep(context, data) {
             context.commit('addDeep', data)
+        },
+        resetPlain(context) {
+            context.commit('resetPlain')
+        },
+        resetDeep(context) {
+            context.commit('resetDeep')
+        },
+        reset() {
+            this.dispatch('utils/history/resetPlain')
+            this.dispatch('utils/history/resetDeep')
         },
     },
 }

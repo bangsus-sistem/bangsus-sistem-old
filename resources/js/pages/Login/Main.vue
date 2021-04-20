@@ -69,6 +69,9 @@ export default {
         toggleLoginMode(val) {
             this.pageMeta.standardLogin = val
         }
-    }
+    },
+    created() {
+        this.$store.dispatch('utils/history/reset')
+    },
 }
 </script>
