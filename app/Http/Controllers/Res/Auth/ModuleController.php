@@ -52,6 +52,7 @@ class ModuleController extends Controller
 
     /**
      * @param  \App\Http\Requests\Res\Auth\ShowRequest  $request
+     * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(ShowRequest $request, $id)
