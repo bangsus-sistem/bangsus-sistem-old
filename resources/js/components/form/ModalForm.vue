@@ -140,7 +140,7 @@ export default {
             }
             let failed = err => {
                 this.afterSubmit()
-                this.handleResultError(err)
+                this.handleModalFormError(err)
                 this.$emit('failed', err)
             }
 
