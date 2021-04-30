@@ -37,6 +37,7 @@ class Kernel
         'widget' => Blueprint\Foreign\WidgetBlueprint::class,
         // String macro.
         'code' => Blueprint\Strings\CodeBlueprint::class,
+        'description' => Blueprint\Strings\DescriptionBlueprint::class,
         'fullName' => Blueprint\Strings\FullNameBlueprint::class,
         'name' => Blueprint\Strings\NameBlueprint::class,
         'note' => Blueprint\Strings\NoteBlueprint::class,
