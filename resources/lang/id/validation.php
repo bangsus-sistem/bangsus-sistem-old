@@ -119,5 +119,11 @@ return [
         'username' => 'Username',
         'password' => 'Password',
         'token' => 'Token',
+
+        'code' => 'Kode',
+        'name' => 'Nama',
+        'feature_ids' => 'Fitur',
+        'widget_ids' => 'Widget',
+        'report_ids' => 'Laporan',
     ],
 ];
