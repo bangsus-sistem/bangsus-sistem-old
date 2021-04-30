@@ -9,9 +9,9 @@ trait LockedFlag
      */
     public static function bootLockedFlag()
     {
-        static::creating(fn ($model) => false);
-        static::updating(fn ($model) => false);
-        static::deleting(fn ($model) => false);
+        static::creating(fn ($model) => ! $model->locked);
+        static::updating(fn ($model) => ! $model->locked);
+        static::deleting(fn ($model) => ! $model->locked);
     }
 
     /**
