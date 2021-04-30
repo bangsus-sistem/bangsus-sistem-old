@@ -25,6 +25,8 @@ class UserRoleSeeder extends Seeder
             'all_features' => true,
             'all_widgets' => true,
             'all_reports' => true,
+            'description' => 'A Superadmin role.',
+            'note' => 'Cannot be updated or deleted.',
             'created_at' => Carbon::now(),
         ]);
         \DB::statement('insert into role_feature select 1, id from features');
@@ -40,6 +42,8 @@ class UserRoleSeeder extends Seeder
             'locked' => true,
             'hidden' => true,
             'all_branches' => true,
+            'description' => 'A Superadmin account.',
+            'note' => 'Cannot be updated or deleted.',
             'user_create_id' => 1,
             'created_at' => Carbon::now(),
         ]);

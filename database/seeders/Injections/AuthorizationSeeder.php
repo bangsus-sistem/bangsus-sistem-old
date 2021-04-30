@@ -67,8 +67,22 @@ class AuthorizationSeeder extends Seeder
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
             ],
-            'widgets' => [],
-            'reports' => [],
+            'widgets' => [
+                [
+                    'ref' => 'users_overview',
+                    'name' => 'Overview User',
+                ]
+            ],
+            'reports' => [
+                [
+                    'ref' => 'roles_detail',
+                    'name' => 'Detail Role',
+                ],
+                [
+                    'ref' => 'users_detail',
+                    'name' => 'Detail User',
+                ],
+            ],
         ],
     ];
 
@@ -202,7 +216,7 @@ class AuthorizationSeeder extends Seeder
         $packages = \DB::table('packages')->get();
 
         $parsedReports = [];
-        foreach ($this->packages as ['ref' => $ref, 'widgets' => $widgets]) {
+        foreach ($this->packages as ['ref' => $ref, 'reports' => $reports]) {
             $package = with(clone $packages)
                 ->where('ref', $ref)->first();
 
