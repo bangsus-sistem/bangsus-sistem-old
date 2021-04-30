@@ -1,18 +1,18 @@
 <template>
     <fragment>
         <h3>Role</h3>
-        <bsb-card class="mt-3">
+        <bsb-card class="my-3">
             <bsb-card-body-spinner-error
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
             >
-                <h6 class="mb-3">Daftar Role</h6>
+                <h5 class="mb-3">Daftar Role</h5>
                 <bsb-button-router-link-create :to="{ name: 'system.role.create' }" />
                 <bsb-table-responsive class="p-1 mt-3">
                     <bsb-table-responsive-header>
-                    <bsb-item-count :options="meta.counts" v-model="query.count" @input="search" />
-                </bsb-table-responsive-header>
+                        <bsb-item-count :options="meta.counts" v-model="query.count" @input="search" />
+                    </bsb-table-responsive-header>
                     <bsb-table :hover="true">
                         <thead class="thead-light">
                             <bsb-tr-query>
@@ -25,12 +25,42 @@
                                 </bsb-th-query>
                                 <bsb-th-query>
                                     <bsb-select size="sm"
+                                        v-model="query['active']"
                                         :options="[
                                             { value: '*', title: 'Semua' },
                                             { value: true, title: 'Aktif' },
                                             { value: false, title: 'Nonaktif' }
                                         ]"
-                                        v-model="query['active']"
+                                    />
+                                </bsb-th-query>
+                                <bsb-th-query>
+                                    <bsb-select size="sm"
+                                        v-model="query['all_features']"
+                                        :options="[
+                                            { value: '*', title: 'Semua' },
+                                            { value: true, title: 'Tak Terbatas' },
+                                            { value: false, title: 'Terbatas' }
+                                        ]"
+                                    />
+                                </bsb-th-query>
+                                <bsb-th-query>
+                                    <bsb-select size="sm"
+                                        v-model="query['all_widgets']"
+                                        :options="[
+                                            { value: '*', title: 'Semua' },
+                                            { value: true, title: 'Tak Terbatas' },
+                                            { value: false, title: 'Terbatas' }
+                                        ]"
+                                    />
+                                </bsb-th-query>
+                                <bsb-th-query>
+                                    <bsb-select size="sm"
+                                        v-model="query['all_reports']"
+                                        :options="[
+                                            { value: '*', title: 'Semua' },
+                                            { value: true, title: 'Tak Terbatas' },
+                                            { value: false, title: 'Terbatas' }
+                                        ]"
                                     />
                                 </bsb-th-query>
                                 <bsb-th-query>
@@ -64,13 +94,22 @@
                                     <bsb-switch-badge :condition="item['active']" true-label="Aktif" false-label="Tidak Aktif"/>
                                 </bsb-td>
                                 <bsb-td justify="center">
+                                    <bsb-switch-badge :condition="item['all_features']" true-label="Tak Terbatas" false-label="Terbatas"/>
+                                </bsb-td>
+                                <bsb-td justify="center">
+                                    <bsb-switch-badge :condition="item['all_widgets']" true-label="Tak Terbatas" false-label="Terbatas"/>
+                                </bsb-td>
+                                <bsb-td justify="center">
+                                    <bsb-switch-badge :condition="item['all_reports']" true-label="Tak Terbatas" false-label="Terbatas"/>
+                                </bsb-td>
+                                <bsb-td justify="center">
                                     <bsb-button-router-link-read :to="{ name: 'system.role.read', params: { id: item['id'] } }" />
-                                    <bsb-button-router-link-update :to="{ name: 'system.role.update', params: { id: item['id'] } }" />
-                                    <template>
-                                        <bsb-button-activate v-if="!item.active" @click="showModalForm('activate', { id: item['id'] })" />
+                                    <bsb-button-router-link-update :to="{ name: 'system.role.update', params: { id: item['id'] } }" v-if="!item['locked']" />
+                                    <template v-if="!item['locked']">
+                                        <bsb-button-activate v-if="!item['active']" @click="showModalForm('activate', { id: item['id'] })" />
                                         <bsb-button-deactivate v-else @click="showModalForm('deactivate', { id: item['id'] })" />
                                     </template>
-                                    <bsb-button-delete @click="showModalForm('delete', { id: item['id'] })" />
+                                    <bsb-button-delete @click="showModalForm('delete', { id: item['id'] })" v-if="!item['locked']" />
                                 </bsb-td>
                             </tr>
                         </tbody>
@@ -86,6 +125,31 @@
                 </bsb-table-responsive>
             </bsb-card-body-spinner-error>
         </bsb-card>
+        <!-- Modal Form -->
+        <bsb-modal-form
+            title="Aktifkan Role"
+            message="Apakah anda yakin?"
+            ref="activate"
+            link="/ajax/auth/role/activate"
+            method="patch"
+            @success="search"
+        />
+        <bsb-modal-form
+            title="Nonaktifkan Role"
+            message="Apakah anda yakin?"
+            ref="deactivate"
+            link="/ajax/auth/role/deactivate"
+            method="patch"
+            @success="search"
+        />
+        <bsb-modal-form
+            title="Hapus Role"
+            message="Apakah anda yakin?"
+            ref="delete"
+            link="/ajax/auth/role"
+            method="delete"
+            @success="search"
+        />
     </fragment>
 </template>
 

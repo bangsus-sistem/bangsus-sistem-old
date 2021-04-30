@@ -7,19 +7,25 @@ export default {
             query: {
                 'code': '',
                 'name': '',
-                'active': true,
+                'active': '',
+                'all_features': '',
+                'all_widgets': '',
+                'all_reports': '',
             },
             meta: {
                 sortOrders: [
                     { index: 'code', title: 'Kode' },
                     { index: 'name', title: 'Nama' },
                     { index: 'active', title: 'Status' },
+                    { index: 'all_features', title: 'Fitur' },
+                    { index: 'all_widgets', title: 'Widget' },
+                    { index: 'all_reports', title: 'Laporan' },
                 ],
             },
         }
     },
     created() {
-        // this.prepare()
+        this.prepare()
     },
     methods: {
         prepare() {
@@ -27,6 +33,9 @@ export default {
                 'code': [''],
                 'name': [''],
                 'active': [true, ['*', true, false, 'true', 'false']],
+                'all_features': ['*', ['*', true, false, 'true', 'false']],
+                'all_widgets': ['*', ['*', true, false, 'true', 'false']],
+                'all_reports': ['*', ['*', true, false, 'true', 'false']],
             })
             this.getAndSetResult()
         },
