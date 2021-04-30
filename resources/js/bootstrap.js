@@ -44,3 +44,5 @@ window.feather = require('feather-icons');
 // });
 
 window.moment = require('moment')
+
+window.uuid = require('uuid')
