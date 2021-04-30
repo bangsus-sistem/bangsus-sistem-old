@@ -9,6 +9,12 @@ export default {
         'alert-dismissible': require('./alerts/AlertDismissible').default,
 
         /**
+         * Badge.
+         */
+        'badge': require('./badge/Badge').default,
+        'switch-badge': require('./badge/SwitchBadge').default,
+
+        /**
          * Breadcrumb.
          */
         'breadcrumb': require('./breadcrumb/Breadcrumb').default,
