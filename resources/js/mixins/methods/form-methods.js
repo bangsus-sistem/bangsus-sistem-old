@@ -310,7 +310,6 @@ const formMethods = {
         this.setFormMessage(err)
 
         if (flash) {
-            console.log(this.__('errors'))
             this.addErrorFlasher(this.__('errors.form'))
         }
     },
