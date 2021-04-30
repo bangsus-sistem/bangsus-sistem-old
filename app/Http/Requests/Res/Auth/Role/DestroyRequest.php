@@ -2,20 +2,23 @@
 
 namespace App\Http\Requests\Res\Auth\Role;
 
-use App\Abstracts\Http\Requests\FeatureRequest;
+use App\Foundation\Http\AuthRequest;
 use App\Validation\Auth\Role\RoleIsDeletableRule;
 
-class DestroyRequest extends FeatureRequest
+class DestroyRequest extends AuthRequest
 {
     /**
      * @var string
      */
-    public $moduleRef = 'role';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'delete';
+    protected $refs = [
+        'module' => 'role',
+        'action' => 'create',
+    ];
 
     /**
      * @return array
@@ -25,7 +28,7 @@ class DestroyRequest extends FeatureRequest
         return [
             'id' => [
                 'required',
-                'bsb_exists:\App\Database\Models\Auth\Role',
+                'bsb_exists:\App\Models\Auth\Role',
                 new RoleIsDeletableRule($this),
             ],
         ];

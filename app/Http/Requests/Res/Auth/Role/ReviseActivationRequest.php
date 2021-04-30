@@ -2,19 +2,22 @@
 
 namespace App\Http\Requests\Res\Auth\Role;
 
-use App\Abstracts\Http\Requests\FeatureRequest;
+use App\Foundation\Http\AuthRequest;
 
-class ReviseActivationRequest extends FeatureRequest
+class ReviseActivationRequest extends AuthRequest
 {
     /**
      * @var string
      */
-    public $moduleRef = 'role';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'update';
+    protected $refs = [
+        'module' => 'role',
+        'action' => 'create',
+    ];
 
     /**
      * @return array
@@ -24,7 +27,7 @@ class ReviseActivationRequest extends FeatureRequest
         return [
             'id' => [
                 'required',
-                'bsb_exists:\App\Database\Models\Auth\Role',
+                'bsb_exists:\App\Models\Auth\Role',
             ],
         ];
     }

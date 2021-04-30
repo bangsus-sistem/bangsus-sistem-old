@@ -2,19 +2,23 @@
 
 namespace App\Http\Requests\Res\Auth\Role;
 
-use App\Abstracts\Http\Requests\FeatureRequest;
+use App\Foundation\Http\AuthRequest;
+use Illuminate\Validation\Rule;
 
-class StoreRequest extends FeatureRequest
+class StoreRequest extends AuthRequest
 {
     /**
      * @var string
      */
-    public $moduleRef = 'role';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'create';
+    protected $refs = [
+        'module' => 'role',
+        'action' => 'create',
+    ];
 
     /**
      * @return array
@@ -25,32 +29,55 @@ class StoreRequest extends FeatureRequest
             'code' => [
                 'required',
                 'max:3',
-                'unique:App\Database\Models\Auth\Role',
+                'unique:roles',
             ],
             'name' => [
                 'required',
                 'max:200',
             ],
+            'description' => [
+                'nullable',
+                'max:1000',
+            ],
             'note' => [
                 'nullable',
                 'max:1000',
             ],
-            'feature_ids' => [
+            'all_features' => [
                 'required',
+                'boolean',
+            ],
+            'feature_ids' => [
+                Rule::requiredIf( ! $this->boolean('all_features')),
                 'array',
-                'min:1',
             ],
             'feature_ids.*' => [
+                Rule::requiredIf( ! $this->boolean('all_features')),
+                'bsb_exists:\App\Models\Auth\Feature',
+            ],
+            'all_widgets' => [
                 'required',
-                'bsb_exists:\App\Database\Models\Auth\Feature',
+                'boolean',
             ],
             'widget_ids' => [
-                'required',
+                Rule::requiredIf( ! $this->boolean('all_widgets')),
                 'array',
             ],
             'widget_ids.*' => [
+                Rule::requiredIf( ! $this->boolean('all_widgets')),
+                'bsb_exists:\App\Models\Auth\Widget',
+            ],
+            'all_reports' => [
                 'required',
-                'bsb_exists:\App\Database\Models\Auth\Widget',
+                'boolean',
+            ],
+            'report_ids' => [
+                Rule::requiredIf( ! $this->boolean('all_reports')),
+                'array',
+            ],
+            'report_ids.*' => [
+                Rule::requiredIf( ! $this->boolean('all_reports')),
+                'bsb_exists:\App\Models\Auth\Report',
             ],
         ];
     }
