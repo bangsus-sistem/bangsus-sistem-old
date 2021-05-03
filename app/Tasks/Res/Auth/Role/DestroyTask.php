@@ -3,12 +3,7 @@
 namespace App\Tasks\Res\Auth\Role;
 
 use App\Foundation\Task;
-use App\Models\Auth\{
-    Role,
-    Feature,
-    Widget,
-    Report,
-};
+use App\Models\Auth\Role;
 
 class DestroyTask extends Task
 {
