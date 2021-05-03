@@ -31,7 +31,7 @@ class AuthRequest extends FormRequest
         $user = $userClass::findOrFail(Auth::id());
         $role = $user->role;
 
-        return $role->{Str::plural($type)}()->find($instance->id)->exists();
+        return ! is_null($role->{Str::plural($type)}()->find($instance->id));
     }
 
     /**
