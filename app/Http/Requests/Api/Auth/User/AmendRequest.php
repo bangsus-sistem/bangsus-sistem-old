@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Res\Auth\User;
+namespace App\Http\Requests\Api\Auth\User;
 
 use App\Foundation\Http\AuthRequest;
 use Illuminate\Validation\Rule;
 
-class StoreRequest extends AuthRequest
+class AmendRequest extends AuthRequest
 {
     /**
      * @var string
@@ -17,7 +17,7 @@ class StoreRequest extends AuthRequest
      */
     protected $refs = [
         'module' => 'user',
-        'action' => 'create',
+        'action' => 'update',
     ];
 
     /**
@@ -26,25 +26,21 @@ class StoreRequest extends AuthRequest
     public function rules()
     {
         return [
-            'username' => [
+            'id' => [
                 'required',
+                'bsb_exists:\App\Models\Auth\User',
+            ],
+            'username' => [
+                'nullable',
                 'max:200',
-                'unique:\App\Models\Auth\User',
+                Rule::unique('\App\Models\Auth\User', $this->input('id')),
             ],
             'full_name' => [
-                'required',
+                'nullable',
                 'max:200',
             ],
-            'password' => [
-                'required',
-                'min:6',
-            ],
-            'password_confirmation' => [
-                'required_with:password',
-                'same:password',
-            ],
             'role_id' => [
-                'required',
+                'nullable',
                 'bsb_exists:\App\Models\Auth\Role',
             ],
             'description' => [
@@ -56,7 +52,7 @@ class StoreRequest extends AuthRequest
                 'max:1000',
             ],
             'all_branches' => [
-                'required',
+                'nullable',
                 'boolean',
             ],
             'branch_ids' => [

@@ -2,19 +2,22 @@
 
 namespace App\Http\Requests\Res\Auth\User;
 
-use App\Abstracts\Http\Requests\FeatureRequest;
+use App\Foundation\Http\AuthRequest;
 
-class RevisePasswordRequest extends FeatureRequest
+class RevisePasswordRequest extends AuthRequest
 {
     /**
      * @var string
      */
-    public $moduleRef = 'user';
+    protected $type = 'feature';
 
     /**
-     * @var string
+     * @var array
      */
-    public $actionRef = 'update';
+    protected $refs = [
+        'module' => 'user',
+        'action' => 'update',
+    ];
 
     /**
      * @return array

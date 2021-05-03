@@ -3,8 +3,9 @@
 namespace App\Http\Requests\Res\Auth\User;
 
 use App\Foundation\Http\AuthRequest;
+use App\Validation\Auth\User\UserIsDeletableRule;
 
-class ReviseActivationRequest extends AuthRequest
+class DestroyRequest extends AuthRequest
 {
     /**
      * @var string
@@ -16,7 +17,7 @@ class ReviseActivationRequest extends AuthRequest
      */
     protected $refs = [
         'module' => 'user',
-        'action' => 'create',
+        'action' => 'delete',
     ];
 
     /**
@@ -28,6 +29,7 @@ class ReviseActivationRequest extends AuthRequest
             'id' => [
                 'required',
                 'bsb_exists:\App\Models\Auth\User',
+                new UserIsDeletableRule($this),
             ],
         ];
     }
