@@ -61,7 +61,9 @@
                                 <bsb-td>{{ item['ref'] }}</bsb-td>
                                 <bsb-td>{{ item['name'] }}</bsb-td>
                                 <bsb-td justify="center">
-                                    <bsb-button-router-link-read :to="{ name: 'system.module.read', params: { id: item['id'] } }" />
+                                    <bsb-access-wrapper module-ref="module" action-ref="read">
+                                        <bsb-button-router-link-read :to="{ name: 'system.module.read', params: { id: item['id'] } }" />
+                                    </bsb-access-wrapper>
                                 </bsb-td>
                             </tr>
                         </tbody>

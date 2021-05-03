@@ -64,7 +64,9 @@
                                 <bsb-td>{{ item['module']['ref'] }} - {{ item['module']['name'] }}</bsb-td>
                                 <bsb-td>{{ item['action']['ref'] }} - {{ item['action']['name'] }}</bsb-td>
                                 <bsb-td justify="center">
-                                    <bsb-button-router-link-read :to="{ name: 'system.feature.read', params: { id: item['id'] } }" />
+                                    <bsb-access-wrapper module-ref="feature" action-ref="read">
+                                        <bsb-button-router-link-read :to="{ name: 'system.feature.read', params: { id: item['id'] } }" />
+                                    </bsb-access-wrapper>
                                 </bsb-td>
                             </tr>
                         </tbody>

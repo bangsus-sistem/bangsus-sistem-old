@@ -8,7 +8,9 @@
                 :error-message="state.page.message"
             >
                 <h5 class="mb-3">Daftar Role</h5>
-                <bsb-button-router-link-create :to="{ name: 'system.role.create' }" />
+                <bsb-access-wrapper module-ref="role" action-ref="create">
+                    <bsb-button-router-link-create :to="{ name: 'system.role.create' }" />
+                </bsb-access-wrapper>
                 <bsb-table-responsive class="p-1 mt-3">
                     <bsb-table-responsive-header>
                         <bsb-item-count :options="meta.counts" v-model="query.count" @input="search" />
@@ -103,13 +105,19 @@
                                     <bsb-switch-badge :condition="item['all_reports']" true-label="Tak Terbatas" false-label="Terbatas"/>
                                 </bsb-td>
                                 <bsb-td justify="center">
-                                    <bsb-button-router-link-read :to="{ name: 'system.role.read', params: { id: item['id'] } }" />
-                                    <bsb-button-router-link-update :to="{ name: 'system.role.update', params: { id: item['id'] } }" v-if="!item['locked']" />
-                                    <template v-if="!item['locked']">
-                                        <bsb-button-activate v-if="!item['active']" @click="showModalForm('activate', { id: item['id'] })" />
-                                        <bsb-button-deactivate v-else @click="showModalForm('deactivate', { id: item['id'] })" />
-                                    </template>
-                                    <bsb-button-delete @click="showModalForm('delete', { id: item['id'] })" v-if="!item['locked']" />
+                                    <bsb-access-wrapper module-ref="role" action-ref="read">
+                                        <bsb-button-router-link-read :to="{ name: 'system.role.read', params: { id: item['id'] } }" />
+                                    </bsb-access-wrapper>
+                                    <bsb-access-wrapper module-ref="role" action-ref="update">
+                                        <bsb-button-router-link-update :to="{ name: 'system.role.update', params: { id: item['id'] } }" v-if="!item['locked']" />
+                                        <template v-if="!item['locked']">
+                                            <bsb-button-activate v-if="!item['active']" @click="showModalForm('activate', { id: item['id'] })" />
+                                            <bsb-button-deactivate v-else @click="showModalForm('deactivate', { id: item['id'] })" />
+                                        </template>
+                                    </bsb-access-wrapper>
+                                    <bsb-access-wrapper module-ref="role" action-ref="delete">
+                                        <bsb-button-delete @click="showModalForm('delete', { id: item['id'] })" v-if="!item['locked']" />
+                                    </bsb-access-wrapper>
                                 </bsb-td>
                             </tr>
                         </tbody>
@@ -126,30 +134,34 @@
             </bsb-card-body-spinner-error>
         </bsb-card>
         <!-- Modal Form -->
-        <bsb-modal-form
-            title="Aktifkan Role"
-            message="Apakah anda yakin?"
-            ref="activate"
-            link="/ajax/auth/role/activate"
-            method="patch"
-            @success="search"
-        />
-        <bsb-modal-form
-            title="Nonaktifkan Role"
-            message="Apakah anda yakin?"
-            ref="deactivate"
-            link="/ajax/auth/role/deactivate"
-            method="patch"
-            @success="search"
-        />
-        <bsb-modal-form
-            title="Hapus Role"
-            message="Apakah anda yakin?"
-            ref="delete"
-            link="/ajax/auth/role"
-            method="delete"
-            @success="search"
-        />
+        <bsb-access-wrapper module-ref="role" action-ref="update">
+            <bsb-modal-form
+                title="Aktifkan Role"
+                message="Apakah anda yakin?"
+                ref="activate"
+                link="/ajax/auth/role/activate"
+                method="patch"
+                @success="search"
+            />
+            <bsb-modal-form
+                title="Nonaktifkan Role"
+                message="Apakah anda yakin?"
+                ref="deactivate"
+                link="/ajax/auth/role/deactivate"
+                method="patch"
+                @success="search"
+            />
+        </bsb-access-wrapper>
+        <bsb-access-wrapper module-ref="role" action-ref="delete">
+            <bsb-modal-form
+                title="Hapus Role"
+                message="Apakah anda yakin?"
+                ref="delete"
+                link="/ajax/auth/role"
+                method="delete"
+                @success="search"
+            />
+        </bsb-access-wrapper>
     </fragment>
 </template>
 

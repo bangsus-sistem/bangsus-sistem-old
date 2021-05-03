@@ -38,7 +38,9 @@
                             <h6>{{ item['name'] }}</h6>
                         </template>
                         <template v-slot:right>
-                            <bsb-button-router-link-read :to="{ name: 'system.package.read', params: { id: item['id'] } }" />
+                            <bsb-access-wrapper module-ref="package" action-ref="read">
+                                <bsb-button-router-link-read :to="{ name: 'system.package.read', params: { id: item['id'] } }" />
+                            </bsb-access-wrapper>
                         </template>
                     </bsb-list-group-item-content>
                 </bsb-list-group-item>

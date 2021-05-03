@@ -53,7 +53,9 @@
                             <small>{{ item['action']['ref'] }} - {{ item['action']['name'] }}</small>
                         </template>
                         <template v-slot:right>
-                            <bsb-button-router-link-read :to="{ name: 'system.feature.read', params: { id: item['id'] } }" />
+                            <bsb-access-wrapper module-ref="feature" action-ref="read">
+                                <bsb-button-router-link-read :to="{ name: 'system.feature.read', params: { id: item['id'] } }" />
+                            </bsb-access-wrapper>
                         </template>
                     </bsb-list-group-item-content>
                 </bsb-list-group-item>
