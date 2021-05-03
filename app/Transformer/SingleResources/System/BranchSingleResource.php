@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Transformer\SingleResources\Auth;
+namespace App\Transformer\SingleResources\System;
 
 use App\Foundation\Transformer\SingleResource;
 
-class UserSingleResource extends SingleResource
+class BranchSingleResource extends SingleResource
 {
     /**
      * @param  \Illuminate\Http\Request  $request
@@ -14,13 +14,13 @@ class UserSingleResource extends SingleResource
     {
         return [
             'id' => $this->id,
-            'username' => $this->username,
-            'full_name' => $this->full_name,
-            'role_id' => $this->role_id,
+            'code' => $this->code,
+            'name' => $this->name,
+            'branch_type_id' => $this->branch_type_id,
             'active' => $this->active,
-            'locked' => $this->locked,
-            'hidden' => $this->hidden,
-            'all_branches' => $this->all_branches,
+            'user_create_id' => $this->user_create_id,
+            'user_update_id' => $this->user_update_id,
+            'user_delete_id' => $this->user_delete_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,
