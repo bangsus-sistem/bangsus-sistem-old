@@ -9,5 +9,6 @@ class Kernel
      */
     public static $observers = [
         \App\Models\Auth\Role::class => Auth\RoleObserver::class,
+        \App\Models\Auth\User::class => Auth\UserObserver::class,
     ];
 }
