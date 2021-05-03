@@ -22,7 +22,6 @@ class AmendTask extends Task
         $this->transaction(
             function () use ($request, $role) {
                 $role->name = $request->input('name', $role->name);
-                $role->active = false;
                 $role->all_features = $request->boolean('all_features', $role->all_features);
                 $role->all_widgets = $request->boolean('all_widgets', $role->all_widgets);
                 $role->all_reports = $request->boolean('all_reports', $role->all_reports);
