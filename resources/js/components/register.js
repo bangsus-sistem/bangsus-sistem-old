@@ -3,6 +3,11 @@ export default {
     prefix: 'bsb',
     components: {
         /**
+         * Access
+         */
+        'access-wrapper': require('./access/AccessWrapper').default,
+
+        /**
          * Alerts
          */
         'alert': require('./alerts/Alert').default,
