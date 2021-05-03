@@ -125,5 +125,10 @@ return [
         'feature_ids' => 'Fitur',
         'widget_ids' => 'Widget',
         'report_ids' => 'Laporan',
+
+        'username' => 'Username',
+        'full_name' => 'Nama Lengkap',
+        'password' => 'Password',
+        
     ],
 ];
