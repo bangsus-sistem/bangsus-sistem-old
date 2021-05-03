@@ -17,7 +17,7 @@ class DestroyRequest extends AuthRequest
      */
     protected $refs = [
         'module' => 'role',
-        'action' => 'create',
+        'action' => 'delete',
     ];
 
     /**
