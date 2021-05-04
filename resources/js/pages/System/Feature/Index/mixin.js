@@ -29,13 +29,13 @@ export default {
                 'modules': '/ajax/auth/module/all',
                 'actions': '/ajax/auth/action/all',
             }, { resolve: true, reject: false }, { startLoading: true, stopLoading: false })
-            .then(res => {
-                this.setQuery({
-                    'module_id': ['*', ['*', ...lodash.map(this.resources['modules'], (val) => val.id)]],
-                    'action_id': ['*', ['*', ...lodash.map(this.resources['actions'], (val) => val.id)]],
+                .then(res => {
+                    this.setQuery({
+                        'module_id': ['*', ['*', ...lodash.map(this.resources['modules'], (val) => val.id)]],
+                        'action_id': ['*', ['*', ...lodash.map(this.resources['actions'], (val) => val.id)]],
+                    })
+                    this.getAndSetResult()
                 })
-                this.getAndSetResult()
-            })
         },
         search() {
             this.startResultLoading()

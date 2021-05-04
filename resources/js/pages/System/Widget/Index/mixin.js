@@ -29,14 +29,14 @@ export default {
             this.fetchAndSetMultipleResources({
                 'packages': '/ajax/auth/package/all'
             }, { resolve: true, reject: false }, { startLoading: true, stopLoading: false })
-            .then(res => {
-                this.setQuery({
-                    'package_id': ['*', ['*', ...lodash.map(this.resources['packages'], (val) => val.id)]],
-                    'ref': [''],
-                    'name': [''],
+                .then(res => {
+                    this.setQuery({
+                        'package_id': ['*', ['*', ...lodash.map(this.resources['packages'], (val) => val.id)]],
+                        'ref': [''],
+                        'name': [''],
+                    })
+                    this.getAndSetResult()
                 })
-                this.getAndSetResult()
-            })
         },
         search() {
             this.startResultLoading()
