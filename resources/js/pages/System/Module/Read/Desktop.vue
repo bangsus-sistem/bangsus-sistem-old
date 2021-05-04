@@ -59,7 +59,7 @@
                                         </bsb-th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <bsb-tbody-empty :items="result['feature'].items" :col="meta['feature'].sortOrders.length">
                                     <tr v-for="(item, i) in result['feature'].items" :key="i">
                                         <bsb-td>{{ i + 1 }}</bsb-td>
                                         <bsb-td>{{ item['action']['ref'] }} - {{ item['action']['name'] }}</bsb-td>
@@ -69,7 +69,7 @@
                                             </bsb-access-wrapper>
                                         </bsb-td>
                                     </tr>
-                                </tbody>
+                                </bsb-tbody-empty>
                             </bsb-table>
                             <bsb-table-responsive-footer>
                                 <bsb-data-index

@@ -40,7 +40,7 @@
                                 @input="search('feature')"
                                 class="mt-3"
                             />
-                            <bsb-list-group class="mt-3 shadow-sm">
+                            <bsb-list-group-empty class="mt-3 shadow-sm" :items="result['feature'].items">
                                 <bsb-list-group-item
                                     class="list-group-item list-group-item-action"
                                     v-for="(item, i) in result['feature'].items" :key="i"
@@ -57,7 +57,7 @@
                                         </template>
                                     </bsb-list-group-item-content>
                                 </bsb-list-group-item>
-                            </bsb-list-group>
+                            </bsb-list-group-empty>
                             <div class="mt-3 text-center">
                                 <bsb-data-index
                                     :first-item="result['feature'].meta['first_item']"
