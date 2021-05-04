@@ -117,6 +117,7 @@ export default {
          * List
          */
         'list-group': require('./list/ListGroup').default,
+        'list-group-empty': require('./list/ListGroupEmpty').default,
         'list-group-item': require('./list/ListGroupItem').default,
         'list-group-item-content': require('./list/ListGroupItemContent').default,
 
@@ -177,6 +178,7 @@ export default {
         'table-responsive': require('./table/TableResponsive').default,
         'table-responsive-footer': require('./table/TableResponsiveFooter').default,
         'table-responsive-header': require('./table/TableResponsiveHeader').default,
+        'tbody-empty': require('./table/TbodyEmpty').default,
         'td': require('./table/Td').default,
         'th': require('./table/Th').default,
         'th-query': require('./table/ThQuery').default,
