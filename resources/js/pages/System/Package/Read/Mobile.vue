@@ -48,7 +48,7 @@
                                 @input="search('module')"
                                 class="mt-3"
                             />
-                            <bsb-list-group class="mt-3 shadow-sm">
+                            <bsb-list-group-empty class="mt-3 shadow-sm" :items="result['module'].items">
                                 <bsb-list-group-item
                                     class="list-group-item list-group-item-action"
                                     v-for="(item, i) in result['module'].items" :key="i"
@@ -67,7 +67,7 @@
                                         </template>
                                     </bsb-list-group-item-content>
                                 </bsb-list-group-item>
-                            </bsb-list-group>
+                            </bsb-list-group-empty>
                             <div class="mt-3 text-center">
                                 <bsb-data-index
                                     :first-item="result['module'].meta['first_item']"
@@ -106,7 +106,7 @@
                                 @input="search('widget')"
                                 class="mt-3"
                             />
-                            <bsb-list-group class="mt-3 shadow-sm">
+                            <bsb-list-group-empty class="mt-3 shadow-sm" :items="result['widget'].items">
                                 <bsb-list-group-item
                                     class="list-group-item list-group-item-action"
                                     v-for="(item, i) in result['widget'].items" :key="i"
@@ -125,7 +125,7 @@
                                         </template>
                                     </bsb-list-group-item-content>
                                 </bsb-list-group-item>
-                            </bsb-list-group>
+                            </bsb-list-group-empty>
                             <div class="mt-3 text-center">
                                 <bsb-data-index
                                     :first-item="result['widget'].meta['first_item']"
@@ -164,7 +164,7 @@
                                 @input="search('report')"
                                 class="mt-3"
                             />
-                            <bsb-list-group class="mt-3 shadow-sm">
+                            <bsb-list-group-empty class="mt-3 shadow-sm" :items="result['report'].items">
                                 <bsb-list-group-item
                                     class="list-group-item list-group-item-action"
                                     v-for="(item, i) in result['report'].items" :key="i"
@@ -183,7 +183,7 @@
                                         </template>
                                     </bsb-list-group-item-content>
                                 </bsb-list-group-item>
-                            </bsb-list-group>
+                            </bsb-list-group-empty>
                             <div class="mt-3 text-center">
                                 <bsb-data-index
                                     :first-item="result['report'].meta['first_item']"

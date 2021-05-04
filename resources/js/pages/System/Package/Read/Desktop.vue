@@ -64,7 +64,7 @@
                                         </bsb-th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <bsb-tbody-empty :items="result['module'].items" :col="meta['module'].sortOrders.length">
                                     <tr v-for="(item, i) in result['module'].items" :key="i">
                                         <bsb-td>{{ i + 1 }}</bsb-td>
                                         <bsb-td>{{ item['ref'] }}</bsb-td>
@@ -75,7 +75,7 @@
                                             </bsb-access-wrapper>
                                         </bsb-td>
                                     </tr>
-                                </tbody>
+                                </bsb-tbody-empty>
                             </bsb-table>
                             <bsb-table-responsive-footer>
                                 <bsb-data-index
@@ -131,7 +131,7 @@
                                         </bsb-th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <bsb-tbody-empty :items="result['widget'].items" :col="meta['widget'].sortOrders.length">
                                     <tr v-for="(item, i) in result['widget'].items" :key="i">
                                         <bsb-td>{{ i + 1 }}</bsb-td>
                                         <bsb-td>{{ item['ref'] }}</bsb-td>
@@ -142,7 +142,7 @@
                                             </bsb-access-wrapper>
                                         </bsb-td>
                                     </tr>
-                                </tbody>
+                                </bsb-tbody-empty>
                             </bsb-table>
                             <bsb-table-responsive-footer>
                                 <bsb-data-index
@@ -198,7 +198,7 @@
                                         </bsb-th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <bsb-tbody-empty :items="result['report'].items" :col="meta['report'].sortOrders.length">
                                     <tr v-for="(item, i) in result['report'].items" :key="i">
                                         <bsb-td>{{ i + 1 }}</bsb-td>
                                         <bsb-td>{{ item['ref'] }}</bsb-td>
@@ -209,7 +209,7 @@
                                             </bsb-access-wrapper>
                                         </bsb-td>
                                     </tr>
-                                </tbody>
+                                </bsb-tbody-empty>
                             </bsb-table>
                             <bsb-table-responsive-footer>
                                 <bsb-data-index
