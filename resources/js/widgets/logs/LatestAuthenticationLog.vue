@@ -1,7 +1,6 @@
 <template>
     <WidgetWrapper
-        module-ref="authentication_log"
-        widget-type-ref="latest_data"
+        widget-ref="authentication_logs_latest_data"
         class="col-md-12 col-lg-8 col-xl-6"
         :loading="state.widget.loading"
         title="Log Autentikasi Terakhir"

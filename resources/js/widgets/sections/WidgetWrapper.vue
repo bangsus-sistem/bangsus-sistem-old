@@ -17,11 +17,7 @@
 <script>
 export default {
     props: {
-        moduleRef: {
-            required: true,
-            type: String,
-        },
-        widgetTypeRef: {
+        widgetRef: {
             required: true,
             type: String,
         },
@@ -44,11 +40,10 @@ export default {
         }
     },
     created() {
-        const moduleRef = this.moduleRef
-        const widgetTypeRef = this.widgetTypeRef
+        const widgetRef = this.widgetRef
         const widgetAuth = this.$store.getters['utils/auth/widgets']
         const widget = lodash.find(widgetAuth, (widget) => {
-            return widget['module']['ref'] == moduleRef && widget['widget_type']['ref'] == widgetTypeRef
+            return widget['ref'] == widgetRef
         })
 
         this.state.widget.show = widget != undefined

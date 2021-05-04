@@ -1,7 +1,6 @@
 <template>
     <WidgetWrapper
-        module-ref="feature_log"
-        widget-type-ref="traffic"
+        widget-ref="feature_logs_traffic"
         class="col-12 col-lg-6 col-xl-4"
         :loading="state.widget.loading"
         title="Traffic Request Fitur"
