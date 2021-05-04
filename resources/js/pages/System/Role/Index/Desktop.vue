@@ -87,7 +87,7 @@
                                 </bsb-th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <bsb-tbody-empty :items="result.items" :col="meta.sortOrders.length">
                             <tr v-for="(item, i) in result.items" :key="i">
                                 <bsb-td>{{ i + 1 }}</bsb-td>
                                 <bsb-td>{{ item['code'] }}</bsb-td>
@@ -120,7 +120,7 @@
                                     </bsb-access-wrapper>
                                 </bsb-td>
                             </tr>
-                        </tbody>
+                        </bsb-tbody-empty>
                     </bsb-table>
                     <bsb-table-responsive-footer>
                         <bsb-data-index
