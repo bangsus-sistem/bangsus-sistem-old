@@ -78,7 +78,7 @@ export default {
                         },
                         {
                             title: 'User',
-                            route: { name: 'user' },
+                            route: { name: 'system.user' },
                             access: {
                                 moduleRef: 'user',
                                 actionRef: 'index',
