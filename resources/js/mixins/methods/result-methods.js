@@ -117,6 +117,27 @@ const resultMethods = {
                 }
             })
     },
+    
+    /**
+     * Search the data dynamically.
+     * 
+     * @param  {String}  index 
+     * @return {void}
+     */
+    search(index) {
+        this.startResultLoading()
+        this.getAndSetResult(true, 'result', index)
+    },
+
+    /**
+     * Search the data dynamically.
+     * 
+     * @param  {String}  index 
+     * @return {void}
+     */
+    toggleShow(index) {
+        this.meta[index].show = ! this.meta[index].show
+    },
 
     // --------------------------------------------------------------
 
