@@ -54,10 +54,6 @@ export default {
             this.setQuery({}, 'feature')
             this.getAndSetResult(true, 'page', 'feature')
         },
-        search(index) {
-            this.startResultLoading()
-            this.getAndSetResult(true, 'result', index)
-        },
         fetchResult(index) {
             return axios.get('/ajax/auth/' + index, {
                 params: {
@@ -66,8 +62,5 @@ export default {
                 }
             })
         },
-        toggleShow(index) {
-            this.meta[index].show = ! this.meta[index].show
-        }
     }
 }

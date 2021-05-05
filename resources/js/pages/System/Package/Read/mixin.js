@@ -110,10 +110,6 @@ export default {
             }, 'report')
             this.getAndSetResult(true, 'page', 'report')
         },
-        search(index) {
-            this.startResultLoading()
-            this.getAndSetResult(true, 'result', index)
-        },
         fetchResult(index) {
             return axios.get('/ajax/auth/' + index, {
                 params: {
@@ -122,8 +118,5 @@ export default {
                 }
             })
         },
-        toggleShow(index) {
-            this.meta[index].show = ! this.meta[index].show
-        }
     }
 }
