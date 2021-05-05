@@ -185,6 +185,109 @@
                         </bsb-table-responsive>
                     </bsb-form-group>
                 </form>
+                <!-- User -->
+                <bsb-access-wrapper module-ref="user" action-ref="index">
+                    <div>
+                        <label @click.prevent="toggleShow('user')">
+                            User <bsb-switch-icon true-icon="angle-down" false-icon="angle-up" v-model="meta['user'].show" :single-color="true" />
+                        </label>
+                        <bsb-table-responsive class="p-1 my-3" v-if="meta['user'].show">
+                            <bsb-table-responsive-header>
+                                <bsb-item-count :options="meta['user'].counts" v-model="query['user'].count" @input="search('user')" />
+                            </bsb-table-responsive-header>
+                            <bsb-table :hover="true">
+                                <thead class="thead-light">
+                                    <bsb-tr-query>
+                                        <bsb-th-query></bsb-th-query>
+                                        <bsb-th-query>
+                                            <bsb-input size="sm" type="text" v-model="query['username']" />
+                                        </bsb-th-query>
+                                        <bsb-th-query>
+                                            <bsb-input size="sm" type="text" v-model="query['full_name']" />
+                                        </bsb-th-query>
+                                        <bsb-th-query>
+                                            <bsb-select size="sm"
+                                                v-model="query['active']"
+                                                :options="[
+                                                    { value: '*', title: 'Semua' },
+                                                    { value: true, title: 'Aktif' },
+                                                    { value: false, title: 'Nonaktif' }
+                                                ]"
+                                            />
+                                        </bsb-th-query>
+                                        <bsb-th-query>
+                                            <bsb-select size="sm"
+                                                v-model="query['all_branches']"
+                                                :options="[
+                                                    { value: '*', title: 'Semua' },
+                                                    { value: true, title: 'Tak Terbatas' },
+                                                    { value: false, title: 'Terbatas' }
+                                                ]"
+                                            />
+                                        </bsb-th-query>
+                                        <bsb-th-query>
+                                            <bsb-button-spinner color="primary" size="sm" @click="search('user')" :loading="state.result['user'].loading">
+                                                Cari
+                                            </bsb-button-spinner>
+                                        </bsb-th-query>
+                                    </bsb-tr-query>
+                                    <tr>
+                                        <bsb-th>#</bsb-th>
+                                        <bsb-th-sort
+                                            v-for="(sortOrder, i) in meta['user'].sortOrders"
+                                            :key="i"
+                                            :sort="query['user'].sort == sortOrder.index"
+                                            :order="query['user'].order"
+                                            @click="changeSortOrder(sortOrder.index, true, 'user')"
+                                        >
+                                            {{ sortOrder.title }}
+                                        </bsb-th-sort>
+                                        <bsb-th justify="center">
+                                            Aksi
+                                        </bsb-th>
+                                    </tr>
+                                </thead>
+                                <bsb-tbody-empty :items="result['user'].items" :col="meta['user'].sortOrders.length">
+                                    <tr v-for="(item, i) in result['user'].items" :key="i">
+                                        <bsb-td>{{ i + 1 }}</bsb-td>
+                                        <bsb-td>{{ item['username'] }}</bsb-td>
+                                        <bsb-td>{{ item['full_name'] }}</bsb-td>
+                                        <bsb-td justify="center">
+                                            <bsb-switch-badge :condition="item['active']" true-label="Aktif" false-label="Tidak Aktif"/>
+                                        </bsb-td>
+                                        <bsb-td justify="center">
+                                            <bsb-switch-badge :condition="item['all_branches']" true-label="Tak Terbatas" false-label="Terbatas"/>
+                                        </bsb-td>
+                                        <bsb-td justify="center">
+                                            <bsb-access-wrapper module-ref="user" action-ref="read">
+                                                <bsb-button-router-link-read :to="{ name: 'system.user.read', params: { id: item['id'] } }" />
+                                            </bsb-access-wrapper>
+                                            <bsb-access-wrapper module-ref="user" action-ref="update">
+                                                <bsb-button-router-link-update :to="{ name: 'system.user.update', params: { id: item['id'] } }" v-if="!item['locked']" />
+                                                <template v-if="!item['locked']">
+                                                    <bsb-button-activate v-if="!item['active']" @click="showModalForm('activate', { id: item['id'] })" />
+                                                    <bsb-button-deactivate v-else @click="showModalForm('deactivate', { id: item['id'] })" />
+                                                </template>
+                                            </bsb-access-wrapper>
+                                            <bsb-access-wrapper module-ref="user" action-ref="delete">
+                                                <bsb-button-delete @click="showModalForm('delete', { id: item['id'] })" v-if="!item['locked']" />
+                                            </bsb-access-wrapper>
+                                        </bsb-td>
+                                    </tr>
+                                </bsb-tbody-empty>
+                            </bsb-table>
+                            <bsb-table-responsive-footer>
+                                <bsb-data-index
+                                    :first-item="result['user'].meta['first_item']"
+                                    :last-item="result['user'].meta['last_item']"
+                                    :total="result['user'].meta['total']"
+                                />
+                                <bsb-page-button-group v-model="query['user'].page" :last-page="result['user'].meta['last_page']" @changed="search('user')" />
+                            </bsb-table-responsive-footer>
+                        </bsb-table-responsive>
+                    </div>
+                </bsb-access-wrapper>
+                <!-- End User -->
             </bsb-card-body-spinner-error-back>
         </bsb-card>
     </fragment>
