@@ -19,7 +19,7 @@ export default {
         },
         emptyLabel: {
             type: String,
-            default: 'Data tidak ditemukan',
+            default: 'Data tidak ada.',
         },
         col: {
             type: Number,
