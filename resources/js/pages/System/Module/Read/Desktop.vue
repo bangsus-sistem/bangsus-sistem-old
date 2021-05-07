@@ -38,37 +38,22 @@
                             </bsb-table-responsive-header>
                             <bsb-table :hover="true">
                                 <thead class="thead-light">
-                                    <bsb-tr-query>
-                                        <bsb-th-query></bsb-th-query>
-                                        <bsb-th-query></bsb-th-query>
-                                        <bsb-th-query></bsb-th-query>
-                                    </bsb-tr-query>
-                                    <tr>
-                                        <bsb-th>#</bsb-th>
-                                        <bsb-th-sort
-                                            v-for="(sortOrder, i) in meta['feature'].sortOrders"
-                                            :key="i"
-                                            :sort="query['feature'].sort == sortOrder.index"
-                                            :order="query['feature'].order"
-                                            @click="changeSortOrder(sortOrder.index, true, 'feature')"
-                                        >
-                                            {{ sortOrder.title }}
-                                        </bsb-th-sort>
-                                        <bsb-th justify="center">
-                                            Aksi
-                                        </bsb-th>
-                                    </tr>
+                                    <bsb-tr-sort
+                                        :sort-orders="meta['feature'].sortOrders"
+                                        :sort="query['feature']['sort']"
+                                        :order="query['feature']['order']"
+                                        v-model="query['feature']"
+                                        @sort="changeSortOrder($event, true, 'feature')"
+                                    />
                                 </thead>
                                 <bsb-tbody-empty :items="result['feature'].items" :col="meta['feature'].sortOrders.length">
-                                    <tr v-for="(item, i) in result['feature'].items" :key="i">
-                                        <bsb-td>{{ i + 1 }}</bsb-td>
-                                        <bsb-td>{{ item['action']['ref'] }} - {{ item['action']['name'] }}</bsb-td>
-                                        <bsb-td justify="center">
-                                            <bsb-access-wrapper module-ref="feature" action-ref="read">
-                                                <bsb-button-router-link-read :to="{ name: 'system.feature.read', params: { id: item['id'] } }" />
-                                            </bsb-access-wrapper>
-                                        </bsb-td>
-                                    </tr>
+                                    <FeatureDataRow
+                                        v-for="(item, i) in result['feature'].items"
+                                        :key="i"
+                                        :num="i + 1"
+                                        :item="item"
+                                        :fl-with-module="false"
+                                    />
                                 </bsb-tbody-empty>
                             </bsb-table>
                             <bsb-table-responsive-footer>
@@ -90,8 +75,10 @@
 
 <script>
 import mixin from './mixin'
+import FeatureDataRow from '../../Feature/Index/DataRow'
 
 export default {
     mixins: [mixin],
+    components: { FeatureDataRow },
 }
 </script>

@@ -20,7 +20,7 @@ export default {
                         { index: 'action_id', title: 'Aksi' },
                     ],
                     counts: [10, 25, 50, 100],
-                    show: false,
+                    show: true,
                 },
             },
             result: {

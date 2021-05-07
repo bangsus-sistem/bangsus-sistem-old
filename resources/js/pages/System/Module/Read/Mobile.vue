@@ -41,22 +41,13 @@
                                 class="mt-3"
                             />
                             <bsb-list-group-empty class="mt-3 shadow-sm" :items="result['feature'].items">
-                                <bsb-list-group-item
-                                    class="list-group-item list-group-item-action"
-                                    v-for="(item, i) in result['feature'].items" :key="i"
-                                >
-                                    <bsb-list-group-item-content>
-                                        <template v-slot:content>
-                                            <small>{{ item['action']['ref'] }}</small>
-                                            <h6>{{ item['action']['name'] }}</h6>
-                                        </template>
-                                        <template v-slot:right>
-                                            <bsb-access-wrapper module-ref="feature" action-ref="read">
-                                                <bsb-button-router-link-read :to="{ name: 'system.feature.read', params: { id: item['id'] } }" />
-                                            </bsb-access-wrapper>
-                                        </template>
-                                    </bsb-list-group-item-content>
-                                </bsb-list-group-item>
+                                <FeatureDataRow
+                                    v-for="(item, i) in result['feature'].items"
+                                    :key="i"
+                                    :num="i + 1"
+                                    :item="item"
+                                    :fl-with-module="false"
+                                />
                             </bsb-list-group-empty>
                             <div class="mt-3 text-center">
                                 <bsb-data-index
@@ -77,8 +68,10 @@
 
 <script>
 import mixin from './mixin'
+import FeatureDataRow from '../../Feature/Index/DataRow'
 
 export default {
     mixins: [mixin],
+    components: { FeatureDataRow },
 }
 </script>
