@@ -192,41 +192,13 @@
                             User <bsb-switch-icon true-icon="angle-down" false-icon="angle-up" v-model="meta['user'].show" :single-color="true" />
                         </label>
                         <div v-if="meta['user'].show">
-                            <bsb-mobile-query-form>
-                                <bsb-form-group>
-                    <label>Username</label>
-                    <bsb-input size="sm" type="text" v-model="query['username']" />
-                                </bsb-form-group>
-                                <bsb-form-group>
-                                    <label>Nama</label>
-                                    <bsb-input size="sm" type="text" v-model="query['full_name']" />
-                                </bsb-form-group>
-                                <bsb-form-group>
-                                    <label>Status</label>
-                                    <bsb-select size="sm"
-                                        v-model="query['active']"
-                                        :options="[
-                                            { value: '*', title: 'Semua' },
-                                            { value: true, title: 'Aktif' },
-                                            { value: false, title: 'Nonaktif' }
-                                        ]"
-                                    />
-                                </bsb-form-group>
-                                <bsb-form-group>
-                                    <label>Cabang</label>
-                                    <bsb-select size="sm"
-                                        v-model="query['all_branches']"
-                                        :options="[
-                                            { value: '*', title: 'Semua' },
-                                            { value: true, title: 'Tak Terbatas' },
-                                            { value: false, title: 'Terbatas' }
-                                        ]"
-                                    />
-                                </bsb-form-group>
-                                <bsb-button-spinner color="primary" size="sm" @click="search('user')" :loading="state.result['user'].loading">
-                                    Cari
-                                </bsb-button-spinner>
-                            </bsb-mobile-query-form>
+                            <UserDataQuery
+                                :loading="state.result['user'].loading"
+                                :resources="resources"
+                                @search="search"
+                                v-model="query['user']"
+                                :fl-with-role="false"
+                            />
                             <bsb-item-count
                                 :options="meta['user'].counts"
                                 v-model="query['user'].count"
@@ -234,36 +206,16 @@
                                 class="mt-3"
                             />
                             <bsb-list-group-empty class="mt-3 shadow-sm" :items="result['user'].items">
-                                <bsb-list-group-item
-                                    class="list-group-item list-group-item-action"
-                                    v-for="(item, i) in result['user'].items" :key="i"
-                                >
-                                    <bsb-list-group-item-content>
-                                        <template v-slot:content>
-                                            <small>{{ item['username'] }}</small>
-                                            <h6>{{ item['full_name'] }}</h6>
-                                        </template>
-                                        <template v-slot:right>
-                                            <bsb-access-wrapper module-ref="user" action-ref="read">
-                                                <bsb-button-router-link-read :to="{ name: 'system.user.read', params: { id: item['id'] } }" />
-                                            </bsb-access-wrapper>
-                                            <bsb-access-wrapper module-ref="user" action-ref="update">
-                                                <bsb-button-router-link-update :to="{ name: 'system.user.update', params: { id: item['id'] } }" v-if="!item['locked']" />
-                                                <template v-if="!item['locked']">
-                                                    <bsb-button-activate v-if="!item['active']" @click="showModalForm('activate', { id: item['id'] })" />
-                                                    <bsb-button-deactivate v-else @click="showModalForm('deactivate', { id: item['id'] })" />
-                                                </template>
-                                            </bsb-access-wrapper>
-                                            <bsb-access-wrapper module-ref="user" action-ref="delete">
-                                                <bsb-button-delete @click="showModalForm('delete', { id: item['id'] })" v-if="!item['locked']" />
-                                            </bsb-access-wrapper>
-                                        </template>
-                                        <template v-slot:footer>
-                                            <bsb-switch-badge :condition="item['active']" true-label="Aktif" false-label="Tidak Aktif"/>
-                                            <bsb-switch-badge :condition="item['all_branches']" true-label="Cabang Tak Terbatas" false-label="Cabang Terbatas"/>
-                                        </template>
-                                    </bsb-list-group-item-content>
-                                </bsb-list-group-item>
+                                <UserDataRow
+                                    v-for="(item, i) in result['user'].items"
+                                    :key="i"
+                                    :num="i + 1"
+                                    :item="item"
+                                    @activate="showModalForm('user', 'activate', { id: item['id'] })"
+                                    @deactivate="showModalForm('user', 'deactivate', { id: item['id'] })"
+                                    @delete="showModalForm('user', 'delete', { id: item['id'] })"
+                                    :fl-with-role="false"
+                                />
                             </bsb-list-group-empty>
                             <div class="mt-3 text-center">
                                 <bsb-data-index
@@ -279,13 +231,19 @@
                 <!-- End User -->
             </bsb-card-body-spinner-error-back>
         </bsb-card>
+        <!-- Modal Form -->
+        <UserModalForms ref="user" @success="search" />
     </fragment>
 </template>
 
 <script>
 import mixin from './mixin'
+import UserDataQuery from '../../User/Index/DataQuery'
+import UserDataRow from '../../User/Index/DataRow'
+import UserModalForms from '../../User/Index/ModalForms'
 
 export default {
     mixins: [mixin],
+    components: { UserDataQuery, UserDataRow, UserModalForms },
 }
 </script>
