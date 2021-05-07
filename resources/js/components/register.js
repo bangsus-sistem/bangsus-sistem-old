@@ -87,6 +87,7 @@ export default {
         'form-check-label': require('./form/FormCheckLabel').default,
         'form-group': require('./form/FormGroup').default,
         'form-inline': require('./form/FormInline').default,
+        'form-radios': require('./form/FormRadios').default,
         'modal-form': require('./form/ModalForm').default,
 
         /**
