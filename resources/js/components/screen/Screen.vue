@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-frag>
         <template v-if="$isMobile()">
             <slot name="mobile" />
         </template>
