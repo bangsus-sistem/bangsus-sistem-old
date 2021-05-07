@@ -19,7 +19,7 @@ export default {
                         { index: 'module_id', title: 'Modul' },
                     ],
                     counts: [10, 25, 50, 100],
-                    show: false,
+                    show: true,
                 },
             },
             result: {

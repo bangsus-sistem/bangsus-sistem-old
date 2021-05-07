@@ -8,19 +8,11 @@
             :error-message="state.page.message"
         >
             <h5 class="mb-3">Daftar Aksi</h5>
-            <bsb-mobile-query-form>
-                <bsb-form-group>
-                    <label>Referensi</label>
-                    <bsb-input size="sm" type="text" v-model="query['ref']" />
-                </bsb-form-group>
-                <bsb-form-group>
-                    <label>Nama</label>
-                    <bsb-input size="sm" type="text" v-model="query['name']" />
-                </bsb-form-group>
-                <bsb-button-spinner color="primary" size="sm" @click="search" :loading="state.result.loading">
-                    Cari
-                </bsb-button-spinner>
-            </bsb-mobile-query-form>
+            <RefNameDataQuery
+                :loading="state.result.loading"
+                @search="search"
+                v-model="query"
+            />
             <bsb-item-count
                 :options="meta.counts"
                 v-model="query.count"
@@ -28,22 +20,14 @@
                 class="mt-3"
             />
             <bsb-list-group-empty class="mt-3 shadow-sm" :items="result.items">
-                <bsb-list-group-item
-                    class="list-group-item list-group-item-action"
-                    v-for="(item, i) in result.items" :key="i"
-                >
-                    <bsb-list-group-item-content>
-                        <template v-slot:content>
-                            <small>{{ item['ref'] }}</small>
-                            <h6>{{ item['name'] }}</h6>
-                        </template>
-                        <template v-slot:right>
-                            <bsb-access-wrapper module-ref="action" action-ref="read">
-                                <bsb-button-router-link-read :to="{ name: 'system.action.read', params: { id: item['id'] } }" />
-                            </bsb-access-wrapper>
-                        </template>
-                    </bsb-list-group-item-content>
-                </bsb-list-group-item>
+                <RefNameDataRow
+                    v-for="(item, i) in result.items"
+                    :key="i"
+                    :num="i + 1"
+                    :item="item"
+                    read-module-ref="action"
+                    read-route-name="system.action.read"
+                />
             </bsb-list-group-empty>
             <div class="mt-3 text-center">
                 <bsb-data-index
@@ -59,8 +43,11 @@
 
 <script>
 import mixin from './mixin'
+import RefNameDataQuery from '../../../common/RefNameDataQuery'
+import RefNameDataRow from '../../../common/RefNameDataRow'
 
 export default {
     mixins: [mixin],
+    components: { RefNameDataQuery, RefNameDataRow }
 }
 </script>
