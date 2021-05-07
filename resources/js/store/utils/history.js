@@ -59,6 +59,12 @@ export default {
             state.deep = []
             localStorage.setItem('deepHistory', JSON.stringify(state.deep))
         },
+        deleteLatestPlain(state) {
+            state.plain.pop()
+        },
+        deleteLatestDeep(state) {
+            state.plain.pop()
+        },
     },
     actions: {
         addPlain(context, data) {
@@ -76,6 +82,16 @@ export default {
         reset() {
             this.dispatch('utils/history/resetPlain')
             this.dispatch('utils/history/resetDeep')
+        },
+        deleteLatestPlain(context) {
+            context.commit('deleteLatestPlain')
+        },
+        deleteLatestDeep(context) {
+            context.commit('deleteLatestDeep')
+        },
+        deleteLatest() {
+            this.dispatch('utils/history/deleteLatestPlain')
+            this.dispatch('utils/history/deleteLatestDeep')
         },
     },
 }
