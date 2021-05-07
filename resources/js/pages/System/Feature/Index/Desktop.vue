@@ -14,61 +14,27 @@
                     </bsb-table-responsive-header>
                     <bsb-table :hover="true">
                         <thead class="thead-light">
-                            <bsb-tr-query>
-                                <bsb-th-query></bsb-th-query>
-                                <bsb-th-query>
-                                    <bsb-select size="sm"
-                                        v-model="query['module_id']"
-                                    >
-                                        <option value="*">Semua</option>
-                                        <option v-for="(module, i) in resources['modules']" :key="i" :value="module['id']">
-                                            {{ module['name'] }}
-                                        </option>
-                                    </bsb-select>
-                                </bsb-th-query>
-                                <bsb-th-query>
-                                    <bsb-select size="sm"
-                                        v-model="query['action_id']"
-                                    >
-                                        <option value="*">Semua</option>
-                                        <option v-for="(action, i) in resources['actions']" :key="i" :value="action['id']">
-                                            {{ action['name'] }}
-                                        </option>
-                                    </bsb-select>
-                                </bsb-th-query>
-                                <bsb-th-query>
-                                    <bsb-button-spinner color="primary" size="sm" @click="search" :loading="state.result.loading">
-                                        Cari
-                                    </bsb-button-spinner>
-                                </bsb-th-query>
-                            </bsb-tr-query>
-                            <tr>
-                                <bsb-th>#</bsb-th>
-                                <bsb-th-sort
-                                    v-for="(sortOrder, i) in meta.sortOrders"
-                                    :key="i"
-                                    :sort="query.sort == sortOrder.index"
-                                    :order="query.order"
-                                    @click="changeSortOrder(sortOrder.index)"
-                                >
-                                    {{ sortOrder.title }}
-                                </bsb-th-sort>
-                                <bsb-th justify="center">
-                                    Aksi
-                                </bsb-th>
-                            </tr>
+                            <FeatureDataQuery
+                                :loading="state.result.loading"
+                                :resources="resources"
+                                @search="search"
+                                v-model="query"
+                            />
+                            <bsb-tr-sort
+                                :sort-orders="meta.sortOrders"
+                                :sort="query['sort']"
+                                :order="query['order']"
+                                v-model="query"
+                                @sort="changeSortOrder"
+                            />
                         </thead>
                         <bsb-tbody-empty :items="result.items" :col="meta.sortOrders.length">
-                            <tr v-for="(item, i) in result.items" :key="i">
-                                <bsb-td>{{ i + 1 }}</bsb-td>
-                                <bsb-td>{{ item['module']['ref'] }} - {{ item['module']['name'] }}</bsb-td>
-                                <bsb-td>{{ item['action']['ref'] }} - {{ item['action']['name'] }}</bsb-td>
-                                <bsb-td justify="center">
-                                    <bsb-access-wrapper module-ref="feature" action-ref="read">
-                                        <bsb-button-router-link-read :to="{ name: 'system.feature.read', params: { id: item['id'] } }" />
-                                    </bsb-access-wrapper>
-                                </bsb-td>
-                            </tr>
+                            <FeatureDataRow
+                                v-for="(item, i) in result.items"
+                                :key="i"
+                                :num="i + 1"
+                                :item="item"
+                            />
                         </bsb-tbody-empty>
                     </bsb-table>
                     <bsb-table-responsive-footer>
@@ -87,8 +53,11 @@
 
 <script>
 import mixin from './mixin'
+import FeatureDataQuery from './DataQuery'
+import FeatureDataRow from './DataRow'
 
 export default {
     mixins: [mixin],
+    components: { FeatureDataQuery, FeatureDataRow },
 }
 </script>
