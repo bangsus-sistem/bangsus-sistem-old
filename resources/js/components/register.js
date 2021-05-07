@@ -185,6 +185,7 @@ export default {
         'th-sort': require('./table/ThSort').default,
         'tr': require('./table/Tr').default,
         'tr-query': require('./table/TrQuery').default,
+        'tr-sort': require('./table/TrSort').default,
 
         /**
          * Utils
