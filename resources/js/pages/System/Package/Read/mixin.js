@@ -31,7 +31,7 @@ export default {
                         { index: 'name', title: 'Nama' },
                     ],
                     counts: [10, 25, 50, 100],
-                    show: false,
+                    show: true,
                 },
                 widget: {
                     sortOrders: [
@@ -39,7 +39,7 @@ export default {
                         { index: 'name', title: 'Nama' },
                     ],
                     counts: [10, 25, 50, 100],
-                    show: false,
+                    show: true,
                 },
                 report: {
                     sortOrders: [
@@ -47,7 +47,7 @@ export default {
                         { index: 'name', title: 'Nama' },
                     ],
                     counts: [10, 25, 50, 100],
-                    show: false,
+                    show: true,
                 },
             },
             result: {

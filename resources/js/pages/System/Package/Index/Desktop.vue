@@ -14,47 +14,28 @@
                     </bsb-table-responsive-header>
                     <bsb-table :hover="true">
                         <thead class="thead-light">
-                            <bsb-tr-query>
-                                <bsb-th-query></bsb-th-query>
-                                <bsb-th-query>
-                                    <bsb-input size="sm" type="text" v-model="query['ref']" />
-                                </bsb-th-query>
-                                <bsb-th-query>
-                                    <bsb-input size="sm" type="text" v-model="query['name']" />
-                                </bsb-th-query>
-                                <bsb-th-query>
-                                    <bsb-button-spinner color="primary" size="sm" @click="search" :loading="state.result.loading">
-                                        Cari
-                                    </bsb-button-spinner>
-                                </bsb-th-query>
-                            </bsb-tr-query>
-                            <tr>
-                                <bsb-th>#</bsb-th>
-                                <bsb-th-sort
-                                    v-for="(sortOrder, i) in meta.sortOrders"
-                                    :key="i"
-                                    :sort="query.sort == sortOrder.index"
-                                    :order="query.order"
-                                    @click="changeSortOrder(sortOrder.index)"
-                                >
-                                    {{ sortOrder.title }}
-                                </bsb-th-sort>
-                                <bsb-th justify="center">
-                                    Aksi
-                                </bsb-th>
-                            </tr>
+                            <RefNameDataQuery
+                                :loading="state.result.loading"
+                                @search="search"
+                                v-model="query"
+                            />
+                            <bsb-tr-sort
+                                :sort-orders="meta.sortOrders"
+                                :sort="query['sort']"
+                                :order="query['order']"
+                                v-model="query"
+                                @sort="changeSortOrder"
+                            />
                         </thead>
                         <bsb-tbody-empty :items="result.items" :col="meta.sortOrders.length">
-                            <tr v-for="(item, i) in result.items" :key="i">
-                                <bsb-td>{{ i + 1 }}</bsb-td>
-                                <bsb-td>{{ item['ref'] }}</bsb-td>
-                                <bsb-td>{{ item['name'] }}</bsb-td>
-                                <bsb-td justify="center">
-                                    <bsb-access-wrapper module-ref="package" action-ref="read">
-                                        <bsb-button-router-link-read :to="{ name: 'system.package.read', params: { id: item['id'] } }" />
-                                    </bsb-access-wrapper>
-                                </bsb-td>
-                            </tr>
+                            <RefNameDataRow
+                                v-for="(item, i) in result.items"
+                                :key="i"
+                                :num="i + 1"
+                                :item="item"
+                                read-module-ref="package"
+                                read-route-name="system.package.read"
+                            />
                         </bsb-tbody-empty>
                     </bsb-table>
                     <bsb-table-responsive-footer>
@@ -73,8 +54,11 @@
 
 <script>
 import mixin from './mixin'
+import RefNameDataQuery from '../../../common/RefNameDataQuery'
+import RefNameDataRow from '../../../common/RefNameDataRow'
 
 export default {
     mixins: [mixin],
+    components: { RefNameDataQuery, RefNameDataRow }
 }
 </script>

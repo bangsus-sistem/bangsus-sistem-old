@@ -29,19 +29,11 @@
                             Modul <bsb-switch-icon true-icon="angle-down" false-icon="angle-up" v-model="meta['module'].show" :single-color="true" />
                         </label>
                         <div v-if="meta['module'].show">
-                            <bsb-mobile-query-form>
-                                <bsb-form-group>
-                                    <label>Referensi</label>
-                                    <bsb-input size="sm" type="text" v-model="query['module']['ref']" />
-                                </bsb-form-group>
-                                <bsb-form-group>
-                                    <label>Nama</label>
-                                    <bsb-input size="sm" type="text" v-model="query['module']['name']" />
-                                </bsb-form-group>
-                                <bsb-button-spinner color="primary" size="sm" @click="search('module')" :loading="state.result['module'].loading">
-                                    Cari
-                                </bsb-button-spinner>
-                            </bsb-mobile-query-form>
+                            <RefNameDataQuery
+                                :loading="state.result['module'].loading"
+                                @search="search('module')"
+                                v-model="query['module']"
+                            />
                             <bsb-item-count
                                 :options="meta['module'].counts"
                                 v-model="query['module'].count"
@@ -49,24 +41,14 @@
                                 class="mt-3"
                             />
                             <bsb-list-group-empty class="mt-3 shadow-sm" :items="result['module'].items">
-                                <bsb-list-group-item
-                                    class="list-group-item list-group-item-action"
-                                    v-for="(item, i) in result['module'].items" :key="i"
-                                >
-                                    <bsb-list-group-item-content>
-                                        <template v-slot:content>
-                                            <small>{{ item['package']['ref'] }} - {{ item['package']['name'] }}</small>
-                                            <br>
-                                            <small>{{ item['ref'] }}</small>
-                                            <h6>{{ item['name'] }}</h6>
-                                        </template>
-                                        <template v-slot:right>
-                                            <bsb-access-wrapper module-ref="module" action-ref="read">
-                                                <bsb-button-router-link-read :to="{ name: 'system.module.read', params: { id: item['id'] } }" />
-                                            </bsb-access-wrapper>
-                                        </template>
-                                    </bsb-list-group-item-content>
-                                </bsb-list-group-item>
+                                <RefNameDataRow
+                                    v-for="(item, i) in result['module'].items"
+                                    :key="i"
+                                    :num="i + 1"
+                                    :item="item"
+                                    read-module-ref="module"
+                                    read-route-name="system.module.read"
+                                />
                             </bsb-list-group-empty>
                             <div class="mt-3 text-center">
                                 <bsb-data-index
@@ -87,19 +69,11 @@
                             Widget <bsb-switch-icon true-icon="angle-down" false-icon="angle-up" v-model="meta['widget'].show" :single-color="true" />
                         </label>
                         <div v-if="meta['widget'].show">
-                            <bsb-mobile-query-form>
-                                <bsb-form-group>
-                                    <label>Referensi</label>
-                                    <bsb-input size="sm" type="text" v-model="query['widget']['ref']" />
-                                </bsb-form-group>
-                                <bsb-form-group>
-                                    <label>Nama</label>
-                                    <bsb-input size="sm" type="text" v-model="query['widget']['name']" />
-                                </bsb-form-group>
-                                <bsb-button-spinner color="primary" size="sm" @click="search('widget')" :loading="state.result['widget'].loading">
-                                    Cari
-                                </bsb-button-spinner>
-                            </bsb-mobile-query-form>
+                            <RefNameDataQuery
+                                :loading="state.result['widget'].loading"
+                                @search="search('widget')"
+                                v-model="query['widget']"
+                            />
                             <bsb-item-count
                                 :options="meta['widget'].counts"
                                 v-model="query['widget'].count"
@@ -107,24 +81,14 @@
                                 class="mt-3"
                             />
                             <bsb-list-group-empty class="mt-3 shadow-sm" :items="result['widget'].items">
-                                <bsb-list-group-item
-                                    class="list-group-item list-group-item-action"
-                                    v-for="(item, i) in result['widget'].items" :key="i"
-                                >
-                                    <bsb-list-group-item-content>
-                                        <template v-slot:content>
-                                            <small>{{ item['package']['ref'] }} - {{ item['package']['name'] }}</small>
-                                            <br>
-                                            <small>{{ item['ref'] }}</small>
-                                            <h6>{{ item['name'] }}</h6>
-                                        </template>
-                                        <template v-slot:right>
-                                            <bsb-access-wrapper module-ref="widget" action-ref="read">
-                                                <bsb-button-router-link-read :to="{ name: 'system.widget.read', params: { id: item['id'] } }" />
-                                            </bsb-access-wrapper>
-                                        </template>
-                                    </bsb-list-group-item-content>
-                                </bsb-list-group-item>
+                                <RefNameDataRow
+                                    v-for="(item, i) in result['widget'].items"
+                                    :key="i"
+                                    :num="i + 1"
+                                    :item="item"
+                                    read-module-ref="widget"
+                                    read-route-name="system.widget.read"
+                                />
                             </bsb-list-group-empty>
                             <div class="mt-3 text-center">
                                 <bsb-data-index
@@ -145,19 +109,11 @@
                             Report <bsb-switch-icon true-icon="angle-down" false-icon="angle-up" v-model="meta['report'].show" :single-color="true" />
                         </label>
                         <div v-if="meta['report'].show">
-                            <bsb-mobile-query-form>
-                                <bsb-form-group>
-                                    <label>Referensi</label>
-                                    <bsb-input size="sm" type="text" v-model="query['report']['ref']" />
-                                </bsb-form-group>
-                                <bsb-form-group>
-                                    <label>Nama</label>
-                                    <bsb-input size="sm" type="text" v-model="query['report']['name']" />
-                                </bsb-form-group>
-                                <bsb-button-spinner color="primary" size="sm" @click="search('report')" :loading="state.result['report'].loading">
-                                    Cari
-                                </bsb-button-spinner>
-                            </bsb-mobile-query-form>
+                            <RefNameDataQuery
+                                :loading="state.result['report'].loading"
+                                @search="search('report')"
+                                v-model="query['report']"
+                            />
                             <bsb-item-count
                                 :options="meta['report'].counts"
                                 v-model="query['report'].count"
@@ -165,24 +121,14 @@
                                 class="mt-3"
                             />
                             <bsb-list-group-empty class="mt-3 shadow-sm" :items="result['report'].items">
-                                <bsb-list-group-item
-                                    class="list-group-item list-group-item-action"
-                                    v-for="(item, i) in result['report'].items" :key="i"
-                                >
-                                    <bsb-list-group-item-content>
-                                        <template v-slot:content>
-                                            <small>{{ item['package']['ref'] }} - {{ item['package']['name'] }}</small>
-                                            <br>
-                                            <small>{{ item['ref'] }}</small>
-                                            <h6>{{ item['name'] }}</h6>
-                                        </template>
-                                        <template v-slot:right>
-                                            <bsb-access-wrapper module-ref="report" action-ref="read">
-                                                <bsb-button-router-link-read :to="{ name: 'system.report.read', params: { id: item['id'] } }" />
-                                            </bsb-access-wrapper>
-                                        </template>
-                                    </bsb-list-group-item-content>
-                                </bsb-list-group-item>
+                                <RefNameDataRow
+                                    v-for="(item, i) in result['report'].items"
+                                    :key="i"
+                                    :num="i + 1"
+                                    :item="item"
+                                    read-module-ref="report"
+                                    read-route-name="system.report.read"
+                                />
                             </bsb-list-group-empty>
                             <div class="mt-3 text-center">
                                 <bsb-data-index
@@ -203,8 +149,11 @@
 
 <script>
 import mixin from './mixin'
+import RefNameDataQuery from '../../../common/RefNameDataQuery'
+import RefNameDataRow from '../../../common/RefNameDataRow'
 
 export default {
     mixins: [mixin],
+    components: { RefNameDataQuery, RefNameDataRow }
 }
 </script>

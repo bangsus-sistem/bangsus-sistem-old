@@ -34,47 +34,28 @@
                             </bsb-table-responsive-header>
                             <bsb-table :hover="true">
                                 <thead class="thead-light">
-                                    <bsb-tr-query>
-                                        <bsb-th-query></bsb-th-query>
-                                        <bsb-th-query>
-                                            <bsb-input size="sm" type="text" v-model="query['module']['ref']" />
-                                        </bsb-th-query>
-                                        <bsb-th-query>
-                                            <bsb-input size="sm" type="text" v-model="query['module']['name']" />
-                                        </bsb-th-query>
-                                        <bsb-th-query>
-                                            <bsb-button-spinner color="primary" size="sm" @click="search('module')" :loading="state.result['module'].loading">
-                                                Cari
-                                            </bsb-button-spinner>
-                                        </bsb-th-query>
-                                    </bsb-tr-query>
-                                    <tr>
-                                        <bsb-th>#</bsb-th>
-                                        <bsb-th-sort
-                                            v-for="(sortOrder, i) in meta['module'].sortOrders"
-                                            :key="i"
-                                            :sort="query['module'].sort == sortOrder.index"
-                                            :order="query['module'].order"
-                                            @click="changeSortOrder(sortOrder.index, true, 'module')"
-                                        >
-                                            {{ sortOrder.title }}
-                                        </bsb-th-sort>
-                                        <bsb-th justify="center">
-                                            Aksi
-                                        </bsb-th>
-                                    </tr>
+                                    <RefNameDataQuery
+                                        :loading="state.result['module'].loading"
+                                        @search="search('module')"
+                                        v-model="query['module']"
+                                    />
+                                    <bsb-tr-sort
+                                        :sort-orders="meta['module'].sortOrders"
+                                        :sort="query['module']['sort']"
+                                        :order="query['module']['order']"
+                                        v-model="query['module']"
+                                        @sort="changeSortOrder($event, true, 'module')"
+                                    />
                                 </thead>
                                 <bsb-tbody-empty :items="result['module'].items" :col="meta['module'].sortOrders.length">
-                                    <tr v-for="(item, i) in result['module'].items" :key="i">
-                                        <bsb-td>{{ i + 1 }}</bsb-td>
-                                        <bsb-td>{{ item['ref'] }}</bsb-td>
-                                        <bsb-td>{{ item['name'] }}</bsb-td>
-                                        <bsb-td justify="center">
-                                            <bsb-access-wrapper module-ref="module" action-ref="read">
-                                                <bsb-button-router-link-read :to="{ name: 'system.module.read', params: { id: item['id'] } }" />
-                                            </bsb-access-wrapper>
-                                        </bsb-td>
-                                    </tr>
+                                    <RefNameDataRow
+                                        v-for="(item, i) in result['module'].items"
+                                        :key="i"
+                                        :num="i + 1"
+                                        :item="item"
+                                        read-module-ref="module"
+                                        read-route-name="system.module.read"
+                                    />
                                 </bsb-tbody-empty>
                             </bsb-table>
                             <bsb-table-responsive-footer>
@@ -101,47 +82,28 @@
                             </bsb-table-responsive-header>
                             <bsb-table :hover="true">
                                 <thead class="thead-light">
-                                    <bsb-tr-query>
-                                        <bsb-th-query></bsb-th-query>
-                                        <bsb-th-query>
-                                            <bsb-input size="sm" type="text" v-model="query['widget']['ref']" />
-                                        </bsb-th-query>
-                                        <bsb-th-query>
-                                            <bsb-input size="sm" type="text" v-model="query['widget']['name']" />
-                                        </bsb-th-query>
-                                        <bsb-th-query>
-                                            <bsb-button-spinner color="primary" size="sm" @click="search('widget')" :loading="state.result['widget'].loading">
-                                                Cari
-                                            </bsb-button-spinner>
-                                        </bsb-th-query>
-                                    </bsb-tr-query>
-                                    <tr>
-                                        <bsb-th>#</bsb-th>
-                                        <bsb-th-sort
-                                            v-for="(sortOrder, i) in meta['widget'].sortOrders"
-                                            :key="i"
-                                            :sort="query['widget'].sort == sortOrder.index"
-                                            :order="query['widget'].order"
-                                            @click="changeSortOrder(sortOrder.index, true, 'widget')"
-                                        >
-                                            {{ sortOrder.title }}
-                                        </bsb-th-sort>
-                                        <bsb-th justify="center">
-                                            Aksi
-                                        </bsb-th>
-                                    </tr>
+                                    <RefNameDataQuery
+                                        :loading="state.result['widget'].loading"
+                                        @search="search('widget')"
+                                        v-model="query['widget']"
+                                    />
+                                    <bsb-tr-sort
+                                        :sort-orders="meta['widget'].sortOrders"
+                                        :sort="query['widget']['sort']"
+                                        :order="query['widget']['order']"
+                                        v-model="query['widget']"
+                                        @sort="changeSortOrder($event, true, 'widget')"
+                                    />
                                 </thead>
                                 <bsb-tbody-empty :items="result['widget'].items" :col="meta['widget'].sortOrders.length">
-                                    <tr v-for="(item, i) in result['widget'].items" :key="i">
-                                        <bsb-td>{{ i + 1 }}</bsb-td>
-                                        <bsb-td>{{ item['ref'] }}</bsb-td>
-                                        <bsb-td>{{ item['name'] }}</bsb-td>
-                                        <bsb-td justify="center">
-                                            <bsb-access-wrapper module-ref="widget" action-ref="read">
-                                                <bsb-button-router-link-read :to="{ name: 'system.widget.read', params: { id: item['id'] } }" />
-                                            </bsb-access-wrapper>
-                                        </bsb-td>
-                                    </tr>
+                                    <RefNameDataRow
+                                        v-for="(item, i) in result['widget'].items"
+                                        :key="i"
+                                        :num="i + 1"
+                                        :item="item"
+                                        read-module-ref="widget"
+                                        read-route-name="system.widget.read"
+                                    />
                                 </bsb-tbody-empty>
                             </bsb-table>
                             <bsb-table-responsive-footer>
@@ -168,47 +130,28 @@
                             </bsb-table-responsive-header>
                             <bsb-table :hover="true">
                                 <thead class="thead-light">
-                                    <bsb-tr-query>
-                                        <bsb-th-query></bsb-th-query>
-                                        <bsb-th-query>
-                                            <bsb-input size="sm" type="text" v-model="query['report']['ref']" />
-                                        </bsb-th-query>
-                                        <bsb-th-query>
-                                            <bsb-input size="sm" type="text" v-model="query['report']['name']" />
-                                        </bsb-th-query>
-                                        <bsb-th-query>
-                                            <bsb-button-spinner color="primary" size="sm" @click="search('report')" :loading="state.result['report'].loading">
-                                                Cari
-                                            </bsb-button-spinner>
-                                        </bsb-th-query>
-                                    </bsb-tr-query>
-                                    <tr>
-                                        <bsb-th>#</bsb-th>
-                                        <bsb-th-sort
-                                            v-for="(sortOrder, i) in meta['report'].sortOrders"
-                                            :key="i"
-                                            :sort="query['report'].sort == sortOrder.index"
-                                            :order="query['report'].order"
-                                            @click="changeSortOrder(sortOrder.index, true, 'report')"
-                                        >
-                                            {{ sortOrder.title }}
-                                        </bsb-th-sort>
-                                        <bsb-th justify="center">
-                                            Aksi
-                                        </bsb-th>
-                                    </tr>
+                                    <RefNameDataQuery
+                                        :loading="state.result['report'].loading"
+                                        @search="search('report')"
+                                        v-model="query['report']"
+                                    />
+                                    <bsb-tr-sort
+                                        :sort-orders="meta['report'].sortOrders"
+                                        :sort="query['report']['sort']"
+                                        :order="query['report']['order']"
+                                        v-model="query['report']"
+                                        @sort="changeSortOrder($event, true, 'report')"
+                                    />
                                 </thead>
                                 <bsb-tbody-empty :items="result['report'].items" :col="meta['report'].sortOrders.length">
-                                    <tr v-for="(item, i) in result['report'].items" :key="i">
-                                        <bsb-td>{{ i + 1 }}</bsb-td>
-                                        <bsb-td>{{ item['ref'] }}</bsb-td>
-                                        <bsb-td>{{ item['name'] }}</bsb-td>
-                                        <bsb-td justify="center">
-                                            <bsb-access-wrapper module-ref="report" action-ref="read">
-                                                <bsb-button-router-link-read :to="{ name: 'system.report.read', params: { id: item['id'] } }" />
-                                            </bsb-access-wrapper>
-                                        </bsb-td>
-                                    </tr>
+                                    <RefNameDataRow
+                                        v-for="(item, i) in result['report'].items"
+                                        :key="i"
+                                        :num="i + 1"
+                                        :item="item"
+                                        read-module-ref="report"
+                                        read-route-name="system.report.read"
+                                    />
                                 </bsb-tbody-empty>
                             </bsb-table>
                             <bsb-table-responsive-footer>
@@ -230,8 +173,11 @@
 
 <script>
 import mixin from './mixin'
+import RefNameDataQuery from '../../../common/RefNameDataQuery'
+import RefNameDataRow from '../../../common/RefNameDataRow'
 
 export default {
     mixins: [mixin],
+    components: { RefNameDataQuery, RefNameDataRow }
 }
 </script>
