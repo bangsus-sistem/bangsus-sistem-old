@@ -378,18 +378,19 @@ const formMethods = {
     /**
      * Show Modal Form based on ref.
      * 
+     * @param  {String}  wrapper
      * @param  {String}  ref 
      * @param  {Object}  data 
      * @param  {String}  link 
      * @param  {String}  method 
      * @return {void}
      */
-    showModalForm(ref, data, link = null, method = null) {
-        this.$refs[ref].setData(data)
-        this.$refs[ref].setLink(link)
-        this.$refs[ref].setMethod(method)
+    showModalForm(wrapper, ref, data, link = null, method = null) {
+        this.$refs[wrapper].$refs[ref].setData(data)
+        this.$refs[wrapper].$refs[ref].setLink(link)
+        this.$refs[wrapper].$refs[ref].setMethod(method)
 
-        this.$refs[ref].show()
+        this.$refs[wrapper].$refs[ref].show()
     },
 
     // --------------------------------------------------------------
