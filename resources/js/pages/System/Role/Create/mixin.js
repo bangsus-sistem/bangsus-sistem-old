@@ -1,4 +1,4 @@
-import commonMixin from '../mixin/common-mixin'
+import commonMixin from '../common/mixin'
 
 export default {
     mixins: [commonMixin],
