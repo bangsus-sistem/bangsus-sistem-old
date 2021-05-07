@@ -1,4 +1,4 @@
-import commonMixin from '../mixin/common-mixin'
+import commonMixin from '../common/mixin'
 
 export default {
     mixins: [commonMixin],
@@ -74,24 +74,6 @@ export default {
                 'all_branches': ['*', ['*', true, false, 'true', 'false']],
             }, 'user')
             this.getAndSetResult(true, 'page', 'user')
-        },
-        fetchResult(index) {
-            return axios.get('/ajax/auth/' + index, {
-                params: {
-                    'role_id': this.$route.params.id,
-                    ...this.query[index],
-                }
-            })
-        },
-
-        featureIsChecked(featureId) {
-            return lodash.includes(this.form.data['feature_ids'], featureId)
-        },
-        widgetIsChecked(widgetId) {
-            return lodash.includes(this.form.data['widget_ids'], widgetId)
-        },
-        reportIsChecked(reportId) {
-            return lodash.includes(this.form.data['report_ids'], reportId)
         },
     }
 }

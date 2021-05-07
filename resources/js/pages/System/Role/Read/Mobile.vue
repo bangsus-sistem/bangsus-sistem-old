@@ -31,158 +31,48 @@
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Fitur</label>
-                        <bsb-form-check>
-                            <input class="form-check-input" type="radio" v-model="form.data['all_features']" :value="true" :disabled="true">
-                            <bsb-form-check-label label="Akses Tak Terbatas" />
-                        </bsb-form-check>
-                        <bsb-form-check>
-                            <input class="form-check-input" type="radio" v-model="form.data['all_features']" :value="false" :disabled="true">
-                            <bsb-form-check-label label="Akses Terbatas" />
-                        </bsb-form-check>
-                        <bsb-table-responsive class="mt-1" v-if="!form.data['all_features']">
-                            <bsb-table>
-                                <thead>
-                                    <bsb-tr>
-                                        <bsb-th>#</bsb-th>
-                                        <bsb-th>Nama Modul</bsb-th>
-                                        <bsb-th
-                                            justify="center"
-                                            v-for="(action, i) in resources['actions']"
-                                            :key="i"
-                                        >
-                                            {{ action['name'] }}
-                                        </bsb-th>
-                                    </bsb-tr>
-                                </thead>
-                                <tbody>
-                                    <template
-                                        v-for="_package in resources['packages']"
-                                    >
-                                        <!-- Package Title -->
-                                        <bsb-tr :key="'package-row-' + _package['id']">
-                                            <bsb-td :colspan="packageTitleColspan">
-                                                <b>
-                                                    {{ _package['name'] }}
-                                                </b>
-                                            </bsb-td>
-                                        </bsb-tr>
-                                        <!-- Module in the package -->
-                                        <bsb-tr
-                                            v-for="(module, i) in getModulesByPackageId(_package['id'])"
-                                            :key="'module-row-' + module['id']"
-                                        >
-                                            <bsb-td>
-                                                {{ i + 1 }}
-                                            </bsb-td>
-                                            <bsb-td>
-                                                {{ module['name'] }}
-                                            </bsb-td>
-                                            <bsb-td
-                                                justify="center"
-                                                v-for="(action, i) in resources['actions']"
-                                                :key="i"
-                                            >
-                                                <span v-if="featureExists(module['id'], action['id'])">
-                                                    <bsb-switch-icon :value="featureIsChecked(getFeature(module['id'], action['id'])['id'])" />
-                                                </span>
-                                            </bsb-td>
-                                        </bsb-tr>
-                                    </template>
-                                </tbody>
-                            </bsb-table>
-                        </bsb-table-responsive>
+                        <bsb-form-radios
+                            :options="[{val: true, label: 'Akses Tak Terbatas'}, {val: false, label: 'Akses Terbatas'}]"
+                            v-model="form.data['all_features']"
+                            :readonly="true"
+                        />
+                        <FeatureTable
+                            class="mt-1"
+                            :all-features="form.data['all_features']"
+                            :resources="resources"
+                            v-model="form.data['feature_ids']"
+                            :readonly="true"
+                        />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Widget</label>
-                        <bsb-form-check>
-                            <input class="form-check-input" type="radio" v-model="form.data['all_widgets']" :value="true" :disabled="true">
-                            <bsb-form-check-label label="Akses Tak Terbatas" />
-                        </bsb-form-check>
-                        <bsb-form-check>
-                            <input class="form-check-input" type="radio" v-model="form.data['all_widgets']" :value="false" :disabled="true">
-                            <bsb-form-check-label label="Akses Terbatas" />
-                        </bsb-form-check>
-                        <bsb-table-responsive class="mt-1" v-if="!form.data['all_widgets']">
-                            <bsb-table>
-                                <tbody>
-                                    <template
-                                        v-for="_package in resources['packages']"
-                                    >
-                                        <!-- Package Title -->
-                                        <bsb-tr :key="'package-row-' + _package['id']">
-                                            <bsb-td :colspan="packageTitleColspan">
-                                                <b>
-                                                    {{ _package['name'] }}
-                                                </b>
-                                            </bsb-td>
-                                        </bsb-tr>
-                                        <!-- Widget in the package -->
-                                        <bsb-tr
-                                            v-for="(widget, i) in getWidgetsByPackageId(_package['id'])"
-                                            :key="'widget-row-' + widget['id']"
-                                        >
-                                            <bsb-td>
-                                                {{ i + 1 }}
-                                            </bsb-td>
-                                            <bsb-td>
-                                                {{ widget['name'] }}
-                                            </bsb-td>
-                                            <bsb-td
-                                                justify="center"
-                                            >
-                                                <bsb-switch-icon :value="widgetIsChecked(widget['id'])" />
-                                            </bsb-td>
-                                        </bsb-tr>
-                                    </template>
-                                </tbody>
-                            </bsb-table>
-                        </bsb-table-responsive>
+                        <bsb-form-radios
+                            :options="[{val: true, label: 'Akses Tak Terbatas'}, {val: false, label: 'Akses Terbatas'}]"
+                            v-model="form.data['all_widgets']"
+                            :readonly="true"
+                        />
+                        <WidgetTable
+                            class="mt-1"
+                            :all-widgets="form.data['all_widgets']"
+                            :resources="resources"
+                            v-model="form.data['widget_ids']"
+                            :readonly="true"
+                        />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Laporan</label>
-                        <bsb-form-check>
-                            <input class="form-check-input" type="radio" v-model="form.data['all_reports']" :value="true" :disabled="true">
-                            <bsb-form-check-label label="Akses Tak Terbatas" />
-                        </bsb-form-check>
-                        <bsb-form-check>
-                            <input class="form-check-input" type="radio" v-model="form.data['all_reports']" :value="false" :disabled="true">
-                            <bsb-form-check-label label="Akses Terbatas" />
-                        </bsb-form-check>
-                        <bsb-table-responsive class="mt-1" v-if="!form.data['all_reports']">
-                            <bsb-table>
-                                <tbody>
-                                    <template
-                                        v-for="_package in resources['packages']"
-                                    >
-                                        <!-- Package Title -->
-                                        <bsb-tr :key="'package-row-' + _package['id']">
-                                            <bsb-td :colspan="packageTitleColspan">
-                                                <b>
-                                                    {{ _package['name'] }}
-                                                </b>
-                                            </bsb-td>
-                                        </bsb-tr>
-                                        <!-- Widget in the package -->
-                                        <bsb-tr
-                                            v-for="(report, i) in getReportsByPackageId(_package['id'])"
-                                            :key="'report-row-' + report['id']"
-                                        >
-                                            <bsb-td>
-                                                {{ i + 1 }}
-                                            </bsb-td>
-                                            <bsb-td>
-                                                {{ report['name'] }}
-                                            </bsb-td>
-                                            <bsb-td
-                                                justify="center"
-                                            >
-                                                <bsb-switch-icon :value="reportIsChecked(report['id'])" />
-                                            </bsb-td>
-                                        </bsb-tr>
-                                    </template>
-                                </tbody>
-                            </bsb-table>
-                        </bsb-table-responsive>
+                        <bsb-form-radios
+                            :options="[{val: true, label: 'Akses Tak Terbatas'}, {val: false, label: 'Akses Terbatas'}]"
+                            v-model="form.data['all_reports']"
+                            :readonly="true"
+                        />
+                        <ReportTable
+                            class="mt-1"
+                            :all-reports="form.data['all_reports']"
+                            :resources="resources"
+                            v-model="form.data['report_ids']"
+                            :readonly="true"
+                        />
                     </bsb-form-group>
                 </form>
                 <!-- User -->
