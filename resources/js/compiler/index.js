@@ -19,6 +19,7 @@ class Compiler
         const store = Plugin.getStoreInstance()
         Plugin.initiateMobileDetection()
         Plugin.initiateFragment()
+        Plugin.initiateFrag()
 
         return new Vue({
             el: '#app',

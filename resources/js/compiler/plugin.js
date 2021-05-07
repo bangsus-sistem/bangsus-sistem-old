@@ -16,6 +16,10 @@ class Plugin
     static initiateFragment() {
         require('./plugins/fragment').default
     }
+
+    static initiateFrag() {
+        require('./plugins/frag').default
+    }
 }
 
 export default Plugin
