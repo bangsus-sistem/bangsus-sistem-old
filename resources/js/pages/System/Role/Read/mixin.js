@@ -10,6 +10,8 @@ export default {
                     'full_name': '',
                     'active': '',
                     'all_branches': '',
+                    'order': '',
+                    'sort': '',
                 },
             },
             meta: {
@@ -21,7 +23,7 @@ export default {
                         { index: 'all_branches', title: 'Cabang' },
                     ],
                     counts: [10, 25, 50, 100],
-                    show: false,
+                    show: true,
                 },
             },
             result: {
@@ -74,6 +76,14 @@ export default {
                 'all_branches': ['*', ['*', true, false, 'true', 'false']],
             }, 'user')
             this.getAndSetResult(true, 'page', 'user')
+        },
+        fetchResult(index) {
+            return axios.get('/ajax/auth/' + index, {
+                params: {
+                    'role_id': this.$route.params.id,
+                    ...this.query[index],
+                }
+            })
         },
     }
 }
