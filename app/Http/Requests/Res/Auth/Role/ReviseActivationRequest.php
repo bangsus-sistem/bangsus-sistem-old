@@ -16,7 +16,7 @@ class ReviseActivationRequest extends AuthRequest
      */
     protected $refs = [
         'module' => 'role',
-        'action' => 'create',
+        'action' => 'update',
     ];
 
     /**
