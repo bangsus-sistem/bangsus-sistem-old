@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tasks\Ajax\Auth\User;
+namespace App\Tasks\Api\Auth\User;
 
 use App\Foundation\Task;
 use App\Models\Auth\User;
@@ -9,7 +9,7 @@ use App\Models\System\Branch;
 class AmendTask extends Task
 {
     /**
-     * @param  \App\Http\Requests\Ajax\Auth\User\AmendRequest  $request
+     * @param  \App\Http\Requests\Api\Auth\User\AmendRequest  $request
      * @return \App\Models\Auth\User
      */
     public function handle($request)
