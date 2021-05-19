@@ -23,6 +23,6 @@ class Branch extends Model
      */
     public function branchType()
     {
-        return $this->hasMany(BranchType::class);
+        return $this->belongsTo(BranchType::class);
     }
 }
