@@ -21,16 +21,15 @@ class DestroyRequest extends AuthRequest
     ];
 
     /**
+     * @var string
+     */
+    protected $model = '\App\Models\Auth\Role';
+
+    /**
      * @return array
      */
-    public function rules()
+    public function additionalIdRules()
     {
-        return [
-            'id' => [
-                'required',
-                'bsb_exists:\App\Models\Auth\Role',
-                new RoleIsDeletableRule($this),
-            ],
-        ];
+        return [new RoleIsDeletableRule($this)];
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Ajax\Auth\User;
 
-use App\Foundation\Http\AuthRequest;
+use App\Foundation\Http\AuthIdRequest;
 use Illuminate\Validation\Rule;
 
-class AmendRequest extends AuthRequest
+class AmendRequest extends AuthIdRequest
 {
     /**
      * @var string
@@ -21,15 +21,16 @@ class AmendRequest extends AuthRequest
     ];
 
     /**
+     * @var string
+     */
+    protected $model = '\App\Models\Auth\User';
+
+    /**
      * @return array
      */
-    public function rules()
+    public function additionalRules()
     {
         return [
-            'id' => [
-                'required',
-                'bsb_exists:\App\Models\Auth\User',
-            ],
             'username' => [
                 'required',
                 'max:200',

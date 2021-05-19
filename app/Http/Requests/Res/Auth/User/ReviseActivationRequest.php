@@ -20,15 +20,7 @@ class ReviseActivationRequest extends AuthRequest
     ];
 
     /**
-     * @return array
+     * @var string
      */
-    public function rules()
-    {
-        return [
-            'id' => [
-                'required',
-                'bsb_exists:\App\Models\Auth\User',
-            ],
-        ];
-    }
+    protected $model = '\App\Models\Auth\User';
 }

@@ -20,15 +20,16 @@ class RevisePasswordRequest extends AuthRequest
     ];
 
     /**
+     * @var string
+     */
+    protected $model = '\App\Models\Auth\User';
+
+    /**
      * @return array
      */
     public function rules()
     {
         return [
-            'id' => [
-                'required',
-                'bsb_exists:\App\Database\Models\Auth\User',
-            ],
             'password' => [
                 'required',
                 'min:6',
