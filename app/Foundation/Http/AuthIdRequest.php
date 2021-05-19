@@ -13,7 +13,7 @@ class AuthIdRequest extends AuthRequest
         $rules = [
             'id' => [
                 'required',
-                'bsb_exists:' . $this->model,
+                config('foundation.macro.config.rule.prefix') .'_exists:' . $this->model,
             ],
         ];
 
