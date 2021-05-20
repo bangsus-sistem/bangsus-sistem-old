@@ -58,4 +58,5 @@ Route::prefix('user')->group(function () {
     Route::patch('activate', 'UserController@reviseActivate');
     Route::patch('deactivate', 'UserController@reviseDeactivate');
     Route::patch('password', 'UserController@revisePassword');
+    Route::delete('', 'UserController@destroy');
 });

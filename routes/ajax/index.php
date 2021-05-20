@@ -22,4 +22,9 @@ Route::middleware('auth:sanctum')->group(function () {
      * @package \App\Http\Controllers\Ajax\Logs
      */
     Route::prefix('log')->namespace('Log')->group(base_path('routes/ajax/log.php'));
+
+    /**
+     * @package \App\Http\Controllers\Ajax\System
+     */
+    Route::prefix('system')->namespace('System')->group(base_path('routes/ajax/system.php'));
 });
