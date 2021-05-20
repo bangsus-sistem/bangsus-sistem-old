@@ -55,11 +55,11 @@
 
 <script>
 import mixin from './mixin'
-import RefNameDataQuery from '../../../common/RefNameDataQuery'
-import RefNameDataRow from '../../../common/RefNameDataRow'
+import PackageRefNameDataQuery from '../../../common/PackageRefNameDataQuery'
+import PackageRefNameDataRow from '../../../common/PackageRefNameDataRow'
 
 export default {
     mixins: [mixin],
-    components: { RefNameDataQuery, RefNameDataRow }
+    components: { PackageRefNameDataQuery, PackageRefNameDataRow }
 }
 </script>

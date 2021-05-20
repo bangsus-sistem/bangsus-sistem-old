@@ -8,7 +8,7 @@
             :error-message="state.page.message"
         >
             <h5 class="mb-3">Daftar Widget</h5>
-            <RefNameDataQuery
+            <PackageRefNameDataQuery
                 :loading="state.result.loading"
                 @search="search"
                 v-model="query"
@@ -20,7 +20,7 @@
                 class="mt-3"
             />
             <bsb-list-group-empty class="mt-3 shadow-sm" :items="result.items">
-                <RefNameDataRow
+                <PackageRefNameDataRow
                     v-for="(item, i) in result.items"
                     :key="i"
                     :num="i + 1"
@@ -43,8 +43,11 @@
 
 <script>
 import mixin from './mixin'
+import PackageRefNameDataQuery from '../../../common/PackageRefNameDataQuery'
+import PackageRefNameDataRow from '../../../common/PackageRefNameDataRow'
 
 export default {
     mixins: [mixin],
+    components: { PackageRefNameDataQuery, PackageRefNameDataRow }
 }
 </script>
