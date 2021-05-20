@@ -20,10 +20,6 @@ class UserIsDeletableRule extends RequestRule implements Rule
             $this->setMessage('User tidak boleh dihapus.');
             return false;
         }
-        if ($user->users()->exists()) {
-            $this->setMessage('User sudah memiliki user.');
-            return false;
-        }
 
         return true;
     }

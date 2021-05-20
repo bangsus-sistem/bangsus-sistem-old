@@ -21,7 +21,7 @@ class RoleIsDeletableRule extends RequestRule implements Rule
             return false;
         }
         if ($role->users()->exists()) {
-            $this->setMessage('Role sudah memiliki user.');
+            $this->setMessage('Role sudah memiliki User.');
             return false;
         }
 
