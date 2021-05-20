@@ -6,6 +6,8 @@ import widget from './system/widget';
 import report from './system/report';
 import role from './system/role';
 import user from './system/user';
+import branchType from './system/branch-type'
+import branch from './system/branch'
 
 export default [
     ..._package,
@@ -16,4 +18,6 @@ export default [
     ...report,
     ...role,
     ...user,
+    ...branchType,
+    // ...branch,
 ];
