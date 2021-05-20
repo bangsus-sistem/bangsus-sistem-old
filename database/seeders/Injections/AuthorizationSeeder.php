@@ -66,6 +66,16 @@ class AuthorizationSeeder extends Seeder
                     'name' => 'User',
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
+                [
+                    'ref' => 'branchType',
+                    'name' => 'Tipe Cabang',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'branch',
+                    'name' => 'Cabang',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
             ],
             'widgets' => [
                 [
