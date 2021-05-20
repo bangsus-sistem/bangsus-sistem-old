@@ -89,7 +89,7 @@ export default {
                             title: 'Tipe Cabang',
                             route: { name: 'system.branchType' },
                             access: {
-                                moduleRef: 'branchType',
+                                moduleRef: 'branch_type',
                                 actionRef: 'index',
                             },
                             active: false,
