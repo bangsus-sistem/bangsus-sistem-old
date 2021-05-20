@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\{
 };
 use App\Models\Concerns\{
     ActiveFlag,
-    UserTimestamps,
+    HasUserTimestamps,
 };
 use App\Models\Auth\UserBranchType;
 
 class BranchType extends Model
 {
     use SoftDeletes;
-    use UserTimestamps;
+    use HasUserTimestamps;
     use ActiveFlag;
 
     /**
