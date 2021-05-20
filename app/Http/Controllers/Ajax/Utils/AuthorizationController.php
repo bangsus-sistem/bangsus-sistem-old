@@ -4,10 +4,6 @@ namespace App\Http\Controllers\Ajax\Utils;
 
 use App\Foundation\Http\Controller;
 use Illuminate\Http\Request;
-use App\Models\Auth\{
-    Feature,
-    Widget,
-};
 
 class AuthorizationController extends Controller
 {
