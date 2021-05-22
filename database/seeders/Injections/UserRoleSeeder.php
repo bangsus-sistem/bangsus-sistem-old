@@ -25,8 +25,8 @@ class UserRoleSeeder extends Seeder
             'all_features' => true,
             'all_widgets' => true,
             'all_reports' => true,
-            'description' => 'A Superadmin role.',
-            'note' => 'Cannot be updated or deleted.',
+            'description' => 'Role Superadmin.',
+            'note' => 'Tidak bisa diubah ataupun dihapus.',
             'created_at' => Carbon::now(),
         ]);
         \DB::statement('insert into role_feature select 1, id from features');
@@ -42,8 +42,33 @@ class UserRoleSeeder extends Seeder
             'locked' => true,
             'hidden' => true,
             'all_branches' => true,
-            'description' => 'A Superadmin account.',
-            'note' => 'Cannot be updated or deleted.',
+            'description' => 'Akun Superadmin.',
+            'note' => 'Tidak bisa diubah ataupun dihapus.',
+            'user_create_id' => 1,
+            'created_at' => Carbon::now(),
+        ]);
+        \DB::table('branch_types')->insert([
+            'id' => 1,
+            'code' => 'HG',
+            'name' => 'Kantor Pusat',
+            'active' => true,
+            'locked' => true,
+            'hidden' => true,
+            'description' => 'Tipe Cabang Kantor Pusat.',
+            'note' => 'Tidak bisa diubah ataupun dihapus.',
+            'user_create_id' => 1,
+            'created_at' => Carbon::now(),
+        ]);
+        \DB::table('branches')->insert([
+            'id' => 1,
+            'code' => 'HG001',
+            'name' => 'Kantor Pusat',
+            'branch_type_id' => 1,
+            'active' => true,
+            'locked' => true,
+            'hidden' => true,
+            'description' => 'Cabang Kantor Pusat.',
+            'note' => 'Tidak bisa diubah ataupun dihapus.',
             'user_create_id' => 1,
             'created_at' => Carbon::now(),
         ]);
