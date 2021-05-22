@@ -18,6 +18,8 @@ class CreateBranchTypes extends Migration
             $table->code();
             $table->name();
             $table->active();
+            $table->locked();
+            $table->hidden();
             $table->userTimestamps();
             $table->userDelete();
             $table->timestamps();
