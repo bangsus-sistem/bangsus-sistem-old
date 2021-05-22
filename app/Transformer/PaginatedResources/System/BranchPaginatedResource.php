@@ -19,6 +19,8 @@ class BranchPaginatedResource extends PaginatedResource
             'name' => $this->name,
             'branch_type' => new BranchTypeSingleResource($this->branch),
             'active' => $this->active,
+            'locked' => $this->locked,
+            'hidden' => $this->hidden,
         ];
     }
 }

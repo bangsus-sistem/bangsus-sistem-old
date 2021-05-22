@@ -18,6 +18,8 @@ class BranchTypeRelatedResource extends RelatedResource
             'code' => $this->code,
             'name' => $this->name,
             'active' => (bool) $this->active,
+            'locked' => (bool) $this->locked,
+            'hidden' => (bool) $this->hidden,
             'description' => $this->description,
             'note' => $this->note,
             'user_create' => new UserSingleResource($this->userCreate),
