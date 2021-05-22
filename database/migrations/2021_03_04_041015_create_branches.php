@@ -21,6 +21,8 @@ class CreateBranches extends Migration
             $table->active();
             $table->locked();
             $table->hidden();
+            $table->description();
+            $table->note();
             $table->userTimestamps();
             $table->userDelete();
             $table->timestamps();
