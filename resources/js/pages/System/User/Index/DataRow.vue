@@ -37,7 +37,7 @@
                     <template v-slot:content>
                         <small>{{ item['username'] }}</small>
                         <h6 class="m-0">{{ item['full_name'] }}</h6>
-                        <small><b>{{ item['role']['code'] }} - {{ item['role']['name'] }}</b></small>
+                        <small v-if="flWithRole"><b>{{ item['role']['code'] }} - {{ item['role']['name'] }}</b></small>
                     </template>
                     <template v-slot:right>
                         <bsb-access-wrapper module-ref="user" action-ref="read">
