@@ -19,5 +19,5 @@ export default [
     ...role,
     ...user,
     ...branchType,
-    // ...branch,
+    ...branch,
 ];

@@ -3,12 +3,12 @@ import middleware from '../../middleware'
 import appMiddleware from '../../middleware/app-middleware'
 
 export default [
-    // {
-    //     path: 'branch',
-    //     name: 'system.branch',
-    //     component: page('System/Branch/Index'),
-    //     beforeEnter: middleware(appMiddleware),
-    // },
+    {
+        path: 'branch',
+        name: 'system.branch',
+        component: page('System/Branch/Index'),
+        beforeEnter: middleware(appMiddleware),
+    },
     // {
     //     path: 'branch/create',
     //     name: 'system.branch.create',
