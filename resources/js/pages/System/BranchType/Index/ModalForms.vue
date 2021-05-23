@@ -18,7 +18,7 @@
                 @success="$emit('success')"
             />
         </bsb-access-wrapper>
-        <bsb-access-wrapper module-ref="branchType" action-ref="delete">
+        <bsb-access-wrapper module-ref="branch_type" action-ref="delete">
             <bsb-modal-form
                 title="Hapus Tipe Cabang"
                 message="Apakah anda yakin?"

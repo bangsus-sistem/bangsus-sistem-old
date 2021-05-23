@@ -36,9 +36,9 @@
                                 :key="i"
                                 :num="i + 1"
                                 :item="item"
-                                @activate="showModalForm('role', 'activate', { id: item['id'] })"
-                                @deactivate="showModalForm('role', 'deactivate', { id: item['id'] })"
-                                @delete="showModalForm('role', 'delete', { id: item['id'] })"
+                                @activate="showModalForm('branchType', 'activate', { id: item['id'] })"
+                                @deactivate="showModalForm('branchType', 'deactivate', { id: item['id'] })"
+                                @delete="showModalForm('branchType', 'delete', { id: item['id'] })"
                             />
                         </bsb-tbody-empty>
                     </bsb-table>
@@ -54,7 +54,7 @@
             </bsb-card-body-spinner-error>
         </bsb-card>
         <!-- Modal Form -->
-        <BranchTypeModalForms ref="role" @success="search" />
+        <BranchTypeModalForms ref="branchType" @success="search" />
     </fragment>
 </template>
 
