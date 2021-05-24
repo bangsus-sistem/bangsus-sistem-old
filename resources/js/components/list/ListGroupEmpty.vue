@@ -12,6 +12,10 @@ import ListGroup from './ListGroup'
 import ListGroupItem from './ListGroupItem'
 
 export default {
+    components: {
+        ListGroup,
+        ListGroupItem,
+    },
     props: {
         items: {
             default() {

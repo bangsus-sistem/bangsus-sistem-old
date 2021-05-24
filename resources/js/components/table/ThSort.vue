@@ -18,6 +18,9 @@
 import Th from './Th'
 
 export default {
+    components: {
+        Th,
+    },
     props: {
         sort: {
             type: Boolean,
