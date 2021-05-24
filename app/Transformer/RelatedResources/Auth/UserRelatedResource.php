@@ -7,9 +7,9 @@ use App\Transformer\SingleResources\Auth\{
     UserSingleResource,
     RoleSingleResource,
 };
-use App\Transformer\SingleCollections\Auth\BranchSingleCollection;
+use App\Transformer\SingleCollections\System\BranchSingleCollection;
 
-class RoleRelatedResource extends RelatedResource
+class UserRelatedResource extends RelatedResource
 {
     /**
      * @param  \Illuminate\Http\Request  $request

@@ -16,7 +16,7 @@ class BranchSingleResource extends SingleResource
             'id' => $this->id,
             'code' => $this->code,
             'name' => $this->name,
-            'branch_type_id' => $this->branch_type_id,
+            'branch_type' => new BranchTypeSingleResource($this->branchType),
             'active' => (bool) $this->active,
             'locked' => (bool) $this->locked,
             'hidden' => (bool) $this->hidden,
