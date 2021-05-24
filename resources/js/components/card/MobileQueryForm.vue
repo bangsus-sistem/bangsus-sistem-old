@@ -1,20 +1,27 @@
 <template>
     <div>
-        <bsb-col class="text-center">
+        <Col class="text-center">
             <a href="#" @click.prevent="toggleShow">
-                Cari Sesuatu <bsb-icon :icon="icon" color="primary" />
+                Cari Sesuatu <wb-icon :icon="icon" color="primary" />
             </a>
-        </bsb-col>
-        <bsb-card class="mt-1" v-if="show">
-            <bsb-card-body>
+        </Col>
+        <Card class="mt-1" v-if="show">
+            <CardBody>
                 <slot />
-            </bsb-card-body>
-        </bsb-card>
+            </CardBody>
+        </Card>
     </div>
 </template>
 
 <script>
+import Card from './Card'
+import CardBody from './CardBody'
+
 export default {
+    components: {
+        Card,
+        CardBody,
+    },
     data() {
         return {
             show: false,

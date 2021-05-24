@@ -1,6 +1,6 @@
 <template>
     <div>
-        <bsb-input
+        <Input
             :type="type"
             :step="step"
             :value="value"
@@ -8,12 +8,19 @@
             :class="{ 'is-invalid': errors.length > 0 }"
             :readonly="readonly"
         />
-        <bsb-errors :errors="errors" />
+        <Errors :errors="errors" />
     </div>
 </template>
 
 <script>
+import Input from './Input'
+import Errors from './Errors'
+
 export default {
+    components: {
+        Input,
+        Errors,
+    },
     props: {
         type: {
             type: String,

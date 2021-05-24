@@ -1,17 +1,24 @@
 <template>
     <div>
-        <bsb-textarea
+        <wb-textarea
             :value="value"
             @input="$emit('input', $event)"
             :class="{ 'is-invalid': errors.length > 0 }"
             :readonly="readonly"
         />
-        <bsb-errors-wrapper :errors="errors" />
+        <wb-errors-wrapper :errors="errors" />
     </div>
 </template>
 
 <script>
+import Textarea from './Textarea'
+import ErrorsWrapper from '../form/ErrorsWrapper'
+
 export default {
+    components: {
+        Textarea,
+        ErrorsWrapper,
+    },
     props: {
         value: {
             default: '',

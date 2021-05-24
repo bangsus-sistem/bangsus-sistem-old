@@ -1,14 +1,21 @@
 <template>
     <div>
-        <bsb-col class="text-center" v-if="loading">
-            <bsb-spinner />
-        </bsb-col>
+        <Col class="text-center" v-if="loading">
+            <Spinner />
+        </Col>
         <slot v-else></slot>
     </div>
 </template>
 
 <script>
+import Col from '../utils/Col'
+import Spinner from '../spinner/Spinner'
+
 export default {
+    commponents: {
+        Col,
+        Spinner,
+    },
     props: {
         loading: {
             type: Boolean,

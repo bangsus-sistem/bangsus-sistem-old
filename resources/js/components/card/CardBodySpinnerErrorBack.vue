@@ -1,18 +1,25 @@
 <template>
-    <bsb-card-body-spinner-error
+    <CardBodySpinnerError
         :loading="loading"
         :error="error"
         :error-message="errorMessage"
     >
         <template v-slot:always-render>
-            <bsb-button-router-link-back :default-back="defaultBack" class="mb-3" />
+            <ButtonRouterLinkBack :default-back="defaultBack" class="mb-3" />
         </template>
         <slot></slot>
-    </bsb-card-body-spinner-error>
+    </CardBodySpinnerError>
 </template>
 
 <script>
+import CardBodySpinnerError from './CardBodySpinnerError'
+import ButtonRouterLinkBank from '../buttons/router-link/actions/ButtonRouterLinkBack'
+
 export default {
+    components: {
+        CardBodySpinnerError,
+        ButtonRouterLinkBank,
+    },
     props: {
         loading: {
             type: Boolean,

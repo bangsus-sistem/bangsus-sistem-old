@@ -1,16 +1,23 @@
 <template>
-    <bsb-button-router-link
+    <ButtonRouterLink
         color="info"
         button-type="regular"
         size="sm"
         :to="to"
     >
-        <bsb-button-read-content />
-    </bsb-button-router-link>
+        <ButtonReadContent />
+    </ButtonRouterLink>
 </template>
 
 <script>
+import ButtonRouterLink from '../ButtonRouterLink'
+import ButtonReadContent from '../../contents/ButtonReadContent'
+
 export default {
+    components: {
+        ButtonRouterLink,
+        ButtonReadContent,
+    },
     props: {
         to: {
             required: true

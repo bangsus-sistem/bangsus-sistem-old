@@ -1,11 +1,18 @@
 <template>
-    <bsb-button color="none" @click="click" class="p-0">
-        <bsb-feather-icon icon="menu" :size="20" class="sidebar-bars-button" :color="color" />
-    </bsb-button>
+    <Button color="none" @click="click" class="p-0">
+        <FeatherIcon icon="menu" :size="20" class="sidebar-bars-button" :color="color" />
+    </Button>
 </template>
 
 <script>
+import Button from '../buttons/Button'
+import FeatherIcon from '../icons/FeatherIcon'
+
 export default {
+    components: {
+        Button,
+        FeatherIcon,
+    },
     props: {
         darkMode: {
             type: Boolean,

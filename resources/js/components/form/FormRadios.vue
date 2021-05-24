@@ -1,14 +1,21 @@
 <template>
     <div v-frag>
-        <bsb-form-check v-for="(option, i) in options" :key="i">
+        <wb-form-check v-for="(option, i) in options" :key="i">
             <input class="form-check-input" type="radio" v-model="switchValue" :value="option.val" :disabled="readonly">
-            <bsb-form-check-label :label="option.label" />
-        </bsb-form-check>
+            <wb-form-check-label :label="option.label" />
+        </wb-form-check>
     </div>
 </template>
 
 <script>
+import FormCheck from './FormCheck'
+import FormCheckLabel from './FormCheckLabel'
+
 export default {
+    components: {
+        FormCheck,
+        FormCheckLabel,
+    },
     props: {
         options: {
             type: Array,

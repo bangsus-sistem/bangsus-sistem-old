@@ -1,6 +1,6 @@
 <template>
     <span>
-        <bsb-spinner size="sm" v-if="loading" />
+        <Spinner size="sm" v-if="loading" />
         <a href="#" class="text-dark" @click.prevent="$emit('click')" v-else>
             <i class="fas fa-sync"></i>
         </a>
@@ -8,7 +8,12 @@
 </template>
 
 <script>
+import Spinner from '../spinner/Spinner'
+
 export default {
+    components: {
+        Spinner,
+    },
     props: {
         loading: {
             type: Boolean,

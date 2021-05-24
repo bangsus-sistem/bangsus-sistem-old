@@ -1,10 +1,15 @@
 <template>
-    <bsb-badge color="success" v-if="condition">{{ trueLabel }}</bsb-badge>
-    <bsb-badge color="danger" v-else>{{ falseLabel }}</bsb-badge>
+    <Badge color="success" v-if="condition">{{ trueLabel }}</Badge>
+    <Badge color="danger" v-else>{{ falseLabel }}</Badge>
 </template>
 
 <script>
+import Badge from './Badge'
+
 export default {
+    components: {
+        Badge
+    },
     props: {
         condition: {
             required: true,

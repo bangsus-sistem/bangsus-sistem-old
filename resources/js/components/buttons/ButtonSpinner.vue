@@ -1,12 +1,19 @@
 <template>
-    <bsb-button type="submit" :disabled="loading" :size="size" @click="$emit('click', $event)" :block="block">
-        <bsb-spinner size="sm" v-if="loading" />
+    <Button type="submit" :disabled="loading" :size="size" @click="$emit('click', $event)" :block="block">
+        <Spinner size="sm" v-if="loading" />
         <slot></slot>
-    </bsb-button>
+    </Button>
 </template>
 
 <script>
+import Button from './Button'
+import Spinner from '../spinner/Spinner'
+
 export default {
+    components: {
+        Button,
+        Spinner,
+    },
     props: {
         loading: {
             type: Boolean,

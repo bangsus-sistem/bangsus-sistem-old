@@ -1,23 +1,36 @@
 <template>
-    <bsb-input-group>
-        <bsb-input-group-prepend v-if="prependLabel">
-            <bsb-input-group-text :label="prependLabel" />
-        </bsb-input-group-prepend>
-        <bsb-input
+    <InputGroup>
+        <InputGroupPrepend v-if="prependLabel">
+            <InputGroupText :label="prependLabel" />
+        </InputGroupPrepend>
+        <Input
             :type="type"
             :value="value"
             @input="$emit('input', $event)"
             :readonly="readonly"
             :class="{ 'is-invalid': hasError }"
         />
-        <bsb-input-group-append v-if="appendLabel">
-            <bsb-input-group-text :label="appendLabel" />
-        </bsb-input-group-append>
-    </bsb-input-group>
+        <InputGroupAppend v-if="appendLabel">
+            <InputGroupText :label="appendLabel" />
+        </InputGroupAppend>
+    </InputGroup>
 </template>
 
 <script>
+import InputGroup from './InputGroup'
+import InputGroupPrepend from './InputGroupPrepend'
+import Input from './Input'
+import InputGroupAppend from './InputGroupAppend'
+import InputGroupText from './InputGroupText'
+
 export default {
+    components: {
+        InputGroup,
+        InputGroupPrepend,
+        Input,
+        InputGroupAppend,
+        InputGroupText,
+    },
     props: {
         type: {
             type: String,

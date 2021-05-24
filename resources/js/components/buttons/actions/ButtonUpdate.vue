@@ -1,5 +1,17 @@
 <template>
-    <bsb-button color="warning" size="sm" @click="$emit('click', $event)">
-        <bsb-button-update-content />
-    </bsb-button>
+    <Button color="warning" size="sm" @click="$emit('click', $event)">
+        <ButtonUpdateContent />
+    </Button>
 </template>
+
+<script>
+import Button from '../Button'
+import ButtonUpdateContent from '../contents/ButtonUpdateContent'
+
+export default {
+    components: {
+        Button,
+        ButtonUpdateContent
+    }
+}
+</script>

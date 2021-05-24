@@ -1,11 +1,18 @@
 <template>
-    <bsb-button color="secondary" size="sm" @click.prevent="click">
-        <bsb-button-back-content />
-    </bsb-button>
+    <wb-button color="secondary" size="sm" @click.prevent="click">
+        <wb-button-back-content />
+    </wb-button>
 </template>
 
 <script>
+import Button from '../../Button'
+import ButtonBackContent from '../../contents/ButtonBackContent'
+
 export default {
+    components: {
+        Button,
+        ButtonBackContent,
+    },
     props: {
         defaultBack: {
             default() {

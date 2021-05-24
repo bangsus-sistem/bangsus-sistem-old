@@ -1,15 +1,22 @@
 <template>
-    <bsb-button-router-link
+    <ButtonRouterLink
         color="primary"
         size="sm"
         :to="to"
     >
-        <bsb-button-create-content />
-    </bsb-button-router-link>
+        <ButtonCreateContent />
+    </ButtonRouterLink>
 </template>
 
 <script>
+import ButtonRouterLink from '../ButtonRouterLink'
+import ButtonCreateContent from '../../contents/ButtonCreateContent'
+
 export default {
+    components: {
+        ButtonRouterLink,
+        ButtonCreateContent,
+    },
     props: {
         to: {
             required: true

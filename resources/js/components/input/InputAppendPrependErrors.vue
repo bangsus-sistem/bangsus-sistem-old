@@ -1,6 +1,6 @@
 <template>
     <div>
-        <bsb-input-append-prepend
+        <InputAppendPrepend
             :type="type"
             :value="value"
             @input="$emit('input', $event)"
@@ -9,12 +9,19 @@
             :prepend-label="prependLabel"
             :append-label="appendLabel"
         />
-        <bsb-errors-wrapper :errors="errors" />
+        <ErrorsWrapper :errors="errors" />
     </div>
 </template>
 
 <script>
+import InputAppendPrepend from './InputAppendPrepend'
+import ErrorsWrapper from '../form/ErrorsWrapper'
+
 export default {
+    components: {
+        InputAppendPrepend,
+        ErrorsWrapper,
+    },
     props: {
         type: {
             type: String,

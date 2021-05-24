@@ -1,5 +1,5 @@
 <template>
-    <bsb-screen>
+    <wb-screen>
         <template v-slot:mobile>
             <div class="flasher-mobile-wrapper">
                 <slot></slot>
@@ -10,5 +10,15 @@
                 <slot></slot>
             </div>
         </template>
-    </bsb-screen>
+    </wb-screen>
 </template>
+
+<script>
+import Screen from '../screen/Screen'
+
+export default {
+    components: {
+        Screen,
+    },
+}
+</script>

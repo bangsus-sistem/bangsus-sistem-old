@@ -1,16 +1,23 @@
 <template>
-    <bsb-button-router-link
+    <ButtonRouterLink
         color="danger"
         button-type="regular"
         size="sm"
         :to="to"
     >
-        <bsb-button-delete-content />
-    </bsb-button-router-link>
+        <ButtonDeleteContent />
+    </ButtonRouterLink>
 </template>
 
 <script>
+import ButtonRouterLink from '../ButtonRouterLink'
+import ButtonDeleteContent from '../../contents/ButtonDeleteContent'
+
 export default {
+    components: {
+        ButtonRouterLink,
+        ButtonDeleteContent,
+    },
     props: {
         to: {
             required: true

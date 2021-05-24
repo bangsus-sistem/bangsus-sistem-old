@@ -1,12 +1,17 @@
 <template>
     <div :class="'alert alert-dismissible fade show ' + alertClass">
         <slot></slot>
-        <bsb-close-button :data-dismiss="dataDismiss" @click="click($event)" />
+        <CloseButton :data-dismiss="dataDismiss" @click="click($event)" />
     </div>
 </template>
 
 <script>
+import CloseButton from '../buttons/CloseButton'
+
 export default {
+    components: {
+        CloseButton
+    },
     props: {
         color: {
             type: String,

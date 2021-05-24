@@ -9,12 +9,12 @@ export default [
         component: page('System/User/Index'),
         beforeEnter: middleware(appMiddleware),
     },
-    // {
-    //     path: 'user/create',
-    //     name: 'system.user.create',
-    //     component: page('System/User/Create'),
-    //     beforeEnter: middleware(appMiddleware),
-    // },
+    {
+        path: 'user/create',
+        name: 'system.user.create',
+        component: page('System/User/Create'),
+        beforeEnter: middleware(appMiddleware),
+    },
     // {
     //     path: 'user/read/:id',
     //     name: 'system.user.read',

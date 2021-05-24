@@ -1,5 +1,5 @@
 <template>
-    <th class="border-0 text-center">
+    <th class="border-0">
         <slot></slot>
     </th>
 </template>

@@ -1,6 +1,6 @@
 <template>
-    <bsb-flasher-wrapper>
-        <bsb-alert-dismissible
+    <FlasherWrapper>
+        <AlertDismissible
             v-for="(flasher, i) in flashers"
             :color="flasher.color"
             :key="i"
@@ -8,12 +8,19 @@
             @closed="closed(flasher.id)"
         >
             {{ flasher.content }}
-        </bsb-alert-dismissible>
-    </bsb-flasher-wrapper>
+        </AlertDismissible>
+    </FlasherWrapper>
 </template>
 
 <script>
+import FlasherWrapper from './FlasherWrapper'
+import AlertDismissible from '../alerts/AlertDismissible'
+
 export default {
+    components: {
+        FlasherWrapper,
+        AlertDismissible,
+    },
     props: {
         flashers: {
             type: Array,

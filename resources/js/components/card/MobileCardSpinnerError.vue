@@ -1,19 +1,26 @@
 <template>
-    <bsb-mobile-card-spinner :loading="loading">
+    <MobileCardSpinnerError :loading="loading">
         <slot name="always-render"></slot>
         <template v-if="error">
-            <bsb-alert color="danger" class="mt-3">
+            <Alert color="danger" class="mt-3">
                 {{ errorMessage }}
-            </bsb-alert>
+            </Alert>
         </template>
         <template v-else>
             <slot></slot>
         </template>
-    </bsb-mobile-card-spinner>
+    </MobileCardSpinnerError>
 </template>
 
 <script>
+import MobileCardSpinnerError from './MobileCardSpinner'
+import Alert from '../alerts/Alert'
+
 export default {
+    components: {
+        MobileCardSpinnerError,
+        Alert,
+    },
     props: {
         loading: {
             type: Boolean,

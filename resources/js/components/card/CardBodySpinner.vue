@@ -1,14 +1,23 @@
 <template>
-    <bsb-card-body>
-        <bsb-col class="text-center" v-if="loading">
-            <bsb-spinner />
-        </bsb-col>
+    <CardBody>
+        <Col class="text-center" v-if="loading">
+            <Spinner />
+        </Col>
         <slot v-else></slot>
-    </bsb-card-body>
+    </CardBody>
 </template>
 
 <script>
+import CardBody from './CardBody'
+import Col from '../utils/Col'
+import Spinner from '../spinner/Spinner'
+
 export default {
+    components: {
+        CardBody,
+        Col,
+        Spinner,
+    },
     props: {
         loading: {
             type: Boolean,

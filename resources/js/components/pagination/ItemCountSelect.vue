@@ -1,5 +1,5 @@
 <template>
-    <bsb-select size="sm"
+    <Select size="sm"
         :options="countOptions"
         :value="value"
         @input="$emit('input', $event)"
@@ -7,7 +7,12 @@
 </template>
 
 <script>
+import Select from '../input/Select'
+
 export default {
+    components: {
+        Select,
+    },
     props: {
         options: {
             type: Array,

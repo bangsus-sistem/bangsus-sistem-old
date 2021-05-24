@@ -1,7 +1,7 @@
 <template>
     <tr>
-        <bsb-th>#</bsb-th>
-        <bsb-th-sort
+        <Th>#</Th>
+        <ThSort
             v-for="(sortOrder, i) in sortOrders"
             :key="i"
             :sort="sort == sortOrder.index"
@@ -9,15 +9,22 @@
             @click="clickSortOrder(sortOrder.index)"
         >
             {{ sortOrder.title }}
-        </bsb-th-sort>
-        <bsb-th justify="center">
+        </ThSort>
+        <Th justify="center">
             Aksi
-        </bsb-th>
+        </Th>
     </tr>
 </template>
 
 <script>
+import Th from './Th'
+import ThSort from './ThSort'
+
 export default {
+    components: {
+        Th,
+        ThSort,
+    },
     props: {
         sortOrders: {
             type: Array,

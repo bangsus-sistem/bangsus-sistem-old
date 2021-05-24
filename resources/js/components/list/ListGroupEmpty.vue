@@ -1,13 +1,16 @@
 <template>
-    <bsb-list-group>
+    <ListGroup>
         <slot v-if="items.length > 0" />
-        <bsb-list-group-item v-else class="text-center">
+        <ListGroupItem v-else class="text-center">
             {{ emptyLabel }}
-        </bsb-list-group-item>
-    </bsb-list-group>
+        </ListGroupItem>
+    </ListGroup>
 </template>
 
 <script>
+import ListGroup from './ListGroup'
+import ListGroupItem from './ListGroupItem'
+
 export default {
     props: {
         items: {

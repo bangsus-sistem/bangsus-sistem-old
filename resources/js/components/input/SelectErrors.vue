@@ -1,6 +1,6 @@
 <template>
     <div>
-        <bsb-select
+        <Select
             :type="type"
             :size="size"
             :value="value"
@@ -11,13 +11,20 @@
             @change="$emit('change', $event)"
         >
             <slot></slot>
-        </bsb-select>
-        <bsb-errors-wrapper :errors="errors" />
+        </Select>
+        <ErrorsWrapper :errors="errors" />
     </div>
 </template>
 
 <script>
+import Select from './Select'
+import ErrorsWrapper from '../form/ErrorsWrapper'
+
 export default {
+    components: {
+        Select,
+        ErrorsWrapper,
+    },
     props: {
         type: {
             type: String,

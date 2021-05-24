@@ -17,14 +17,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <bsb-button-spinner
+                        <ButtonSpinner
                             type="button"
                             color="primary"
                             @click="submit"
                             :loading="state.loading"
                         >
                             {{ submitButtonText }}
-                        </bsb-button-spinner>
+                        </ButtonSpinner>
                     </div>
                 </div>
             </div>
@@ -34,8 +34,12 @@
 
 <script>
 import mixins from '../../mixins'
+import ButtonSpinner from '../buttons/ButtonSpinner'
 
 export default {
+    components: {
+        ButtonSpinner,
+    },
     mixins: [mixins],
     props: {
         data: {

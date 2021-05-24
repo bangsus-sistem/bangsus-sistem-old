@@ -1,12 +1,17 @@
 <template>
     <span>
-        <bsb-icon :icon="trueIcon" :color="singleColor ? color : successColor" v-if="value" />
-        <bsb-icon :icon="falseIcon" :color="singleColor ? color : dangerColor" v-else />
+        <wb-icon :icon="trueIcon" :color="singleColor ? color : successColor" v-if="value" />
+        <wb-icon :icon="falseIcon" :color="singleColor ? color : dangerColor" v-else />
     </span>
 </template>
 
 <script>
+import Icon from './Icon'
+
 export default {
+    components: {
+        Icon,
+    },
     props: {
         value: {
             type: Boolean,

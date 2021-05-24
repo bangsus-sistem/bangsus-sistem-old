@@ -1,18 +1,25 @@
 <template>
-    <bsb-mobile-card-spinner-error
+    <MobileCardSpinnerError
         :loading="loading"
         :error="error"
         :error-message="errorMessage"
     >
         <template v-slot:always-render>
-            <bsb-button-router-link-back :default-back-link="defaultBackLink" />
+            <ButtonRouterLinkBack :default-back-link="defaultBackLink" />
         </template>
         <slot></slot>
-    </bsb-mobile-card-spinner-error>
+    </MobileCardSpinnerError>
 </template>
 
 <script>
+import MobileCardSpinnerError from './MobileCardSpinnerError'
+import ButtonRouterLinkBank from '../buttons/router-link/actions/ButtonRouterLinkBack'
+
 export default {
+    components: {
+        MobileCardSpinnerError,
+        ButtonRouterLinkBank,
+    },
     props: {
         loading: {
             type: Boolean,

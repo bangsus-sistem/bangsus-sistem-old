@@ -1,27 +1,27 @@
 <template>
     <div class="d-block">
-        <bsb-button-group :sm="true">
+        <ButtonGroup :sm="true">
 
             <!-- The left arrow button -->
-            <bsb-button
+            <Button
                 button-type="outline"
                 color="secondary"
                 :disabled="currentPage == 1"
                 @click="goToPage(1)"
             >
                 <i class="fas fa-angle-double-left"></i>
-            </bsb-button>
-            <bsb-button
+            </Button>
+            <Button
                 button-type="outline"
                 color="secondary"
                 :disabled="currentPage == 1"
                 @click="goToPage(currentPage - 1)"
             >
                 <i class="fas fa-angle-left"></i>
-            </bsb-button>
+            </Button>
 
             <!-- Page -->
-            <bsb-button
+            <Button
                 button-type="outline"
                 color="secondary"
                 v-for="(pageObject, i) in pages"
@@ -31,32 +31,39 @@
                 @click="goToPage(pageObject.page, pageObject.disabled)"
             >
                 {{ pageObject.page }}
-            </bsb-button>
+            </Button>
 
             <!-- The right arrow button -->
-            <bsb-button
+            <Button
                 button-type="outline"
                 color="secondary"
                 :disabled="currentPage == lastPage"
                 @click="goToPage(currentPage + 1)"
             >
                 <i class="fas fa-angle-right"></i>
-            </bsb-button>
-            <bsb-button
+            </Button>
+            <Button
                 button-type="outline"
                 color="secondary"
                 :disabled="currentPage == lastPage"
                 @click="goToPage(lastPage)"
             >
                 <i class="fas fa-angle-double-right"></i>
-            </bsb-button>
+            </Button>
 
-        </bsb-button-group>
+        </ButtonGroup>
     </div>
 </template>
 
 <script>
+import Button from '../buttons/Button'
+import ButtonGroup from '../buttons/ButtonGroup'
+
 export default {
+    components: {
+        Button,
+        ButtonGroup,
+    },
     props: {
         value: {
             type: Number,

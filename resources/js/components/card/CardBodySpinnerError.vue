@@ -1,19 +1,26 @@
 <template>
-    <bsb-card-body-spinner :loading="loading">
+    <CardBodySpinner :loading="loading">
         <slot name="always-render"></slot>
         <template v-if="error">
-            <bsb-alert color="danger" class="mt-3">
+            <Alert color="danger" class="mt-3">
                 {{ errorMessage }}
-            </bsb-alert>
+            </Alert>
         </template>
         <template v-else>
             <slot></slot>
         </template>
-    </bsb-card-body-spinner>
+    </CardBodySpinner>
 </template>
 
 <script>
+import CardBodySpinner from './CardBodySpinner'
+import Alert from '../alerts/Alert'
+
 export default {
+    components: {
+        CardBodySpinner,
+        Alert,
+    },
     props: {
         loading: {
             type: Boolean,

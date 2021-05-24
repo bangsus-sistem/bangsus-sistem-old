@@ -1,15 +1,22 @@
 <template>
-    <bsb-button-router-link
+    <ButtonRouterLink
         color="warning"
         size="sm"
         :to="to"
     >
-        <bsb-button-update-content />
-    </bsb-button-router-link>
+        <ButtonUpdateContent />
+    </ButtonRouterLink>
 </template>
 
 <script>
+import ButtonRouterLink from '../ButtonRouterLink'
+import ButtonUpdateContent from '../../contents/ButtonUpdateContent'
+
 export default {
+    components: {
+        ButtonRouterLink,
+        ButtonUpdateContent,
+    },
     props: {
         to: {
             required: true

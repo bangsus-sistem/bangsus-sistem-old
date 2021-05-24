@@ -1,6 +1,16 @@
 <template>
     <span>
-        <bsb-icon icon="backspace" color="light" />
+        <Icon icon="backspace" color="light" />
         Kembali
     </span>
 </template>
+
+<script>
+import Icon from '../../icons/Icon'
+
+export default {
+    components: {
+        Icon,
+    }
+}
+</script>

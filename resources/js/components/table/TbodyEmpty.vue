@@ -2,14 +2,16 @@
     <tbody>
         <slot v-if="items.length > 0" />
         <tr v-else>
-            <bsb-td :colspan="col + 2" justify="center">
+            <Td :colspan="col + 2" justify="center">
                 {{ emptyLabel }}
-            </bsb-td>
+            </Td>
         </tr>
     </tbody>
 </template>
 
 <script>
+import Td from './Td'
+
 export default {
     props: {
         items: {
