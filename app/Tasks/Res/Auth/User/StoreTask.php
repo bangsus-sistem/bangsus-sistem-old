@@ -21,6 +21,8 @@ class StoreTask extends Task
                 $user->username = $request->input('username');
                 $user->password = Hash::make($request->input('password'));
                 $user->full_name = $request->input('full_name');
+                $user->role_id = $request->input('role_id');
+                $user->active = true;
                 $user->all_branches = $request->boolean('all_branches');
                 $user->description = $request->input('description');
                 $user->note = $request->input('note');
