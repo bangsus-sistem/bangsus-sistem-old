@@ -21,9 +21,7 @@ class UserPaginatedResource extends PaginatedResource
             'active' => $this->active,
             'locked' => $this->locked,
             'hidden' => $this->hidden,
-            'all_features' => $this->all_features,
-            'all_widgets' => $this->all_widgets,
-            'all_reports' => $this->all_reports,
+            'all_branches' => $this->all_branches,
         ];
     }
 }
