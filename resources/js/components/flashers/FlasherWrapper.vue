@@ -1,5 +1,5 @@
 <template>
-    <wb-screen>
+    <Screen>
         <template v-slot:mobile>
             <div class="flasher-mobile-wrapper">
                 <slot></slot>
@@ -10,7 +10,7 @@
                 <slot></slot>
             </div>
         </template>
-    </wb-screen>
+    </Screen>
 </template>
 
 <script>

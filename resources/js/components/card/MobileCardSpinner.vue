@@ -12,7 +12,7 @@ import Col from '../utils/Col'
 import Spinner from '../spinner/Spinner'
 
 export default {
-    commponents: {
+    components: {
         Col,
         Spinner,
     },

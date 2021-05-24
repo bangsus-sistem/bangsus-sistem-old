@@ -1,5 +1,5 @@
 <template>
-    <MobileCardSpinnerError :loading="loading">
+    <MobileCardSpinner :loading="loading">
         <slot name="always-render"></slot>
         <template v-if="error">
             <Alert color="danger" class="mt-3">
@@ -9,16 +9,16 @@
         <template v-else>
             <slot></slot>
         </template>
-    </MobileCardSpinnerError>
+    </MobileCardSpinner>
 </template>
 
 <script>
-import MobileCardSpinnerError from './MobileCardSpinner'
+import MobileCardSpinner from './MobileCardSpinner'
 import Alert from '../alerts/Alert'
 
 export default {
     components: {
-        MobileCardSpinnerError,
+        MobileCardSpinner,
         Alert,
     },
     props: {

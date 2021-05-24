@@ -51,7 +51,7 @@
                             </template>
                         </bsb-access-wrapper>
                         <bsb-access-wrapper module-ref="user" action-ref="delete">
-                            <bsb-button-delete @click="$emit('delete')" />
+                            <bsb-button-delete @click="$emit('delete')" v-if="!item['locked']" />
                         </bsb-access-wrapper>
                     </template>
                     <template v-slot:footer>
