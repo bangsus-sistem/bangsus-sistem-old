@@ -16,11 +16,18 @@ class RoleObserver extends Observer
      * @param  \App\Models\Auth\Role  $role
      * @return void
      */
-    public static function saved(Role $role)
+    public static function saving(Role $role)
     {
         $role->locked = false;
         $role->hidden = false;
-        
+    }
+
+    /**
+     * @param  \App\Models\Auth\Role  $role
+     * @return void
+     */
+    public function saved(Role $role)
+    {
         if ($role->all_features)
             $role->features()->sync(Feature::get()->pluck('id')->all());
 
