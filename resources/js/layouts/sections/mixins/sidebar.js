@@ -150,9 +150,9 @@ export default {
                 }
             })
     
-            this.sidebar = computedSidebars
+            this.sidebars = computedSidebars
             
-            this.sidebar.forEach((sidebar, i) => {
+            this.sidebars.forEach((sidebar, i) => {
                 if (sidebar.children) {
                     sidebar.children.forEach((sidebarChildren, j) => {
                         if (sidebarChildren.route.name == this.active) {
