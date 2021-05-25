@@ -34,7 +34,7 @@ class AmendRequest extends AuthIdRequest
             'username' => [
                 'required',
                 'max:200',
-                Rule::unique('\App\Models\Auth\User', $this->input('id')),
+                Rule::unique('\App\Models\Auth\User', 'username')->ignore($this->input('id')),
             ],
             'full_name' => [
                 'required',
@@ -42,7 +42,7 @@ class AmendRequest extends AuthIdRequest
             ],
             'role_id' => [
                 'required',
-                'bsb_exists:\App\Models\Auth\Role',
+                'wb_exists:\App\Models\Auth\Role',
             ],
             'description' => [
                 'nullable',
@@ -62,7 +62,7 @@ class AmendRequest extends AuthIdRequest
             ],
             'branch_ids.*' => [
                 Rule::requiredIf( ! $this->boolean('all_branches')),
-                'bsb_exists:\App\Models\System\Branch',
+                'wb_exists:\App\Models\System\Branch',
             ],
         ];
     }
