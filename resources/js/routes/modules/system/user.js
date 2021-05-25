@@ -15,16 +15,16 @@ export default [
         component: page('System/User/Create'),
         beforeEnter: middleware(appMiddleware),
     },
-    // {
-    //     path: 'user/read/:id',
-    //     name: 'system.user.read',
-    //     component: page('System/User/Read'),
-    //     beforeEnter: middleware(appMiddleware),
-    // },
-    // {
-    //     path: 'user/update/:id',
-    //     name: 'system.user.update',
-    //     component: page('System/User/Update'),
-    //     beforeEnter: middleware(appMiddleware),
-    // },
+    {
+        path: 'user/read/:id',
+        name: 'system.user.read',
+        component: page('System/User/Read'),
+        beforeEnter: middleware(appMiddleware),
+    },
+    {
+        path: 'user/update/:id',
+        name: 'system.user.update',
+        component: page('System/User/Update'),
+        beforeEnter: middleware(appMiddleware),
+    },
 ]
