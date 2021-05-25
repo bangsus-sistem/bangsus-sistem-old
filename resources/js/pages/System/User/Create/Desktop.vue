@@ -19,12 +19,33 @@
                     "
                 >
                     <bsb-form-group>
-                        <label>Kode</label>
-                        <bsb-input-errors v-model="form.data['code']" :errors="form.errors['code']" />
+                        <label>Username</label>
+                        <bsb-input-errors v-model="form.data['username']" :errors="form.errors['username']" />
                     </bsb-form-group>
                     <bsb-form-group>
-                        <label>Nama</label>
-                        <bsb-input-errors v-model="form.data['name']" :errors="form.errors['name']" />
+                        <label>Nama Lengkap</label>
+                        <bsb-input-errors v-model="form.data['full_name']" :errors="form.errors['full_name']" />
+                    </bsb-form-group>
+                    <bsb-form-group>
+                        <label>Password</label>
+                        <bsb-input-errors v-model="form.data['password']" :errors="form.errors['password']" type="password" />
+                    </bsb-form-group>
+                    <bsb-form-group>
+                        <label>Konfirmasi Password</label>
+                        <bsb-input-errors v-model="form.data['password_confirmation']" :errors="form.errors['password_confirmation']" type="password" />
+                    </bsb-form-group>
+                    <bsb-form-group>
+                        <label>Role</label>
+                        <bsb-select-errors v-model="form.data['role_id']" :errors="form.errors['role_id']">
+                            <option :value="null">-- Pilih Role --</option>
+                            <option
+                                v-for="(role, i) in resources['roles']"
+                                :key="i"
+                                :value="role['id']"
+                            >
+                                {{ role['code'] }} - {{ role['name'] }}
+                            </option>
+                        </bsb-select-errors>
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Deskripsi</label>
