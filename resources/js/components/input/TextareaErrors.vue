@@ -1,12 +1,12 @@
 <template>
     <div>
-        <wb-textarea
+        <Textarea
             :value="value"
             @input="$emit('input', $event)"
             :class="{ 'is-invalid': errors.length > 0 }"
             :readonly="readonly"
         />
-        <wb-errors-wrapper :errors="errors" />
+        <ErrorsWrapper :errors="errors" />
     </div>
 </template>
 

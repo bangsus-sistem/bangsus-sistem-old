@@ -1,7 +1,7 @@
 <template>
-    <wb-button color="secondary" size="sm" @click.prevent="click">
-        <wb-button-back-content />
-    </wb-button>
+    <Button color="secondary" size="sm" @click.prevent="click">
+        <ButtonBackContent />
+    </Button>
 </template>
 
 <script>

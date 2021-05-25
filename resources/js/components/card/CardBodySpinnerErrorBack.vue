@@ -13,12 +13,12 @@
 
 <script>
 import CardBodySpinnerError from './CardBodySpinnerError'
-import ButtonRouterLinkBank from '../buttons/router-link/actions/ButtonRouterLinkBack'
+import ButtonRouterLinkBack from '../buttons/router-link/actions/ButtonRouterLinkBack'
 
 export default {
     components: {
         CardBodySpinnerError,
-        ButtonRouterLinkBank,
+        ButtonRouterLinkBack,
     },
     props: {
         loading: {

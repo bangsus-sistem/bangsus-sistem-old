@@ -1,9 +1,9 @@
 <template>
     <div v-frag>
-        <wb-form-check v-for="(option, i) in options" :key="i">
+        <FormCheck v-for="(option, i) in options" :key="i">
             <input class="form-check-input" type="radio" v-model="switchValue" :value="option.val" :disabled="readonly">
-            <wb-form-check-label :label="option.label" />
-        </wb-form-check>
+            <FormCheckLabel :label="option.label" />
+        </FormCheck>
     </div>
 </template>
 
