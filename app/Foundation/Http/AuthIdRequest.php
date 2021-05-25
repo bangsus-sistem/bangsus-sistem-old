@@ -21,8 +21,8 @@ class AuthIdRequest extends AuthRequest
             $rules['id'][] = $idRule;
         }
 
-        foreach ($this->additionalRules() as $rule) {
-            $rules[] = $rule;
+        foreach ($this->additionalRules() as $index => $rule) {
+            $rules[$index] = $rule;
         }
 
         return $rules;
