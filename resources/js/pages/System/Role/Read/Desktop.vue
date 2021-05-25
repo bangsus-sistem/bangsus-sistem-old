@@ -15,19 +15,19 @@
                 >
                     <bsb-form-group>
                         <label>Kode</label>
-                        <bsb-input v-model="form.data['code']" :errors="form.errors['code']" :readonly="true" />
+                        <bsb-input v-model="form.data['code']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Nama</label>
-                        <bsb-input v-model="form.data['name']" :errors="form.errors['name']" :readonly="true" />
+                        <bsb-input v-model="form.data['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Deskripsi</label>
-                        <bsb-textarea v-model="form.data['description']" :errors="form.errors['description']" :readonly="true" />
+                        <bsb-textarea v-model="form.data['description']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Catatan</label>
-                        <bsb-textarea v-model="form.data['note']" :errors="form.errors['note']" :readonly="true" />
+                        <bsb-textarea v-model="form.data['note']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Fitur</label>
