@@ -11,7 +11,7 @@
                 <form
                     class="mt-5"
                     @submit.prevent="
-                        submitForm('/ajax/auth/user/change_password', 'patch', {
+                        submitForm('/ajax/auth/user/password', 'patch', {
                             resolve: true,
                             reject: false
                         }).then(() => $router.push({ name: 'system.user' }))
