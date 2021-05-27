@@ -20,6 +20,14 @@
                     </bsb-access-wrapper>
                     <bsb-access-wrapper module-ref="user" action-ref="update">
                         <bsb-button-router-link-update :to="{ name: 'system.user.update', params: { id: item['id'] } }" v-if="!item['locked']" />
+                        <bsb-button-router-link
+                            size="sm"
+                            color="success"
+                            :to="{ name: 'system.user.changePassword', params: { id: item['id'] } }"
+                            v-if="!item['locked']"
+                        >
+                            Ganti Password
+                        </bsb-button-router-link>
                         <template v-if="!item['locked']">
                             <bsb-button-activate v-if="!item['active']" @click="$emit('activate')" />
                             <bsb-button-deactivate v-else @click="$emit('deactivate')" />
@@ -45,6 +53,14 @@
                         </bsb-access-wrapper>
                         <bsb-access-wrapper module-ref="user" action-ref="update">
                             <bsb-button-router-link-update :to="{ name: 'system.user.update', params: { id: item['id'] } }" v-if="!item['locked']" />
+                            <bsb-button-router-link
+                                size="sm"
+                                color="success"
+                                :to="{ name: 'system.user.changePassword', params: { id: item['id'] } }"
+                                v-if="!item['locked']"
+                            >
+                                Ganti Password
+                            </bsb-button-router-link>
                             <template v-if="!item['locked']">
                                 <bsb-button-activate v-if="!item['active']" @click="$emit('activate')" />
                                 <bsb-button-deactivate v-else @click="$emit('deactivate')" />

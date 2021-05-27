@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Res\Auth\User;
 
-use App\Foundation\Http\AuthRequest;
+use App\Foundation\Http\AuthIdRequest;
 
-class RevisePasswordRequest extends AuthRequest
+class RevisePasswordRequest extends AuthIdRequest
 {
     /**
      * @var string

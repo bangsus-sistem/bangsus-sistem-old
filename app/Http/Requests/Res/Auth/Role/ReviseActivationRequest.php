@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Res\Auth\Role;
 
-use App\Foundation\Http\AuthRequest;
+use App\Foundation\Http\AuthIdRequest;
 
-class ReviseActivationRequest extends AuthRequest
+class ReviseActivationRequest extends AuthIdRequest
 {
     /**
      * @var string
