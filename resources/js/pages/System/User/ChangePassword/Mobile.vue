@@ -52,7 +52,7 @@
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Konfirmasi Password Baru</label>
-                        <bsb-input-errors v-model="form.data['password']" type="password" :errors="form.errors['password_confirmation']" />
+                        <bsb-input-errors v-model="form.data['password_confirmation']" type="password" :errors="form.errors['password_confirmation']" />
                     </bsb-form-group>
                 </form>
             </bsb-card-body-spinner-error-back>
