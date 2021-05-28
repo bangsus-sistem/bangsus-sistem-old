@@ -27,7 +27,7 @@ class RevisePasswordRequest extends AuthIdRequest
     /**
      * @return array
      */
-    public function rules()
+    public function additionalRules()
     {
         return [
             'password' => [
