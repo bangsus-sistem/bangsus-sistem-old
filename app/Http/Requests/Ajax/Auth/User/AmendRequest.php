@@ -42,7 +42,7 @@ class AmendRequest extends AuthIdRequest
             ],
             'role_id' => [
                 'required',
-                'wb_exists:\App\Models\Auth\Role',
+                'bsb_exists:\App\Models\Auth\Role',
             ],
             'description' => [
                 'nullable',
@@ -62,7 +62,7 @@ class AmendRequest extends AuthIdRequest
             ],
             'branch_ids.*' => [
                 Rule::requiredIf( ! $this->boolean('all_branches')),
-                'wb_exists:\App\Models\System\Branch',
+                'bsb_exists:\App\Models\System\Branch',
             ],
         ];
     }
