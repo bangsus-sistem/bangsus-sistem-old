@@ -29,7 +29,7 @@ export default [
     },
     {
         path: 'user/change_password/:id',
-        name: 'system.user.password',
+        name: 'system.user.changePassword',
         component: page('System/User/ChangePassword'),
         beforeEnter: middleware(appMiddleware),
     },
