@@ -10,6 +10,8 @@ export default {
             this.getFormDataCallback()
         )
             .then(res => {
+                if (res.data.hidden) this.$router.push({ name: 'system.user' })
+
                 this.fetchAndSetMultipleResources(
                     {
                         'roles': '/ajax/auth/role/all',
