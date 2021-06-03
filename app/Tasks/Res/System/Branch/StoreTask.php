@@ -3,7 +3,10 @@
 namespace App\Tasks\Res\System\Branch;
 
 use App\Foundation\Task;
-use App\Models\System\Branch;
+use App\Models\System\{
+    Branch,
+    BranchType,
+};
 
 class StoreTask extends Task
 {
@@ -16,7 +19,8 @@ class StoreTask extends Task
         $branch = new Branch;
         $this->transaction(
             function () use ($request, $branch) {
-                $branch->code = $request->input('code');
+                $branchType = BranchType::find($request->input('branch_type_id'));
+                $branch->code = $branchType->code . $request->input('code');
                 $branch->name = $request->input('name');
                 $branch->branch_type_id = $request->input('branch_type_id');
                 $branch->active = $request->boolean('active');

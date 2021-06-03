@@ -16,6 +16,7 @@ class AmendTask extends Task
         $branchType = BranchType::findOrFail($request->input('id'));
         $this->transaction(
             function () use ($request, $branchType) {
+                $branchType->code = $request->input('code', $branchType->code);
                 $branchType->name = $request->input('name', $branchType->name);
                 $branchType->active = $request->boolean('active', $branchType->active);
                 $branchType->description = $request->input('description', $branchType->description);
