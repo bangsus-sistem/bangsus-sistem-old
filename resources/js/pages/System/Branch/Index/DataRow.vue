@@ -13,10 +13,10 @@
                 </bsb-td>
                 <bsb-td justify="center">
                     <bsb-access-wrapper module-ref="branch_type" action-ref="read">
-                        <bsb-button-router-link-read :to="{ name: 'system.branchType.read', params: { id: item['id'] } }" />
+                        <bsb-button-router-link-read :to="{ name: 'system.branch.read', params: { id: item['id'] } }" />
                     </bsb-access-wrapper>
                     <bsb-access-wrapper module-ref="branch_type" action-ref="update">
-                        <bsb-button-router-link-update :to="{ name: 'system.branchType.update', params: { id: item['id'] } }" v-if="!item['locked']" />
+                        <bsb-button-router-link-update :to="{ name: 'system.branch.update', params: { id: item['id'] } }" v-if="!item['locked']" />
                         <template v-if="!item['locked']">
                             <bsb-button-activate v-if="!item['active']" @click="$emit('activate')" />
                             <bsb-button-deactivate v-else @click="$emit('deactivate')" />
@@ -38,10 +38,10 @@
                     </template>
                     <template v-slot:right>
                         <bsb-access-wrapper module-ref="branch_type" action-ref="read">
-                            <bsb-button-router-link-read :to="{ name: 'system.branchType.read', params: { id: item['id'] } }" />
+                            <bsb-button-router-link-read :to="{ name: 'system.branch.read', params: { id: item['id'] } }" />
                         </bsb-access-wrapper>
                         <bsb-access-wrapper module-ref="branch_type" action-ref="update">
-                            <bsb-button-router-link-update :to="{ name: 'system.branchType.update', params: { id: item['id'] } }" v-if="!item['locked']" />
+                            <bsb-button-router-link-update :to="{ name: 'system.branch.update', params: { id: item['id'] } }" v-if="!item['locked']" />
                             <template v-if="!item['locked']">
                                 <bsb-button-activate v-if="!item['active']" @click="$emit('activate')" />
                                 <bsb-button-deactivate v-else @click="$emit('deactivate')" />
