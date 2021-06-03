@@ -1,7 +1,7 @@
 <template>
     <span>
-        <wb-icon :icon="trueIcon" :color="singleColor ? color : successColor" v-if="value" />
-        <wb-icon :icon="falseIcon" :color="singleColor ? color : dangerColor" v-else />
+        <Icon :icon="trueIcon" :color="singleColor ? color : successColor" v-if="value" />
+        <Icon :icon="falseIcon" :color="singleColor ? color : dangerColor" v-else />
     </span>
 </template>
 
