@@ -7,16 +7,18 @@ use Illuminate\Database\Eloquent\{
     SoftDeletes,
 };
 use App\Models\Concerns\{
-    ActiveFlag,
     HasUserTimestamps,
+    HasUserDelete,
+    ActiveFlag,
+    HiddenFlag,
+    LockedFlag,
 };
 use App\Models\Auth\UserBranchType;
 
 class BranchType extends Model
 {
-    use SoftDeletes;
-    use HasUserTimestamps;
-    use ActiveFlag;
+    use SoftDeletes, HasUserTimestamps, HasUserDelete, ActiveFlag, HiddenFlag,
+        LockedFlag;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -7,16 +7,18 @@ use Illuminate\Database\Eloquent\{
     SoftDeletes,
 };
 use App\Models\Concerns\{
-    ActiveFlag,
     HasUserTimestamps,
+    HasUserDelete,
+    ActiveFlag,
+    HiddenFlag,
+    LockedFlag,
 };
-use App\Models\Auth\UserBranch;
+use App\Models\Auth\User;
 
 class Branch extends Model
 {
-    use SoftDeletes;
-    use HasUserTimestamps;
-    use ActiveFlag;
+    use SoftDeletes, HasUserTimestamps, HasUserDelete, ActiveFlag, HiddenFlag,
+        LockedFlag;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -24,5 +26,13 @@ class Branch extends Model
     public function branchType()
     {
         return $this->belongsTo(BranchType::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }
