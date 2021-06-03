@@ -35,10 +35,6 @@ class StoreRequest extends AuthRequest
                 'required',
                 'max:200',
             ],
-            'active' => [
-                'required',
-                'boolean',
-            ],
             'description' => [
                 'nullable',
                 'max:1000',

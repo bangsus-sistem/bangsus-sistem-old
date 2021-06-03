@@ -22,5 +22,5 @@ class ReviseActivationRequest extends AuthIdRequest
     /**
      * @var string
      */
-    protected $model = '\App\Models\System\Branch';
+    protected $model = '\App\Models\System\BranchType';
 }

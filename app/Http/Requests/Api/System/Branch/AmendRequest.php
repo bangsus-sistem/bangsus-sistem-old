@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\System\Branch;
 
 use App\Foundation\Http\AuthIdRequest;
 use Illuminate\Validation\Rule;
+use App\Validation\System\Branch\CodeIsUniqueIgnoreRule;
 
 class AmendRequest extends AuthIdRequest
 {
@@ -34,7 +35,7 @@ class AmendRequest extends AuthIdRequest
             'code' => [
                 'nullable',
                 'max:200',
-                Rule::unique('\App\Models\System\Branch', $this->input('id')),
+                new CodeIsUniqueIgnoreRule($this),
             ],
             'name' => [
                 'nullable',
@@ -43,10 +44,6 @@ class AmendRequest extends AuthIdRequest
             'branch_type_id' => [
                 'nullable',
                 'bsb_exists:\App\Models\System\BranchType',
-            ],
-            'active' => [
-                'nullable',
-                'boolean',
             ],
             'description' => [
                 'nullable',

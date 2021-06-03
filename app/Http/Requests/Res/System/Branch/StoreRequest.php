@@ -4,6 +4,7 @@ namespace App\Http\Requests\Res\System\Branch;
 
 use App\Foundation\Http\AuthRequest;
 use Illuminate\Validation\Rule;
+use App\Validation\System\Branch\CodeIsUniqueRule;
 
 class StoreRequest extends AuthRequest
 {
@@ -29,7 +30,7 @@ class StoreRequest extends AuthRequest
             'code' => [
                 'required',
                 'max:200',
-                'unique:\App\Models\System\Branch',
+                new CodeIsUniqueRule($this),
             ],
             'name' => [
                 'required',
@@ -38,10 +39,6 @@ class StoreRequest extends AuthRequest
             'branch_type_id' => [
                 'required',
                 'bsb_exists:\App\Models\System\BranchType',
-            ],
-            'active' => [
-                'required',
-                'boolean',
             ],
             'description' => [
                 'nullable',

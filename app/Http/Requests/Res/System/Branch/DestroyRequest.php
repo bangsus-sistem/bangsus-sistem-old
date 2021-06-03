@@ -21,9 +21,14 @@ class DestroyRequest extends AuthIdRequest
     ];
 
     /**
+     * @var string
+     */
+    protected $model = '\App\Models\System\Branch';
+
+    /**
      * @return array
      */
-    public function rules()
+    public function additionalRules()
     {
         return [new BranchIsDeletableRule($this)];
     }

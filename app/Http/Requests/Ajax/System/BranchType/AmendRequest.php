@@ -4,6 +4,7 @@ namespace App\Http\Requests\Ajax\System\BranchType;
 
 use App\Foundation\Http\AuthIdRequest;
 use Illuminate\Validation\Rule;
+use App\Validation\System\BranchType\CodeIsChangeableRule;
 
 class AmendRequest extends AuthIdRequest
 {
@@ -34,15 +35,12 @@ class AmendRequest extends AuthIdRequest
             'code' => [
                 'required',
                 'max:200',
-                Rule::unique('\App\Models\System\BranchType', $this->input('id')),
+                Rule::unique('\App\Models\System\BranchType', 'code')->ignore($this->input('id')),
+                new CodeIsChangeableRule($this),
             ],
             'name' => [
                 'required',
                 'max:200',
-            ],
-            'active' => [
-                'required',
-                'boolean',
             ],
             'description' => [
                 'nullable',
