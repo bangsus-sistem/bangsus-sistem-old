@@ -27,4 +27,9 @@ Route::middleware('auth:sanctum')->group(function () {
      * @package \App\Http\Controllers\Ajax\System
      */
     Route::prefix('system')->namespace('System')->group(base_path('routes/ajax/system.php'));
+
+    /**
+     * @package \App\Http\Controllers\Ajax\Master
+     */
+    Route::prefix('master')->namespace('Master')->group(base_path('routes/ajax/master.php'));
 });
