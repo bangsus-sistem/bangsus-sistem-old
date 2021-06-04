@@ -23,7 +23,7 @@ class StoreTask extends Task
                 $branch->code = $branchType->code . $request->input('code');
                 $branch->name = $request->input('name');
                 $branch->branch_type_id = $request->input('branch_type_id');
-                $branch->active = $request->boolean('active');
+                $branch->active = true;
                 $branch->description = $request->input('description');
                 $branch->note = $request->input('note');
                 $branch->save();

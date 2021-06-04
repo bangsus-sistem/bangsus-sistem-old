@@ -23,7 +23,7 @@ class StoreTask extends Task
             function () use ($request, $role) {
                 $role->code = $request->input('code');
                 $role->name = $request->input('name');
-                $role->active = false;
+                $role->active = true;
                 $role->all_features = $request->boolean('all_features');
                 $role->all_widgets = $request->boolean('all_widgets');
                 $role->all_reports = $request->boolean('all_reports');
