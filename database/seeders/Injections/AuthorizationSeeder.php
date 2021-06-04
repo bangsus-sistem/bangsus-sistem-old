@@ -24,7 +24,7 @@ class AuthorizationSeeder extends Seeder
     private $packages = [
         [
             'ref' => 'authentication',
-            'name' => 'Authentication',
+            'name' => 'Autentikasi',
             'modules' => [
                 [
                     'ref' => 'package',
@@ -66,16 +66,6 @@ class AuthorizationSeeder extends Seeder
                     'name' => 'User',
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
-                [
-                    'ref' => 'branch_type',
-                    'name' => 'Tipe Cabang',
-                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
-                ],
-                [
-                    'ref' => 'branch',
-                    'name' => 'Cabang',
-                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
-                ],
             ],
             'widgets' => [
                 [
@@ -93,6 +83,37 @@ class AuthorizationSeeder extends Seeder
                     'name' => 'Detail User',
                 ],
             ],
+        ],
+        [
+            'ref' => 'system',
+            'name' => 'Sistem',
+            'modules' => [
+                [
+                    'ref' => 'branch_type',
+                    'name' => 'Tipe Cabang',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'branch',
+                    'name' => 'Cabang',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+            ],
+            'widgets' => [],
+            'reports' => [],
+        ],
+        [
+            'ref' => 'master',
+            'name' => 'Master',
+            'modules' => [
+                [
+                    'ref' => 'unit',
+                    'name' => 'Satuan',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+            ],
+            'widgets' => [],
+            'reports' => [],
         ],
     ];
 
