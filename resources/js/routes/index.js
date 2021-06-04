@@ -2,6 +2,7 @@ import page from './page'
 import middleware from './middleware'
 
 import system from './modules/system'
+import master from './modules/master'
 
 const appMiddleware = ['authenticated', 'versionCheck']
 
@@ -28,5 +29,10 @@ export default [
         path: '/system',
         component: { template: '<router-view></router-view>' },
         children: system
+    },
+    {
+        path: '/master',
+        component: { template: '<router-view></router-view>' },
+        children: master
     },
 ]
