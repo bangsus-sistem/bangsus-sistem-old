@@ -27,7 +27,7 @@ export default {
             msc: {
                 breadcrumbs: [
                     {
-                        label: 'Sistem',
+                        label: 'Master',
                     },
                     {
                         label: 'Satuan',
