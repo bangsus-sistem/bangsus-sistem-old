@@ -106,6 +106,21 @@ export default {
                     ],
                     collapse: false,
                 },
+                {
+                    title: 'Master',
+                    icon: 'box',
+                    children: [
+                        {
+                            title: 'Satuan',
+                            route: { name: 'master.unit' },
+                            access: {
+                                moduleRef: 'package',
+                                actionRef: 'index',
+                            },
+                        },
+                    ],
+                    collapse: false,
+                },
             ],
             collapsedIndex: null,
         }
