@@ -18,9 +18,9 @@ class UserPaginatedResource extends PaginatedResource
             'username' => $this->username,
             'full_name' => $this->full_name,
             'role' => new RoleSingleResource($this->role),
-            'active' => $this->active,
-            'locked' => $this->locked,
-            'hidden' => $this->hidden,
+            'active' => (bool) $this->active,
+            'locked' => (bool) $this->locked,
+            'hidden' => (bool) $this->hidden,
             'all_branches' => $this->all_branches,
         ];
     }

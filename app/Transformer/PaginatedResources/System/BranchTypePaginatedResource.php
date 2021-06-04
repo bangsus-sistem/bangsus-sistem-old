@@ -16,9 +16,9 @@ class BranchTypePaginatedResource extends PaginatedResource
             'id' => $this->id,
             'code' => $this->code,
             'name' => $this->name,
-            'active' => $this->active,
-            'locked' => $this->locked,
-            'hidden' => $this->hidden,
+            'active' => (bool) $this->active,
+            'locked' => (bool) $this->locked,
+            'hidden' => (bool) $this->hidden,
         ];
     }
 }
