@@ -22,6 +22,12 @@
                         <bsb-input v-model="form.data['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
+                        <label>Status</label>
+                        <div>
+                            <bsb-switch-badge :condition="form.data['active']" true-label="Aktif" false-label="Tidak Aktif"/>
+                        </div>
+                    </bsb-form-group>
+                    <bsb-form-group>
                         <label>Deskripsi</label>
                         <bsb-textarea v-model="form.data['description']" :readonly="true" />
                     </bsb-form-group>
