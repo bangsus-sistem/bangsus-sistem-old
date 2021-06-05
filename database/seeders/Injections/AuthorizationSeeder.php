@@ -115,6 +115,29 @@ class AuthorizationSeeder extends Seeder
             'widgets' => [],
             'reports' => [],
         ],
+        [
+            'ref' => 'hrm',
+            'name' => 'HRM',
+            'modules' => [
+                [
+                    'ref' => 'contact_type',
+                    'name' => 'Tipe Kontak',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'address_type',
+                    'name' => 'Tipe Alamat',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'employee_photo_type',
+                    'name' => 'Tipe Foto Karyawan',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+            ],
+            'widgets' => [],
+            'reports' => [],
+        ],
     ];
 
     /**
