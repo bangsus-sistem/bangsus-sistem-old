@@ -29,7 +29,7 @@
                         </template>
                     </bsb-access-wrapper>
                     <bsb-access-wrapper module-ref="role" action-ref="delete">
-                        <bsb-button-delete @click="$emit('delete')" />
+                        <bsb-button-delete @click="$emit('delete')" v-if="!item['active']" />
                     </bsb-access-wrapper>
                 </bsb-td>
             </tr>
