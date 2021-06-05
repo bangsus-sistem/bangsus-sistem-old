@@ -35,7 +35,8 @@ class AmendRequest extends AuthIdRequest
             'code' => [
                 'required',
                 'max:200',
-                Rule::unique('\App\Models\System\BranchType', 'code')->ignore($this->input('id')),
+                Rule::unique('\App\Models\System\BranchType', 'code')
+                    ->ignore($this->input('id')),
                 new CodeIsChangeableRule($this),
             ],
             'name' => [

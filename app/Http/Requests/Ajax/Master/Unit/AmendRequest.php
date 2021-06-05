@@ -34,7 +34,8 @@ class AmendRequest extends AuthIdRequest
             'code' => [
                 'required',
                 'max:200',
-                Rule::unique('\App\Models\Master\Unit', 'code')->ignore($this->input('id')),
+                Rule::unique('\App\Models\Master\Unit', 'code')
+                    ->ignore($this->input('id')),
             ],
             'name' => [
                 'required',
