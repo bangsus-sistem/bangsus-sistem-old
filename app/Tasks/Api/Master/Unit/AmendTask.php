@@ -18,7 +18,6 @@ class AmendTask extends Task
             function () use ($request, $unit) {
                 $unit->code = $request->input('code', $unit->code);
                 $unit->name = $request->input('name', $unit->name);
-                $unit->active = $request->boolean('active', $unit->active);
                 $unit->description = $request->input('description', $unit->description);
                 $unit->note = $request->input('note', $unit->note);
                 $unit->save();

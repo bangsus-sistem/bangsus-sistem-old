@@ -13,9 +13,9 @@ class DestroyTask extends Task
      */
     public function handle($request)
     {
-        $branch = Branch::findOrFail($request->input('id'));
+        $unit = Unit::findOrFail($request->input('id'));
         $this->transaction(
-            fn () => $branch->delete()
+            fn () => $unit->delete()
         );
     }
 }
