@@ -27,6 +27,12 @@
                         <bsb-input v-model="form.data['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
+                        <label>Status</label>
+                        <div>
+                            <bsb-switch-badge :condition="form.data['active']" true-label="Aktif" false-label="Tidak Aktif"/>
+                        </div>
+                    </bsb-form-group>
+                    <bsb-form-group>
                         <label>Tipe Cabang</label>
                         <bsb-select v-model="form.data['branch_type_id']" :disabled="true">
                             <option :value="null">-- Pilih Tipe Cabang --</option>
