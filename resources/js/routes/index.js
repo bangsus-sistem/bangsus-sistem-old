@@ -3,6 +3,7 @@ import middleware from './middleware'
 
 import system from './modules/system'
 import master from './modules/master'
+import hrm from './modules/hrm'
 
 const appMiddleware = ['authenticated', 'versionCheck']
 
@@ -34,5 +35,10 @@ export default [
         path: '/master',
         component: { template: '<router-view></router-view>' },
         children: master
+    },
+    {
+        path: '/hrm',
+        component: { template: '<router-view></router-view>' },
+        children: hrm
     },
 ]
