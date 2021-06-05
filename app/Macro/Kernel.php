@@ -17,6 +17,7 @@ class Kernel
         'allWidgets' => Blueprint\Booleans\AllWidgetsBlueprint::class,
         'hidden' => Blueprint\Booleans\HiddenBlueprint::class,
         'locked' => Blueprint\Booleans\LockedBlueprint::class,
+        'required' => Blueprint\Booleans\RequiredBlueprint::class,
         'state' => Blueprint\Booleans\StateBlueprint::class,
         // Foreign macro.
         'action' => Blueprint\Foreign\ActionBlueprint::class,
