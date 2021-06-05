@@ -21,6 +21,12 @@
                         <bsb-input v-model="form.data['full_name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
+                        <label>Status</label>
+                        <div>
+                            <bsb-switch-badge :condition="form.data['active']" true-label="Aktif" false-label="Tidak Aktif"/>
+                        </div>
+                    </bsb-form-group>
+                    <bsb-form-group>
                         <label>Role</label>
                         <bsb-select v-model="form.data['role_id']" :disabled="true">
                             <option :value="null">-- Pilih Role --</option>
