@@ -16,7 +16,7 @@ class DestroyRequest extends AuthIdRequest
      * @var array
      */
     protected $refs = [
-        'module' => 'unit',
+        'module' => 'employee_photo_type',
         'action' => 'delete',
     ];
 

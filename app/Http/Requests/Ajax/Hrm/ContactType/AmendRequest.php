@@ -16,7 +16,7 @@ class AmendRequest extends AuthIdRequest
      * @var array
      */
     protected $refs = [
-        'module' => 'unit',
+        'module' => 'contact_type',
         'action' => 'update',
     ];
 
