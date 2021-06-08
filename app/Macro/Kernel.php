@@ -24,6 +24,7 @@ class Kernel
         'bearerToken' => Blueprint\Foreign\BearerTokenBlueprint::class,
         'branch' => Blueprint\Foreign\BranchBlueprint::class,
         'branchType' => Blueprint\Foreign\BranchTypeBlueprint::class,
+        'division' => Blueprint\Foreign\DivisionBlueprint::class,
         'entryPoint' => Blueprint\Foreign\EntryPointBlueprint::class,
         'feature' => Blueprint\Foreign\FeatureBlueprint::class,
         'module' => Blueprint\Foreign\ModuleBlueprint::class,
