@@ -18,7 +18,6 @@ class AmendTask extends Task
             function () use ($request, $gender) {
                 $gender->code = $request->input('code');
                 $gender->name = $request->input('name');
-                $gender->required = $request->boolean('required');
                 $gender->description = $request->input('description');
                 $gender->note = $request->input('note');
                 $gender->save();

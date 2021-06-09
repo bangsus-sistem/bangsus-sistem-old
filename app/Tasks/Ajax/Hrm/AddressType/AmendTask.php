@@ -18,7 +18,6 @@ class AmendTask extends Task
             function () use ($request, $addressType) {
                 $addressType->code = $request->input('code');
                 $addressType->name = $request->input('name');
-                $addressType->required = $request->boolean('required');
                 $addressType->description = $request->input('description');
                 $addressType->note = $request->input('note');
                 $addressType->save();

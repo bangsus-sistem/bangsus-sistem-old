@@ -18,7 +18,6 @@ class AmendTask extends Task
             function () use ($request, $division) {
                 $division->code = $request->input('code');
                 $division->name = $request->input('name');
-                $division->required = $request->boolean('required');
                 $division->description = $request->input('description');
                 $division->note = $request->input('note');
                 $division->save();

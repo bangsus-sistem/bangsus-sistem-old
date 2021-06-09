@@ -18,7 +18,6 @@ class AmendTask extends Task
             function () use ($request, $attendanceType) {
                 $attendanceType->code = $request->input('code');
                 $attendanceType->name = $request->input('name');
-                $attendanceType->required = $request->boolean('required');
                 $attendanceType->description = $request->input('description');
                 $attendanceType->note = $request->input('note');
                 $attendanceType->save();
