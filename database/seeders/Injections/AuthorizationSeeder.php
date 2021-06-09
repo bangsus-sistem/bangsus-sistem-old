@@ -134,6 +134,26 @@ class AuthorizationSeeder extends Seeder
                     'name' => 'Tipe Foto Karyawan',
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
+                [
+                    'ref' => 'gender',
+                    'name' => 'Gender',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'division',
+                    'name' => 'Divisi',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'job_title',
+                    'name' => 'Jabatan',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'attendance_type',
+                    'name' => 'Tipe Absensi',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
             ],
             'widgets' => [],
             'reports' => [],
