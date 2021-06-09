@@ -19,7 +19,6 @@ class CreateJobTitles extends Migration
             $table->name();
             $table->division();
             $table->active();
-            $table->required();
             $table->description();
             $table->note();
             $table->userTimestamps();

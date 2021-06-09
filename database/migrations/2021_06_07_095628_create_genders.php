@@ -18,7 +18,6 @@ class CreateGenders extends Migration
             $table->code();
             $table->name();
             $table->active();
-            $table->required();
             $table->description();
             $table->note();
             $table->userTimestamps();
