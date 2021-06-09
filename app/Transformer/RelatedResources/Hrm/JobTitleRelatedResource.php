@@ -4,6 +4,7 @@ namespace App\Transformer\RelatedResources\Hrm;
 
 use App\Foundation\Transformer\RelatedResource;
 use App\Transformer\SingleResources\Auth\UserSingleResource;
+use App\Transformer\SingleResources\Hrm\DivisionSingleResource;
 
 class JobTitleRelatedResource extends RelatedResource
 {
@@ -17,6 +18,7 @@ class JobTitleRelatedResource extends RelatedResource
             'id' => $this->id,
             'code' => $this->code,
             'name' => $this->name,
+            'division' => new DivisionSingleResource($this->division),
             'active' => (bool) $this->active,
             'description' => $this->description,
             'note' => $this->note,

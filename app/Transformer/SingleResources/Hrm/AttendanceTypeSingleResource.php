@@ -17,7 +17,6 @@ class AttendanceTypeSingleResource extends SingleResource
             'code' => $this->code,
             'name' => $this->name,
             'active' => (bool) $this->active,
-            'required' => (bool) $this->required,
             'user_create_id' => $this->user_create_id,
             'user_update_id' => $this->user_update_id,
             'user_delete_id' => $this->user_delete_id,

@@ -5,7 +5,7 @@ namespace App\Transformer\RelatedResources\Hrm;
 use App\Foundation\Transformer\RelatedResource;
 use App\Transformer\SingleResources\Auth\UserSingleResource;
 
-class GenderTypeRelatedResource extends RelatedResource
+class GenderRelatedResource extends RelatedResource
 {
     /**
      * @param  \Illuminate\Http\Request  $request
