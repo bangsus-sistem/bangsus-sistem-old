@@ -149,6 +149,38 @@ export default {
                                 actionRef: 'index',
                             },
                         },
+                        {
+                            title: 'Jenis Kelamin',
+                            route: { name: 'hrm.gender' },
+                            access: {
+                                moduleRef: 'gender',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Divisi',
+                            route: { name: 'hrm.division' },
+                            access: {
+                                moduleRef: 'division',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Jabatan',
+                            route: { name: 'hrm.jobTitle' },
+                            access: {
+                                moduleRef: 'job_title',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Tipe Absensi',
+                            route: { name: 'hrm.attendanceType' },
+                            access: {
+                                moduleRef: 'attendance_type',
+                                actionRef: 'index',
+                            },
+                        },
                     ],
                     collapse: false,
                 },
