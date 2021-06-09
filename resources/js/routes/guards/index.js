@@ -11,8 +11,15 @@ const guards = {
     authenticated: (to, from, next) => {
         axios.get('/ajax/utils/authenticated')
             .then(res => {
-                if (res.data['logged_in']) next()
-                else next({ name: 'login' })
+                if (res.data['logged_in']) {
+                    next()
+                } else {
+                    store.dispatch('utils/flashers/addFlasher', {
+                        color: 'danger',
+                        content: 'Anda harus login terlebih dahulu',
+                    })
+                    next({ name: 'login' })
+                }
             })
             .catch(err => {
                 
