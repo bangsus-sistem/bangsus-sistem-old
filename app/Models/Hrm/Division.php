@@ -12,7 +12,7 @@ use App\Models\Concerns\{
     ActiveFlag,
 };
 
-class Divison extends Model
+class Division extends Model
 {
     use SoftDeletes, HasUserTimestamps, HasUserDelete, ActiveFlag;
 
