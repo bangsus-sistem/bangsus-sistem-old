@@ -1,6 +1,6 @@
 <template>
     <fragment>
-        <h3>Tipe Kontak</h3>
+        <h3>Tipe Alamat</h3>
         <bsb-card class="my-3">
             <bsb-card-body-spinner-error
                 :loading="state.page.loading"
@@ -17,7 +17,7 @@
                     </bsb-table-responsive-header>
                     <bsb-table :hover="true">
                         <thead class="thead-light">
-                            <ContactTypeDataQuery
+                            <AddressTypeDataQuery
                                 :loading="state.result.loading"
                                 @search="search"
                                 v-model="query"
@@ -31,7 +31,7 @@
                             />
                         </thead>
                         <bsb-tbody-empty :items="result.items" :col="meta.sortOrders.length">
-                            <ContactTypeDataRow
+                            <AddressTypeDataRow
                                 v-for="(item, i) in result.items"
                                 :key="i"
                                 :num="i + 1"
@@ -54,18 +54,18 @@
             </bsb-card-body-spinner-error>
         </bsb-card>
         <!-- Modal Form -->
-        <ContactTypeModalForms ref="addressType" @success="search" />
+        <AddressTypeModalForms ref="addressType" @success="search" />
     </fragment>
 </template>
 
 <script>
 import mixin from './mixin'
-import ContactTypeDataQuery from './DataQuery'
-import ContactTypeDataRow from './DataRow'
-import ContactTypeModalForms from './ModalForms'
+import AddressTypeDataQuery from './DataQuery'
+import AddressTypeDataRow from './DataRow'
+import AddressTypeModalForms from './ModalForms'
 
 export default {
     mixins: [mixin],
-    components: { ContactTypeDataQuery, ContactTypeDataRow, ContactTypeModalForms },
+    components: { AddressTypeDataQuery, AddressTypeDataRow, AddressTypeModalForms },
 }
 </script>

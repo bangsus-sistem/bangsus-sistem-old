@@ -1,5 +1,5 @@
 <template>
-    <Layout :breadcrumbs="msc.breadcrumbs" active="system.role">
+    <Layout :breadcrumbs="msc.breadcrumbs" active="system.user">
         <!-- Mobile -->
         <template v-slot:mobile>
             <Mobile />
