@@ -17,6 +17,15 @@ class DataSeeder extends Seeder
             Data\BranchTypeSeeder::class,
             Data\BranchSeeder::class,
             Data\RoleSeeder::class,
+            // Data\UserSeeder::class,
+            Data\UnitSeeder::class,
+            Data\ContactTypeSeeder::class,
+            Data\AddressTypeSeeder::class,
+            Data\EmployeePhotoTypeSeeder::class,
+            Data\BloodTypeSeeder::class,
+            Data\AttendanceTypeSeeder::class,
+            Data\DivisionSeeder::class,
+            Data\JobTitleSeeder::class,
         ]);
     }
 }
