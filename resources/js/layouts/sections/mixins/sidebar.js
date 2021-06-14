@@ -158,6 +158,14 @@ export default {
                             },
                         },
                         {
+                            title: 'Golongan Darah',
+                            route: { name: 'hrm.bloodType' },
+                            access: {
+                                moduleRef: 'blood_type',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
                             title: 'Divisi',
                             route: { name: 'hrm.division' },
                             access: {
@@ -178,6 +186,14 @@ export default {
                             route: { name: 'hrm.attendanceType' },
                             access: {
                                 moduleRef: 'attendance_type',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Karyawan',
+                            route: { name: 'hrm.employee' },
+                            access: {
+                                moduleRef: 'employee',
                                 actionRef: 'index',
                             },
                         },
