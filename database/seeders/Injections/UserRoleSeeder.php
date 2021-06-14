@@ -47,33 +47,6 @@ class UserRoleSeeder extends Seeder
             'user_create_id' => 1,
             'created_at' => Carbon::now(),
         ]);
-        \DB::table('branch_types')->insert([
-            'id' => 1,
-            'code' => 'HG',
-            'name' => 'Kantor Pusat',
-            'active' => true,
-            'locked' => true,
-            'hidden' => true,
-            'description' => 'Tipe Cabang Kantor Pusat.',
-            'note' => 'Tidak bisa diubah ataupun dihapus.',
-            'user_create_id' => 1,
-            'created_at' => Carbon::now(),
-        ]);
-        \DB::table('branches')->insert([
-            'id' => 1,
-            'code' => 'HG001',
-            'name' => 'Kantor Pusat',
-            'branch_type_id' => 1,
-            'active' => true,
-            'locked' => true,
-            'hidden' => true,
-            'description' => 'Cabang Kantor Pusat.',
-            'note' => 'Tidak bisa diubah ataupun dihapus.',
-            'user_create_id' => 1,
-            'created_at' => Carbon::now(),
-        ]);
-        \DB::statement('insert into branch_user select id, 1 from branches');
-
         \DB::table('roles')->where('id', 1)->update([
             'user_create_id' => 1,
         ]);
