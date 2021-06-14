@@ -21,8 +21,8 @@ class CodeIsUniqueRule extends RequestRule implements Rule
         $branchType = BranchType::find($this->request->input('branch_type_id'));
         $code = $branchType->code . $value;
 
-        if ( ! Branch::where('code', $code)->exists()) {
-            $this->setMessage('Kode Cabang sudah dipakai.' .);
+        if (Branch::where('code', $code)->exists()) {
+            $this->setMessage('Kode Cabang sudah dipakai.');
             return false;
         }
 
