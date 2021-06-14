@@ -83,10 +83,14 @@ export default {
     },
     computed: {
         leftRangeLimit() {
-            return Math.ceil(this.boxes / 2)
+            return this.lastPage > this.boxes
+                ?   Math.ceil(this.boxes / 2)
+                :   this.boxes
         },
         rightRangeLimit() {
-            return this.lastPage - Math.floor(this.boxes / 2)
+            return this.lastPage > this.boxes
+                ?   this.lastPage - Math.floor(this.boxes / 2)
+                :   this.boxes
         },
         leftRangeMeta() {
             return {

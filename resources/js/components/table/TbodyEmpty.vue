@@ -13,6 +13,9 @@
 import Td from './Td'
 
 export default {
+    components: {
+        Td,
+    },
     props: {
         items: {
             default() {
