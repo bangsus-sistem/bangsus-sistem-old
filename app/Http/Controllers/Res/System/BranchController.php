@@ -23,12 +23,17 @@ use App\Transformer\RelatedResources\System\BranchRelatedResource;
 class BranchController extends Controller
 {
     /**
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function manifest()
     {
         return response()->json(
-            new BranchSingleCollection(Branch::all()),
+            new BranchSingleCollection(
+                $request->boolean('authorized')
+                    ?   Branch::all()
+                    :   Branch::userAuthorized()->get()
+            ),
             200
         );
     }
@@ -49,6 +54,7 @@ class BranchController extends Controller
                         ->index('active')->mode('boolean')
                         ->done()
                 )
+                    ->userAuthorized()
                     ->orderBy($request->input('sort'), $request->input('order'))
                     ->paginate($request->input('count'))
             ),
