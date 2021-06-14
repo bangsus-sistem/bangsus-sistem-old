@@ -237,6 +237,16 @@ class BranchSeeder extends Seeder
                         'branch_type_id' => 5,
                     ],
                     [
+                        'code' => '101',
+                        'name' => 'Bangsus Sayur Koala',
+                        'branch_type_id' => 5,
+                    ],
+                    [
+                        'code' => '102',
+                        'name' => 'Bangsus Sayur Semolowaru',
+                        'branch_type_id' => 5,
+                    ],
+                    [
                         'code' => '100',
                         'name' => 'Udonkobe Pusat',
                         'branch_type_id' => 6,
@@ -264,6 +274,7 @@ class BranchSeeder extends Seeder
                 ]
             )
         );
+        \DB::statement('insert into branch_user select id, 1 from branches');
     }
 
     /**
@@ -283,6 +294,10 @@ class BranchSeeder extends Seeder
                 'name' => $branch['name'],
                 'branch_type_id' => $branchType->id,
                 'active' => $branch['active'] ?? true,
+                'locked' => false,
+                'hidden' => false,
+                'description' => '',
+                'note' => '',
                 'user_create_id' => 1,
                 'created_at' => now(),
             ];
