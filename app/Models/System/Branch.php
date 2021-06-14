@@ -14,6 +14,7 @@ use App\Models\Concerns\{
     LockedFlag,
 };
 use App\Models\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class Branch extends Model
 {
@@ -34,5 +35,14 @@ class Branch extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    /**
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUserAuthorized($query)
+    {
+        return $query->whereIn('id', Auth::user()->branches->pluck('id')->all());
     }
 }
