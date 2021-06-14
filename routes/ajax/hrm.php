@@ -78,3 +78,14 @@ Route::prefix('gender')->group(function () {
     Route::patch('deactivate', 'GenderController@reviseDeactivate');
     Route::delete('', 'GenderController@destroy');
 });
+
+Route::prefix('blood_type')->group(function () {
+    Route::get('all', 'BloodTypeController@manifest');
+    Route::get('', 'BloodTypeController@index');
+    Route::get('{id}', 'BloodTypeController@show');
+    Route::post('', 'BloodTypeController@store');
+    Route::put('', 'BloodTypeController@amend');
+    Route::patch('activate', 'BloodTypeController@reviseActivate');
+    Route::patch('deactivate', 'BloodTypeController@reviseDeactivate');
+    Route::delete('', 'BloodTypeController@destroy');
+});
