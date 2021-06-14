@@ -34,9 +34,12 @@ class BranchObserver extends Observer
      * @param  \App\Models\System\Branch  $branch
      * @return void
      */
-    public function saved(Branch $branch)
+    public static function saved(Branch $branch)
     {
-        $branch->users()->sync(User::where('all_branches')->get()->pluck('id')->all());
+        $branch->users()
+            ->sync(
+                User::where('all_branches', true)->get()->pluck('id')->all()
+            );
     }
     
     /**
