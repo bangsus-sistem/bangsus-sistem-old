@@ -15,6 +15,7 @@ class AuthorizationSeeder extends Seeder
         ['ref' => 'read', 'name' => 'Read'],
         ['ref' => 'update', 'name' => 'Update'],
         ['ref' => 'post', 'name' => 'Post'],
+        ['ref' => 'admit', 'name' => 'Admit'],
         ['ref' => 'delete', 'name' => 'Delete'],
     ];
 
@@ -153,6 +154,26 @@ class AuthorizationSeeder extends Seeder
                     'ref' => 'attendance_type',
                     'name' => 'Tipe Absensi',
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'blood_type',
+                    'name' => 'Golongan Darah',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'employee',
+                    'name' => 'Karyawan',
+                    'actions' => ['index', 'create', 'read', 'update', 'admit', 'delete'],
+                ],
+                [
+                    'ref' => 'employee_assignment',
+                    'name' => 'Penugasan Karyawan',
+                    'actions' => ['index', 'create', 'read', 'update', 'admit', 'delete'],
+                ],
+                [
+                    'ref' => 'employee_mutation',
+                    'name' => 'Mutasi Karyawan',
+                    'actions' => ['index', 'create', 'read', 'update', 'admit', 'delete'],
                 ],
             ],
             'widgets' => [],

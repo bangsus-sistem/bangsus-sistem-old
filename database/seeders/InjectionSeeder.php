@@ -18,6 +18,7 @@ class InjectionSeeder extends Seeder
                 Injections\AuthorizationSeeder::class,
                 Injections\UserRoleSeeder::class,
                 Injections\ApiSeeder::class,
+                Injections\GenderSeeder::class,
             ]);
         });
     }
