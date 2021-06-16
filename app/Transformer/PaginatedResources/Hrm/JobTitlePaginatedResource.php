@@ -3,7 +3,6 @@
 namespace App\Transformer\PaginatedResources\Hrm;
 
 use App\Foundation\Transformer\PaginatedResource;
-use App\Transformer\SingleResources\Hrm\DivisionSingleResource;
 
 class JobTitlePaginatedResource extends PaginatedResource
 {
@@ -17,7 +16,7 @@ class JobTitlePaginatedResource extends PaginatedResource
             'id' => $this->id,
             'code' => $this->code,
             'name' => $this->name,
-            'division' => new DivisionSingleResource($this->division),
+            'division' => new DivisionPaginatedResource($this->division),
             'active' => (bool) $this->active,
         ];
     }

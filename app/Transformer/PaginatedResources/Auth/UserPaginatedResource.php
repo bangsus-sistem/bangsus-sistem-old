@@ -3,7 +3,6 @@
 namespace App\Transformer\PaginatedResources\Auth;
 
 use App\Foundation\Transformer\PaginatedResource;
-use App\Transformer\SingleResources\Auth\RoleSingleResource;
 
 class UserPaginatedResource extends PaginatedResource
 {
@@ -17,7 +16,7 @@ class UserPaginatedResource extends PaginatedResource
             'id' => $this->id,
             'username' => $this->username,
             'full_name' => $this->full_name,
-            'role' => new RoleSingleResource($this->role),
+            'role' => new RolePaginatedResource($this->role),
             'active' => (bool) $this->active,
             'locked' => (bool) $this->locked,
             'hidden' => (bool) $this->hidden,
