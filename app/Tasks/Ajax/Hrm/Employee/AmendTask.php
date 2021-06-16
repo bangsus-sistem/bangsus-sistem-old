@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tasks\Res\Hrm\Employee;
+namespace App\Tasks\Ajax\Hrm\Employee;
 
 use App\Foundation\Task;
 use App\Models\Hrm\{
@@ -9,17 +9,16 @@ use App\Models\Hrm\{
     EmployeeContact,
     EmployeePhoto,
 };
-use App\Models\Auth\Feature;
 
-class StoreTask extends Task
+class AmendTask extends Task
 {
     /**
-     * @param  \App\Http\Requests\Res\Hrm\Employee\StoreRequest  $request
+     * @param  \App\Http\Requests\Ajax\Hrm\Employee\AmendRequest  $request
      * @return \App\Models\Hrm\Employee
      */
     public function handle($request)
     {
-        $employee = new Employee;
+        $employee = Employee::findOrFail($request->input('id'));
         $this->transaction(
             function () use ($request, $employee) {
                 $employee->nik = $request->input('nik');
@@ -37,7 +36,9 @@ class StoreTask extends Task
 
                 foreach ($request->input('employee_addresses') as $employeeAddressInput) {
                     $employeeAddressInput = (object) $employeeAddressInput;
-                    $employeeAddress = new EmployeeAddress;
+                    $employeeAddress = is_null($employeeAddressInput->id)
+                        ?   new EmployeeAddress
+                        :   EmployeeAddress::findOrFail($employeeAddressInput->id);
                     $employeeAddress->employee_id = $employee->id;
                     $employeeAddress->address_type_id = $employeeAddressInput->employee_address_type_id;
                     $employeeAddress->address = $employeeAddressInput->address;
@@ -48,7 +49,9 @@ class StoreTask extends Task
 
                 foreach ($request->input('employee_contacts') as $employeeContactInput) {
                     $employeeContactInput = (object) $employeeContactInput;
-                    $employeeContact = new EmployeeContact;
+                    $employeeContact = is_null($employeeContactInput->id)
+                        ?   new EmployeeContact
+                        :   EmployeeContact::findOrFail($employeeContactInput->id);
                     $employeeContact->employee_id = $employee->id;
                     $employeeContact->contact_type_id = $employeeContactInput->employee_contact_type_id;
                     $employeeContact->contact = $employeeContactInput->contact;
@@ -59,7 +62,9 @@ class StoreTask extends Task
 
                 foreach ($request->input('employee_photos') as $employeePhotoInput) {
                     $employeePhotoInput = (object) $employeePhotoInput;
-                    $employeePhoto = new EmployeePhoto;
+                    $employeePhoto = is_null($employeePhotoInput->id)
+                        ?   new EmployeePhoto
+                        :   EmployeePhoto::findOrFail($employeePhotoInput->id);
                     $employeePhoto->employee_id = $employee->id;
                     $employeePhoto->employee_photo_type_id = $employeePhotoInput->employee_employee_photo_type_id;
                     $employeePhoto->image_id = $employeePhotoInput->image_id;
@@ -67,9 +72,6 @@ class StoreTask extends Task
                     $employeePhoto->note = '';
                     $employeePhoto->save();
                 }
-
-                if (Feature::getAuthorization(['module' => 'employee', 'action' => 'admit']))
-                    $employee->admit();
             }
         );
 
