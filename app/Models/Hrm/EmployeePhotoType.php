@@ -15,4 +15,12 @@ use App\Models\Concerns\{
 class EmployeePhotoType extends Model
 {
     use SoftDeletes, HasUserTimestamps, HasUserDelete, ActiveFlag;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function employeePhotos()
+    {
+        return $this->hasMany(EmployeePhoto::class);
+    }
 }

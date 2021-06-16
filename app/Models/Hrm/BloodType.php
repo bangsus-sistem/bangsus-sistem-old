@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\{
 use App\Models\Concerns\{
     HasUserTimestamps,
     HasUserDelete,
+    HasManyEmployee,
     ActiveFlag,
 };
 
 class BloodType extends Model
 {
-    use SoftDeletes, HasUserTimestamps, HasUserDelete, ActiveFlag;
+    use SoftDeletes, HasUserTimestamps, HasUserDelete, ActiveFlag,
+        HasManyEmployee;
 }

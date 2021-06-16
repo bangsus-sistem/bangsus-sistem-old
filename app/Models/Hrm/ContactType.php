@@ -15,4 +15,12 @@ use App\Models\Concerns\{
 class ContactType extends Model
 {
     use SoftDeletes, HasUserTimestamps, HasUserDelete, ActiveFlag;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function employeeContacts()
+    {
+        return $this->hasMany(EmployeeContact::class);
+    }
 }

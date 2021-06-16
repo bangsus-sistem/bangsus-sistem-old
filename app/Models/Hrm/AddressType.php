@@ -15,4 +15,12 @@ use App\Models\Concerns\{
 class AddressType extends Model
 {
     use SoftDeletes, HasUserTimestamps, HasUserDelete, ActiveFlag;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function employeeAddresses()
+    {
+        return $this->hasMany(EmployeeAddress::class);
+    }
 }

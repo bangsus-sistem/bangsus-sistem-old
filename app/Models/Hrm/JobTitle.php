@@ -23,4 +23,12 @@ class JobTitle extends Model
     {
         return $this->belongsTo(Division::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function employeeMutations()
+    {
+        return $this->hasMany(EmployeeMutation::class);
+    }
 }
