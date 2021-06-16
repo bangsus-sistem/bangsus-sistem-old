@@ -12,5 +12,6 @@ class Kernel
         \App\Models\Auth\User::class => Auth\UserObserver::class,
         \App\Models\System\Branch::class => System\BranchObserver::class,
         \App\Models\System\BranchType::class => System\BranchTypeObserver::class,
+        \App\Models\Hrm\Employee::class => Hrm\EmployeeObserver::class,
     ];
 }
