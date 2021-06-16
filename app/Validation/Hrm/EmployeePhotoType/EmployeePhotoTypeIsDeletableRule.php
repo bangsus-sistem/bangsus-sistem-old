@@ -18,10 +18,10 @@ class EmployeePhotoTypeIsDeletableRule extends RequestRule implements Rule
         $employeePhotoType = EmployeePhotoType::findOrFail(
             $this->request->input('id')
         );
-        // if ($employeePhotoType->items()->exists()) {
-        //     $this->setMessage('');
-        //     return false;
-        // }
+        if ($employeePhotoType->employeePhotos()->exists()) {
+            $this->setMessage('Tipe Foto Karyawan sudah dipakai.');
+            return false;
+        }
 
         return true;
     }

@@ -16,10 +16,10 @@ class JobTitleIsDeletableRule extends RequestRule implements Rule
     public function passes($attribute, $value)
     {
         $jobTitle = JobTitle::findOrFail($this->request->input('id'));
-        // if ($jobTitle->items()->exists()) {
-        //     $this->setMessage('');
-        //     return false;
-        // }
+        if ($jobTitle->employeeMutations()->exists()) {
+            $this->setMessage('Jabatan sudah dipakai.');
+            return false;
+        }
 
         return true;
     }

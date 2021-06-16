@@ -16,10 +16,10 @@ class DivisionIsDeletableRule extends RequestRule implements Rule
     public function passes($attribute, $value)
     {
         $division = Division::findOrFail($this->request->input('id'));
-        // if ($division->items()->exists()) {
-        //     $this->setMessage('');
-        //     return false;
-        // }
+        if ($division->jobTitles()->exists()) {
+            $this->setMessage('Divisi sudah dipakai.');
+            return false;
+        }
 
         return true;
     }

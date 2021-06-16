@@ -18,10 +18,10 @@ class ContactTypeIsDeletableRule extends RequestRule implements Rule
         $contactType = ContactType::findOrFail(
             $this->request->input('id')
         );
-        // if ($contactType->items()->exists()) {
-        //     $this->setMessage('');
-        //     return false;
-        // }
+        if ($contactType->employeeContacts()->exists()) {
+            $this->setMessage('Tipe Kontak sudah dipakai.');
+            return false;
+        }
 
         return true;
     }

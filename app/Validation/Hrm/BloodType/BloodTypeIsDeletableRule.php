@@ -18,10 +18,10 @@ class BloodTypeIsDeletableRule extends RequestRule implements Rule
         $bloodType = BloodType::findOrFail(
             $this->request->input('id')
         );
-        // if ($bloodType->items()->exists()) {
-        //     $this->setMessage('');
-        //     return false;
-        // }
+        if ($bloodType->employees()->exists()) {
+            $this->setMessage('Golongan Darah sudah dipakai.');
+            return false;
+        }
 
         return true;
     }

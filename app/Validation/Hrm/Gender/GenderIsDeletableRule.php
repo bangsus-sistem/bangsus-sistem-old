@@ -16,10 +16,10 @@ class GenderIsDeletableRule extends RequestRule implements Rule
     public function passes($attribute, $value)
     {
         $gender = Gender::findOrFail($this->request->input('id'));
-        // if ($gender->items()->exists()) {
-        //     $this->setMessage('');
-        //     return false;
-        // }
+        if ($gender->employees()->exists()) {
+            $this->setMessage('Jenis Kelamin sudah dipakai.');
+            return false;
+        }
 
         return true;
     }

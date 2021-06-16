@@ -18,10 +18,10 @@ class AddressTypeIsDeletableRule extends RequestRule implements Rule
         $addressType = AddressType::findOrFail(
             $this->request->input('id')
         );
-        // if ($addressType->items()->exists()) {
-        //     $this->setMessage('');
-        //     return false;
-        // }
+        if ($addressType->employeeAddresses()->exists()) {
+            $this->setMessage('Tipe Alamat sudah dipakai.');
+            return false;
+        }
 
         return true;
     }
