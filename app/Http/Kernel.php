@@ -39,6 +39,9 @@ class Kernel extends HttpKernel
             \App\Foundation\Http\Middleware\ForceAcceptJson::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'storage' => [
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
 
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
