@@ -1,8 +1,8 @@
 <?php
 
-namespace Waffleboss\Library\Http\Requests\Ajax\Log\AuthenticationLog;
+namespace App\Http\Requests\Ajax\Log\AuthenticationLog;
 
-use Waffleboss\Foundation\Http\FormRequest;
+use App\Foundation\Http\FormRequest;
 
 class StoreAuthenticationTokenRequest extends FormRequest
 {
