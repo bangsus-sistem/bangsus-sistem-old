@@ -166,12 +166,6 @@ return [
          * Package Service Providers...
          */
 
-        /**
-         * Foundation Service Providers...
-         */
-        App\Foundation\Providers\MacroServiceProvider::class,
-        App\Foundation\Providers\ObserverServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
