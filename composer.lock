@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08cbbdc67563de444e44a719e68b0403",
+    "content-hash": "75cd2855ef9a968f6c23a97735140541",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -894,16 +894,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.29.0",
+            "version": "v8.47.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d2eba352b3b3a3c515b18c5726b373fe5026733e"
+                "reference": "93db226946453f4285558b7c3166ddb6e7ea5400"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d2eba352b3b3a3c515b18c5726b373fe5026733e",
-                "reference": "d2eba352b3b3a3c515b18c5726b373fe5026733e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/93db226946453f4285558b7c3166ddb6e7ea5400",
+                "reference": "93db226946453f4285558b7c3166ddb6e7ea5400",
                 "shasum": ""
             },
             "require": {
@@ -985,7 +985,7 @@
                 "orchestra/testbench-core": "^6.8",
                 "pda/pheanstalk": "^4.0",
                 "phpunit/phpunit": "^8.5.8|^9.3.3",
-                "predis/predis": "^1.1.1",
+                "predis/predis": "^1.1.2",
                 "symfony/cache": "^5.1.4"
             },
             "suggest": {
@@ -1011,7 +1011,7 @@
                 "phpunit/phpunit": "Required to use assertions and run tests (^8.5.8|^9.3.3).",
                 "predis/predis": "Required to use the predis connector (^1.1.2).",
                 "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0).",
-                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0|^5.0).",
+                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0|^5.0|^6.0).",
                 "symfony/cache": "Required to PSR-6 cache bridge (^5.1.4).",
                 "symfony/filesystem": "Required to enable support for relative symbolic links (^5.1.4).",
                 "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0).",
@@ -1058,7 +1058,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-02-23T14:27:41+00:00"
+            "time": "2021-06-15T14:00:32+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -4933,6 +4933,163 @@
             "time": "2020-11-12T00:07:28+00:00"
         },
         {
+            "name": "waffleboss/class-mapper",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/waffleboss/class-mapper.git",
+                "reference": "c5f698c6231e8bb9f6e29d9071f14716222279fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/waffleboss/class-mapper/zipball/c5f698c6231e8bb9f6e29d9071f14716222279fe",
+                "reference": "c5f698c6231e8bb9f6e29d9071f14716222279fe",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0",
+                "waffleboss/foundation": "dev-main",
+                "waffleboss/library": "dev-main"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Waffleboss\\ClassMapper\\Providers\\ClassMapperServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Waffleboss\\ClassMapper\\": "src/"
+                },
+                "files": [
+                    "helpers/class_mapper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Lam",
+                    "email": "agustinus.michael29@gmail.com"
+                }
+            ],
+            "description": "Waffleboss ERP class mapper for library.",
+            "support": {
+                "issues": "https://github.com/waffleboss/class-mapper/issues",
+                "source": "https://github.com/waffleboss/class-mapper/tree/main"
+            },
+            "time": "2021-06-23T04:22:17+00:00"
+        },
+        {
+            "name": "waffleboss/foundation",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/waffleboss/foundation.git",
+                "reference": "51df87846bfaa2872375789c8a8237ae70b01b09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/waffleboss/foundation/zipball/51df87846bfaa2872375789c8a8237ae70b01b09",
+                "reference": "51df87846bfaa2872375789c8a8237ae70b01b09",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0",
+                "php": "^7.3|^8.0",
+                "waffleboss/library": "dev-main"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Waffleboss\\Foundation\\Providers\\FoundationServiceProvider",
+                        "Waffleboss\\Foundation\\Providers\\MacroServiceProvider",
+                        "Waffleboss\\Foundation\\Providers\\ObserverServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Waffleboss\\Foundation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Lam",
+                    "email": "agustinus.michael29@gmail.com"
+                }
+            ],
+            "description": "Waffleboss ERP Foundation package.",
+            "support": {
+                "issues": "https://github.com/waffleboss/foundation/issues",
+                "source": "https://github.com/waffleboss/foundation/tree/main"
+            },
+            "time": "2021-06-23T04:13:05+00:00"
+        },
+        {
+            "name": "waffleboss/library",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/waffleboss/library.git",
+                "reference": "c6b4767dd100d40e378483dd96ae88e9413bbfc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/waffleboss/library/zipball/c6b4767dd100d40e378483dd96ae88e9413bbfc5",
+                "reference": "c6b4767dd100d40e378483dd96ae88e9413bbfc5",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/sanctum": "^2.9",
+                "php": "^7.3|^8.0",
+                "waffleboss/class-mapper": "dev-main",
+                "waffleboss/foundation": "dev-main"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Waffleboss\\Library\\Providers\\LibraryServiceProvider",
+                        "Waffleboss\\Library\\Providers\\RouteServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Waffleboss\\Library\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Lam",
+                    "email": "agustinus.michael29@gmail.com"
+                }
+            ],
+            "description": "Waffleboss ERP standard library package.",
+            "support": {
+                "issues": "https://github.com/waffleboss/library/issues",
+                "source": "https://github.com/waffleboss/library/tree/main"
+            },
+            "time": "2021-06-23T07:39:50+00:00"
+        },
+        {
             "name": "webmozart/assert",
             "version": "1.9.1",
             "source": {
@@ -7477,7 +7634,11 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "waffleboss/class-mapper": 20,
+        "waffleboss/foundation": 20,
+        "waffleboss/library": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
