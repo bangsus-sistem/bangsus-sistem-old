@@ -2,7 +2,7 @@
 
 namespace App\Macro\Blueprint\Foreign;
 
-use App\Foundation\Macro\BlueprintContract;
+use Waffleboss\Foundation\Macro\BlueprintContract;
 use Closure;
 
 class EmployeeBlueprint implements BlueprintContract

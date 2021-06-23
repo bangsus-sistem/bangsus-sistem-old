@@ -2,7 +2,7 @@
 
 namespace App\Macro\Blueprint\Date;
 
-use App\Foundation\Macro\BlueprintContract;
+use Waffleboss\Foundation\Macro\BlueprintContract;
 use Closure;
 
 class StartDateBlueprint implements BlueprintContract
