@@ -25,7 +25,6 @@ class Kernel
         'employeePhotoType' => Blueprint\Foreign\EmployeePhotoTypeBlueprint::class,
         'entryPoint' => Blueprint\Foreign\EntryPointBlueprint::class,
         'gender' => Blueprint\Foreign\GenderBlueprint::class,
-        'image' => Blueprint\Foreign\ImageBlueprint::class,
         'jobTitle' => Blueprint\Foreign\JobTitleBlueprint::class,
         'userAdmit' => Blueprint\Foreign\UserAdmitBlueprint::class,
         // String macro.
