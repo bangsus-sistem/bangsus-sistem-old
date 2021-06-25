@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Foundation\Http\Controller;
+use Waffleboss\Foundation\Http\Controller;
 
 class AppController extends Controller
 {

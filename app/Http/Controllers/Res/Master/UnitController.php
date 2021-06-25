@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Res\Master;
 
-use App\Foundation\Http\Controller;
+use Waffleboss\Foundation\Http\Controller;
 use App\Http\Requests\Res\Master\Unit\{
     IndexRequest,
     ShowRequest,

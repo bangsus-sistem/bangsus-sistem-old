@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Res\Hrm;
+namespace App\Http\Controllers\Storage;
 
-use App\Foundation\Http\Controller;
+use Waffleboss\Foundation\Http\Controller;
 use Illuminate\Http\Request;
 use App\Models\Storage\File;
 use Illuminate\Support\Facades\Storage;
