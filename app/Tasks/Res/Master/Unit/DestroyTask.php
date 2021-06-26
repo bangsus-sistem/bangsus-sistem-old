@@ -2,7 +2,7 @@
 
 namespace App\Tasks\Res\Master\Unit;
 
-use App\Foundation\Task;
+use Waffleboss\Foundation\Task;
 use App\Models\Master\Unit;
 
 class DestroyTask extends Task
