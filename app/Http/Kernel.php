@@ -21,7 +21,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         // \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Foundation\Http\Middleware\ForceSecureConnection::class,
+        \Waffleboss\Foundation\Http\Middleware\ForceSecureConnection::class,
     ];
 
     /**
@@ -36,7 +36,7 @@ class Kernel extends HttpKernel
         ],
         'api' => [
             'throttle:api',
-            \App\Foundation\Http\Middleware\ForceAcceptJson::class,
+            \Waffleboss\Foundation\Http\Middleware\ForceAcceptJson::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
         'storage' => [
