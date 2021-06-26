@@ -38,19 +38,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::prefix('ajax')
-                ->middleware('ajax')
-                ->namespace($this->namespace.'\Ajax')
-                ->group(base_path('routes/ajax/index.php'));
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace.'\Api')
-                ->group(base_path('routes/api/index.php'));
-            Route::prefix('storage')
-                ->middleware('storage')
-                ->namespace($this->namespace.'\Storage')
-                ->group(base_path('routes/storage/index.php'));
-
             Route::middleware('web')
                 ->namespace($this->namespace.'\Web')
                 ->group(base_path('routes/web.php'));
