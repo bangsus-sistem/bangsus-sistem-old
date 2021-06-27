@@ -2,15 +2,15 @@
 
 return [
     'auth' => [
-        'role' => \Waffleboss\Library\Models\Auth\Role::class,
-        'user' => \Waffleboss\Library\Models\Auth\User::class,
+        'role' => \Waffleboss\Library\Observers\Auth\RoleObserver::class,
+        'user' => \Waffleboss\Library\Observers\Auth\UserObserver::class,
     ],
     'system' => [
-        'branch_type' => \Waffleboss\Library\Models\System\BranchType::class,
-        'branch' => \Waffleboss\Library\Models\System\Branch::class,
+        'branch_type' => \Waffleboss\Library\Observers\System\BranchTypeObserver::class,
+        'branch' => \Waffleboss\Library\Observers\System\BranchObserver::class,
     ],
     'hrm' => [
-        'employee' => \Waffleboss\Library\Models\Hrm\Employee::class,
-        'employee_assignment' => \Waffleboss\Library\Models\Hrm\EmployeeAssignment::class,
+        'employee' => \Waffleboss\Library\Observers\Hrm\EmployeeObserver::class,
+        'employee_assignment' => \Waffleboss\Library\Observers\Hrm\EmployeeAssignmentObserver::class,
     ],
 ];
