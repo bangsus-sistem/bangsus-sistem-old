@@ -5,9 +5,10 @@ namespace App\Observers;
 class Kernel
 {
     /**
-     * @var array
+     * @return array
      */
-    public static $observers = [
-        \App\Models\Hrm\Employee::class => Hrm\EmployeeObserver::class,
-    ];
+    public static function observers()
+    {
+        return [];
+    }
 }
