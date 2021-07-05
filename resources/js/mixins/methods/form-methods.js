@@ -108,33 +108,35 @@ const formMethods = {
                 if (Array.isArray(deepGetter(errors, index))) {
                     
                     deepGetter(errors, index).forEach((error, key) => {
-                        if (typeof error === 'string') {
+                        // if (typeof error === 'string') {
                             deepSetter(this.form.errors, index, deepGetter(errors, index))
-                        } else {
-                            // This algorithm is to prevent nested key on loop
-                            // such as #{...}.0.1.2.3
+                        // }
+                        // else {
+                        //     console.log('it goes here', key)
+                        //     // This algorithm is to prevent nested key on loop
+                        //     // such as #{...}.0.1.2.3
 
-                            // Split the index
-                            let indexes = index.split('.')
-                            let newIndex = ''
+                        //     // Split the index
+                        //     let indexes = index.split('.')
+                        //     let newIndex = ''
 
-                            // And with this subroutine we simply remove the latest
-                            // index from exploded index by dot.
-                            indexes.forEach((index, i) => {
-                                if (indexes.length == 1) {
-                                    newIndex += index
-                                    return
-                                } else {
-                                    if (i == indexes.length - 1) return
-                                    if (i != 0) newIndex += '.'
-                                    newIndex += index
-                                }
-                            })
+                        //     // And with this subroutine we simply remove the latest
+                        //     // index from exploded index by dot.
+                        //     indexes.forEach((index, i) => {
+                        //         if (indexes.length == 1) {
+                        //             newIndex += index
+                        //             return
+                        //         } else {
+                        //             if (i == indexes.length - 1) return
+                        //             if (i != 0) newIndex += '.'
+                        //             newIndex += index
+                        //         }
+                        //     })
 
-                            // Then we concatenate it with a new key.
-                            index = newIndex + '.' + key
-                            resetter(index)
-                        }
+                        //     // Then we concatenate it with a new key.
+                        //     index = newIndex + '.' + key
+                        //     resetter(index)
+                        // }
                     })
                 } else {
                     resetter(index)
@@ -200,33 +202,34 @@ const formMethods = {
                     // Else, it must contains objects
                     else {
                         deepGetter(this.form.errors, index).forEach((error, key) => {
-                            if (typeof error === 'string') {
+                            // if (typeof error === 'string') {
                                 deepSplice(this.form.errors, index, key)
-                            } else {
-                                // This algorithm is to prevent nested key on loop
-                                // such as #{...}.0.1.2.3
+                            // }
+                            // else {
+                            //     // This algorithm is to prevent nested key on loop
+                            //     // such as #{...}.0.1.2.3
 
-                                // Split the index
-                                let indexes = index.split('.')
-                                let newIndex = ''
+                            //     // Split the index
+                            //     let indexes = index.split('.')
+                            //     let newIndex = ''
 
-                                // And with this subroutine we simply remove the latest
-                                // index from exploded index by dot.
-                                indexes.forEach((index, i) => {
-                                    if (indexes.length == 1) {
-                                        newIndex += index
-                                        return
-                                    } else {
-                                        if (i == indexes.length - 1) return
-                                        if (i != 0) newIndex += '.'
-                                        newIndex += index
-                                    }
-                                })
+                            //     // And with this subroutine we simply remove the latest
+                            //     // index from exploded index by dot.
+                            //     indexes.forEach((index, i) => {
+                            //         if (indexes.length == 1) {
+                            //             newIndex += index
+                            //             return
+                            //         } else {
+                            //             if (i == indexes.length - 1) return
+                            //             if (i != 0) newIndex += '.'
+                            //             newIndex += index
+                            //         }
+                            //     })
 
-                                // Then we concatenate it with a new key.
-                                index = newIndex + '.' + key
-                                resetter(index)
-                            }
+                            //     // Then we concatenate it with a new key.
+                            //     index = newIndex + '.' + key
+                            //     resetter(index)
+                            // }
                         })
                     }
                 } else {

@@ -6,6 +6,7 @@ import gender from './hrm/gender.js';
 import division from './hrm/division';
 import jobTitle from './hrm/job-title';
 import attendanceType from './hrm/attendance-type';
+import employee from './hrm/employee';
 
 export default [
     ...contactType,
@@ -16,4 +17,5 @@ export default [
     ...division,
     ...jobTitle,
     ...attendanceType,
+    ...employee,
 ];

@@ -1,21 +1,21 @@
 <template>
     <fragment>
-        <h3>Divisi</h3>
+        <h3>Jabatan</h3>
         <bsb-card class="my-3">
             <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
-                :default-back="{ name: 'hrm.division' }"
+                :default-back="{ name: 'hrm.jobTitle' }"
             >
-                <h5 class="mb-3">Tambah Divisi</h5>
+                <h5 class="mb-3">Tambah Jabatan</h5>
                 <form
                     class="mt-5"
                     @submit.prevent="
-                        submitForm('/ajax/hrm/division', 'post', {
+                        submitForm('/ajax/hrm/job_title', 'post', {
                             resolve: true,
                             reject: false
-                        }).then(() => $router.push({ name: 'hrm.division' }))
+                        }).then(() => $router.push({ name: 'hrm.jobTitle' }))
                     "
                 >
                     <bsb-form-group>
@@ -30,13 +30,14 @@
                         <label>Divisi</label>
                         <bsb-select-errors v-model="form.data['division_id']" :errors="form.errors['division_id']">
                             <option :value="null">-- Pilih Divisi --</option>
-                            <option
+                            <option-active
                                 v-for="(division, i) in resources['divisions']"
                                 :key="i"
                                 :value="division['id']"
+                                :item="division"
                             >
                                 {{ division['code'] }} - {{ division['name'] }}
-                            </option>
+                            </option-active>
                         </bsb-select-errors>
                     </bsb-form-group>
                     <bsb-form-group>

@@ -34,13 +34,14 @@
                         <label>Tipe Cabang</label>
                         <bsb-select-errors v-model="form.data['branch_type_id']" :errors="form.errors['branch_type_id']">
                             <option :value="null">-- Pilih Tipe Cabang --</option>
-                            <option
+                            <option-active
                                 v-for="(branchType, i) in resources['branch_types']"
                                 :key="i"
                                 :value="branchType['id']"
+                                :item="branchType"
                             >
                                 {{ branchType['code'] }} - {{ branchType['name'] }}
-                            </option>
+                            </option-active>
                         </bsb-select-errors>
                     </bsb-form-group>
                     <bsb-form-group>

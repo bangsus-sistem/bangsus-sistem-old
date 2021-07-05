@@ -30,6 +30,7 @@ export default {
          */
         // Actions
         'button-activate': require('./buttons/actions/ButtonActivate').default,
+        'button-admit': require('./buttons/actions/ButtonAdmit').default,
         'button-create': require('./buttons/actions/ButtonCreate').default,
         'button-deactivate': require('./buttons/actions/ButtonDeactivate').default,
         'button-delete': require('./buttons/actions/ButtonDelete').default,
@@ -109,6 +110,7 @@ export default {
         'input-group-append': require('./input/InputGroupAppend').default,
         'input-group-prepend': require('./input/InputGroupPrepend').default,
         'input-group-text': require('./input/InputGroupText').default,
+        'option-active': require('./input/OptionActive').default,
         'select': require('./input/Select').default,
         'select-errors': require('./input/SelectErrors').default,
         'textarea': require('./input/Textarea').default,
@@ -193,6 +195,8 @@ export default {
          */
         'col': require('./utils/Col').default,
         'container-fluid': require('./utils/ContainerFluid').default,
+        'image-uploader': require('./utils/ImageUploader.vue').default,
+        'image-viewer': require('./utils/ImageViewer.vue').default,
         'page-wrapper': require('./utils/PageWrapper').default,
         'page-wrapper-mobile': require('./utils/PageWrapperMobile').default,
         'row': require('./utils/Row').default,

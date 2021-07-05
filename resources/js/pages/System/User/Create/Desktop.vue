@@ -38,13 +38,14 @@
                         <label>Role</label>
                         <bsb-select-errors v-model="form.data['role_id']" :errors="form.errors['role_id']">
                             <option :value="null">-- Pilih Role --</option>
-                            <option
+                            <bsb-option-active
                                 v-for="(role, i) in resources['roles']"
                                 :key="i"
                                 :value="role['id']"
+                                :item="role"
                             >
                                 {{ role['code'] }} - {{ role['name'] }}
-                            </option>
+                            </bsb-option-active>
                         </bsb-select-errors>
                     </bsb-form-group>
                     <bsb-form-group>
