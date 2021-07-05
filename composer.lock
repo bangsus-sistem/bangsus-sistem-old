@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75cd2855ef9a968f6c23a97735140541",
+    "content-hash": "42a23c4e79f62f80650e5a47c1affbdb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -894,16 +894,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.47.0",
+            "version": "v8.49.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "93db226946453f4285558b7c3166ddb6e7ea5400"
+                "reference": "62aee1bfeefd82f160c7aa3b4c63cb2f053215c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/93db226946453f4285558b7c3166ddb6e7ea5400",
-                "reference": "93db226946453f4285558b7c3166ddb6e7ea5400",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/62aee1bfeefd82f160c7aa3b4c63cb2f053215c0",
+                "reference": "62aee1bfeefd82f160c7aa3b4c63cb2f053215c0",
                 "shasum": ""
             },
             "require": {
@@ -982,7 +982,7 @@
                 "guzzlehttp/guzzle": "^6.5.5|^7.0.1",
                 "league/flysystem-cached-adapter": "^1.0",
                 "mockery/mockery": "^1.4.2",
-                "orchestra/testbench-core": "^6.8",
+                "orchestra/testbench-core": "^6.23",
                 "pda/pheanstalk": "^4.0",
                 "phpunit/phpunit": "^8.5.8|^9.3.3",
                 "predis/predis": "^1.1.2",
@@ -1058,7 +1058,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-06-15T14:00:32+00:00"
+            "time": "2021-07-02T16:50:12+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -1126,16 +1126,16 @@
         },
         {
             "name": "laravel/tinker",
-            "version": "v2.6.0",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "daae1c43f1300fe88c05d83db6f3d8f76677ad88"
+                "reference": "04ad32c1a3328081097a181875733fa51f402083"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/daae1c43f1300fe88c05d83db6f3d8f76677ad88",
-                "reference": "daae1c43f1300fe88c05d83db6f3d8f76677ad88",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/04ad32c1a3328081097a181875733fa51f402083",
+                "reference": "04ad32c1a3328081097a181875733fa51f402083",
                 "shasum": ""
             },
             "require": {
@@ -1188,9 +1188,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/tinker/issues",
-                "source": "https://github.com/laravel/tinker/tree/v2.6.0"
+                "source": "https://github.com/laravel/tinker/tree/v2.6.1"
             },
-            "time": "2021-01-26T20:35:18+00:00"
+            "time": "2021-03-02T16:53:12+00:00"
         },
         {
             "name": "laravel/ui",
@@ -4938,12 +4938,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/waffleboss/class-mapper.git",
-                "reference": "c0842e3af4a5262e77b7e6e7f3e8db8987c1fedf"
+                "reference": "a4d91ed91583a7825c6f6e300855e9327a699686"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/waffleboss/class-mapper/zipball/c0842e3af4a5262e77b7e6e7f3e8db8987c1fedf",
-                "reference": "c0842e3af4a5262e77b7e6e7f3e8db8987c1fedf",
+                "url": "https://api.github.com/repos/waffleboss/class-mapper/zipball/a4d91ed91583a7825c6f6e300855e9327a699686",
+                "reference": "a4d91ed91583a7825c6f6e300855e9327a699686",
                 "shasum": ""
             },
             "require": {
@@ -4983,7 +4983,7 @@
                 "issues": "https://github.com/waffleboss/class-mapper/issues",
                 "source": "https://github.com/waffleboss/class-mapper/tree/main"
             },
-            "time": "2021-06-26T04:55:49+00:00"
+            "time": "2021-07-05T03:35:22+00:00"
         },
         {
             "name": "waffleboss/foundation",
@@ -4991,12 +4991,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/waffleboss/foundation.git",
-                "reference": "e6462d99f554d55a778e60063bb9d6a3095f1370"
+                "reference": "4421360bd1b7b2fb9a84ca07eaac8e236ad1517d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/waffleboss/foundation/zipball/e6462d99f554d55a778e60063bb9d6a3095f1370",
-                "reference": "e6462d99f554d55a778e60063bb9d6a3095f1370",
+                "url": "https://api.github.com/repos/waffleboss/foundation/zipball/4421360bd1b7b2fb9a84ca07eaac8e236ad1517d",
+                "reference": "4421360bd1b7b2fb9a84ca07eaac8e236ad1517d",
                 "shasum": ""
             },
             "require": {
@@ -5018,7 +5018,10 @@
             "autoload": {
                 "psr-4": {
                     "Waffleboss\\Foundation\\": "src/"
-                }
+                },
+                "files": [
+                    "helpers/http.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5035,7 +5038,7 @@
                 "issues": "https://github.com/waffleboss/foundation/issues",
                 "source": "https://github.com/waffleboss/foundation/tree/main"
             },
-            "time": "2021-06-27T06:34:00+00:00"
+            "time": "2021-07-05T04:11:21+00:00"
         },
         {
             "name": "waffleboss/library",
@@ -5043,12 +5046,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/waffleboss/library.git",
-                "reference": "3dc58f45b58c5ac7ec94c0c3f614ec00d898adb5"
+                "reference": "f47f677e2fef6139eb73dccc380809ab52a5bd28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/waffleboss/library/zipball/3dc58f45b58c5ac7ec94c0c3f614ec00d898adb5",
-                "reference": "3dc58f45b58c5ac7ec94c0c3f614ec00d898adb5",
+                "url": "https://api.github.com/repos/waffleboss/library/zipball/f47f677e2fef6139eb73dccc380809ab52a5bd28",
+                "reference": "f47f677e2fef6139eb73dccc380809ab52a5bd28",
                 "shasum": ""
             },
             "require": {
@@ -5087,7 +5090,7 @@
                 "issues": "https://github.com/waffleboss/library/issues",
                 "source": "https://github.com/waffleboss/library/tree/main"
             },
-            "time": "2021-06-27T06:33:34+00:00"
+            "time": "2021-07-05T04:02:29+00:00"
         },
         {
             "name": "webmozart/assert",
