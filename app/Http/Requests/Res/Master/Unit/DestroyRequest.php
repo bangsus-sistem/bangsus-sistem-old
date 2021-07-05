@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Res\Master\Unit;
 
-use App\Foundation\Http\AuthIdRequest;
+use Waffleboss\Foundation\Http\AuthIdRequest;
 use App\Validation\Master\Unit\UnitIsDeletableRule;
 
 class DestroyRequest extends AuthIdRequest

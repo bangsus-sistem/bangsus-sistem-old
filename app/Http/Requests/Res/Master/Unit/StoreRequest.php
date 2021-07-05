@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Res\Master\Unit;
 
-use App\Foundation\Http\AuthRequest;
+use Waffleboss\Foundation\Http\AuthRequest;
 use Illuminate\Validation\Rule;
 
 class StoreRequest extends AuthRequest

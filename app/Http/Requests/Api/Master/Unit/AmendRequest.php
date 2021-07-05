@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Api\Master\Unit;
 
-use App\Foundation\Http\AuthIdRequest;
+use Waffleboss\Foundation\Http\AuthIdRequest;
 use Illuminate\Validation\Rule;
 
 class AmendRequest extends AuthIdRequest
