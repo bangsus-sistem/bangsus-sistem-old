@@ -2,7 +2,7 @@
 
 namespace App\Validation\Master\Unit;
 
-use App\Foundation\Validation\RequestRule;
+use Waffleboss\Foundation\Validation\RequestRule;
 use Illuminate\Contracts\Validation\Rule;
 use App\Models\Master\Unit;
 
