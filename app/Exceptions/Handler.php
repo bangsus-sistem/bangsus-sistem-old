@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Arr;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -41,5 +43,25 @@ class Handler extends ExceptionHandler
         $this->renderable(function (FailedLoginException $e) {
             return response()->json(['message' => __('auth.failed')], 401);
         });
+    }
+    
+    /**
+     * Convert a validation exception into a JSON response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Validation\ValidationException  $exception
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        $errors = [];
+
+        foreach ($exception->errors() as $key => $value)
+            Arr::set($errors, $key, $value);
+
+        return response()->json([
+            'errors' => $errors,
+            'message' => 'The given data was invalid.',
+        ], $exception->status);
     }
 }
