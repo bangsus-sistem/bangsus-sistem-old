@@ -17,7 +17,7 @@ class DataSeeder extends Seeder
             Data\BranchTypeSeeder::class,
             Data\BranchSeeder::class,
             Data\RoleSeeder::class,
-            Data\UserSeeder::class,
+            // Data\UserSeeder::class,
             Data\UnitSeeder::class,
             Data\ContactTypeSeeder::class,
             Data\AddressTypeSeeder::class,
