@@ -44,15 +44,15 @@ return [
 
         'image' => [
             'driver' => 'local',
-            'root' => storage_path('app/image'),
-            'url' => env('APP_URL').'/storage/image',
+            'root' => storage_path('app/images'),
+            'url' => env('APP_URL').'/storage/images',
             'visibility' => 'public',
         ],
 
         'file' => [
             'driver' => 'local',
-            'root' => storage_path('app/file'),
-            'url' => env('APP_URL').'/storage/file',
+            'root' => storage_path('app/files'),
+            'url' => env('APP_URL').'/storage/files',
             'visibility' => 'public',
         ],
 
