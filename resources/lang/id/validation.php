@@ -122,6 +122,8 @@ return [
 
         'code' => 'Kode',
         'name' => 'Nama',
+        'description' => 'Deskripsi',
+        'note' => 'Catatan',
         'feature_ids' => 'Fitur',
         'widget_ids' => 'Widget',
         'report_ids' => 'Laporan',
@@ -130,5 +132,23 @@ return [
         'full_name' => 'Nama Lengkap',
         'password' => 'Password',
         
+        'nik' => 'NIK',
+        'nip' => 'NIP',
+        'place_of_birth' => 'Tempat Lahir',
+        'date_of_birth' => 'Tanggal Lahir',
+        'blood_type_id' => 'Golongan Darah',
+        'gender_id' => 'Jenis Kelamin',
+        'first_branch_id' => 'Cabang Penerima',
+        'first_job_title_id' => 'Jabatan Pertama',
+        'start_date' => 'Tanggal Mulai',
+        'end_date' => 'Tanggal Selesai',
+
+        'employee_id' => 'Karyawan',
+        'address_type_id' => 'Tipe Alamat',
+        'contact_type_id' => 'Tipe Kontak',
+        'employee_photo_type_id' => 'Tipe Foto Karyawan',
+        'image_id' => 'Gambar',
+        'address' => 'Alamat',
+        'contact' => 'Kontak',
     ],
 ];

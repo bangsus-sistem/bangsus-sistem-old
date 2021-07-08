@@ -14,5 +14,9 @@ return [
     'success' => [
         'form' => 'Sukses.',
     ],
+    
+    'dictionary' => [
+        'now' => 'sekarang',
+    ],
 
 ];
