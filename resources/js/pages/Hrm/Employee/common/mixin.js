@@ -21,6 +21,11 @@ export default {
                     'employee_addresses': [],
                     'employee_contacts': [],
                     'employee_photos': [],
+
+                    'blood_type': {},
+                    'gender': {},
+                    'first_branch': {},
+                    'first_job_title': {},
                 },
                 errors: {
                     'code': [],
@@ -80,6 +85,11 @@ export default {
                     'employee_addresses': data['employee_addresses'],
                     'employee_contacts': data['employee_contacts'],
                     'employee_photos': data['employee_photos'],
+
+                    'blood_type': data['blood_type'],
+                    'gender': data['gender'],
+                    'first_branch': data['first_branch'],
+                    'first_job_title': data['first_job_title'],
                 }
             }
         },

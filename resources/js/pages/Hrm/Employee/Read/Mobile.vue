@@ -35,55 +35,19 @@
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Golongan Darah</label>
-                        <bsb-select v-model="form.data['blood_type_id']" :disabled="true">
-                            <option :value="null">-- Pilih Golongan Darah --</option>
-                            <option
-                                v-for="(bloodType, i) in resources['blood_types']"
-                                :key="i"
-                                :value="bloodType['id']"
-                            >
-                                {{ bloodType['name'] }}
-                            </option>
-                        </bsb-select>
+                        <bsb-input :value="form.data['blood_type']['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Jenis Kelamin</label>
-                        <bsb-select v-model="form.data['gender_id']" :disabled="true">
-                            <option :value="null">-- Pilih Jenis Kelamin --</option>
-                            <option
-                                v-for="(gender, i) in resources['genders']"
-                                :key="i"
-                                :value="gender['id']"
-                            >
-                                {{ gender['name'] }}
-                            </option>
-                        </bsb-select>
+                        <bsb-input :value="form.data['gender']['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Cabang Penerima</label>
-                        <bsb-select v-model="form.data['first_branch_id']" :disabled="true">
-                            <option :value="null">-- Pilih Cabang Penerima --</option>
-                            <option
-                                v-for="(branch, i) in resources['branches']"
-                                :key="i"
-                                :value="branch['id']"
-                            >
-                                {{ branch['code'] }} - {{ branch['name'] }}
-                            </option>
-                        </bsb-select>
+                        <bsb-input :value="form.data['first_branch']['code'] + ' - ' + form.data['first_branch']['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Jabatan Pertama</label>
-                        <bsb-select v-model="form.data['first_job_title_id']" :disabled="true">
-                            <option :value="null">-- Pilih Jabatan Pertama --</option>
-                            <option
-                                v-for="(jobTitle, i) in resources['job_titles']"
-                                :key="i"
-                                :value="jobTitle['id']"
-                            >
-                                {{ jobTitle['code'] }} - {{ jobTitle['name'] }}
-                            </option>
-                        </bsb-select>
+                        <bsb-input :value="form.data['first_job_title']['code'] + ' - ' + form.data['first_job_title']['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Tanggal Mulai Bekerja</label>
@@ -181,9 +145,6 @@
                             </bsb-table>
                         </bsb-table-responsive>
                     </bsb-form-group>
-                    <bsb-button-spinner type="submit" :loading="state.form.loading">
-                        Submit
-                    </bsb-button-spinner>
                 </form>
             </bsb-card-body-spinner-error-back>
         </bsb-card>

@@ -37,8 +37,6 @@
                                 :key="i"
                                 :num="i + 1"
                                 :item="item"
-                                @activate="showModalForm('employee', 'activate', { id: item['id'] })"
-                                @deactivate="showModalForm('employee', 'deactivate', { id: item['id'] })"
                                 @admit="showModalForm('employee', 'admit', { id: item['id'] })"
                                 @delete="showModalForm('employee', 'delete', { id: item['id'] })"
                             />

@@ -11,10 +11,6 @@ export default {
         )
             .then(res => {
                 this.fetchAndSetMultipleResources({
-                    'blood_types': '/ajax/hrm/blood_type/all',
-                    'genders': '/ajax/hrm/gender/all',
-                    'branches': '/ajax/system/branch/all',
-                    'job_titles': '/ajax/hrm/job_title/all',
                     'address_types': '/ajax/hrm/address_type/all',
                     'contact_types': '/ajax/hrm/contact_type/all',
                     'employee_photo_types': '/ajax/hrm/employee_photo_type/all',

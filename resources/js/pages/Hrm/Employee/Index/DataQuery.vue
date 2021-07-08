@@ -67,7 +67,7 @@
                 <bsb-form-group>
                     <label>Admisi</label>
                     <bsb-select size="sm"
-                        v-model="query['active']"
+                        v-model="query['admitted']"
                         :options="[
                             { value: '*', title: 'Semua' },
                             { value: true, title: 'Disetujui' },
