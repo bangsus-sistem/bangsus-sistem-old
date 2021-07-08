@@ -34,16 +34,7 @@
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Tipe Cabang</label>
-                        <bsb-select v-model="form.data['branch_type_id']" :disabled="true">
-                            <option :value="null">-- Pilih Tipe Cabang --</option>
-                            <option
-                                v-for="(branchType, i) in resources['branch_types']"
-                                :key="i"
-                                :value="branchType['id']"
-                            >
-                                {{ branchType['code'] }} - {{ branchType['name'] }}
-                            </option>
-                        </bsb-select>
+                        <bsb-input :value="form.data['branch_type']['code'] + ' - ' + form.data['branch_type']['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Deskripsi</label>
