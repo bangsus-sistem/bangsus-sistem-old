@@ -15,6 +15,8 @@ export default {
                     'branch_ids': [],
                     'description': '',
                     'note': '',
+
+                    'role': [],
                 },
                 errors: {
                     'username': [],
@@ -59,6 +61,8 @@ export default {
                                 .map(branch => branch['id'])
                                 .value()
                         :   [],
+
+                    'role': data['role'],
                 }
             }
         }

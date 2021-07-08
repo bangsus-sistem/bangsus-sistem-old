@@ -29,16 +29,7 @@
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Role</label>
-                        <bsb-select v-model="form.data['role_id']" :disabled="true">
-                            <option :value="null">-- Pilih Role --</option>
-                            <option
-                                v-for="(role, i) in resources['roles']"
-                                :key="i"
-                                :value="role['id']"
-                            >
-                                {{ role['code'] }} - {{ role['name'] }}
-                            </option>
-                        </bsb-select>
+                        <bsb-input :value="form.data['role']['code'] + ' - ' + form.data['role']['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Deskripsi</label>

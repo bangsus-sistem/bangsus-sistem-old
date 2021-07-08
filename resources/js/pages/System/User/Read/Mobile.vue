@@ -1,13 +1,14 @@
 <template>
     <fragment>
-        <h3>Role</h3>
+        <h3>User</h3>
         <bsb-card class="my-3">
             <bsb-card-body-spinner-error-back
                 :loading="state.page.loading"
                 :error="state.page.error"
                 :error-message="state.page.message"
-                :default-back="{ name: 'system.role' }"
+                :default-back="{ name: 'system.user' }"
             >
+                <h5 class="mb-3">Lihat User</h5>
                 <form
                     class="mt-5"
                     @submit.prevent=""
@@ -28,16 +29,7 @@
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Role</label>
-                        <bsb-select v-model="form.data['role_id']" :disabled="true">
-                            <option :value="null">-- Pilih Role --</option>
-                            <option
-                                v-for="(role, i) in resources['roles']"
-                                :key="i"
-                                :value="role['id']"
-                            >
-                                {{ role['code'] }} - {{ role['name'] }}
-                            </option>
-                        </bsb-select>
+                        <bsb-input :value="form.data['role']['code'] + ' - ' + form.data['role']['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Deskripsi</label>

@@ -12,7 +12,6 @@ export default {
             .then(res => {
                 this.fetchAndSetMultipleResources(
                     {
-                        'roles': '/ajax/auth/role/all',
                         'branches': '/ajax/system/branch/all',
                     },
                     { resolve: false, reject: false },
