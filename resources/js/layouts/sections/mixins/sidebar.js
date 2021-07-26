@@ -107,6 +107,37 @@ export default {
                     collapse: false,
                 },
                 {
+                    title: 'Akuntansi',
+                    icon: 'book',
+                    children: [
+                        {
+                            title: 'Grup Akun Neraca',
+                            route: { name: 'accounting.trial_balance_account_group' },
+                            access: {
+                                moduleRef: 'trial_balance_account_group',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Grup Akun Laba Rugi',
+                            route: { name: 'accounting.profit_loss_account_group' },
+                            access: {
+                                moduleRef: 'profit_loss_account_group',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Tipe Akun',
+                            route: { name: 'accounting.account_type' },
+                            access: {
+                                moduleRef: 'account_type',
+                                actionRef: 'index',
+                            },
+                        },
+                    ],
+                    collapse: false,
+                },
+                {
                     title: 'Master',
                     icon: 'box',
                     children: [
@@ -114,7 +145,7 @@ export default {
                             title: 'Satuan',
                             route: { name: 'master.unit' },
                             access: {
-                                moduleRef: 'package',
+                                moduleRef: 'unit',
                                 actionRef: 'index',
                             },
                         },
