@@ -40,7 +40,7 @@ export default {
     created() {
         this.fetchAndSetFormData(
             '/ajax/hrm/division/' + this.$route.params.id,
-            { resolve: false, reject: false },
+            { resolve: true, reject: false },
             { startLoading: true, stopLoading: true },
             this.getFormDataCallback()
         )

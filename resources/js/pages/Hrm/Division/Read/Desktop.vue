@@ -50,8 +50,7 @@
                                 <thead class="thead-light">
                                     <JobTitleDataQuery
                                         :loading="state.result['job_title'].loading"
-                                        :resources="resources"
-                                        @search="search"
+                                        @search="search('job_title')"
                                         v-model="query['job_title']"
                                         :fl-with-division="false"
                                     />

@@ -12,17 +12,17 @@
                     <bsb-switch-badge :condition="item['active']" true-label="Aktif" false-label="Tidak Aktif"/>
                 </bsb-td>
                 <bsb-td justify="center">
-                    <bsb-access-wrapper module-ref="branch_type" action-ref="read">
+                    <bsb-access-wrapper module-ref="branch" action-ref="read">
                         <bsb-button-router-link-read :to="{ name: 'system.branch.read', params: { id: item['id'] } }" />
                     </bsb-access-wrapper>
-                    <bsb-access-wrapper module-ref="branch_type" action-ref="update">
+                    <bsb-access-wrapper module-ref="branch" action-ref="update">
                         <bsb-button-router-link-update :to="{ name: 'system.branch.update', params: { id: item['id'] } }" v-if="!item['locked']" />
                         <template v-if="!item['locked']">
                             <bsb-button-activate v-if="!item['active']" @click="$emit('activate')" />
                             <bsb-button-deactivate v-else @click="$emit('deactivate')" />
                         </template>
                     </bsb-access-wrapper>
-                    <bsb-access-wrapper module-ref="branch_type" action-ref="delete">
+                    <bsb-access-wrapper module-ref="branch" action-ref="delete">
                         <bsb-button-delete @click="$emit('delete')" v-if="!item['locked']" />
                     </bsb-access-wrapper>
                 </bsb-td>
@@ -37,17 +37,17 @@
                         <small v-if="flWithBranchType"><b>{{ item['branch_type']['code'] }} - {{ item['branch_type']['name'] }}</b></small>
                     </template>
                     <template v-slot:right>
-                        <bsb-access-wrapper module-ref="branch_type" action-ref="read">
+                        <bsb-access-wrapper module-ref="branch" action-ref="read">
                             <bsb-button-router-link-read :to="{ name: 'system.branch.read', params: { id: item['id'] } }" />
                         </bsb-access-wrapper>
-                        <bsb-access-wrapper module-ref="branch_type" action-ref="update">
+                        <bsb-access-wrapper module-ref="branch" action-ref="update">
                             <bsb-button-router-link-update :to="{ name: 'system.branch.update', params: { id: item['id'] } }" v-if="!item['locked']" />
                             <template v-if="!item['locked']">
                                 <bsb-button-activate v-if="!item['active']" @click="$emit('activate')" />
                                 <bsb-button-deactivate v-else @click="$emit('deactivate')" />
                             </template>
                         </bsb-access-wrapper>
-                        <bsb-access-wrapper module-ref="branch_type" action-ref="delete">
+                        <bsb-access-wrapper module-ref="branch" action-ref="delete">
                             <bsb-button-delete @click="$emit('delete')" v-if="!item['locked']" />
                         </bsb-access-wrapper>
                     </template>

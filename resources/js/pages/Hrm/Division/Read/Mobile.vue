@@ -50,8 +50,7 @@
                                 <thead class="thead-light">
                                     <JobTitleDataQuery
                                         :loading="state.result['job_title'].loading"
-                                        :resources="resources"
-                                        @search="search"
+                                        @search="search('job_title')"
                                         v-model="query['job_title']"
                                         :fl-with-division="false"
                                     />
@@ -90,13 +89,21 @@
                 <!-- End Job Title -->
             </bsb-card-body-spinner-error-back>
         </bsb-card>
+        <!-- Modal Form -->
+        <JobTitleModalForms ref="job_title" @success="search" />
     </fragment>
 </template>
 
 <script>
 import mixin from './mixin'
+import JobTitleDataQuery from '../../JobTitle/Index/DataQuery'
+import JobTitleDataRow from '../../JobTitle/Index/DataRow'
+import JobTitleModalForms from '../../JobTitle/Index/ModalForms'
 
 export default {
     mixins: [mixin],
+    components: {
+        JobTitleDataQuery, JobTitleDataRow, JobTitleModalForms
+    }
 }
 </script>
