@@ -1,5 +1,5 @@
 
-const flasherMethods = {
+const langMethods = {
     
     /**
     | ---------------------------------------------------------------
@@ -27,4 +27,4 @@ const flasherMethods = {
 
 }
 
-export default flasherMethods
+export default langMethods
