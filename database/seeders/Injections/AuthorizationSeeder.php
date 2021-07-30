@@ -14,9 +14,9 @@ class AuthorizationSeeder extends Seeder
         ['ref' => 'create', 'name' => 'Create'],
         ['ref' => 'read', 'name' => 'Read'],
         ['ref' => 'update', 'name' => 'Update'],
+        ['ref' => 'delete', 'name' => 'Delete'],
         ['ref' => 'post', 'name' => 'Post'],
         ['ref' => 'admit', 'name' => 'Admit'],
-        ['ref' => 'delete', 'name' => 'Delete'],
     ];
 
     /**
@@ -104,12 +104,65 @@ class AuthorizationSeeder extends Seeder
             'reports' => [],
         ],
         [
+            'ref' => 'accounting',
+            'name' => 'Akuntansi',
+            'modules' => [
+                [
+                    'ref' => 'account_type',
+                    'name' => 'Tipe Akun',
+                    'actions' => ['index', 'read'],
+                ],
+                [
+                    'ref' => 'trial_balance_account_group',
+                    'name' => 'Grup Akun Neraca',
+                    'actions' => ['index', 'read'],
+                ],
+                [
+                    'ref' => 'profit_loss_account_group',
+                    'name' => 'Grup Akun Laba Rugi',
+                    'actions' => ['index', 'read'],
+                ],
+                [
+                    'ref' => 'account',
+                    'name' => 'Akun',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'transaction_ledger',
+                    'name' => 'Buku Transaksi',
+                    'actions' => ['index', 'read'],
+                ],
+                [
+                    'ref' => 'inventory_card',
+                    'name' => 'Kartu Stok',
+                    'actions' => ['index', 'read'],
+                ],
+            ],
+            'widgets' => [],
+            'reports' => [],
+        ],
+        [
             'ref' => 'master',
             'name' => 'Master',
             'modules' => [
                 [
                     'ref' => 'unit',
                     'name' => 'Satuan',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'warehouse',
+                    'name' => 'Gudang',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'product_category',
+                    'name' => 'Kategori Produk',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'product',
+                    'name' => 'Produk',
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
             ],

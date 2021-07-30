@@ -19,6 +19,10 @@ class InjectionSeeder extends Seeder
                 Injections\UserRoleSeeder::class,
                 Injections\ApiSeeder::class,
                 Injections\GenderSeeder::class,
+                Injections\TrialBalanceAccountGroupSeeder::class,
+                Injections\ProfitLossAccountGroupSeeder::class,
+                Injections\AccountTypeSeeder::class,
+                Injections\ProductTypeSeeder::class,
             ]);
         });
     }
