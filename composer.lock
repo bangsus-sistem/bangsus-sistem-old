@@ -5464,12 +5464,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/waffleboss/library.git",
-                "reference": "743b14494d46833b4f3ad1f868aed9632abd52a7"
+                "reference": "75929088e7f5521d73b9c67a05d053aa2b9bb041"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/waffleboss/library/zipball/743b14494d46833b4f3ad1f868aed9632abd52a7",
-                "reference": "743b14494d46833b4f3ad1f868aed9632abd52a7",
+                "url": "https://api.github.com/repos/waffleboss/library/zipball/75929088e7f5521d73b9c67a05d053aa2b9bb041",
+                "reference": "75929088e7f5521d73b9c67a05d053aa2b9bb041",
                 "shasum": ""
             },
             "require": {
@@ -5508,7 +5508,7 @@
                 "issues": "https://github.com/waffleboss/library/issues",
                 "source": "https://github.com/waffleboss/library/tree/main"
             },
-            "time": "2021-07-30T08:29:32+00:00"
+            "time": "2021-07-30T08:47:25+00:00"
         },
         {
             "name": "webmozart/assert",
