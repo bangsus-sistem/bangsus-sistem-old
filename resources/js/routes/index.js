@@ -2,10 +2,12 @@ import page from './page'
 import middleware from './middleware'
 
 import system from './modules/system'
+import accounting from './modules/accounting'
 import master from './modules/master'
 import hrm from './modules/hrm'
 
 const appMiddleware = ['authenticated', 'versionCheck']
+const blankComponent = { template: '<router-view></router-view>' }
 
 export default [
     {
@@ -28,17 +30,22 @@ export default [
     },
     {
         path: '/system',
-        component: { template: '<router-view></router-view>' },
+        component: blankComponent,
         children: system
     },
     {
+        path: '/accounting',
+        component: blankComponent,
+        children: accounting
+    },
+    {
         path: '/master',
-        component: { template: '<router-view></router-view>' },
+        component: blankComponent,
         children: master
     },
     {
         path: '/hrm',
-        component: { template: '<router-view></router-view>' },
+        component: blankComponent,
         children: hrm
     },
 ]
