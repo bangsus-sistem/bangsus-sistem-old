@@ -22,6 +22,7 @@ class InjectionSeeder extends Seeder
                 Injections\TrialBalanceAccountGroupSeeder::class,
                 Injections\ProfitLossAccountGroupSeeder::class,
                 Injections\AccountTypeSeeder::class,
+                Injections\AccountSeeder::class,
                 Injections\ProductTypeSeeder::class,
             ]);
         });
