@@ -134,6 +134,14 @@ export default {
                                 actionRef: 'index',
                             },
                         },
+                        {
+                            title: 'Akun',
+                            route: { name: 'accounting.account' },
+                            access: {
+                                moduleRef: 'account',
+                                actionRef: 'index',
+                            },
+                        },
                     ],
                     collapse: false,
                 },
@@ -146,6 +154,38 @@ export default {
                             route: { name: 'master.unit' },
                             access: {
                                 moduleRef: 'unit',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Tipe Barang',
+                            route: { name: 'master.productType' },
+                            access: {
+                                moduleRef: 'product_type',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Kategori Barang',
+                            route: { name: 'master.productCategory' },
+                            access: {
+                                moduleRef: 'product_category',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Barang',
+                            route: { name: 'master.product' },
+                            access: {
+                                moduleRef: 'product',
+                                actionRef: 'index',
+                            },
+                        },
+                        {
+                            title: 'Gudang',
+                            route: { name: 'master.warehouse' },
+                            access: {
+                                moduleRef: 'warehouse',
                                 actionRef: 'index',
                             },
                         },

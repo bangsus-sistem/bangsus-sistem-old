@@ -49,9 +49,12 @@ const resourceMethods = {
      * @param  {Array}  resourcesFromPromises 
      * @return {void}
      */
-    setResourcesFromMultiplePromises(indexes, resourcesFromPromises) {
+    setResourcesFromMultiplePromises(indexes, resourcesFromPromises, configs) {
         resourcesFromPromises.forEach((resourceFromPromise, i) => {
-            this.setResource(indexes[i], resourceFromPromise.data)
+            let index = indexes[i]
+            let config = configs[index]
+            let callback = lodash.isArray(config) ? config[1] : null
+            this.setResource(index, resourceFromPromise.data, callback)
         })
     },
 
@@ -61,14 +64,18 @@ const resourceMethods = {
      * @param  {Object}  config
      * @return {Object}
      */
-    parseMultipleResourcesConfig(config) {
+    parseMultipleResourcesConfig(configs) {
         let resourceIndexes = []
         let resourceEndpoints = []
 
-        Object.keys(config).forEach(index => {
+        Object.keys(configs).forEach(index => {
             resourceIndexes.push(index)
+            let link = configs[index]
+            if (lodash.isArray(link)) {
+                link = link[0]
+            }
             resourceEndpoints.push(
-                axios.get(config[index])
+                axios.get(link)
             )
         })
 
@@ -93,7 +100,7 @@ const resourceMethods = {
         return new Promise((resolve, reject) => {
             Promise.all(resourceEndpoints)
                 .then(res => {
-                    this.setResourcesFromMultiplePromises(resourceIndexes, res)
+                    this.setResourcesFromMultiplePromises(resourceIndexes, res, config)
                     if (allows.resolve) resolve(res)
                 })
                 .catch(err => {
