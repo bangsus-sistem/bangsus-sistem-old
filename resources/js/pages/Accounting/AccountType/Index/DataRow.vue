@@ -28,16 +28,6 @@
                     <bsb-access-wrapper module-ref="account_type" action-ref="read">
                         <bsb-button-router-link-read :to="{ name: 'accounting.account_type.read', params: { id: item['id'] } }" />
                     </bsb-access-wrapper>
-                    <bsb-access-wrapper module-ref="account_type" action-ref="update">
-                        <bsb-button-router-link-update :to="{ name: 'accounting.account_type.update', params: { id: item['id'] } }" v-if="!item['locked']" />
-                        <template v-if="!item['locked']">
-                            <bsb-button-activate v-if="!item['active']" @click="$emit('activate')" />
-                            <bsb-button-deactivate v-else @click="$emit('deactivate')" />
-                        </template>
-                    </bsb-access-wrapper>
-                    <bsb-access-wrapper module-ref="account_type" action-ref="delete">
-                        <bsb-button-delete @click="$emit('delete')" v-if="!item['locked']" />
-                    </bsb-access-wrapper>
                 </bsb-td>
             </tr>
         </template>
@@ -69,16 +59,6 @@
                     <template v-slot:right>
                         <bsb-access-wrapper module-ref="account_type" action-ref="read">
                             <bsb-button-router-link-read :to="{ name: 'accounting.account_type.read', params: { id: item['id'] } }" />
-                        </bsb-access-wrapper>
-                        <bsb-access-wrapper module-ref="account_type" action-ref="update">
-                            <bsb-button-router-link-update :to="{ name: 'accounting.account_type.update', params: { id: item['id'] } }" v-if="!item['locked']" />
-                            <template v-if="!item['locked']">
-                                <bsb-button-activate v-if="!item['active']" @click="$emit('activate')" />
-                                <bsb-button-deactivate v-else @click="$emit('deactivate')" />
-                            </template>
-                        </bsb-access-wrapper>
-                        <bsb-access-wrapper module-ref="account_type" action-ref="delete">
-                            <bsb-button-delete @click="$emit('delete')" v-if="!item['locked']" />
                         </bsb-access-wrapper>
                     </template>
                     <template v-slot:footer>
