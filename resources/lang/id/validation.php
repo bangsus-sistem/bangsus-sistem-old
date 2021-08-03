@@ -119,11 +119,11 @@ return [
         'username' => 'Username',
         'password' => 'Password',
         'token' => 'Token',
-
         'code' => 'Kode',
         'name' => 'Nama',
         'description' => 'Deskripsi',
         'note' => 'Catatan',
+        
         'feature_ids' => 'Fitur',
         'widget_ids' => 'Widget',
         'report_ids' => 'Laporan',
@@ -131,6 +131,8 @@ return [
         'username' => 'Username',
         'full_name' => 'Nama Lengkap',
         'password' => 'Password',
+
+        'branch_type_id' => 'Tipe Cabang',
         
         'nik' => 'NIK',
         'nip' => 'NIP',
@@ -150,5 +152,10 @@ return [
         'image_id' => 'Gambar',
         'address' => 'Alamat',
         'contact' => 'Kontak',
+
+        'account_type_id' => 'Tipe Akun',
+        'parent_account_id' => 'Akun Induk',
+        'reverse_value' => 'Jenis Akun',
+        'transaction' => 'Transaksi',
     ],
 ];
