@@ -151,18 +151,23 @@ class AuthorizationSeeder extends Seeder
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
                 [
-                    'ref' => 'warehouse',
-                    'name' => 'Gudang',
-                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                    'ref' => 'product_type',
+                    'name' => 'Tipe Barang',
+                    'actions' => ['index', 'read'],
                 ],
                 [
                     'ref' => 'product_category',
-                    'name' => 'Kategori Produk',
+                    'name' => 'Kategori Barang',
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
                 [
                     'ref' => 'product',
-                    'name' => 'Produk',
+                    'name' => 'Barang',
+                    'actions' => ['index', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'ref' => 'warehouse',
+                    'name' => 'Gudang',
                     'actions' => ['index', 'create', 'read', 'update', 'delete'],
                 ],
             ],
