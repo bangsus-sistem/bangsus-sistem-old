@@ -5356,12 +5356,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/waffleboss/class-mapper.git",
-                "reference": "57af8524177aea1147e008ce88cb09593ec7fd31"
+                "reference": "d1b25d569b99229b00d612795238387eead15e43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/waffleboss/class-mapper/zipball/57af8524177aea1147e008ce88cb09593ec7fd31",
-                "reference": "57af8524177aea1147e008ce88cb09593ec7fd31",
+                "url": "https://api.github.com/repos/waffleboss/class-mapper/zipball/d1b25d569b99229b00d612795238387eead15e43",
+                "reference": "d1b25d569b99229b00d612795238387eead15e43",
                 "shasum": ""
             },
             "require": {
@@ -5401,7 +5401,7 @@
                 "issues": "https://github.com/waffleboss/class-mapper/issues",
                 "source": "https://github.com/waffleboss/class-mapper/tree/main"
             },
-            "time": "2021-08-03T12:59:28+00:00"
+            "time": "2021-08-04T06:02:43+00:00"
         },
         {
             "name": "waffleboss/foundation",
