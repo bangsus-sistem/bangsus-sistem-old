@@ -19,18 +19,6 @@
                     "
                 >
                     <bsb-form-group>
-                        <label>Kode</label>
-                        <bsb-input-append-prepend-errors
-                            v-model="form.data['code']"
-                            :errors="form.errors['code']"
-                            :prependLabel="state.form.codePrefix"
-                        />
-                    </bsb-form-group>
-                    <bsb-form-group>
-                        <label>Nama</label>
-                        <bsb-input-errors v-model="form.data['name']" :errors="form.errors['name']" />
-                    </bsb-form-group>
-                    <bsb-form-group>
                         <label>Tipe Cabang</label>
                         <bsb-select-errors v-model="form.data['branch_type_id']" :errors="form.errors['branch_type_id']">
                             <option :value="null">-- Pilih Tipe Cabang --</option>
@@ -43,6 +31,18 @@
                                 {{ branchType['code'] }} - {{ branchType['name'] }}
                             </bsb-option-active>
                         </bsb-select-errors>
+                    </bsb-form-group>
+                    <bsb-form-group>
+                        <label>Kode</label>
+                        <bsb-input-append-prepend-errors
+                            v-model="form.data['code']"
+                            :errors="form.errors['code']"
+                            :prependLabel="state.form.codePrefix"
+                        />
+                    </bsb-form-group>
+                    <bsb-form-group>
+                        <label>Nama</label>
+                        <bsb-input-errors v-model="form.data['name']" :errors="form.errors['name']" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Deskripsi</label>

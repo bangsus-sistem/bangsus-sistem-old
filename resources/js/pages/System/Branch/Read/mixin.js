@@ -14,21 +14,9 @@ export default {
                     {
                         'branch_types': '/ajax/system/branch_type/all',
                     },
-                    { resolve: true, reject: false },
+                    { resolve: false, reject: false },
                     { startLoading: false, stopLoading: true },
                 )
-                    .then(res => {
-                        let branchType = lodash.find(
-                            this.resources['branch_types'],
-                            (branchType) => branchType['id'] == this.form.data['branch_type_id']
-                        )
-
-                        this.state.form.codePrefix = branchType == undefined
-                            ? ''
-                            : branchType['code']
-
-                        this.form.data['code'] = lodash.replace(this.form.data['code'], this.state.form.codePrefix, '')
-                    })
             })
     },
 }

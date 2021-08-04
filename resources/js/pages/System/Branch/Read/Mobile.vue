@@ -14,13 +14,12 @@
                     @submit.prevent=""
                 >
                     <bsb-form-group>
+                        <label>Tipe Cabang</label>
+                        <bsb-input :value="form.data['branch_type']['code'] + ' - ' + form.data['branch_type']['name']" :readonly="true" />
+                    </bsb-form-group>
+                    <bsb-form-group>
                         <label>Kode</label>
-                        <bsb-input-append-prepend-errors
-                            v-model="form.data['code']"
-                            :errors="form.errors['code']"
-                            :prependLabel="state.form.codePrefix"
-                            :readonly="true"
-                        />
+                        <bsb-input v-model="form.data['code']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Nama</label>
@@ -31,10 +30,6 @@
                         <div>
                             <bsb-switch-badge :condition="form.data['active']" true-label="Aktif" false-label="Tidak Aktif"/>
                         </div>
-                    </bsb-form-group>
-                    <bsb-form-group>
-                        <label>Tipe Cabang</label>
-                        <bsb-input :value="form.data['branch_type']['code'] + ' - ' + form.data['branch_type']['name']" :readonly="true" />
                     </bsb-form-group>
                     <bsb-form-group>
                         <label>Deskripsi</label>
