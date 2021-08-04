@@ -16,7 +16,6 @@
                         <thead class="thead-light">
                             <ProductTypeDataQuery
                                 :loading="state.result.loading"
-                                :resources="resources"
                                 @search="search"
                                 v-model="query"
                             />
