@@ -9,6 +9,12 @@
                 :default-back="{ name: 'hrm.employeeMutation', params: { employeeId: $route.params.employeeId, employeeAssignmentId: $route.params.employeeAssignmentId } }"
             >
                 <h5 class="mb-3">Lihat Mutasi Karyawan</h5>
+                <bsb-user-timestamps
+                    :user-create="form.data['user_create']"
+                    :created-at="form.data['created_at']"
+                    :user-update="form.data['user_update']"
+                    :updated-at="form.data['updated_at']"
+                />
                 <form
                     class="mt-5"
                     @submit.prevent=""

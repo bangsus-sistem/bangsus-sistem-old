@@ -8,6 +8,13 @@
                 :error-message="state.page.message"
                 :default-back="{ name: 'system.role' }"
             >
+                <h5 class="mb-3">Ganti Password User</h5>
+                <bsb-user-timestamps
+                    :user-create="form.data['user_create']"
+                    :created-at="form.data['created_at']"
+                    :user-update="form.data['user_update']"
+                    :updated-at="form.data['updated_at']"
+                />
                 <form
                     class="mt-5"
                     @submit.prevent="
