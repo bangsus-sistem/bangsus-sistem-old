@@ -200,5 +200,9 @@ export default {
         'page-wrapper': require('./utils/PageWrapper').default,
         'page-wrapper-mobile': require('./utils/PageWrapperMobile').default,
         'row': require('./utils/Row').default,
+        'user-admit': require('./utils/UserAdmit').default,
+        'user-create': require('./utils/UserCreate').default,
+        'user-timestamps': require('./utils/UserTimestamps').default,
+        'user-update': require('./utils/UserUpdate').default,
     }
 }
