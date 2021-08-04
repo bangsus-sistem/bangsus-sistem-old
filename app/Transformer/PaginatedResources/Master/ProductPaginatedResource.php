@@ -31,6 +31,8 @@ class ProductPaginatedResource extends PaginatedResource
             'active' => (bool) $this->active,
             'locked' => (bool) $this->locked,
             'monitor_stock' => (bool) $this->monitor_stock,
+            'purchase' => (bool) $this->purchase,
+            'sales' => (bool) $this->sales,
         ];
     }
 }

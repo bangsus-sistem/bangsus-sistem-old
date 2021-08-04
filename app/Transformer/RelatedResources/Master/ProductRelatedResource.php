@@ -39,6 +39,8 @@ class ProductRelatedResource extends RelatedResource
             'active' => (bool) $this->active,
             'locked' => (bool) $this->locked,
             'monitor_stock' => (bool) $this->monitor_stock,
+            'purchase' => (bool) $this->purchase,
+            'sales' => (bool) $this->sales,
             'description' => $this->description,
             'note' => $this->note,
             'user_create' => wbcm_single_resource('auth.user', true, $this->userCreate),
