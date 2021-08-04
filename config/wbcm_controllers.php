@@ -32,6 +32,7 @@ return [
             'unit' => \Waffleboss\Library\Http\Controllers\Ajax\Master\UnitController::class,
             'product_type' => \Waffleboss\Library\Http\Controllers\Ajax\Master\ProductTypeController::class,
             'product_category' => \Waffleboss\Library\Http\Controllers\Ajax\Master\ProductCategoryController::class,
+            'product' => \App\Http\Controllers\Ajax\Master\ProductController::class,
             'warehouse' => \Waffleboss\Library\Http\Controllers\Ajax\Master\WarehouseController::class,
         ],
         'hrm' => [
@@ -79,6 +80,7 @@ return [
             'unit' => \Waffleboss\Library\Http\Controllers\Api\Master\UnitController::class,
             'product_type' => \Waffleboss\Library\Http\Controllers\Api\Master\ProductTypeController::class,
             'product_category' => \Waffleboss\Library\Http\Controllers\Api\Master\ProductCategoryController::class,
+            'product' => \App\Http\Controllers\Api\Master\ProductController::class,
             'warehouse' => \Waffleboss\Library\Http\Controllers\Api\Master\WarehouseController::class,
         ],
         'hrm' => [
