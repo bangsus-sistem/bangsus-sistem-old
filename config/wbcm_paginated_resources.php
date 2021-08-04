@@ -31,6 +31,7 @@ return [
         'unit' => \Waffleboss\Library\Transformer\PaginatedResources\Master\UnitPaginatedResource::class,
         'product_type' => \Waffleboss\Library\Transformer\PaginatedResources\Master\ProductTypePaginatedResource::class,
         'product_category' => \Waffleboss\Library\Transformer\PaginatedResources\Master\ProductCategoryPaginatedResource::class,
+        'product' => \App\Transformer\PaginatedResources\Master\ProductPaginatedResource::class,
         'warehouse' => \Waffleboss\Library\Transformer\PaginatedResources\Master\WarehousePaginatedResource::class,
     ],
     'hrm' => [

@@ -31,6 +31,7 @@ return [
         'unit' => \Waffleboss\Library\Transformer\SingleResources\Master\UnitSingleResource::class,
         'product_type' => \Waffleboss\Library\Transformer\SingleResources\Master\ProductTypeSingleResource::class,
         'product_category' => \Waffleboss\Library\Transformer\SingleResources\Master\ProductCategorySingleResource::class,
+        'product' => \App\Transformer\SingleResources\Master\ProductSingleResource::class,
         'warehouse' => \Waffleboss\Library\Transformer\SingleResources\Master\WarehouseSingleResource::class,
     ],
     'hrm' => [

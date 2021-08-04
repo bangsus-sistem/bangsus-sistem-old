@@ -38,6 +38,7 @@ return [
         'unit' => \Waffleboss\Library\Models\Master\Unit::class,
         'product_type' => \Waffleboss\Library\Models\Master\ProductType::class,
         'product_category' => \Waffleboss\Library\Models\Master\ProductCategory::class,
+        'product' => \App\Models\Master\Product::class,
         'warehouse' => \Waffleboss\Library\Models\Master\Warehouse::class,
     ],
     'hrm' => [
