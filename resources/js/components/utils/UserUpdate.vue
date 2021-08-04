@@ -16,7 +16,6 @@ export default {
             required: true,
         },
         updatedAt: {
-            type: String,
             required: true
         },
     },

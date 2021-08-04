@@ -12,7 +12,6 @@ export default {
             required: true,
         },
         createdAt: {
-            type: String,
             required: true
         },
     },

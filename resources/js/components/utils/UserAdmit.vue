@@ -17,7 +17,6 @@ export default {
             required: true,
         },
         admittedAt: {
-            type: String,
             required: true
         },
     },
