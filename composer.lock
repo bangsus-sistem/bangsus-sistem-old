@@ -5356,12 +5356,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/waffleboss/class-mapper.git",
-                "reference": "4fd601dc73f2f13ea39412b847fb04388ef46826"
+                "reference": "57af8524177aea1147e008ce88cb09593ec7fd31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/waffleboss/class-mapper/zipball/4fd601dc73f2f13ea39412b847fb04388ef46826",
-                "reference": "4fd601dc73f2f13ea39412b847fb04388ef46826",
+                "url": "https://api.github.com/repos/waffleboss/class-mapper/zipball/57af8524177aea1147e008ce88cb09593ec7fd31",
+                "reference": "57af8524177aea1147e008ce88cb09593ec7fd31",
                 "shasum": ""
             },
             "require": {
@@ -5401,7 +5401,7 @@
                 "issues": "https://github.com/waffleboss/class-mapper/issues",
                 "source": "https://github.com/waffleboss/class-mapper/tree/main"
             },
-            "time": "2021-08-03T08:05:41+00:00"
+            "time": "2021-08-03T12:59:28+00:00"
         },
         {
             "name": "waffleboss/foundation",
@@ -5464,12 +5464,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/waffleboss/library.git",
-                "reference": "c8f5f5f85b313f1fb850cae50811d3242fd6b86c"
+                "reference": "876f350e221c7ef2ca1d7e93aec9bdb75f75ba43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/waffleboss/library/zipball/c8f5f5f85b313f1fb850cae50811d3242fd6b86c",
-                "reference": "c8f5f5f85b313f1fb850cae50811d3242fd6b86c",
+                "url": "https://api.github.com/repos/waffleboss/library/zipball/876f350e221c7ef2ca1d7e93aec9bdb75f75ba43",
+                "reference": "876f350e221c7ef2ca1d7e93aec9bdb75f75ba43",
                 "shasum": ""
             },
             "require": {
@@ -5508,7 +5508,7 @@
                 "issues": "https://github.com/waffleboss/library/issues",
                 "source": "https://github.com/waffleboss/library/tree/main"
             },
-            "time": "2021-08-03T08:05:34+00:00"
+            "time": "2021-08-04T03:44:42+00:00"
         },
         {
             "name": "webmozart/assert",
