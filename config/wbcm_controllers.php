@@ -1,5 +1,98 @@
 <?php
 
 return [
-    
+    'ajax' => [
+        'auth' => [
+            'package' => \Waffleboss\Library\Http\Controllers\Ajax\Auth\PackageController::class,
+            'module' => \Waffleboss\Library\Http\Controllers\Ajax\Auth\ModuleController::class,
+            'action' => \Waffleboss\Library\Http\Controllers\Ajax\Auth\ActionController::class,
+            'feature' => \Waffleboss\Library\Http\Controllers\Ajax\Auth\FeatureController::class,
+            'widget' => \Waffleboss\Library\Http\Controllers\Ajax\Auth\WidgetController::class,
+            'report' => \Waffleboss\Library\Http\Controllers\Ajax\Auth\ReportController::class,
+            'role' => \Waffleboss\Library\Http\Controllers\Ajax\Auth\RoleController::class,
+            'user' => \Waffleboss\Library\Http\Controllers\Ajax\Auth\UserController::class,
+        ],
+        'log' => [
+            'authentication_log' => \Waffleboss\Library\Http\Controllers\Ajax\Log\AuthenticationLogController::class,
+            'feature_log' => \Waffleboss\Library\Http\Controllers\Ajax\Log\FeatureLogController::class,
+            'widget_log' => \Waffleboss\Library\Http\Controllers\Ajax\Log\WidgetLogController::class,
+            'report_log' => \Waffleboss\Library\Http\Controllers\Ajax\Log\ReportLogController::class,
+        ],
+        'system' => [
+            'branch_type' => \Waffleboss\Library\Http\Controllers\Ajax\System\BranchTypeController::class,
+            'branch' => \Waffleboss\Library\Http\Controllers\Ajax\System\BranchController::class,
+        ],
+        'accounting' => [
+            'trial_balance_account_group' => \Waffleboss\Library\Http\Controllers\Ajax\Accounting\TrialBalanceAccountGroupController::class,
+            'profit_loss_account_group' => \Waffleboss\Library\Http\Controllers\Ajax\Accounting\ProfitLossAccountGroupController::class,
+            'account_type' => \Waffleboss\Library\Http\Controllers\Ajax\Accounting\AccountTypeController::class,
+            'account' => \Waffleboss\Library\Http\Controllers\Ajax\Accounting\AccountController::class,
+        ],
+        'master' => [
+            'unit' => \Waffleboss\Library\Http\Controllers\Ajax\Master\UnitController::class,
+            'product_type' => \Waffleboss\Library\Http\Controllers\Ajax\Master\ProductTypeController::class,
+            'product_category' => \Waffleboss\Library\Http\Controllers\Ajax\Master\ProductCategoryController::class,
+            'warehouse' => \Waffleboss\Library\Http\Controllers\Ajax\Master\WarehouseController::class,
+        ],
+        'hrm' => [
+            'contact_type' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\ContactTypeController::class,
+            'address_type' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\AddressTypeController::class,
+            'employee_photo_type' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\EmployeePhotoTypeController::class,
+            'attendance_type' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\AttendanceTypeController::class,
+            'division' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\DivisionController::class,
+            'job_title' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\JobTitleController::class,
+            'gender' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\GenderController::class,
+            'blood_type' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\BloodTypeController::class,
+            'employee' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\EmployeeController::class,
+            'employee_assignment' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\EmployeeAssignmentController::class,
+            'employee_mutation' => \Waffleboss\Library\Http\Controllers\Ajax\Hrm\EmployeeMutationController::class,
+        ],
+    ],
+    'api' => [
+        'auth' => [
+            'package' => \Waffleboss\Library\Http\Controllers\Api\Auth\PackageController::class,
+            'module' => \Waffleboss\Library\Http\Controllers\Api\Auth\ModuleController::class,
+            'action' => \Waffleboss\Library\Http\Controllers\Api\Auth\ActionController::class,
+            'feature' => \Waffleboss\Library\Http\Controllers\Api\Auth\FeatureController::class,
+            'widget' => \Waffleboss\Library\Http\Controllers\Api\Auth\WidgetController::class,
+            'report' => \Waffleboss\Library\Http\Controllers\Api\Auth\ReportController::class,
+            'role' => \Waffleboss\Library\Http\Controllers\Api\Auth\RoleController::class,
+            'user' => \Waffleboss\Library\Http\Controllers\Api\Auth\UserController::class,
+        ],
+        'log' => [
+            'authentication_log' => \Waffleboss\Library\Http\Controllers\Api\Log\AuthenticationLogController::class,
+            'feature_log' => \Waffleboss\Library\Http\Controllers\Api\Log\FeatureLogController::class,
+            'widget_log' => \Waffleboss\Library\Http\Controllers\Api\Log\WidgetLogController::class,
+            'report_log' => \Waffleboss\Library\Http\Controllers\Api\Log\ReportLogController::class,
+        ],
+        'system' => [
+            'branch_type' => \Waffleboss\Library\Http\Controllers\Ajax\System\BranchTypeController::class,
+            'branch' => \Waffleboss\Library\Http\Controllers\Ajax\System\BranchController::class,
+        ],
+        'accounting' => [
+            'trial_balance_account_group' => \Waffleboss\Library\Http\Controllers\Api\Accounting\TrialBalanceAccountGroupController::class,
+            'profit_loss_account_group' => \Waffleboss\Library\Http\Controllers\Api\Accounting\ProfitLossAccountGroupController::class,
+            'account_type' => \Waffleboss\Library\Http\Controllers\Api\Accounting\AccountTypeController::class,
+            'account' => \Waffleboss\Library\Http\Controllers\Api\Accounting\AccountController::class,
+        ],
+        'master' => [
+            'unit' => \Waffleboss\Library\Http\Controllers\Api\Master\UnitController::class,
+            'product_type' => \Waffleboss\Library\Http\Controllers\Api\Master\ProductTypeController::class,
+            'product_category' => \Waffleboss\Library\Http\Controllers\Api\Master\ProductCategoryController::class,
+            'warehouse' => \Waffleboss\Library\Http\Controllers\Api\Master\WarehouseController::class,
+        ],
+        'hrm' => [
+            'contact_type' => \Waffleboss\Library\Http\Controllers\Api\Hrm\ContactTypeController::class,
+            'address_type' => \Waffleboss\Library\Http\Controllers\Api\Hrm\AddressTypeController::class,
+            'employee_photo_type' => \Waffleboss\Library\Http\Controllers\Api\Hrm\EmployeePhotoTypeController::class,
+            'attendance_type' => \Waffleboss\Library\Http\Controllers\Api\Hrm\AttendanceTypeController::class,
+            'division' => \Waffleboss\Library\Http\Controllers\Api\Hrm\DivisionController::class,
+            'job_title' => \Waffleboss\Library\Http\Controllers\Api\Hrm\JobTitleController::class,
+            'gender' => \Waffleboss\Library\Http\Controllers\Api\Hrm\GenderController::class,
+            'blood_type' => \Waffleboss\Library\Http\Controllers\Api\Hrm\BloodTypeController::class,
+            'employee' => \Waffleboss\Library\Http\Controllers\Api\Hrm\EmployeeController::class,
+            'employee_assignment' => \Waffleboss\Library\Http\Controllers\Api\Hrm\EmployeeAssignmentController::class,
+            'employee_mutation' => \Waffleboss\Library\Http\Controllers\Api\Hrm\EmployeeMutationController::class,
+        ],
+    ],
 ];
