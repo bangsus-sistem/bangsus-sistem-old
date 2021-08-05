@@ -10,14 +10,15 @@ use Waffleboss\Library\Models\Concerns\{
     HasUserTimestamps,
     HasUserDelete,
     HasImage,
+    HasBranches,
     ActiveFlag,
     LockedFlag,
 };
 
 class Product extends Model
 {
-    use SoftDeletes, HasUserTimestamps, HasUserDelete, HasImage, ActiveFlag,
-        LockedFlag;
+    use SoftDeletes, HasUserTimestamps, HasUserDelete, HasImage, HasBranches,
+        ActiveFlag, LockedFlag;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
