@@ -108,6 +108,8 @@ return [
     'url' => ':attribute tidak valid.',
     'uuid' => ':attribute harus sebuah UUID valid.',
 
+    'wbl_max_number' => ':attribute terlalu besar.',
+
 
     'custom' => [
         'attribute-name' => [
