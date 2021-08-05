@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tasks\Api\Master\Unit;
+namespace App\Tasks\Api\Master\Product;
 
 use Waffleboss\Foundation\Task;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tasks\Ajax\Master\Unit;
+namespace App\Tasks\Ajax\Master\Product;
 
 use Waffleboss\Foundation\Task;
 
