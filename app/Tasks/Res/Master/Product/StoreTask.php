@@ -60,6 +60,16 @@ class StoreTask extends Task
                 $product->description = $request->input('description');
                 $product->note = $request->input('note');
                 $product->save();
+
+                if ( ! $product->all_branches)
+                    $product->branches()->sync($request->input('branch_ids'));
+                else
+                    $product->branches()
+                        ->sync(
+                            wbcm_model('system.branch')::get()
+                                ->pluck('id')
+                                ->all()
+                        );
             }
         );
 

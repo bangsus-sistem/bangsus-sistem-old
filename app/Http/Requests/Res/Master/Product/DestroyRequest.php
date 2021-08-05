@@ -1,9 +1,9 @@
 <?php
 
-namespace Waffleboss\Library\Http\Requests\Res\Master\Product;
+namespace App\Http\Requests\Res\Master\Product;
 
 use Waffleboss\Foundation\Http\AuthIdRequest;
-use Waffleboss\Library\Validation\Master\Product\ProductIsDeletableRule;
+use App\Validation\Master\Product\ProductIsDeletableRule;
 
 class DestroyRequest extends AuthIdRequest
 {

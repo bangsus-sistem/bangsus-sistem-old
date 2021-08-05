@@ -147,6 +147,18 @@ class AmendRequest extends AuthIdRequest
                 'nullable',
                 'max:1000',
             ],
+            'all_branches' => [
+                'nullable',
+                'boolean',
+            ],
+            'branch_ids' => [
+                'nullable',
+                'array',
+            ],
+            'branch_ids.*' => [
+                'nullable',
+                'wbl_exists:'.wbcm_model('system.branch'),
+            ],
         ];
     }
 }

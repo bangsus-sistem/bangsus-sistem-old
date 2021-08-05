@@ -1,6 +1,6 @@
 <?php
 
-namespace Waffleboss\Library\Http\Requests\Res\Master\Product;
+namespace App\Http\Requests\Res\Master\Product;
 
 use Waffleboss\Foundation\Http\AuthIdRequest;
 

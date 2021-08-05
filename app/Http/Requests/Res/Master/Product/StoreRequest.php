@@ -138,6 +138,18 @@ class StoreRequest extends AuthRequest
                 'nullable',
                 'max:1000',
             ],
+            'all_branches' => [
+                'required',
+                'boolean',
+            ],
+            'branch_ids' => [
+                Rule::requiredIf( ! $this->boolean('all_branches')),
+                'array',
+            ],
+            'branch_ids.*' => [
+                Rule::requiredIf( ! $this->boolean('all_branches')),
+                'wbl_exists:'.wbcm_model('system.branch'),
+            ],
         ];
     }
 }
