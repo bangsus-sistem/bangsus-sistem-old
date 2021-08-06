@@ -13,7 +13,7 @@ return [
         'account' => \Waffleboss\Library\Observers\Accounting\AccountObserver::class,
     ],
     'master' => [
-        'product_category' => \Waffleboss\Library\Observers\Master\ProductCategory::class,
+        'product_category' => \Waffleboss\Library\Observers\Master\ProductCategoryObserver::class,
     ],
     'hrm' => [
         'employee' => \Waffleboss\Library\Observers\Hrm\EmployeeObserver::class,
