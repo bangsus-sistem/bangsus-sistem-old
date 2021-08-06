@@ -17,6 +17,9 @@ return [
         'widget_log' => \Waffleboss\Library\Transformer\SingleResources\Log\WidgetLogSingleResource::class,
         'report_log' => \Waffleboss\Library\Transformer\SingleResources\Log\ReportLogSingleResource::class,
     ],
+    'storage' => [
+        'image' => \Waffleboss\Library\Transformer\SingleResources\Storage\ImageSingleResource::class,
+    ],
     'system' => [
         'branch_type' => \Waffleboss\Library\Transformer\SingleResources\System\BranchTypeSingleResource::class,
         'branch' => \Waffleboss\Library\Transformer\SingleResources\System\BranchSingleResource::class,
