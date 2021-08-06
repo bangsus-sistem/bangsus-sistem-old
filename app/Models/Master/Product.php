@@ -38,19 +38,19 @@ class Product extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function productType()
     {
-        return $this->hasMany(wbcm_model('master.product_type'));
+        return $this->belongsTo(wbcm_model('master.product_type'));
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function productCategory()
     {
-        return $this->hasMany(wbcm_model('master.product_category'));
+        return $this->belongsTo(wbcm_model('master.product_category'));
     }
 
     /**
