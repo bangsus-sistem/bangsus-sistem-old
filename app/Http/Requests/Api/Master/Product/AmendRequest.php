@@ -131,11 +131,19 @@ class AmendRequest extends AuthIdRequest
                 'nullable',
                 'boolean'
             ],
-            'purchase' => [
+            'all_purchase' => [
                 'nullable',
                 'boolean'
             ],
-            'sales' => [
+            'all_sales' => [
+                'nullable',
+                'boolean'
+            ],
+            'all_incoming_mutation' => [
+                'nullable',
+                'boolean'
+            ],
+            'all_outgoing_mutation' => [
                 'nullable',
                 'boolean'
             ],
@@ -147,17 +155,61 @@ class AmendRequest extends AuthIdRequest
                 'nullable',
                 'max:1000',
             ],
+            'all_branch_types' => [
+                'nullable',
+                'boolean',
+            ],
+            'branch_type_product' => [
+                'nullable',
+                'array',
+            ],
+            'branch_type_product.*.branch_type_id' => [
+                'nullable',
+                'wbl_exists:'.wbcm_model('system.branch_type'),
+            ],
+            'branch_type_product.*.purchase' => [
+                'nullable',
+                'boolean',
+            ],
+            'branch_type_product.*.sales' => [
+                'nullable',
+                'boolean',
+            ],
+            'branch_type_product.*.incoming_mutation' => [
+                'nullable',
+                'boolean',
+            ],
+            'branch_type_product.*.outgoing_mutation' => [
+                'nullable',
+                'boolean',
+            ],
             'all_branches' => [
                 'nullable',
                 'boolean',
             ],
-            'branch_ids' => [
+            'branch_product' => [
                 'nullable',
                 'array',
             ],
-            'branch_ids.*' => [
+            'branch_product.*.branch_id' => [
                 'nullable',
                 'wbl_exists:'.wbcm_model('system.branch'),
+            ],
+            'branch_product.*.purchase' => [
+                'nullable',
+                'boolean',
+            ],
+            'branch_product.*.sales' => [
+                'nullable',
+                'boolean',
+            ],
+            'branch_product.*.incoming_mutation' => [
+                'nullable',
+                'boolean',
+            ],
+            'branch_product.*.outgoing_mutation' => [
+                'nullable',
+                'boolean',
             ],
         ];
     }
