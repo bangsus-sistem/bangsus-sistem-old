@@ -12,6 +12,9 @@ return [
     'accounting' => [
         'account' => \Waffleboss\Library\Observers\Accounting\AccountObserver::class,
     ],
+    'master' => [
+        'product_category' => \Waffleboss\Library\Observers\Master\ProductCategory::class,
+    ],
     'hrm' => [
         'employee' => \Waffleboss\Library\Observers\Hrm\EmployeeObserver::class,
         'employee_assignment' => \Waffleboss\Library\Observers\Hrm\EmployeeAssignmentObserver::class,
