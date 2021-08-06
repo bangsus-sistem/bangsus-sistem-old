@@ -57,4 +57,8 @@ return [
         'gender' => \Waffleboss\Library\Models\Hrm\Gender::class,
         'job_title' => \Waffleboss\Library\Models\Hrm\JobTitle::class,
     ],
+    'pivot' => [
+        'branch_type_product' => \Waffleboss\Library\Models\Pivot\BranchTypeProduct::class,
+        'branch_product' => \Waffleboss\Library\Models\Pivot\BranchProduct::class,
+    ],
 ];
