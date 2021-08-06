@@ -18,7 +18,7 @@ class ProductPaginatedResource extends PaginatedResource
             'name' => $this->name,
             'product_type' => wbcm_paginated_resource('master.product_type', true, $this->productType),
             'product_category' => wbcm_paginated_resource('master.product_category', true, $this->productCategory),
-            'image' => wbcm_paginated_resource('storage.image', true, $this->image),
+            'image' => wbcm_single_resource('storage.image', true, $this->image),
             'unit' => wbcm_paginated_resource('master.unit', true, $this->unit),
             'active' => (bool) $this->active,
             'locked' => (bool) $this->locked,
