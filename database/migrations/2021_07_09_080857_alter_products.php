@@ -15,14 +15,14 @@ class AlterProducts extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->after('unit_id', function ($table) {
-                $table->unit('second_unit_id');
-                $table->standarizedDecimal('second_ratio');
-                $table->unit('third_unit_id');
-                $table->standarizedDecimal('third_ratio');
-                $table->unit('fourth_unit_id');
-                $table->standarizedDecimal('fourth_ratio');
-                $table->unit('fifth_unit_id');
-                $table->standarizedDecimal('fifth_ratio');
+                $table->unit('second_unit_id', true);
+                $table->standarizedDecimal('second_ratio')->nullable();
+                $table->unit('third_unit_id', true);
+                $table->standarizedDecimal('third_ratio')->nullable();
+                $table->unit('fourth_unit_id', true);
+                $table->standarizedDecimal('fourth_ratio')->nullable();
+                $table->unit('fifth_unit_id', true);
+                $table->standarizedDecimal('fifth_ratio')->nullable();
             });
         });
     }
