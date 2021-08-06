@@ -55,21 +55,55 @@ class AmendTask extends Task
                     :   null;
                 $product->active = true;
                 $product->monitor_stock = $request->boolean('monitor_stock');
-                $product->purchase = $request->boolean('purchase');
-                $product->sales = $request->boolean('sales');
+                $product->all_branch_types = $request->boolean('all_branch_types');
+                $product->all_branches = $request->boolean('all_branches');
+                $product->all_purchase = $request->boolean('all_purchase');
+                $product->all_sales = $request->boolean('all_sales');
+                $product->all_incoming_mutation = $request->boolean('all_incoming_mutation');
+                $product->all_outgoing_mutation = $request->boolean('all_outgoing_mutation');
                 $product->description = $request->input('description');
                 $product->note = $request->input('note');
                 $product->save();
 
-                if ( ! $product->all_branches)
-                    $product->branches()->sync($request->input('branch_ids'));
-                else
-                    $product->branches()
-                        ->sync(
-                            wbcm_model('system.branch')::get()
-                                ->pluck('id')
-                                ->all()
-                        );
+                // Sync branch type.
+                $data = [];
+                foreach ($request->input('branch_type_product') as $branchTypeProduct) {
+                    $data[$branchTypeProduct['branch_type_id']] = [
+                        'purchase' => $product->all_purchase
+                            ?   true
+                            :   $branchTypeProduct['purchase'],
+                        'sales' => $product->all_sales
+                            ?   true
+                            :   $branchTypeProduct['sales'],
+                        'incoming_mutation' => $product->all_incoming_mutation
+                            ?   true
+                            :   $branchTypeProduct['incoming_mutation'],
+                        'outgoing_mutation' => $product->all_outgoing_mutation
+                            ?   true
+                            :   $branchTypeProduct['outgoing_mutation'],
+                    ];
+                }
+                $product->branchTypes()->sync($data);
+
+                // Sync branch.
+                $data = [];
+                foreach ($request->input('branch_product') as $branchProduct) {
+                    $data[$branchProduct['branch_id']] = [
+                        'purchase' => $product->all_purchase
+                            ?   true
+                            :   $branchProduct['purchase'],
+                        'sales' => $product->all_sales
+                            ?   true
+                            :   $branchProduct['sales'],
+                        'incoming_mutation' => $product->all_incoming_mutation
+                            ?   true
+                            :   $branchProduct['incoming_mutation'],
+                        'outgoing_mutation' => $product->all_outgoing_mutation
+                            ?   true
+                            :   $branchProduct['outgoing_mutation'],
+                    ];
+                }
+                $product->branches()->sync($data);
             }
         );
 
