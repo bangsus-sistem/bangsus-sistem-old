@@ -21,6 +21,23 @@ class Product extends Model
         ActiveFlag, LockedFlag;
 
     /**
+     * @var array
+     */
+    protected $casts = [
+        'second_ratio' => 'float',
+        'third_ratio' => 'float',
+        'fourth_ratio' => 'float',
+        'fifth_ratio' => 'float',
+        'monitor_stock' => 'boolean',
+        'all_branch_types' => 'boolean',
+        'all_branches' => 'boolean',
+        'all_purchase' => 'boolean',
+        'all_sales' => 'boolean',
+        'all_incoming_mutation' => 'boolean',
+        'all_outgoing_mutation' => 'boolean',
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function productType()
@@ -154,5 +171,29 @@ class Product extends Model
     public function inventoryAdjustmentExpenseAccount()
     {
         return $this->belongsTo(wbcm_model('accounting.account'));
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function branchTypes()
+    {
+        return $this->belongsToMany(wbcm_model('system.branch_type'))
+            ->using(wbcm_model('pivot.branch_type_product'))
+            ->withPivot(
+                'purchase', 'sales', 'incoming_mutation', 'outgoing_mutation'
+            );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function branches()
+    {
+        return $this->belongsToMany(wbcm_model('system.branch'))
+            ->using(wbcm_model('pivot.branch_product'))
+            ->withPivot(
+                'purchase', 'sales', 'incoming_mutation', 'outgoing_mutation'
+            );
     }
 }
