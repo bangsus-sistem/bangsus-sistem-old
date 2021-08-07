@@ -100,7 +100,7 @@ class AmendRequest extends AuthIdRequest
             'purchase_account_id' => [
                 'nullable',
                 'wbl_exists:'.wbcm_model('accounting.account'),
-                'wbl_account_type_is:cost_of_purchase',
+                'wbl_account_type_is_either:cost_of_purchase,equipment_cost',
             ],
             'purchase_return_account_id' => [
                 'nullable',

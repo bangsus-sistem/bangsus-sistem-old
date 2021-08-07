@@ -99,7 +99,12 @@ class StoreRequest extends AuthRequest
             'purchase_account_id' => [
                 Rule::requiredIf( ! $this->boolean('monitor_stock') && $this->boolean('purchase')),
                 'wbl_exists:'.wbcm_model('accounting.account'),
-                'wbl_account_type_is:cost_of_purchase',
+                'wbl_account_type_is_either:cost_of_purchase,equipment_cost',
+            ],
+            'purchase_discount_account_id' => [
+                Rule::requiredIf( ! $this->boolean('monitor_stock') && $this->boolean('purchase')),
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:purchase_discount',
             ],
             'purchase_return_account_id' => [
                 Rule::requiredIf( ! $this->boolean('monitor_stock') && $this->boolean('purchase')),
@@ -110,6 +115,11 @@ class StoreRequest extends AuthRequest
                 Rule::requiredIf($this->boolean('sales')),
                 'wbl_exists:'.wbcm_model('accounting.account'),
                 'wbl_account_type_is:sales',
+            ],
+            'sales_discount_account_id' => [
+                Rule::requiredIf($this->boolean('sales')),
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:sales_discount',
             ],
             'sales_return_account_id' => [
                 Rule::requiredIf($this->boolean('sales')),
@@ -125,6 +135,26 @@ class StoreRequest extends AuthRequest
                 Rule::requiredIf($this->boolean('monitor_stock')),
                 'wbl_exists:'.wbcm_model('accounting.account'),
                 'wbl_account_type_is:inventory_adjustment_expense',
+            ],
+            'input_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:input_tax',
+            ],
+            'accrued_input_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:accrued_input_tax',
+            ],
+            'output_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:output_tax',
+            ],
+            'accrued_output_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:accrued_output_tax',
             ],
             'monitor_stock' => [
                 'required',

@@ -114,7 +114,11 @@ class Product extends Model
      */
     public function inventoryAccount()
     {
-        return $this->belongsTo(wbcm_model('accounting.account'));
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'inventory_account_id',
+            'id'
+        );
     }
 
     /**
@@ -122,7 +126,23 @@ class Product extends Model
      */
     public function purchaseAccount()
     {
-        return $this->belongsTo(wbcm_model('accounting.account'));
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'purchase_account_id',
+            'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function purchaseDiscountAccount()
+    {
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'purchase_discount_account_id',
+            'id'
+        );
     }
 
     /**
@@ -130,7 +150,11 @@ class Product extends Model
      */
     public function purchaseReturnAccount()
     {
-        return $this->belongsTo(wbcm_model('accounting.account'));
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'purchase_return_account_id',
+            'id'
+        );
     }
 
     /**
@@ -138,7 +162,23 @@ class Product extends Model
      */
     public function salesAccount()
     {
-        return $this->belongsTo(wbcm_model('accounting.account'));
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'sales_account_id',
+            'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function salesDiscountAccount()
+    {
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'sales_discount_account_id',
+            'id'
+        );
     }
 
     /**
@@ -146,7 +186,11 @@ class Product extends Model
      */
     public function salesReturnAccount()
     {
-        return $this->belongsTo(wbcm_model('accounting.account'));
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'sales_return_account_id',
+            'id'
+        );
     }
 
     /**
@@ -154,7 +198,11 @@ class Product extends Model
      */
     public function usageAccount()
     {
-        return $this->belongsTo(wbcm_model('accounting.account'));
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'usage_account_id',
+            'id'
+        );
     }
 
     /**
@@ -162,7 +210,11 @@ class Product extends Model
      */
     public function inventoryAdjustmentIncomeAccount()
     {
-        return $this->belongsTo(wbcm_model('accounting.account'));
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'inventory_adjustment_income_account_id',
+            'id'
+        );
     }
 
     /**
@@ -170,7 +222,59 @@ class Product extends Model
      */
     public function inventoryAdjustmentExpenseAccount()
     {
-        return $this->belongsTo(wbcm_model('accounting.account'));
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'inventory_adjustment_expense_account_id',
+            'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function inputTaxAccount()
+    {
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'input_tax_account_id',
+            'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function accruedInputTaxAccount()
+    {
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'accrued_input_tax_account_id',
+            'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function outputTaxAccount()
+    {
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'output_tax_account_id',
+            'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function accruedOutputTaxAccount()
+    {
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'accrued_output_tax_account_id',
+            'id'
+        );
     }
 
     /**

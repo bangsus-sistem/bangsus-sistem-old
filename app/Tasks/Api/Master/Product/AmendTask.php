@@ -35,11 +35,17 @@ class AmendTask extends Task
                 $product->purchase_account_id = $request->boolean('purchase')
                     ?   $request->input('purchase_account_id', $product->purchase_account_id)
                     :   null;
+                $product->purchase_discount_account_id = $request->boolean('purchase')
+                    ?   $request->input('purchase_discount_account_id', $product->purchase_discount_account_id)
+                    :   null;
                 $product->purchase_return_account_id = $request->boolean('purchase')
                     ?   $request->input('purchase_return_account_id', $product->purchase_return_account_id)
                     :   null;
                 $product->sales_account_id = $request->boolean('sales')
                     ?   $request->input('sales_account_id', $product->sales_account_id)
+                    :   null;
+                $product->sales_discount_account_id = $request->boolean('sales')
+                    ?   $request->input('sales_discount_account_id', $product->sales_discount_account_id)
                     :   null;
                 $product->sales_return_account_id = $request->boolean('sales')
                     ?   $request->input('sales_return_account_id', $product->sales_return_account_id)
@@ -53,6 +59,10 @@ class AmendTask extends Task
                 $product->inventory_adjustment_expense_account_id = $request->boolean('monitor_stock')
                     ?   $request->input('inventory_adjustment_expense_account_id', $product->inventory_adjustment_expense_account_id)
                     :   null;
+                $product->input_tax_account_id = $request->input('input_tax_account_id', $product->input_tax_account_id);
+                $product->accrued_input_tax_account_id = $request->input('accrued_input_tax_account_id', $product->accrued_input_tax_account_id);
+                $product->output_tax_account_id = $request->input('output_tax_account_id', $product->output_tax_account_id);
+                $product->accrued_output_tax_account_id = $request->input('accrued_output_tax_account_id', $product->accrued_output_tax_account_id);
                 $product->active = true;
                 $product->monitor_stock = $request->boolean('monitor_stock', $product->monitor_stock);
                 $product->all_branch_types = $request->boolean('all_branch_types', $product->all_branch_types);
