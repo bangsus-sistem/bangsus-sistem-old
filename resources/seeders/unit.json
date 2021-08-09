@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "code": "PCS",
+        "name": "Pcs"
+    },
+    {
+        "id": 2,
+        "code": "KG",
+        "name": "Kilogram"
+    },
+    {
+        "id": 3,
+        "code": "GR",
+        "name": "Gram"
+    },
+    {
+        "id": 4,
+        "code": "LTR",
+        "name": "Liter"
+    },
+    {
+        "id": 5,
+        "code": "ML",
+        "name": "Mililiter"
+    },
+    {
+        "id": 6,
+        "code": "SAK",
+        "name": "Sak"
+    },
+    {
+        "id": 7,
+        "code": "DUS",
+        "name": "Dus"
+    }
+]

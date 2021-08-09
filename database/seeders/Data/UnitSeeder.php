@@ -2,10 +2,15 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Foundation\Database\ResourceSeeder;
 
-class UnitSeeder extends Seeder
+class UnitSeeder extends ResourceSeeder
 {
+    /**
+     * @var string
+     */
+    protected $dataSource = 'unit.json';
+
     /**
      * Seed the application's database.
      *
@@ -13,45 +18,7 @@ class UnitSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('units')->insert(
-            $this->parseData([
-                [
-                    'id' => 1,
-                    'code' => 'PCS',
-                    'name' => 'Pcs',
-                ],
-                [
-                    'id' => 2,
-                    'code' => 'KG',
-                    'name' => 'Kilogram',
-                ],
-                [
-                    'id' => 3,
-                    'code' => 'GR',
-                    'name' => 'Gram',
-                ],
-                [
-                    'id' => 4,
-                    'code' => 'LTR',
-                    'name' => 'Liter',
-                ],
-                [
-                    'id' => 5,
-                    'code' => 'ML',
-                    'name' => 'Mililiter',
-                ],
-                [
-                    'id' => 6,
-                    'code' => 'SAK',
-                    'name' => 'Sak',
-                ],
-                [
-                    'id' => 7,
-                    'code' => 'DUS',
-                    'name' => 'Dus',
-                ],
-            ])
-        );
+        \DB::table('units')->insert($this->parseData($this->data));
     }
 
     /**

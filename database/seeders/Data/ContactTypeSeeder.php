@@ -2,10 +2,15 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Foundation\Database\ResourceSeeder;
 
-class ContactTypeSeeder extends Seeder
+class ContactTypeSeeder extends ResourceSeeder
 {
+    /**
+     * @var string
+     */
+    protected $dataSource = 'contact-type.json';
+
     /**
      * Seed the application's database.
      *
@@ -13,22 +18,7 @@ class ContactTypeSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('contact_types')->insert(
-            $this->parseData([
-                [
-                    'id' => 1,
-                    'code' => 'PRI',
-                    'name' => 'No. Pribadi',
-                    'required' => false,
-                ],
-                [
-                    'id' => 2,
-                    'code' => 'RMH',
-                    'name' => 'No. Rumah',
-                    'required' => false,
-                ],
-            ])
-        );
+        \DB::table('contact_types')->insert($this->parseData($this->data));
     }
 
     /**

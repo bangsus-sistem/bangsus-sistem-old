@@ -2,10 +2,15 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Foundation\Database\ResourceSeeder;
 
-class DivisionSeeder extends Seeder
+class DivisionSeeder extends ResourceSeeder
 {
+    /**
+     * @var string
+     */
+    protected $dataSource = 'division.json';
+
     /**
      * Seed the application's database.
      *
@@ -13,40 +18,7 @@ class DivisionSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('divisions')->insert(
-            $this->parseData([
-                [
-                    'id' => 1,
-                    'code' => 'OP',
-                    'name' => 'Operasional',
-                ],
-                [
-                    'id' => 2,
-                    'code' => 'AC',
-                    'name' => 'Akunting',
-                ],
-                [
-                    'id' => 3,
-                    'code' => 'FN',
-                    'name' => 'Keuangan',
-                ],
-                [
-                    'id' => 4,
-                    'code' => 'GD',
-                    'name' => 'Logistik',
-                ],
-                [
-                    'id' => 5,
-                    'code' => 'PB',
-                    'name' => 'Pembelian',
-                ],
-                [
-                    'id' => 6,
-                    'code' => 'IT',
-                    'name' => 'IT',
-                ],
-            ])
-        );
+        \DB::table('divisions')->insert($this->parseData($this->data));
     }
 
     /**

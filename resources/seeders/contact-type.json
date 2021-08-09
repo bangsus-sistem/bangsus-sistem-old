@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "code": "PRI",
+        "name": "No. Pribadi",
+        "required": false
+    },
+    {
+        "id": 2,
+        "code": "RMH",
+        "name": "No. Rumah",
+        "required": false
+    }
+]

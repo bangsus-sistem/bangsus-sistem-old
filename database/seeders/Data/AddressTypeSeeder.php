@@ -2,10 +2,15 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Foundation\Database\ResourceSeeder;
 
-class AddressTypeSeeder extends Seeder
+class AddressTypeSeeder extends ResourceSeeder
 {
+    /**
+     * @var string
+     */
+    protected $dataSource = 'address-type.json';
+
     /**
      * Seed the application's database.
      *
@@ -14,26 +19,7 @@ class AddressTypeSeeder extends Seeder
     public function run()
     {
         \DB::table('address_types')->insert(
-            $this->parseData([
-                [
-                    'id' => 1,
-                    'code' => 'KTP',
-                    'name' => 'Alamat KTP',
-                    'required' => true,
-                ],
-                [
-                    'id' => 2,
-                    'code' => 'DOM',
-                    'name' => 'Alamat Domisili',
-                    'required' => false,
-                ],
-                [
-                    'id' => 3,
-                    'code' => 'IDK',
-                    'name' => 'Alamat Kos',
-                    'required' => false,
-                ],
-            ])
+            $this->parseData($this->data)
         );
     }
 

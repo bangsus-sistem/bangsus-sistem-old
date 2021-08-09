@@ -2,10 +2,15 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Foundation\Database\ResourceSeeder;
 
-class BloodTypeSeeder extends Seeder
+class BloodTypeSeeder extends ResourceSeeder
 {
+    /**
+     * @var string
+     */
+    protected $dataSource = 'blood-type.json';
+
     /**
      * Seed the application's database.
      *
@@ -13,26 +18,7 @@ class BloodTypeSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('blood_types')->insert(
-            $this->parseData([
-                [
-                    'id' => 1,
-                    'name' => 'A',
-                ],
-                [
-                    'id' => 2,
-                    'name' => 'B',
-                ],
-                [
-                    'id' => 3,
-                    'name' => 'AB',
-                ],
-                [
-                    'id' => 4,
-                    'name' => 'O',
-                ],
-            ])
-        );
+        \DB::table('blood_types')->insert($this->parseData($this->data));
     }
 
     /**

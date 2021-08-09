@@ -2,10 +2,15 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Foundation\Database\ResourceSeeder;
 
-class JobTitleSeeder extends Seeder
+class JobTitleSeeder extends ResourceSeeder
 {
+    /**
+     * @var string
+     */
+    protected $dataSource = 'job-title.json';
+    
     /**
      * Seed the application's database.
      *
@@ -13,52 +18,7 @@ class JobTitleSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('job_titles')->insert(
-            $this->parseData([
-                [
-                    'id' => 1,
-                    'code' => 'SPV',
-                    'name' => 'Supervisor',
-                    'division_code' => 'OP'
-                ],
-                [
-                    'id' => 2,
-                    'code' => 'LDR',
-                    'name' => 'Leader',
-                    'division_code' => 'OP'
-                ],
-                [
-                    'id' => 3,
-                    'code' => 'CRW',
-                    'name' => 'Crew',
-                    'division_code' => 'OP'
-                ],
-                [
-                    'id' => 4,
-                    'code' => 'TRN',
-                    'name' => 'Trainee',
-                    'division_code' => 'OP'
-                ],
-                [
-                    'id' => 5,
-                    'code' => 'SAC',
-                    'name' => 'Staff Akunting',
-                    'division_code' => 'AC'
-                ],
-                [
-                    'id' => 6,
-                    'code' => 'SIT',
-                    'name' => 'Staff IT',
-                    'division_code' => 'IT'
-                ],
-                [
-                    'id' => 7,
-                    'code' => 'AFN',
-                    'name' => 'Admin Finance',
-                    'division_code' => 'FN'
-                ],
-            ])
-        );
+        \DB::table('job_titles')->insert($this->parseData($this->data));
     }
 
     /**

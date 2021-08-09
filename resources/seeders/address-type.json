@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "code": "KTP",
+        "name": "Alamat KTP",
+        "required": true
+    },
+    {
+        "id": 2,
+        "code": "DOM",
+        "name": "Alamat Domisili",
+        "required": true
+    },
+    {
+        "id": 3,
+        "code": "IDK",
+        "name": "Alamat Kos",
+        "required": true
+    }
+]

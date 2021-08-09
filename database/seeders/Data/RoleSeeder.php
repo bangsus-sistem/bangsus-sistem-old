@@ -2,9 +2,9 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Foundation\Database\ResourceSeeder;
 
-class RoleSeeder extends Seeder
+class RoleSeeder extends ResourceSeeder
 {
     /**
      * Seed the application's database.
@@ -13,49 +13,10 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roles = [
-            [
-                'id' => 2,
-                'code' => 'ADM',
-                'name' => 'Admin',
-                'features' => [
-                    'role' => ['index', 'create', 'read', 'update', 'delete'],
-                    'user' => ['index', 'create', 'read', 'update', 'delete'],
-                    'branch_type' => ['index', 'create', 'read', 'update', 'delete'],
-                    'branch' => ['index', 'create', 'read', 'update', 'delete'],
-                ],
-                'widgets' => [],
-                'reports' => [],
-            ],
-            [
-                'id' => 3,
-                'code' => 'OWN',
-                'name' => 'Pemilik',
-                'features' => [],
-                'widgets' => [],
-                'reports' => [],
-            ],
-            [
-                'id' => 4,
-                'code' => 'SPV',
-                'name' => 'Supervisor',
-                'features' => [],
-                'widgets' => [],
-                'reports' => [],
-            ],
-            [
-                'id' => 5,
-                'code' => 'BRA',
-                'name' => 'Cabang',
-                'features' => [],
-                'widgets' => [],
-                'reports' => [],
-            ],
-        ];
-        \DB::table('roles')->insert($this->parseRole($roles));
-        \DB::table('role_feature')->insert($this->parseFeature($roles));
-        \DB::table('role_widget')->insert($this->parseWidget($roles));
-        \DB::table('role_report')->insert($this->parseReport($roles));
+        \DB::table('roles')->insert($this->parseRole($this->data));
+        \DB::table('role_feature')->insert($this->parseFeature($this->data));
+        \DB::table('role_widget')->insert($this->parseWidget($this->data));
+        \DB::table('role_report')->insert($this->parseReport($this->data));
     }
 
     /**

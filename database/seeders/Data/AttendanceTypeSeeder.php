@@ -2,10 +2,15 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Foundation\Database\ResourceSeeder;
 
-class AttendanceTypeSeeder extends Seeder
+class AttendanceTypeSeeder extends ResourceSeeder
 {
+    /**
+     * @var string
+     */
+    protected $dataSource = 'attendance-type.json';
+
     /**
      * Seed the application's database.
      *
@@ -13,15 +18,7 @@ class AttendanceTypeSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('attendance_types')->insert(
-            $this->parseData([
-                [
-                    'id' => 1,
-                    'code' => 'RG',
-                    'name' => 'Reguler',
-                ],
-            ])
-        );
+        \DB::table('attendance_types')->insert($this->parseData($this->data));
     }
 
     /**

@@ -2,10 +2,15 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Library\Database\ResourceSeeder;
 
-class BranchTypeSeeder extends Seeder
+class BranchTypeSeeder extends ResourceSeeder
 {
+    /**
+     * @var string
+     */
+    protected $dataSource = 'branch-type.json';
+
     /**
      * Seed the application's database.
      *
@@ -13,48 +18,7 @@ class BranchTypeSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('branch_types')->insert(
-            $this->parseData(
-                [
-                    [
-                        'id' => 1,
-                        'code' => '10',
-                        'name' => 'Pusat',
-                    ],
-                    [
-                        'id' => 2,
-                        'code' => '11',
-                        'name' => 'Geprek Bangsus',
-                    ],
-                    [
-                        'id' => 3,
-                        'code' => '12',
-                        'name' => 'Bangsus Lucky Duck',
-                    ],
-                    [
-                        'id' => 4,
-                        'code' => '13',
-                        'name' => 'Saladetox',
-                    ],
-                    [
-                        'id' => 5,
-                        'code' => '14',
-                        'name' => 'Bangsus Sayur',
-                    ],
-                    [
-                        'id' => 6,
-                        'code' => '15',
-                        'name' => 'Udonkobe',
-                    ],
-                    [
-                        'id' => 7,
-                        'code' => '16',
-                        'name' => 'Garangasem',
-                    ],
-                ]
-            )
-            
-        );
+        \DB::table('branch_types')->insert($this->parseData($this->data));
     }
 
     /**

@@ -1,0 +1,39 @@
+[
+    {
+        "id": 2,
+        "code": "ADM",
+        "name": "Admin",
+        "features": {
+            "role": ["index", "create", "read", "update", "delete"],
+            "user": ["index", "create", "read", "update", "delete"],
+            "branch_type": ["index", "create", "read", "update", "delete"],
+            "branch": ["index", "create", "read", "update", "delete"]
+        },
+        "widgets": {},
+        "reports": {}
+    },
+    {
+        "id": 3,
+        "code": "OWN",
+        "name": "Pemilik",
+        "features": {},
+        "widgets": {},
+        "reports": {}
+    },
+    {
+        "id": 4,
+        "code": "SPV",
+        "name": "Supervisor",
+        "features": {},
+        "widgets": {},
+        "reports": {}
+    },
+    {
+        "id": 5,
+        "code": "BRA",
+        "name": "Cabang",
+        "features": {},
+        "widgets": {},
+        "reports": {}
+    }
+]

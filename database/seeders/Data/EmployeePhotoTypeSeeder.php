@@ -2,10 +2,15 @@
 
 namespace Database\Seeders\Data;
 
-use Illuminate\Database\Seeder;
+use Waffleboss\Foundation\Database\ResourceSeeder;
 
-class EmployeePhotoTypeSeeder extends Seeder
+class EmployeePhotoTypeSeeder extends ResourceSeeder
 {
+    /**
+     * @var string
+     */
+    protected $dataSource = 'employee-photo-type.json';
+
     /**
      * Seed the application's database.
      *
@@ -13,28 +18,7 @@ class EmployeePhotoTypeSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('employee_photo_types')->insert(
-            $this->parseData([
-                [
-                    'id' => 1,
-                    'code' => 'KTP',
-                    'name' => 'Foto KTP',
-                    'required' => true,
-                ],
-                [
-                    'id' => 2,
-                    'code' => 'FBD',
-                    'name' => 'Foto Full Body',
-                    'required' => true,
-                ],
-                [
-                    'id' => 3,
-                    'code' => 'FCU',
-                    'name' => 'Foto Close Up',
-                    'required' => true,
-                ],
-            ])
-        );
+        \DB::table('employee_photo_types')->insert($this->parseData($this->data));
     }
 
     /**

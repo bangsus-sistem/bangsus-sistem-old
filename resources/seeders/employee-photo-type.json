@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "code": "KTP",
+        "name": "Foto KTP",
+        "required": true
+    },
+    {
+        "id": 2,
+        "code": "FBD",
+        "name": "Foto Full Body",
+        "required": true
+    },
+    {
+        "id": 3,
+        "code": "FCU",
+        "name": "Foto Close Up",
+        "required": true
+    }
+]
