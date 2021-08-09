@@ -79,6 +79,27 @@ class AccountTypeSeeder extends Seeder
                     'profit_loss_account_group_id' => null,
                 ],
                 [
+                    'ref' => 'input_tax',
+                    'name' => 'Pajak Masukan',
+                    'default_reverse_value' => 0,
+                    'trial_balance_account_group_id' => 1,
+                    'profit_loss_account_group_id' => null,
+                ],
+                [
+                    'ref' => 'paid_input_tax',
+                    'name' => 'Pajak Masukan Dibayar Dimuka',
+                    'default_reverse_value' => 0,
+                    'trial_balance_account_group_id' => 1,
+                    'profit_loss_account_group_id' => null,
+                ],
+                [
+                    'ref' => 'accrued_output_tax',
+                    'name' => 'Pajak Keluaran Masih Harus Dibayar',
+                    'default_reverse_value' => 0,
+                    'trial_balance_account_group_id' => 1,
+                    'profit_loss_account_group_id' => null,
+                ],
+                [
                     'ref' => 'other_current_asset',
                     'name' => 'Aset Lancar Lain-Lain',
                     'default_reverse_value' => 0,
@@ -167,6 +188,27 @@ class AccountTypeSeeder extends Seeder
                     'profit_loss_account_group_id' => null,
                 ],
                 [
+                    'ref' => 'output_tax',
+                    'name' => 'Pajak Keluaran',
+                    'default_reverse_value' => 1,
+                    'trial_balance_account_group_id' => 2,
+                    'profit_loss_account_group_id' => null,
+                ],
+                [
+                    'ref' => 'paid_output_tax',
+                    'name' => 'Pajak Keluaran Dibayar Dimuka',
+                    'default_reverse_value' => 1,
+                    'trial_balance_account_group_id' => 2,
+                    'profit_loss_account_group_id' => null,
+                ],
+                [
+                    'ref' => 'accrued_input_tax',
+                    'name' => 'Pajak Masukan Masih Harus Dibayar',
+                    'default_reverse_value' => 1,
+                    'trial_balance_account_group_id' => 2,
+                    'profit_loss_account_group_id' => null,
+                ],
+                [
                     'ref' => 'other_current_liability',
                     'name' => 'Liabilitas Jangka Pendek Lain-Lain',
                     'default_reverse_value' => 1,
@@ -250,6 +292,13 @@ class AccountTypeSeeder extends Seeder
                     'profit_loss_account_group_id' => 1,
                 ],
                 [
+                    'ref' => 'sales_discount',
+                    'name' => 'Potongan Penjualan',
+                    'default_reverse_value' => 0,
+                    'trial_balance_account_group_id' => null,
+                    'profit_loss_account_group_id' => 1,
+                ],
+                [
                     'ref' => 'sales_return',
                     'name' => 'Retur Penjualan',
                     'default_reverse_value' => 0,
@@ -278,6 +327,13 @@ class AccountTypeSeeder extends Seeder
                     'default_reverse_value' => 0,
                     'trial_balance_account_group_id' => null,
                     'profit_loss_account_group_id' => 2,
+                ],
+                [
+                    'ref' => 'purchase_discount',
+                    'name' => 'Potongan Pembelian',
+                    'default_reverse_value' => 0,
+                    'trial_balance_account_group_id' => null,
+                    'profit_loss_account_group_id' => 1,
                 ],
                 [
                     'ref' => 'purchase_return',
