@@ -135,6 +135,36 @@ class AmendRequest extends AuthIdRequest
                 'wbl_exists:'.wbcm_model('accounting.account'),
                 'wbl_account_type_is:inventory_adjustment_expense',
             ],
+            'input_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:input_tax',
+            ],
+            'accrued_input_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:accrued_input_tax',
+            ],
+            'paid_input_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:paid_input_tax',
+            ],
+            'output_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:output_tax',
+            ],
+            'accrued_output_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:accrued_output_tax',
+            ],
+            'paid_output_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:paid_output_tax',
+            ],
             'monitor_stock' => [
                 'required',
                 'boolean'

@@ -256,6 +256,18 @@ class Product extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function paidInputTaxAccount()
+    {
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'paid_input_tax_account_id',
+            'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function outputTaxAccount()
     {
         return $this->belongsTo(
@@ -273,6 +285,18 @@ class Product extends Model
         return $this->belongsTo(
             wbcm_model('accounting.account'),
             'accrued_output_tax_account_id',
+            'id'
+        );
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function paidOutputTaxAccount()
+    {
+        return $this->belongsTo(
+            wbcm_model('accounting.account'),
+            'paid_output_tax_account_id',
             'id'
         );
     }

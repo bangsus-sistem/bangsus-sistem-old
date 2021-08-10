@@ -61,8 +61,10 @@ class AmendTask extends Task
                     :   null;
                 $product->input_tax_account_id = $request->input('input_tax_account_id', $product->input_tax_account_id);
                 $product->accrued_input_tax_account_id = $request->input('accrued_input_tax_account_id', $product->accrued_input_tax_account_id);
+                $product->paid_input_tax_account_id = $request->input('paid_input_tax_account_id', $product->paid_input_tax_account_id);
                 $product->output_tax_account_id = $request->input('output_tax_account_id', $product->output_tax_account_id);
                 $product->accrued_output_tax_account_id = $request->input('accrued_output_tax_account_id', $product->accrued_output_tax_account_id);
+                $product->paid_output_tax_account_id = $request->input('paid_output_tax_account_id', $product->paid_output_tax_account_id);
                 $product->active = true;
                 $product->monitor_stock = $request->boolean('monitor_stock', $product->monitor_stock);
                 $product->all_branch_types = $request->boolean('all_branch_types', $product->all_branch_types);

@@ -146,6 +146,11 @@ class StoreRequest extends AuthRequest
                 'wbl_exists:'.wbcm_model('accounting.account'),
                 'wbl_account_type_is:accrued_input_tax',
             ],
+            'paid_input_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:paid_input_tax',
+            ],
             'output_tax_account_id' => [
                 'required',
                 'wbl_exists:'.wbcm_model('accounting.account'),
@@ -155,6 +160,11 @@ class StoreRequest extends AuthRequest
                 'required',
                 'wbl_exists:'.wbcm_model('accounting.account'),
                 'wbl_account_type_is:accrued_output_tax',
+            ],
+            'paid_output_tax_account_id' => [
+                'required',
+                'wbl_exists:'.wbcm_model('accounting.account'),
+                'wbl_account_type_is:paid_output_tax',
             ],
             'monitor_stock' => [
                 'required',
